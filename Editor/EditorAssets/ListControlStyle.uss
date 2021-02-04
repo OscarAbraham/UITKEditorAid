@@ -4,11 +4,12 @@
     The differences exist to get closer to the way IMGUI controls look inside the inspector, but they should look,
     the same inside ArrayPropertyField.
 */
+.editor-aid-array-property-field .unity-foldout__toggle {
+    margin-left: 0;
+}
+
 .editor-aid-list-control {
     background-color: transparent;
-}
-.editor-aid-list-control .unity-foldout__toggle {
-    margin-left: 0;
 }
 
 .editor-aid-list-control--boxed {
