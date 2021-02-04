@@ -1,0 +1,81 @@
+﻿
+.editor-aid-list-of-inspectors {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--editor-aid-colors-inspector_titlebar-border);
+    background-color: var(--editor-aid-colors-panel-background);
+}
+
+.editor-aid-list-of-inspectors__inspector-item {
+    flex-direction: column;
+}
+
+.editor-aid-list-of-inspectors__inspector-item > .unity-inspector-element {
+    padding-bottom: 2px;
+}
+
+.editor-aid-list-of-inspectors__item-header {
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 2px;
+    border-width: 1px 0px;
+    border-top-color: var(--editor-aid-colors-inspector_titlebar-border);
+    border-bottom-color: var(--editor-aid-colors-inspector_titlebar-border_accent);
+    background-color: var(--editor-aid-colors-inspector_titlebar-background);
+}
+
+    .editor-aid-list-of-inspectors__item-header:hover {
+        background-color: var(--editor-aid-colors-inspector_titlebar-background-hover);
+    }
+
+.editor-aid-list-control--dragging .editor-aid-list-of-inspectors__item-header:hover {
+    background-color: var(--editor-aid-colors-inspector_titlebar-background);
+}
+
+.editor-aid-list-of-inspectors__item-header--collapsed,
+.editor-aid-list-of-inspectors__item-header--collapsed:hover {
+    border-bottom-color: transparent;
+}
+
+.editor-aid-list-of-inspectors__inspector-item.editor-aid-list-control__item--dragged,
+.editor-aid-list-of-inspectors__inspector-item.editor-aid-list-control__item--dragged .editor-aid-list-of-inspectors__item-header{
+    background-color: var(--editor-aid-colors-list_item-background-dragged);
+}
+
+.editor-aid-list-of-inspectors__item-header-foldout {
+    width: 16px;
+    margin: 0px 1px;
+    flex: 0 0 auto;
+}
+
+    .editor-aid-list-of-inspectors__item-header-foldout > .unity-foldout__toggle {
+        margin: 0;
+    }
+
+.editor-aid-list-of-inspectors__item-header-label {
+    flex: 1 1 auto;
+    -unity-font-style: bold;
+}
+
+.editor-aid-list-of-inspectors__item-header-icon,
+.editor-aid-list-of-inspectors__item-header-button {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+}
+
+.editor-aid-list-of-inspectors__item-header-button {
+    background-color: transparent;
+    border-radius: 0;
+    border-width: 0;
+}
+
+    .editor-aid-list-of-inspectors__item-header-button:hover {
+        background-color: var(--editor-aid-colors-inspector_titlebar-button-hover);
+    }
+
+.editor-aid-list-control__item-header-tooltip {
+    background-color: var(--editor-aid-colors-tooltip-background);
+    border-color: var(--editor-aid-colors-tooltip-border);
+    border-width: 1px;
+    padding: 3px;
+}

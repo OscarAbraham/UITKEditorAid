@@ -1,0 +1,182 @@
+﻿
+/*
+    TODO normalize the size differences for PropertyField's margins/paddings outside/inside inspector elements.
+    The differences exist to get closer to the way IMGUI controls look inside the inspector, but they should look,
+    the same inside ArrayPropertyField.
+*/
+.editor-aid-list-control {
+    background-color: transparent;
+}
+.editor-aid-list-control .unity-foldout__toggle {
+    margin-left: 0;
+}
+
+.editor-aid-list-control--boxed {
+    padding: 1px 0px;
+    margin: 1px 3px;
+    border-width: 1px;
+    border-color: var(--editor-aid-colors-list-border);
+    border-radius: 3px;
+    background-color: var(--editor-aid-colors-list-background);
+}
+
+.editor-aid-list-control--boxed.editor-aid-list-control--with-header {
+    padding-top: 0px;
+}
+
+.editor-aid-list-control--with-footer {
+    margin-bottom: 22px;
+}
+
+.editor-aid-list-control--boxed.editor-aid-list-control--with-footer {
+    border-bottom-right-radius: 0;
+}
+
+.editor-aid-list-control__empty-message {
+    margin-left: 5px;
+    height: 20px;
+    -unity-text-align: middle-left;
+    opacity: .7;
+}
+
+.editor-aid-list-control__header,
+.editor-aid-list-control__footer {
+    display: none;
+}
+
+.editor-aid-list-control--with-footer > .editor-aid-list-control__footer {
+    display: flex;
+    position: absolute;
+    bottom: -19px;
+    right: 0px;
+    height: 19px;
+    padding: 1px 0 0;
+}
+
+.editor-aid-list-control--boxed > .editor-aid-list-control__footer  {
+    background-color: var(--editor-aid-colors-list-background);
+    border-color: var(--editor-aid-colors-list-border);
+    border-radius: 0 0 3px 3px;
+    border-width: 0 1px 1px 1px;
+    right: -1px;
+}
+
+.editor-aid-list-control--with-header > .editor-aid-list-control__header {
+    display: flex;
+    background-color: var(--editor-aid-colors-list_header-background);
+    min-height: 16px;
+    margin-bottom: 1px; /*TODO Should we remove top and bottom margins in general?*/
+}
+
+.editor-aid-list-control--boxed > .editor-aid-list-control__header {
+    border-radius: 1px 0px;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--editor-aid-colors-list_item-separator);
+}
+
+.editor-aid-list-control__header-label {
+    margin-left: 3px;
+}
+
+.editor-aid-list-control__header-foldout {
+    margin: 0;
+}
+
+.editor-aid-list-control__header-foldout  > .unity-foldout__toggle {
+    margin: 0;
+}
+
+.editor-aid-list-control--folded > .editor-aid-list-control__item,
+.editor-aid-list-control--folded > .editor-aid-list-control__empty-message,
+.editor-aid-list-control--folded > .editor-aid-list-control__footer
+{
+    display: none;
+}
+
+.editor-aid-list-control--folded {
+    margin-bottom: 0px;
+}
+
+.editor-aid-list-control--folded.editor-aid-list-control--boxed {
+    margin-bottom: 1px;
+}
+
+.editor-aid-list-control__drop-indicator {
+    position: absolute;
+    background-color: var(--editor-aid-colors-highlight-border);
+    margin-top: -2px;
+    height: 3px;
+    left: 0;
+    right: 0;
+}
+
+.editor-aid-list-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.editor-aid-list-row:hover {
+    background-color: var(--editor-aid-colors-list_item-background-hover);
+}
+
+.editor-aid-list-row--alternated {
+    background-color: var(--editor-aid-colors-list_item-background-alternated);
+}
+
+.editor-aid-list-row--with-separators {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    margin-bottom: -1px;
+    border-top-color: var(--editor-aid-colors-list_item-separator);
+    border-bottom-color: var(--editor-aid-colors-list_item-separator);
+}
+
+.editor-aid-list-control--dragging > .editor-aid-list-row:hover {
+    background-color: transparent;
+}
+
+.editor-aid-list-row.editor-aid-list-control__item--dragged,
+.editor-aid-list-row.editor-aid-list-control__item--dragged:hover {
+    background-color: var(--editor-aid-colors-list_item-background-dragged);
+}
+
+.editor-aid-list-row__drag-handle {
+    width: 10px;
+    height: 4px;
+    margin: 0px 0px 0px 4px;
+    border-width: 1px 0px;
+    border-color: var(--editor-aid-colors-list_item-handle);
+}
+
+.editor-aid-list-row__content {
+    flex-grow: 1;
+}
+
+/*We don't assign editor icons in style sheets to avoid warnings if they stop existing.*/
+.editor-aid-list-control__add-button,
+.editor-aid-list-row__remove-button {
+    margin: 0 3px 0 0;
+    border-width: 0;
+    border-radius: 0;
+    padding: 0;
+    width: 20px;
+    height: 16px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: transparent;
+}
+
+.editor-aid-list-control__add-button {
+    margin-left: 3px;
+}
+
+    .editor-aid-list-control__add-button:hover,
+    .editor-aid-list-row__remove-button:hover {
+        background-color: var(--editor-aid-colors-list_button-hover);
+    }
+
+    .editor-aid-list-control__add-button:active,
+    .editor-aid-list-row__remove-button:active {
+        background-color: transparent;
+    }

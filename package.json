@@ -1,0 +1,17 @@
+{
+  "name": "com.unity.example",
+  "version": "1.0.0",
+  "displayName": "UITK Editor Aid",
+  "description": "Elements and scripts that help to make Unity editors with UIToolkit.",
+  "unity": "2019.4",
+  "keywords": [
+    "UIToolkit",
+    "Editor",
+    "UITK",
+    "UIElements"
+  ],
+  "author": {
+    "name": "Oscar Abraham",
+    "url": "https://www.artehacker.com"
+  }
+}

@@ -1,0 +1,37 @@
+﻿
+.editor-aid-variables {
+    --editor-aid-colors-panel-border: #191919;
+    --editor-aid-colors-panel-background: #383838;
+    --editor-aid-colors-label-text: #C4C4C4;
+    --editor-aid-colors-highlight-border: #3A79BB;
+
+    --editor-aid-colors-tooltip-background: #3E3E3E;
+    --editor-aid-colors-tooltip-border: #181818;
+
+    --editor-aid-colors-helpbox-background: rgba(96, 96, 96, .2);
+    --editor-aid-colors-helpbox-border: #A9A9A9;
+    --editor-aid-colors-helpbox-text: #161616;
+
+    /*Additional Colors for graph-like controls*/
+    --editor-aid-colors-graph-background: #202020;
+    --editor-aid-colors-graph_node-border-selected: rgba(68, 174, 255, .82); /*TODO: Revise this. I'm trying to find a better color*/
+    --editor-aid-colors-graph_node-border-hover: rgba(68, 174, 255, .52);
+
+    /*ListControl colors*/
+    --editor-aid-colors-list-background: #414141;
+    --editor-aid-colors-list-border: #242424;
+    --editor-aid-colors-list_header-background: #353535;
+    --editor-aid-colors-list_item-separator: #2A2A2A;
+    --editor-aid-colors-list_item-background-hover: rgba(255, 255, 255, .026); /*Translucid so it works with nested lists.*/
+    --editor-aid-colors-list_item-background-dragged: rgba(28, 141, 255, .125);
+    --editor-aid-colors-list_item-background-alternated: rgba(0, 0, 0, .095);
+    --editor-aid-colors-list_item-handle: rgba(196, 196, 196, 0.27);
+    --editor-aid-colors-list_button-hover: rgba(255, 255, 255, .044);
+
+    /*Inspector colors*/
+    --editor-aid-colors-inspector_titlebar-background: #3E3E3E;
+    --editor-aid-colors-inspector_titlebar-background-hover: #474747;
+    --editor-aid-colors-inspector_titlebar-border: #1F1F1F;
+    --editor-aid-colors-inspector_titlebar-border_accent: #303030;
+    --editor-aid-colors-inspector_titlebar-button-hover: rgba(255, 255, 255, .044);
+}

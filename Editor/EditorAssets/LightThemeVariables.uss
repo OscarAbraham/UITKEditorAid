@@ -1,0 +1,37 @@
+﻿
+.editor-aid-variables {
+    --editor-aid-colors-panel-border: #8A8A8A;
+    --editor-aid-colors-panel-background: #C2C2C2;
+    --editor-aid-colors-label-text: #181818;
+    --editor-aid-colors-highlight-border: #1D5087; /*TODO: Revise; could be #3C76C0 (tab), #1D5087 (field) or #0C6CCB (toggle)*/
+
+    --editor-aid-colors-tooltip-background: #E0E0E0;
+    --editor-aid-colors-tooltip-border: #181818;
+
+    --editor-aid-colors-helpbox-background: rgba(235, 235, 235, .2);
+    --editor-aid-colors-helpbox-border: #A9A9A9;
+    --editor-aid-colors-helpbox-text: #161616;
+
+    /*There's no light theme for GraphView; these values seem to do the job.*/
+    --editor-aid-colors-graph-background: #999999;
+    --editor-aid-colors-graph_node-border-selected: #003A76;
+    --editor-aid-colors-graph_node-border-hover: rgba(12, 63, 118, 0.57);
+
+    /*ListControl colors*/
+    --editor-aid-colors-list-background: #C8C8C8;
+    --editor-aid-colors-list-border: #A1A1A1;
+    --editor-aid-colors-list_header-background: #B6B6B6;
+    --editor-aid-colors-list_item-separator: #A5A5A5;
+    --editor-aid-colors-list_item-background-hover: rgba(255, 255, 255, .13); /*Translucid so it works with nested lists.*/
+    --editor-aid-colors-list_item-background-dragged: rgba(48, 152, 255, .135);
+    --editor-aid-colors-list_item-background-alternated: rgba(0, 0, 0, .04);
+    --editor-aid-colors-list_item-handle: rgba(24, 24, 24, 0.45);
+    --editor-aid-colors-list_button-hover: rgba(255, 255, 255, .4);
+
+    /*Inspector colors*/
+    --editor-aid-colors-inspector_titlebar-background: #CBCBCB;
+    --editor-aid-colors-inspector_titlebar-background-hover: #D6D6D6;
+    --editor-aid-colors-inspector_titlebar-border: #7F7F7F;
+    --editor-aid-colors-inspector_titlebar-border_accent: #BABABA;
+    --editor-aid-colors-inspector_titlebar-button-hover: rgba(255, 255, 255, .4);
+}
