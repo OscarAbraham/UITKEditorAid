@@ -40,6 +40,105 @@ namespace ArteHacker.UITKEditorAid
     /// <summary>
     /// A UIToolkit reorderable list for a given SerializedProperty. It's drawn inside a box by default. Put it inside a <see cref="Rebinder"/> for better performance.
     /// </summary>
+    /// <example>
+    /// Basic Usage:
+    /// <code>
+    /// class ACustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         // ArrayPropertyFields don't need to be in a Rebinder, but it performs better.
+    ///         var root = new Rebinder(serializedObject);
+    ///         root.Add(new ArrayPropertyField(serializedObject.FindProperty("anArray")));
+    ///         return root;
+    ///     }
+    /// }
+    /// </code>
+    /// Configuration Options:
+    /// <code>
+    /// class ACustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         // ArrayPropertyFields don't need to be in a Rebinder, but it performs better.
+    ///         var root = new Rebinder(serializedObject);
+    ///         var list = new ArrayPropertyField(serializedObject.FindProperty("field"));
+    /// 
+    ///         // Make it non-reorderable.
+    ///         list.reorderable = false;
+    ///         // Remove the box that is drawn around the list by default.
+    ///         list.boxed = false;
+    ///         // Hide the header.
+    ///         list.headerMode = ListHeaderMode.None;
+    ///         // Hide drag handles.
+    ///         list.showDragHandles = false;
+    ///         // Don't use zebra-like background to differentiate odd and even items.
+    ///         list.showAlternatedBackgrounds = false;
+    ///         // Hide remove buttons.
+    ///         list.showRemoveButtons = false;
+    ///         // Hide the add button.
+    ///         list.addButtonMode = AddButtonMode.None;
+    ///         // Customize remove behavior
+    ///         list.onRemove = (int itemIndex) => { };
+    ///         // Customize add behavior
+    ///         list.onAdd = (Rect buttonPosition) => { };
+    ///         // Show separator lines between items.
+    ///         list.showSeparators = true;
+    /// 
+    ///         root.Add(list);
+    ///         return root;
+    ///     }
+    /// }
+    /// </code>
+    /// A custom list with Managed references (with the SerializeReference attribute)
+    /// <code>
+    /// class ACustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         // This time we do need a Rebinder for ManagedReferenceFields to work.
+    ///         var root = new Rebinder(serializedObject);
+    /// 
+    ///         // "field" would be an array with the [SerializeReference] attribute.
+    ///         var list = new ArrayPropertyField(serializedObject.FindProperty("field"))
+    ///         {
+    ///             //Add a little arrow to the add button
+    ///             addButtonMode = AddButtonMode.WithOptions,
+    ///             onAdd = DisplayAddMenu
+    ///         };
+    /// 
+    ///         root.Add(list);
+    ///         return root;
+    ///     }
+    /// 
+    ///     private void DisplayAddMenu(Rect buttonPosition)
+    ///     {
+    ///         SerializedProperty arrayProp = serializedObject.FindProperty("field");
+    ///         GenericMenu gm = new GenericMenu();
+    /// 
+    ///         gm.AddItem(new GUIContent("Add Object Type 1"), false, () =>
+    ///         {
+    ///             serializedObject.Update();
+    ///             arrayProp.arraySize++;
+    ///             var prop = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
+    ///             prop.managedReferenceValue = new ObjectType1();
+    ///             serializedObject.ApplyModifiedProperties();
+    ///         });
+    /// 
+    ///         gm.AddItem(new GUIContent("Add Object Type 2"), false, () =>
+    ///         {
+    ///             serializedObject.Update();
+    ///             arrayProp.arraySize++;
+    ///             var prop = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
+    ///             prop.managedReferenceValue = new ObjectType2();
+    ///             serializedObject.ApplyModifiedProperties();
+    ///         });
+    /// 
+    ///         gm.DropDown(buttonPosition);
+    ///     }
+    /// }
+    /// </code>
+    /// </example>
     public class ArrayPropertyField : ListControl
     {
         /// <summary> USS class name of elements of this type. </summary>
