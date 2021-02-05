@@ -74,6 +74,8 @@ namespace ArteHacker.UITKEditorAid
             // Focus doesn't work in TextField; we have to acces its child.
             m_InnerTextInput = m_TextField.Q(TextField.textInputUssName);
             m_InnerTextInput.RegisterCallback<BlurEvent>(_ => m_TextField.SetEnabled(false));
+
+            isDelayed = true;
         }
 
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
