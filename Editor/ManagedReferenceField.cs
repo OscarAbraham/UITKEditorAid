@@ -6,7 +6,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A convenience element that creates a <see cref="PropertyField"/> and a <see cref="ManagedReferenceTypeTracker"/> to update it.
+    /// A convenience UIToolkit element that contains a <see cref="PropertyField"/> and a <see cref="ManagedReferenceTypeTracker"/> to update it.
     /// It needs to be inside a <see cref="Rebinder"/> ancestor to work.
     /// WARNING: Do not use this directly with the property received in <see cref="PropertyDrawer.CreatePropertyGUI(SerializedProperty)"/>;
     /// it'll cause an infinite loop because the PropertyField inside will call the same property drawer again.

@@ -5,7 +5,8 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// UITK equivalent to <see cref="EditorGUILayout.Space"/>. Use it to quickly add a space between elements along the parent's flex-direction.
+    /// A UIToolkit element that'sequivalent to <see cref="EditorGUILayout.Space"/>.
+    /// Use it to quickly add a space between elements along the parent's flex-direction. Supports UXML.
     /// </summary>
     public class FixedSpace : VisualElement
     {

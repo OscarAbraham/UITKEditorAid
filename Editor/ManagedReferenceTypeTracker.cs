@@ -5,8 +5,8 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element that tracks the type of a <see cref="serializedProperty"/> with the <see cref="SerializeReference"/> attribute.
-    /// It's to be used in combination with <see cref="Rebinder"/> to update the UI when the type changes.
+    /// A UIToolkit element that tracks the type of a <see cref="serializedProperty"/> with the <see cref="SerializeReference"/> attribute.
+    /// It needs to be inside an ancestor <see cref="Rebinder"/> to update the UI when the type changes.
     /// <seealso cref="ManagedReferenceField"/>
     /// </summary>
     public class ManagedReferenceTypeTracker : VisualElement, IRebindingTrigger

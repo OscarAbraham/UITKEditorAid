@@ -5,9 +5,9 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Disables and enables contents according to the <see cref="shouldDisable"/> callback. It's equivalent to <see cref="EditorGUI.DisabledScope"/>.
-    /// This has a custom contentContainer, so make sure to add children using <see cref="VisualElement.Add(VisualElement)"/>;
-    /// children added with <see cref="VisualElement.Hierarchy.Add(VisualElement)"/> will not be handled by the Disabler.
+    /// UIToolkit element that disables and enables contents according to the <see cref="shouldDisable"/> callback. It's equivalent to
+    /// <see cref="EditorGUI.DisabledScope"/>. This has a custom contentContainer, so make sure to add children using <b>VisualElement.Add</b>;
+    /// children added with <b>VisualElement.hierarchy.Add</b> will not be handled by the Disabler. UXML shouldn't have this problem.
     /// </summary>
     /// <remarks>
     /// This element is specially useful in combination with <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/>

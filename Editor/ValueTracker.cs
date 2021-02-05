@@ -2,12 +2,46 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
+using UnityEditor.UIElements;
 
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Utility element to receive a call when a <see cref="SerializedProperty"/> changes. It needs to be added to a panel and bound to work.
+    /// Utility UIToolkit element to listen for changes in a <see cref="SerializedProperty"/>. It needs to be added to a panel and bound to work.
     /// </summary>
+    /// <example>
+    /// <code>
+    /// class ACustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         var root = new VisualElement();
+    ///         var intTracker = new ValueTracker<int>();
+    ///         root.Add(intTracker);
+    /// 
+    ///         // You can pass a property path relative to the object that will be bound (usually "target" in an Editor).
+    ///         intTracker.SetUp("anIntProperty", e => Debug.Log($"value changed to {e.newValue}"));
+    /// 
+    ///         // You can pass a serialized property instead of the property path:
+    ///         var intProp = serializedObject.FindProperty("anIntProperty");
+    ///         intTracker.SetUp(intProp, e => Debug.Log($"value changed to {e.newValue}"));
+    /// 
+    ///         // An optional third value argument sets the initial value of the tracker, this is to avoid receiving a callback when the tracker is bound.
+    ///         intTracker.SetUp(intProp, e => Debug.Log($"value changed to {e.newValue}"), intProp.intValue);
+    /// 
+    ///         // You can set up all this from the constructor:
+    ///         var intTracker2 = new ValueTracker<int>(intProp, e => Debug.Log($"value changed to {e.newValue}"), intProp.intValue);
+    ///         root.Add(intTracker2);
+    /// 
+    ///         return root;
+    /// 
+    ///         // Remember that if we are not inside an inspector, or if we are not tracking a property of the editor's target,
+    ///         // we have to do the binding ourselves, or trackers wont work:
+    ///         // root.Bind(serializedObject);
+    ///     }
+    /// }
+    /// </code>
+    /// </example>
     /// <typeparam name="TValue">The type of the property, it doesn't seem to work if it isn't one mentioned in <see cref="SerializedPropertyType"/></typeparam>
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
     {

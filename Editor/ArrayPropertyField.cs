@@ -38,7 +38,7 @@ namespace ArteHacker.UITKEditorAid
     }
 
     /// <summary>
-    /// A reorderable list for a given SerializedProperty. It's drawn inside a box by default. Put it inside a <see cref="Rebinder"/> for better performance.
+    /// A UIToolkit reorderable list for a given SerializedProperty. It's drawn inside a box by default. Put it inside a <see cref="Rebinder"/> for better performance.
     /// </summary>
     public class ArrayPropertyField : ListControl
     {

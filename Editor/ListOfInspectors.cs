@@ -14,7 +14,7 @@ namespace ArteHacker.UITKEditorAid
 {
     // This class could use some cleanup and refactoring. It's uses are few and very specific, though, so it doesn't seem to be worth it.
     /// <summary>
-    /// A list similar to the component list in a GameObject's inspector. It's been tested with a SerializedProperty that represent's
+    /// A UIToolkit list similar to the component list in a GameObject's inspector. It's been tested with a SerializedProperty that represent's
     /// an array of <see cref="ScriptableObject"/>. It doesn't do too well with multitarget SerializedObjects.
     /// <para>It's recommended to add it with <see cref="UIToolkitExtensions.AddDelayed(VisualElement, VisualElement)"/>, specially
     /// when used inside inspectors, to avoid the child inspectors being bound to the root's SerializedObject.</para>

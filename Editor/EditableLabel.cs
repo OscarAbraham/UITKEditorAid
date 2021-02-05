@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A label that transforms into a text field to allow editing. By default, it becomes editable with a double click.
+    /// A UIToolkit label that transforms into a text field to allow editing. By default, it becomes editable with a double click. Supports UXML.
     /// </summary>
     public class EditableLabel : BindableElement, INotifyValueChanged<string>
     {

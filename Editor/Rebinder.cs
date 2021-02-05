@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A class that rebinds itself to a <see cref="SerializedObject"/> when it is requested directly or by polling
+    /// A UIToolkit element that rebinds itself to a <see cref="SerializedObject"/> when it is requested directly or by polling
     /// <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>. Note that this element does
     /// not do the initial binding, so it's necessary to call <see cref="BindingExtensions.Bind(VisualElement, SerializedObject)"/>
     /// when inside a custom Editor Window. Unity Inspectors do the binding themselves.
