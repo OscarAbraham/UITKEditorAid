@@ -1,11 +1,21 @@
 # UITK Editor Aid
 Elements and scripts that help in making Unity editors with UIToolkit.<br/>
 
-[UIToolkit](https://docs.unity3d.com/Manual/UIElements.html) allows for interfaces that are more dynamicand more
+[UIToolkit](https://docs.unity3d.com/Manual/UIElements.html)(UITK) allows for interfaces that are more dynamicand more
 performant than [IMGUI](https://docs.unity3d.com/Manual/GUIScriptingGuide.html). Its web-like API makes creating 
 complex Editor UI (i.e. node graphs) a lot easier. Yet, its editor related API is currently lacking the features
-needed to make using it straight forward. This package contains some of the stuff I use to solve that problem.
+needed to make using it straight forward. This issue can be avoided a little by using IMGUI inside UITK, but projects 
+can easily get too limited and unwieldy, and performance drops quickly when there are multiple IMGUI containers.
+
+This package contains some of the stuff I use to solve the problem with a pure UIToolkit approach.
 <br/><br/>
+
+## How to install
+Currently, you can either download this package directly to your Assets folder, or you you can use the Package Manager.
+Installing with the __Package Manager__ is very easy:
+1. In Unity, go to __Window > Package Manager__.
+2. Click the __➕▾__ in the top left and choose __Add Package from git URL__
+3. Enter `https://github.com/OscarAbraham/UITKEditorAid.git` and press __Add__.
 
 
 ## Some of the stuff included
