@@ -1,14 +1,39 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
+using UnityEditor.UIElements;
 
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UIToolkit element that tracks the type of a <see cref="serializedProperty"/> with the <see cref="SerializeReference"/> attribute.
-    /// It needs to be inside an ancestor <see cref="Rebinder"/> to update the UI when the type changes.
-    /// <seealso cref="ManagedReferenceField"/>
+    /// A UIToolkit element that tracks the type of a <see cref="SerializedProperty"/> with the <see cref="SerializeReference"/> attribute.
+    /// It rebinds the UI and also sends a <see cref="ReferenceTypeChangeEvent"/> when the tracked property changes type.
+    /// It needs to be inside an ancestor <see cref="Rebinder"/> to work.
+    /// <para>
+    /// See also: <seealso cref="ManagedReferenceField"/>
+    /// </para>
     /// </summary>
+    /// <example>
+    /// <code>
+    /// class ACustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         //ManagedReferenceTypeTracker needs to be in a Rebinder to work.
+    ///         var root = new Rebinder(serializedObject);
+    ///         
+    ///         // "managed" would be a field with the [SerializeReference] attribute.
+    ///         SerializedProperty managedProp = serializedObject.FindProperty("managed");
+    ///         
+    ///         root.Add(new PropertyField(managedProp));
+    ///         // This will update the PropertyField when it changes type.
+    ///         root.Add(new ManagedReferenceTypeTracker(managedProp));
+    /// 
+    ///         return root;
+    ///     }
+    /// }
+    /// </code>
+    /// </example>
     public class ManagedReferenceTypeTracker : VisualElement, IRebindingTrigger
     {
         /// <summary> USS class name of elements of this type. </summary>
