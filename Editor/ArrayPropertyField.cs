@@ -49,7 +49,8 @@ namespace ArteHacker.UITKEditorAid
     ///     {
     ///         // ArrayPropertyFields don't need to be in a Rebinder, but it performs better.
     ///         var root = new Rebinder(serializedObject);
-    ///         root.Add(new ArrayPropertyField(serializedObject.FindProperty("anArray")));
+    ///         var list = new ArrayPropertyField(serializedObject.FindProperty("arrayField"));
+    ///         root.Add(list);
     ///         return root;
     ///     }
     /// }
@@ -68,8 +69,12 @@ namespace ArteHacker.UITKEditorAid
     ///         list.reorderable = false;
     ///         // Remove the box that is drawn around the list by default.
     ///         list.boxed = false;
+    ///         // Set the header's text.
+    ///         list.label = "custom label";
     ///         // Hide the header.
     ///         list.headerMode = ListHeaderMode.None;
+    ///         // Set a custom empty message. Null to hide it.
+    ///         list.emptyListMessage = null;
     ///         // Hide drag handles.
     ///         list.showDragHandles = false;
     ///         // Don't use zebra-like background to differentiate odd and even items.
@@ -90,7 +95,7 @@ namespace ArteHacker.UITKEditorAid
     ///     }
     /// }
     /// </code>
-    /// A custom list with Managed references (with the SerializeReference attribute)
+    /// A custom list with Managed references (with the <see cref="SerializeReference"/> attribute):
     /// <code>
     /// class ACustomEditor : Editor
     /// {
@@ -100,12 +105,21 @@ namespace ArteHacker.UITKEditorAid
     ///         var root = new Rebinder(serializedObject);
     /// 
     ///         // "field" would be an array with the [SerializeReference] attribute.
-    ///         var list = new ArrayPropertyField(serializedObject.FindProperty("field"))
-    ///         {
-    ///             //Add a little arrow to the add button
-    ///             addButtonMode = AddButtonMode.WithOptions,
-    ///             onAdd = DisplayAddMenu
-    ///         };
+    ///         var arrayProp = serializedObject.FindProperty("field");
+    ///         var list = new ArrayPropertyField
+    ///         (
+    ///             arrayProp,
+    ///             // The second constructor parameter is an optional item creation method.
+    ///             // We use it to return a ManagedReferenceField, which will update the
+    ///             // PropertyField if the backing property changes type. That can happen
+    ///             // when the list is reordered, for example.
+    ///             i => new ManagedReferenceField(arrayProp.GetArrayElementAtIndex(i))
+    ///         );
+    /// 
+    ///         // Add a little arrow to the add button
+    ///         list.addButtonMode = AddButtonMode.WithOptions;
+    ///         // We need custom add functionality, otherwise it'll just add null objects.
+    ///         list.onAdd = DisplayAddMenu;
     /// 
     ///         root.Add(list);
     ///         return root;
@@ -113,24 +127,28 @@ namespace ArteHacker.UITKEditorAid
     /// 
     ///     private void DisplayAddMenu(Rect buttonPosition)
     ///     {
-    ///         SerializedProperty arrayProp = serializedObject.FindProperty("field");
+    ///         SerializedProperty array = serializedObject.FindProperty("field");
     ///         GenericMenu gm = new GenericMenu();
     /// 
     ///         gm.AddItem(new GUIContent("Add Object Type 1"), false, () =>
     ///         {
     ///             serializedObject.Update();
-    ///             arrayProp.arraySize++;
-    ///             var prop = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
-    ///             prop.managedReferenceValue = new ObjectType1();
+    /// 
+    ///             array.arraySize++;
+    ///             var lastItem = array.GetArrayElementAtIndex(array.arraySize - 1);
+    ///             lastItem.managedReferenceValue = new ObjectType1();
+    /// 
     ///             serializedObject.ApplyModifiedProperties();
     ///         });
     /// 
     ///         gm.AddItem(new GUIContent("Add Object Type 2"), false, () =>
     ///         {
     ///             serializedObject.Update();
-    ///             arrayProp.arraySize++;
-    ///             var prop = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
-    ///             prop.managedReferenceValue = new ObjectType2();
+    /// 
+    ///             array.arraySize++;
+    ///             var lastItem = array.GetArrayElementAtIndex(array.arraySize - 1);
+    ///             lastItem.managedReferenceValue = new ObjectType2();
+    /// 
     ///             serializedObject.ApplyModifiedProperties();
     ///         });
     /// 
