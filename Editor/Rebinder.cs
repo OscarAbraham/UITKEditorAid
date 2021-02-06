@@ -18,9 +18,9 @@ namespace ArteHacker.UITKEditorAid
     /// which can have a huge performace cost. The Rebinder element solves the problem by binding its whole hierarchy
     /// every time an update is needed. It also throttles rebinding requests for better performance.
     /// </para>
+    /// </summary>
     /// <seealso cref="ArrayPropertyField"/><seealso cref="ManagedReferenceField"/><seealso cref="ManagedReferenceTypeTracker"/>
     /// <seealso cref="IRebindingTrigger"/>
-    /// </summary>
     /// <remarks>
     /// By default, the Rebinder polls <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>
     /// everytime there are relevant actions in the editor; if your data changes from runtime code, set the optional
