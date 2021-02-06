@@ -7,7 +7,7 @@ namespace ArteHacker.UITKEditorAid
 {
     // TODO We could make this class work without ListControl by passing an onDragStart delegate to a constructor.
     /// <summary>
-    /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used in <see cref="ArrayPropertyField"/>
+    /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used by <see cref="ArrayPropertyField"/>
     /// </summary>
     public class ListRow : VisualElement
     {

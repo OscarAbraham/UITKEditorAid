@@ -3,7 +3,9 @@
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Defines a VisualElement that registers with an <see cref="ITriggereableRebinder"/> to be polled in order to indicate whether a rebind is needed.
+    /// Defines a VisualElement that registers with an <see cref="ITriggereableRebinder"/> (usually a <see cref="Rebinder"/> element)
+    /// to be polled in order to indicate whether a rebind is needed. You can easily manage the required registering by calling the
+    /// <see cref="RebinderTriggerExtensions.SetUpRegisteringWithPoller{TTrigger}(TTrigger)"/> extension method in the element's constructor.
     /// </summary>
     public interface IRebindingTrigger
     {

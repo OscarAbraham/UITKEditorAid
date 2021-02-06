@@ -7,7 +7,7 @@ namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
     /// A UIToolkit element that's like a PropertyField for a field with the <see cref="SerializeReference"/> attribute.
-    /// It updates when the backing field changes type. It needs to be inside a <see cref="Rebinder"/> ancestor to work.
+    /// It updates when the backing member changes type. It needs to be inside a <see cref="Rebinder"/> ancestor to work.
     /// It contains a <see cref="PropertyField"/> and a <see cref="ManagedReferenceTypeTracker"/> to update it.
     /// <para>
     /// WARNING: Do not use this directly with the property received in <see cref="PropertyDrawer.CreatePropertyGUI(SerializedProperty)"/>;

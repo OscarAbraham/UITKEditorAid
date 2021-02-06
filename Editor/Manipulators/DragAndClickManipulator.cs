@@ -5,7 +5,8 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid.Manipulators
 {
     /// <summary>
-    /// Manipulator that executes a callback when mouse is dragged, and another callback when mouse is just clicked.
+    /// Manipulator that executes an <see cref="onStartDragging"/> callback when the mouse is dragged,
+    /// and an <see cref="onClick"/> callback when the mouse is just clicked.
     /// </summary>
     public class DragAndClickManipulator : MouseManipulator
     {

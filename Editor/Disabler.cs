@@ -8,12 +8,12 @@ namespace ArteHacker.UITKEditorAid
     /// UIToolkit element that disables and enables contents according to the <see cref="shouldDisable"/> callback. It's equivalent to
     /// <see cref="EditorGUI.DisabledScope"/>. This has a custom contentContainer, so make sure to add children using <b>VisualElement.Add</b>;
     /// children added with <b>VisualElement.hierarchy.Add</b> will not be handled by the Disabler. UXML shouldn't have this problem.
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// This element is specially useful in combination with <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/>
     /// to avoid editing objects that shouldn't be edited. This helps in replicating what happens in IMGUI editors, which become disabled
     /// when an object is closed to edit by Version Control or HideFlags.
-    /// </remarks>
+    /// </para>
+    /// </summary>
     public class Disabler : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<Disabler> { }

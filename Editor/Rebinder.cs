@@ -7,20 +7,31 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UIToolkit element that rebinds itself to a <see cref="SerializedObject"/> when it is requested directly or by polling
-    /// <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>. Note that this element does
-    /// not do the initial binding, so it's necessary to call <see cref="BindingExtensions.Bind(VisualElement, SerializedObject)"/>
+    /// A UIToolkit element that rebinds itself to a <see cref="SerializedObject"/> when the <see cref="RequestRebind"/>
+    /// method is called or by polling <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>.
+    /// Note that this element does not do the initial binding, so it's necessary to call <see cref="BindingExtensions.Bind(VisualElement, SerializedObject)"/>
     /// when inside a custom Editor Window. Unity Inspectors do the binding themselves.
+    /// <para>
+    /// There are times when elements need to be bound again to be updated. For example, when a list of elements grows,
+    /// or when a <see cref="PropertyField"/> with a <see cref="SerializeReference"/> attribute changes type. The problem
+    /// is that each element that is bound separately makes Unity deserialize the target objects to check for changes,
+    /// which can have a huge performace cost. The Rebinder element solves the problem by binding its whole hierarchy
+    /// every time an update is needed. It also throttles rebinding requests for better performance.
+    /// </para>
+    /// <seealso cref="ArrayPropertyField"/><seealso cref="ManagedReferenceField"/><seealso cref="ManagedReferenceTypeTracker"/>
+    /// <seealso cref="IRebindingTrigger"/>
     /// </summary>
     /// <remarks>
-    /// There are times when elements need to be bound at later time than the rest of the hierarchy to be updated.
-    /// This includes when a list of elements grow, or when a <see cref="PropertyField"/> with a <see cref="SerializeReference"/> 
-    /// attribute changes type. The problem is that each element that is bound separately makes Unity deserialize and 
-    /// check the target objects for changes, which can have a huge performace cost.
-    /// 
-    /// A solution now is to rebind the elements from a root VisualElement, even if most of the children don't need it.
-    /// That way, Unity doesn't check the same objects multiple times when it updates the UI. This class helps in
-    /// coordinating the needed rebinding automatically. It also throttles rebinding requests for better performance.
+    /// By default, the Rebinder polls <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>
+    /// everytime there are relevant actions in the editor; if your data changes from runtime code, set the optional
+    /// second constructor parameter (pollTriggersPeriodically) to true.
+    /// <para>
+    /// Usually you can make this element your root, that will easily update your <see cref="ManagedReferenceField"/>s
+    /// and make your <see cref="ArrayPropertyField"/>s perform better. Be careful, though, when you have different elements
+    /// bound to different objects: their binding could be overwritten by the Rebinder if they have the same property name.
+    /// To easily prevent that problem, just avoid having controls bound to different objects nested between themselves.
+    /// That advise also solves all kinds of problems in UITK, not just with Rebinders.
+    /// </para>
     /// </remarks>
     public class Rebinder : VisualElement, ITriggereableRebinder
     {
@@ -60,7 +71,7 @@ namespace ArteHacker.UITKEditorAid
         /// Whether to poll <see cref="IRebindingTrigger"/>s periodically on top of polling every time there's a change in the editor.
         /// It's useful if your data changes from playmode code.
         /// </param>
-        /// <param name="periodicalPollingTime">The time in milliseconds to be used if pollTriggersPeriodically is true.</param>
+        /// <param name="periodicalPollingTime">The time in milliseconds to be used if pollTriggersPeriodically is true. Defaults to 5 seconds.</param>
         public Rebinder(SerializedObject serializedObject, bool pollTriggersPeriodically = false, uint periodicalPollingTime = 5032)
         {
             pickingMode = PickingMode.Ignore; 
