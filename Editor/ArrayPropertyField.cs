@@ -10,7 +10,9 @@ namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
     /// Defines the way that an add button looks in a list control.
-    /// <seealso cref="ArrayPropertyField.addButtonMode"/>
+    /// <para>
+    /// See also: <see cref="ArrayPropertyField.addButtonMode"/>
+    /// </para>
     /// </summary>
     public enum AddButtonMode
     {
@@ -25,7 +27,9 @@ namespace ArteHacker.UITKEditorAid
     // TODO Should we add a way to disable foldout binding?
     /// <summary>
     /// Defines the way that a list's header looks.
-    /// <seealso cref="ArrayPropertyField.headerMode"/>
+    /// <para>
+    /// See also: <see cref="ArrayPropertyField.headerMode"/>
+    /// </para>
     /// </summary>
     public enum ListHeaderMode
     {
@@ -95,7 +99,7 @@ namespace ArteHacker.UITKEditorAid
     ///     }
     /// }
     /// </code>
-    /// A custom list with Managed references (with the <see cref="SerializeReference"/> attribute):
+    /// A custom list with <see cref="ManagedReferenceField"/>s (with the <see cref="SerializeReference"/> attribute):
     /// <code>
     /// class ACustomEditor : Editor
     /// {

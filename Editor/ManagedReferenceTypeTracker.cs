@@ -10,7 +10,7 @@ namespace ArteHacker.UITKEditorAid
     /// It rebinds the UI and also sends a <see cref="ReferenceTypeChangeEvent"/> when the tracked property changes type.
     /// It needs to be inside an ancestor <see cref="Rebinder"/> to work.
     /// <para>
-    /// See also: <seealso cref="ManagedReferenceField"/>
+    /// See also: <see cref="ManagedReferenceField"/>
     /// </para>
     /// </summary>
     /// <example>
