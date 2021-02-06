@@ -1,17 +1,20 @@
 # UITK Editor Aid
 Elements and scripts that help in making Unity editors with UIToolkit.<br/>
 
-[UIToolkit](https://docs.unity3d.com/Manual/UIElements.html)(UITK) allows for interfaces that are more dynamicand more
+[UIToolkit](https://docs.unity3d.com/Manual/UIElements.html) (UITK) allows for interfaces that are more dynamic and 
 performant than [IMGUI](https://docs.unity3d.com/Manual/GUIScriptingGuide.html). Its web-like API makes creating 
-complex Editor UI (i.e. node graphs) a lot easier. Yet, its editor related API is currently lacking the features
-needed to make using it straight forward. This issue can be avoided a little by using IMGUI inside UITK, but projects 
-can easily get too limited and unwieldy, and performance drops quickly when there are multiple IMGUI containers.
+complex Editor UI (i.e. node graphs) a lot easier.
+
+There's a problem, though: the editor part of UITK currently lacks some of the IMGUI features required for easily
+creating anything more than basic stuff. This issue can be avoided a little by using IMGUI containers inside UITK,
+but projects can easily get too limited and unwieldy, and performance drops quickly when there are multiple instances
+of them.
 
 This package contains some of the stuff I use to solve the problem with a pure UIToolkit approach.
 <br/><br/>
 
 ## How to install
-Currently, you can either download this package directly to your Assets folder, or you you can use the Package Manager.
+You can either download this package directly to your project's Assets folder, or you can use the Package Manager.
 Installing with the __Package Manager__ is very easy:
 1. In Unity, go to __Window > Package Manager__.
 2. Click the __➕▾__ in the top left and choose __Add Package from git URL__
@@ -45,7 +48,7 @@ There's also a [ManagedReferenceTypeTracker](https://artehacker.com/UITKEditorAi
 that can be used for more low level stuff.
 
 ### [Rebinder](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Rebinder.html)
-There are things that need `VisualElement.Bind(serializedObject)` to be called to be updated in UIToolkit. For example,
+There are elements that need to be bound again (`VisualElement.Bind(serializedObject)`) to be updated in UIToolkit. For example,
 items that are added to a list, or fields with the `[SerializeReference]` attribute that change type. The problem is
 that each element that is bound separately has an important performance cost. The Rebinder element solves that by
 binding the whole hierarchy every time an update is needed. It also throttles rebinding requests, putting together 
@@ -65,7 +68,7 @@ Some times you don't need a VisualElement for anything visual, sometimes you jus
 a property changes. This element helps you with that.
 
 ### [ListOfInspectors](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListOfInspectors.html)
-A list that's similar to the component list in GameObjects. I use it with ScriptableObject subassets. You still have to
+A list that is similar to the component's list in GameObjects. I use it with ScriptableObject subassets. You still have to
 do the stuff that's not related to UIToolkit yourself, like handling assets and the lifetime of your objects, which is
 outside the scope of this package; but if you know how to do that, this could be very helpful.
 
@@ -80,15 +83,15 @@ There are also some extension methods that I've found useful for UIToolkit edito
 <br/><br/>
 
 ## A caveat
-Currently all elements that need rebinding, like Lists and ManagedReferenceFields, don't support UXML. That's because
+Currently, all elements that need rebinding  (i.e. Lists and ManagedReferenceFields), don't support UXML. That's because
 they need to get a `SerializedProperty` or a `SerializedObject` in their constructor. The correct way to solve that would
 be to obtain them with Unity's binding system, but the required API is not public yet. I don't want to use reflection
 because that API seems likely to change, and editors that break when doing a minor Unity update are awful.<br/><br/>
 
-## IMPORTANT: Avoid collisions when including this in packages and plugins
-Sometimes one needs to copy a library inside a Unity plugin, that's very ok, that's what the MIT license is for. If you
-do that, please take steps to avoid collisions when your users have also installed this package themselves. The easiest
-way to do it is:
+## IMPORTANT: Avoid collisions when including this code inside packages and plugins
+Sometimes one needs to put a copy of a library inside a Unity plugin; that's very ok, that's what the MIT license is for.
+If you do that, please take steps to avoid collisions when your users have also installed this package themselves. The
+easiest way to do it is:
 
 1. Rename the ArteHacker part of the namespace. Most text editors have an automated way of doing that.
 
