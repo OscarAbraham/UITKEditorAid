@@ -69,7 +69,7 @@ to `EditorGUI.DisabledScope`, and `FixedSpace`/`FlexibleSpace` elements equivale
 There are also some extension methods that I've found useful for UIToolkit editor development, and some UITK manipulators.
 <br/><br/>
 
-## A caveat:
+## A caveat
 Currently all elements that need rebinding, like Lists and ManagedReferenceFields, don't support UXML. That's because
 they need to get a `SerializedProperty` or a `SerializedObject` in their constructor. The correct way to solve that would
 be to obtain them with Unity's binding system, but the required API is not public yet. I don't want to use reflection
