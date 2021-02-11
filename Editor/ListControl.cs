@@ -306,6 +306,9 @@ namespace ArteHacker.UITKEditorAid
 
         private int GetDropIndex(IMouseEvent e)
         {
+            if (m_Items.Count <= 0)
+                return -1;
+
             Vector2 worldPos = e.mousePosition;
             for (int i = 0; i < m_Items.Count; i++)
             {
@@ -314,9 +317,9 @@ namespace ArteHacker.UITKEditorAid
                     return worldPos.y < itemRect.center.y ? i : i + 1;
             }
 
-            if (worldPos.y < worldBound.yMin)
+            if (worldPos.y < m_Items[0].worldBound.yMin)
                 return 0;
-            else if (worldPos.y > worldBound.yMax)
+            else if (worldPos.y > m_Items[m_Items.Count-1].worldBound.yMax)
                 return m_Items.Count;
 
             return -1;
