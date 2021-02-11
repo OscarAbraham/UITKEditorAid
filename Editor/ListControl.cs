@@ -292,7 +292,10 @@ namespace ArteHacker.UITKEditorAid
             }
 
             if (index == m_Items.Count)
-                m_DropBar.transform.position = new Vector2(0, layout.height);
+            {
+                var itemRect = this.WorldToLocal(m_Items[index-1].worldBound);
+                m_DropBar.transform.position = new Vector2(0, itemRect.yMax);
+            }
             else
             {
                 var itemRect = this.WorldToLocal(m_Items[index].worldBound);
