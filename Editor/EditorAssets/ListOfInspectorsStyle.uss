@@ -1,11 +1,12 @@
 ﻿
 .editor-aid-list-of-inspectors {
-    border-bottom-width: 1px;
-    border-bottom-color: var(--editor-aid-colors-inspector_titlebar-border);
     background-color: var(--editor-aid-colors-panel-background);
 }
 
 .editor-aid-list-of-inspectors__inspector-item {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--editor-aid-colors-inspector_titlebar-border);
+    margin-bottom: -1px;
     flex-direction: column;
 }
 
