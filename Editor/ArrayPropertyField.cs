@@ -429,9 +429,17 @@ namespace ArteHacker.UITKEditorAid
             else
             {
                 m_ArrayProp.serializedObject.Update();
-                if (index < 0 || index >= m_ArrayProp.arraySize)
+
+                int initialArraySize = m_ArrayProp.arraySize;
+                if (index < 0 || index >= initialArraySize)
                     return;
+
                 m_ArrayProp.DeleteArrayElementAtIndex(index);
+                // When items are object references and they are not null, deleting them just sets them to null.
+                // This is fixed in 2021, but we need to fix it ourselves for previous versions.
+                if(m_ArrayProp.arraySize == initialArraySize)
+                    m_ArrayProp.DeleteArrayElementAtIndex(index);
+
                 m_ArrayProp.serializedObject.ApplyModifiedProperties();
             }
         }
