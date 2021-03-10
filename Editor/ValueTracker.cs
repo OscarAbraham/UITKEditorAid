@@ -56,6 +56,9 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string ussClassName = $"editor-aid-{typeof(TValue).Name}-value-tracker";
         private TValue m_Value;
 
+        /// <summary> Delegate called when value changes. </summary>
+        public EventCallback<ChangeEvent<TValue>> valueChangedCallback {get; set;}
+
         /// <summary> ValueTracker constructor. </summary>
         public ValueTracker()
         {
@@ -98,8 +101,16 @@ namespace ArteHacker.UITKEditorAid
         {
             SetValueWithoutNotify(initialValue);
             bindingPath = propertyPath;
-            if (callback != null)
-                this.RegisterValueChangedCallback(callback);
+            valueChangedCallback = callback;
+
+            // There's a issue present at least in Unity 2020.2.7f1, maybe also in older/newer versions, where ChangeEvents are fired on every
+            // binding, even if the value hasn't changed. We'll submit a bug report, but on the chance that Unity considers this an expected
+            // behavior, here's a fix for us.
+            this.RegisterValueChangedCallback(e =>
+            {
+                if (!EqualityComparer<TValue>.Default.Equals(e.previousValue, e.newValue))
+                    valueChangedCallback?.Invoke(e);
+            });
         }
 
         /// <summary>
