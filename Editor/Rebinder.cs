@@ -6,6 +6,14 @@ using UnityEditor.UIElements;
 
 namespace ArteHacker.UITKEditorAid
 {
+    // TODO It seems recent Unity versions are a lot more efficient when binding multiple fields separately:
+    // https://github.com/needle-mirror/com.unity.ui/blob/7ae45176671504f37ebb5a5c3bacdc63cb692837/Editor/Bindings/BindingExtensions.cs#L854
+    // In those versions, it'd be better not to rebind whole hierarchies, but each element immediately.
+    // - We could check for UNITY_2020_2_OR_NEWER here and just handle RebingingTriggers here.
+    // - Additionally, we could release a version 2 without the concept of Rebinders, that targets 2020.2.
+    //   The issues are not fixed in earlier versions of 2020.2, but thing's wouldn't break there; they'd
+    //   just be slower. Personally, I'm no longer using 2019.4 because I need generic serialization anyway.
+
     /// <summary>
     /// A UIToolkit element that rebinds itself to a <see cref="SerializedObject"/> when the <see cref="RequestRebind"/>
     /// method is called or by polling <see cref="IRebindingTrigger"/>s like <see cref="ManagedReferenceTypeTracker"/>.
