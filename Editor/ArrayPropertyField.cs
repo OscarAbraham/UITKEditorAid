@@ -42,7 +42,7 @@ namespace ArteHacker.UITKEditorAid
     }
 
     /// <summary>
-    /// A UIToolkit reorderable list for a given SerializedProperty. It's drawn inside a box by default. Put it inside a <see cref="Rebinder"/> for better performance.
+    /// A UIToolkit reorderable list for a given SerializedProperty. It's drawn inside a box by default.
     /// </summary>
     /// <example>
     /// Basic Usage:
@@ -51,8 +51,7 @@ namespace ArteHacker.UITKEditorAid
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
-    ///         // ArrayPropertyFields don't need to be in a Rebinder, but it performs better.
-    ///         var root = new Rebinder(serializedObject);
+    ///         var root = new VisualElement();
     ///         var list = new ArrayPropertyField(serializedObject.FindProperty("arrayField"));
     ///         root.Add(list);
     ///         return root;
@@ -65,8 +64,7 @@ namespace ArteHacker.UITKEditorAid
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
-    ///         // ArrayPropertyFields don't need to be in a Rebinder, but it performs better.
-    ///         var root = new Rebinder(serializedObject);
+    ///         var root = new VisualElement();
     ///         var list = new ArrayPropertyField(serializedObject.FindProperty("field"));
     /// 
     ///         // Make it non-reorderable.
@@ -105,8 +103,7 @@ namespace ArteHacker.UITKEditorAid
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
-    ///         // This time we do need a Rebinder for ManagedReferenceFields to work.
-    ///         var root = new Rebinder(serializedObject);
+    ///         var root = new VisualElement(serializedObject);
     /// 
     ///         // "field" would be an array with the [SerializeReference] attribute.
     ///         var arrayProp = serializedObject.FindProperty("field");
@@ -179,7 +176,6 @@ namespace ArteHacker.UITKEditorAid
         private readonly Label m_HeaderLabel = new Label();
         private readonly Foldout m_HeaderFoldout = new Foldout();
         private Func<int, VisualElement> m_MakeItem;
-        private IRebinder m_AncestorRebinder;
 
         private ListHeaderMode m_ListHeaderMode;
         private string m_label = null;
@@ -363,7 +359,6 @@ namespace ArteHacker.UITKEditorAid
             m_SizeTracker.SetUp(sizeProp, OnSizeChange, sizeProp.intValue);
             Add(m_SizeTracker);
 
-            RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
             SetListSize(m_ArrayProp.arraySize);
         }
 
@@ -385,21 +380,6 @@ namespace ArteHacker.UITKEditorAid
             return item;
         }
 
-        private void OnAttachToPanel(AttachToPanelEvent e)
-        {
-            m_AncestorRebinder = GetFirstAncestorOfType<IRebinder>();
-            if (m_AncestorRebinder != null && m_AncestorRebinder.serializedObject != m_ArrayProp.serializedObject)
-                m_AncestorRebinder = null;
-        }
-
-        private void Rebind()
-        {
-            if (m_AncestorRebinder != null)
-                m_AncestorRebinder.RequestRebind();
-            else
-                this.Bind(m_ArrayProp.serializedObject);
-        }
-
         private void ForEachItem(Action<ListRow> action)
         {
             for (int i = 0; i < GetListSize(); i++)
@@ -418,8 +398,9 @@ namespace ArteHacker.UITKEditorAid
             m_ArrayProp.serializedObject.ApplyModifiedProperties();
             SetListSize(m_ArrayProp.arraySize);
 
+            // NOTE: Should we rebind only the added elements for better performance?
             if (GetListSize() > prevListSize)
-                Rebind();
+                this.Bind(m_ArrayProp.serializedObject);
         }
 
         private void RemoveItem(int index)
