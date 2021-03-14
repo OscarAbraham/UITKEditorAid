@@ -86,7 +86,6 @@ namespace ArteHacker.UITKEditorAid
             m_SizeTracker.SetUp(sizeProp, OnSizeChange, sizeProp.intValue);
             m_TrackersContainer.Add(m_SizeTracker);
 
-            //TODO Look for an ancestor with some sort of interface to add the trackers container to it and rebind there.
             Add(m_TrackersContainer);
             SetListSize(m_ArrayProp.arraySize);
 
