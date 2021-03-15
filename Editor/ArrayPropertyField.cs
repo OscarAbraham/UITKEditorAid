@@ -398,7 +398,7 @@ namespace ArteHacker.UITKEditorAid
             m_ArrayProp.serializedObject.ApplyModifiedProperties();
             SetListSize(m_ArrayProp.arraySize);
 
-            // NOTE: Should we rebind only the added elements for better performance?
+            // NOTE: Should we bind only the added elements for better performance?
             if (GetListSize() > prevListSize)
                 this.Bind(m_ArrayProp.serializedObject);
         }
