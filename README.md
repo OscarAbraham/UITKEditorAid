@@ -1,4 +1,6 @@
 # UITK Editor Aid
+NOTE: If you are using Unity 2020.2 or newer, it's recommended to use [version 2 of this package](https://github.com/OscarAbraham/UITKEditorAid).
+
 Elements and scripts that help in making Unity editors with UIToolkit.<br/>
 
 [UIToolkit](https://docs.unity3d.com/Manual/UIElements.html) (UITK) allows for interfaces that are more dynamic and 
@@ -18,25 +20,25 @@ You can either download this package directly to your project's Assets folder, o
 Installing with the __Package Manager__ is very easy:
 1. In Unity, go to __Window > Package Manager__.
 2. Click the __➕▾__ in the top left and choose __Add Package from git URL__
-3. Enter `https://github.com/OscarAbraham/UITKEditorAid.git` and press __Add__.
+3. Enter `https://github.com/OscarAbraham/UITKEditorAid.git#v1` and press __Add__.
 
 
 ## Some of the stuff included
 Click a name to go to the relevant documentation page for usage info and some code examples:
 
-### [EditableLabel](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.EditableLabel.html)
+### [EditableLabel](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.EditableLabel.html)
 A label that tranforms into a text field to be edited. It's edited with a double-click by default.<br/>
 ![EditableLabel preview](doc_images/EditableLabel.png)
 
-### [ArrayPropertyField](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ArrayPropertyField.html)
+### [ArrayPropertyField](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ArrayPropertyField.html)
 A UITK version of the good old reorderable list, very customizable. Here's what it looks like by default:
 
 ![ArrayPropertyField preview](doc_images/DefaultReorderableList.png)
 
-There's also an abstract [ListControl](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListControl.html)
+There's also an abstract [ListControl](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ListControl.html)
 class that you can use to create your own lists that don't depend on a SerializedProperty
  
-### [ManagedReferenceField](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ManagedReferenceField.html)
+### [ManagedReferenceField](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ManagedReferenceField.html)
 Currently, PropertyFields from members with the [SerializeReference](https://docs.unity3d.com/ScriptReference/SerializeReference.html)
 attribute break when they change type. This element is like a PropertyField that updates when the type changes.<br/>
 The next gif shows a customized ArrayPropertyField that uses ManagedReferenceFields for its items. Notice that the
@@ -44,10 +46,10 @@ interface updates itself when the elements change type due to being reordered:
 
 ![A customized list of Managed References](doc_images/ManagedRefsList.png)
 
-There's also a [ManagedReferenceTypeTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ManagedReferenceTypeTracker.html)
+There's also a [ManagedReferenceTypeTracker](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ManagedReferenceTypeTracker.html)
 that can be used for more low level stuff.
 
-### [Rebinder](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Rebinder.html)
+### [Rebinder](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.Rebinder.html)
 There are elements that need to be bound again (`VisualElement.Bind(serializedObject)`) to be updated in UIToolkit. For example,
 items that are added to a list, or fields with the `[SerializeReference]` attribute that change type. The problem is
 that each element that is bound separately has an important performance cost. The Rebinder element solves that by
@@ -58,16 +60,16 @@ Relevant elements in this library already use it: ArrayPropertyFields have bette
 Rebinder, and elements related to ManagedReferences need to be inside a Rebinder to work.
 
 You can use the Rebinder yourself by calling the
-[RequestRebind](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Rebinder.html#ArteHacker_UITKEditorAid_Rebinder_RequestRebind)
+[RequestRebind](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.Rebinder.html#ArteHacker_UITKEditorAid_Rebinder_RequestRebind)
 method, or by implementing the
-[IRebindingTrigger](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.IRebindingTrigger.html) interface
+[IRebindingTrigger](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.IRebindingTrigger.html) interface
 in your elements, if you are up for more advanced stuff.
 
-### [ValueTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ValueTracker-1.html)
+### [ValueTracker](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ValueTracker-1.html)
 Some times you don't need a VisualElement for anything visual, sometimes you just need a quick way to get a callback when
 a property changes. This element helps you with that.
 
-### [ListOfInspectors](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListOfInspectors.html)
+### [ListOfInspectors](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.ListOfInspectors.html)
 A list that is similar to the component's list in GameObjects. I use it with ScriptableObject subassets. You still have to
 do the stuff that's not related to UIToolkit yourself, like handling assets and the lifetime of your objects, which is
 outside the scope of this package; but if you know how to do that, this could be very helpful.
@@ -75,9 +77,9 @@ outside the scope of this package; but if you know how to do that, this could be
 ![ListOfInspectors preview](doc_images/ListOfInspectors.png)
 <br/>
 
-### [More Stuff](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.html)
+### [More Stuff](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.html)
 Click the link to go to the docs homepage. There is stuff to replace some common IMGUI methods, like a 
-[Disabler](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Disabler.html) element that's equivalent
+[Disabler](https://artehacker.com/UITKEditorAid/v1/api/ArteHacker.UITKEditorAid.Disabler.html) element that's equivalent
 to `EditorGUI.DisabledScope`, and `FixedSpace`/`FlexibleSpace` elements equivalent to GUILayout's `Space` and `FlexibleSpace`.
 There are also some extension methods that I've found useful for UIToolkit editor development, and some UITK manipulators.
 <br/><br/>
