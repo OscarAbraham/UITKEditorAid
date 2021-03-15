@@ -44,25 +44,6 @@ interface updates itself when the elements change type due to being reordered:
 
 ![A customized list of Managed References](doc_images/ManagedRefsList.png)
 
-There's also a [ManagedReferenceTypeTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ManagedReferenceTypeTracker.html)
-that can be used for more low level stuff.
-
-### [Rebinder](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Rebinder.html)
-There are elements that need to be bound again (`VisualElement.Bind(serializedObject)`) to be updated in UIToolkit. For example,
-items that are added to a list, or fields with the `[SerializeReference]` attribute that change type. The problem is
-that each element that is bound separately has an important performance cost. The Rebinder element solves that by
-binding the whole hierarchy every time an update is needed. It also throttles rebinding requests, putting together 
-multiple update calls for better performance. 
-
-Relevant elements in this library already use it: ArrayPropertyFields have better performance when they are inside a
-Rebinder, and elements related to ManagedReferences need to be inside a Rebinder to work.
-
-You can use the Rebinder yourself by calling the
-[RequestRebind](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Rebinder.html#ArteHacker_UITKEditorAid_Rebinder_RequestRebind)
-method, or by implementing the
-[IRebindingTrigger](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.IRebindingTrigger.html) interface
-in your elements, if you are up for more advanced stuff.
-
 ### [ValueTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ValueTracker-1.html)
 Some times you don't need a VisualElement for anything visual, sometimes you just need a quick way to get a callback when
 a property changes. This element helps you with that.
@@ -84,9 +65,9 @@ There are also some extension methods that I've found useful for UIToolkit edito
 
 ## A caveat
 Currently, all elements that need rebinding  (i.e. Lists and ManagedReferenceFields), don't support UXML. That's because
-they need to get a `SerializedProperty` or a `SerializedObject` in their constructor. The correct way to solve that would
-be to obtain them with Unity's binding system, but the required API is not public yet. I don't want to use reflection
-because that API seems likely to change, and editors that break when doing a minor Unity update are awful.<br/><br/>
+they need to get a `SerializedProperty` in their constructor. The correct way to solve that would be to obtain them with
+Unity's binding system, but the required API is not public yet. I don't want to use reflection because that API seems
+likely to change, and editors that break when doing a minor Unity update are awful.<br/><br/>
 
 ## IMPORTANT: Avoid collisions when including this code inside packages and plugins
 Sometimes one needs to put a copy of a library inside a Unity plugin; that's very ok, that's what the MIT license is for.
