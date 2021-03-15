@@ -1,9 +1,9 @@
 {
   "name": "com.unity.example",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "displayName": "UITK Editor Aid",
   "description": "Elements and scripts that help to make Unity editors with UIToolkit.",
-  "unity": "2019.4",
+  "unity": "2020.2",
   "keywords": [
     "UIToolkit",
     "Editor",
