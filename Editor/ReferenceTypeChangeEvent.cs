@@ -5,9 +5,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// UIToolkit event sent by <see cref="ManagedReferenceTypeTracker"/> when the full type name changes. It is called before rebinding is triggered,
-    /// so you can use it to make new controls depending on the property type. Note that if you are using a <see cref="PropertyField"/>, you
-    /// don't need to recreate it; PropertyField updates itself on rebinding.
+    /// UIToolkit event sent by <see cref="ManagedReferenceField"/> when the full type name changes.
     /// </summary>
     public class ReferenceTypeChangeEvent : EventBase<ReferenceTypeChangeEvent>
     {
