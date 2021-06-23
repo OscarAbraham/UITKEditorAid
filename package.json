@@ -1,6 +1,6 @@
 {
-  "name": "com.unity.example",
-  "version": "2.0.0",
+  "name": "com.artehacker.uitkeditoraid",
+  "version": "2.0.1",
   "displayName": "UITK Editor Aid",
   "description": "Elements and scripts that help to make Unity editors with UIToolkit.",
   "unity": "2020.2",
