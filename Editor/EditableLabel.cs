@@ -71,9 +71,11 @@ namespace ArteHacker.UITKEditorAid
             // We resend change events with this as target because bindings release themselves when a ChangeEvent has another target.
             m_TextField.RegisterValueChangedCallback(RetargetChangeEvent);
 
-            // Focus doesn't work in TextField; we have to acces its child.
+            // We need to access the inner text input, which is the element that really handles interaction, to disable/enable it.
             m_InnerTextInput = m_TextField.Q(TextField.textInputUssName);
-            m_InnerTextInput.RegisterCallback<BlurEvent>(_ => m_TextField.SetEnabled(false));
+            m_InnerTextInput.RegisterCallback<BlurEvent>(DisableEditing);
+            // Since 2021.2, disabled elements can still be pointer targets, so we need to disable/enable picking manually.
+            m_InnerTextInput.pickingMode = PickingMode.Ignore;
 
             isDelayed = true;
         }
@@ -95,7 +97,37 @@ namespace ArteHacker.UITKEditorAid
         private void EnableEditing()
         {
             m_TextField.SetEnabled(true);
+            m_InnerTextInput.pickingMode = PickingMode.Position;
+            // We focus manually, even though we'll simulate a click later, because simulated clicks don't
+            // focus the field since 2021. I don't know why, but even if we could fix it, this seems safer.
             m_InnerTextInput.Focus();
+
+            // In 2021 and newer, the first Click on a focused field selects the text, even if it was already selected.
+            // 2022 adds a way to stop it with selectAllOnMouseUp, but we want to use the same code in all versions to
+            // foster consistent behavior. So we solve this by simulating the first click on the field.
+            var e = new Event { type = EventType.MouseDown, mousePosition = m_InnerTextInput.worldBound.center };
+
+            using (var mouseDownEvt = MouseDownEvent.GetPooled(e))
+            {
+                mouseDownEvt.target = m_InnerTextInput;
+                m_InnerTextInput.SendEvent(mouseDownEvt);
+            }
+
+            e.type = EventType.MouseUp;
+            using (var mouseUpEvt = MouseUpEvent.GetPooled(e))
+            {
+                mouseUpEvt.target = m_InnerTextInput;
+                m_InnerTextInput.SendEvent(mouseUpEvt);
+            }
+
+            // We need SelectAll because the simulated click deselects the text in 2020.3.
+            m_TextField.SelectAll();
+        }
+
+        private void DisableEditing(EventBase evt)
+        {
+            m_TextField.SetEnabled(false);
+            m_InnerTextInput.pickingMode = PickingMode.Ignore;
         }
 
         /// <summary> Set the element's value without triggering a change event.</summary>
