@@ -135,5 +135,30 @@ namespace ArteHacker.UITKEditorAid.Utils
             };
             parent.RegisterCallback(onAttach);
         }
+
+        /// <summary>
+        /// Gets the main label element of a Property Field when using a default property drawer.
+        /// This can be useful to set its tooltip, or to change its text. It should be called after the
+        /// field has been bound and attached to panel. Custom PropertyDrawers aren't really supported;
+        /// usually, they can take care of their own labels.
+        /// </summary>
+        /// <param name="propertyField">The property field to search for a main Label Element.</param>
+        /// <returns>The main Label Element, or null if it isn't found.</returns>
+        public static Label GetLabelElement(this PropertyField propertyField)
+        {
+            var baseField = propertyField.GetFirstChild<VisualElement>(ve => ve.ClassListContains(BaseField<int>.ussClassName));
+            var label = baseField?.GetFirstChild<Label>(l => l.ClassListContains(PropertyField.labelUssClassName));
+
+            // If we couldn't find a basefield to get the label, try to get it from a foldout.
+            if (baseField == null && !string.IsNullOrEmpty(propertyField.bindingPath))
+            {
+                // The names of property foldouts created by default end with the property's path.
+                var foldout = propertyField.GetFirstChild<Foldout>(f => f.name?.EndsWith(propertyField.bindingPath) == true);
+                var foldoutToggle = foldout?.Q<Toggle>(className: Foldout.toggleUssClassName);
+                label = foldoutToggle?.Q<Label>(className: Toggle.textUssClassName);
+            }
+
+            return label;
+        }
     }
 }
