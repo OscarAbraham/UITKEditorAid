@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -159,6 +160,38 @@ namespace ArteHacker.UITKEditorAid.Utils
             }
 
             return label;
+        }
+
+        private static Type s_CachedBindingType;
+        private static FieldInfo s_CachedBoundPropertyField;
+
+        /// <summary>
+        /// Tries to get the bound SerializedProperty from a bindable element through reflection.
+        /// Use it to get the property that is bound to a <see cref="VisualElement"/> if you really need it.
+        /// </summary>
+        /// <param name="bindable">A bindable element</param>
+        /// <returns>A serialized property if it's found and reflection works, null otherwise.</returns>
+        public static SerializedProperty GetBoundSerializedProperty(this IBindable bindable)
+        {
+            var binding = bindable.binding;
+            if (binding == null)
+                return null;
+
+            var bindingType = binding.GetType();
+
+            if (bindingType != s_CachedBindingType)
+            {
+                var propertyField = bindingType.GetField("boundProperty",
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                if (propertyField?.FieldType != typeof(SerializedProperty))
+                    return null;
+
+                s_CachedBindingType = bindingType;
+                s_CachedBoundPropertyField = propertyField;
+            }
+
+            return s_CachedBoundPropertyField.GetValue(binding) as SerializedProperty;
         }
     }
 }
