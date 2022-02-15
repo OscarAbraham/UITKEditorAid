@@ -193,5 +193,99 @@ namespace ArteHacker.UITKEditorAid.Utils
 
             return s_CachedBoundPropertyField.GetValue(binding) as SerializedProperty;
         }
+
+        /// <summary>
+        /// Short hand for setting flex properties in one go, like in the USS flex property.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="grow">The value for <see cref="IStyle.flexGrow"/></param>
+        /// <param name="shrink">The value for <see cref="IStyle.flexShrink"/></param>
+        /// <param name="basis">The value for <see cref="IStyle.flexBasis"/></param>
+        public static void SetFlex(this IStyle style, StyleFloat grow, StyleFloat shrink, StyleLength basis)
+        {
+            style.flexShrink = shrink;
+            style.flexGrow = grow;
+            style.flexBasis = basis;
+        }
+
+        /// <summary>
+        /// Short hand for setting margin properties in one go, like in the USS margin property.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="top">The value for <see cref="IStyle.marginTop"/></param>
+        /// <param name="right">The value for <see cref="IStyle.marginRight"/></param>
+        /// <param name="bottom">The value for <see cref="IStyle.marginBottom"/></param>
+        /// <param name="left">The value for <see cref="IStyle.marginLeft"/></param>
+        public static void SetMargin(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left)
+        {
+            style.marginTop = top;
+            style.marginRight = right;
+            style.marginBottom = bottom;
+            style.marginLeft = left;
+        }
+
+        /// <summary>
+        /// Short hand for setting padding properties in one go, like in the USS padding property.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="top">The value for <see cref="IStyle.paddingTop"/></param>
+        /// <param name="right">The value for <see cref="IStyle.paddingRight"/></param>
+        /// <param name="bottom">The value for <see cref="IStyle.paddingBottom"/></param>
+        /// <param name="left">The value for <see cref="IStyle.paddingLeft"/></param>
+        public static void SetPadding(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left)
+        {
+            style.paddingTop = top;
+            style.paddingRight = right;
+            style.paddingBottom = bottom;
+            style.paddingLeft = left;
+        }
+
+        /// <summary>
+        /// Short hand for setting a style's position coordinates.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="top">The value for <see cref="IStyle.top"/></param>
+        /// <param name="right">The value for <see cref="IStyle.right"/></param>
+        /// <param name="bottom">The value for <see cref="IStyle.bottom"/></param>
+        /// <param name="left">The value for <see cref="IStyle.left"/></param>
+        public static void SetPositionCoordinates(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left)
+        {
+            style.top = top;
+            style.right = right;
+            style.bottom = bottom;
+            style.left = left;
+        }
+
+        /// <summary>
+        /// Short hand for setting border width properties in one go, like in the USS border-width property.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="top">The value for <see cref="IStyle.borderTopWidth"/></param>
+        /// <param name="right">The value for <see cref="IStyle.borderRightWidth"/></param>
+        /// <param name="bottom">The value for <see cref="IStyle.borderBottomWidth"/></param>
+        /// <param name="left">The value for <see cref="IStyle.borderLeftWidth"/></param>
+        public static void SetBorderWidth(this IStyle style, StyleFloat top, StyleFloat right, StyleFloat bottom, StyleFloat left)
+        {
+            style.borderTopWidth = top;
+            style.borderRightWidth = right;
+            style.borderBottomWidth = bottom;
+            style.borderLeftWidth = left;
+        }
+
+        /// <summary>
+        /// Short hand for setting border radius properties in one go, like in the USS border-radius property.
+        /// </summary>
+        /// <param name="style">The style to modify</param>
+        /// <param name="topLeft">The value for <see cref="IStyle.borderTopLeftRadius"/></param>
+        /// <param name="topRight">The value for <see cref="IStyle.borderTopRightRadius"/></param>
+        /// <param name="bottomRight">The value for <see cref="IStyle.borderBottomRightRadius"/></param>
+        /// <param name="bottomLeft">The value for <see cref="IStyle.borderBottomLeftRadius"/></param>
+        public static void SetBorderRadius(this IStyle style, StyleLength topLeft, StyleLength topRight, StyleLength bottomRight, StyleLength bottomLeft)
+        {
+            style.borderTopLeftRadius = topLeft;
+            style.borderTopRightRadius = topRight;
+            style.borderBottomRightRadius = bottomRight;
+            style.borderBottomLeftRadius = bottomLeft;
+        }
     }
 }
