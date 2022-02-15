@@ -10,7 +10,7 @@ using Hierarchy = UnityEngine.UIElements.VisualElement.Hierarchy;
 namespace ArteHacker.UITKEditorAid.Utils
 {
     /// <summary>
-    /// Extension methods for <see cref="VisualElement"/> and <see cref="VisualElement.Hierarchy"/>
+    /// Extension methods for VisualElements
     /// </summary>
     public static class UIToolkitExtensions
     {
