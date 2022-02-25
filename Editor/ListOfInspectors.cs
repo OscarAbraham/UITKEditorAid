@@ -44,7 +44,7 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string itemHeaderButtonUssClassName = "editor-aid-list-of-inspectors__item-header-button";
         /// <summary> USS class name of the inspector header icon. </summary>
         public static readonly string itemHeaderIconUssClassName = "editor-aid-list-of-inspectors__item-header-icon";
-        /// <summary> USS class name of the inspector header tooltip. </summary>
+        [Obsolete("There's no custom tooltip element for item headers anymore.")]
         public static readonly string itemHeaderTooltipUssClassName = "editor-aid-list-control__item-header-tooltip";
 
         private static Action<GenericMenu, Rect, Object[], int> s_ShowContextMenu;
@@ -191,12 +191,6 @@ namespace ArteHacker.UITKEditorAid
                 if (e.altKey && e.button == 0)
                     label.BeginEditing();
             });
-            // Custom tooltip because the default one is painted too far, which is confusing and easy to miss.
-            AddCustomTooltipToElement("Alt + Click to edit name", label, this);
-
-            var tooltipBox = new Box();
-            tooltipBox.Add(new Label(tooltip));
-            tooltipBox.style.position = Position.Absolute;
         }
 
         /// <summary>
@@ -253,7 +247,12 @@ namespace ArteHacker.UITKEditorAid
                 && editableLabel.style.display != DisplayStyle.None
                 && editableLabel.style.visibility != Visibility.Hidden)
             {
-                menu.AddItem(new GUIContent("Edit Name"), false, () => editableLabel.BeginEditing());
+#if UNITY_EDITOR_OSX
+                var editNameLabel = new GUIContent("Edit Name (⌥ + Click)");
+#else
+                var editNameLabel = new GUIContent("Edit Name (Alt + Click)");
+#endif
+                menu.AddItem(editNameLabel, false, () => editableLabel.BeginEditing());
             }
 
             AddItemsToContextMenu(menu, header, itemIndex, serializedObject);
@@ -268,27 +267,6 @@ namespace ArteHacker.UITKEditorAid
             if (!new PresetType(target).IsValid() || (target.hideFlags & HideFlags.NotEditable) != 0)
                 return;
             PresetSelector.ShowSelector(serializedObject.targetObjects, null, true);
-        }
-
-        //TODO Maybe make a static utility method to do this?
-        private void AddCustomTooltipToElement(string tooltip, VisualElement element, VisualElement tooltipParent)
-        {
-            var tooltipBox = new VisualElement();
-            tooltipBox.AddToClassList(itemHeaderTooltipUssClassName);
-            tooltipBox.Add(new Label(tooltip));
-            tooltipBox.style.position = Position.Absolute;
-
-            element.RegisterCallback<TooltipEvent>(e =>
-            {
-                tooltipParent.Add(tooltipBox);
-                e.StopImmediatePropagation();
-            });
-
-            element.RegisterCallback<DetachFromPanelEvent>(e => tooltipBox.RemoveFromHierarchy());
-
-            element.RegisterCallback<MouseLeaveEvent>(e => tooltipBox.RemoveFromHierarchy());
-            element.RegisterCallback<MouseMoveEvent>(e =>
-                tooltipBox.transform.position = this.WorldToLocal(e.mousePosition + Vector2.one * 12));
         }
 
         protected override VisualElement CreateItemForIndex(int index)

@@ -73,10 +73,3 @@
     .editor-aid-list-of-inspectors__item-header-button:hover {
         background-color: var(--editor-aid-colors-inspector_titlebar-button-hover);
     }
-
-.editor-aid-list-control__item-header-tooltip {
-    background-color: var(--editor-aid-colors-tooltip-background);
-    border-color: var(--editor-aid-colors-tooltip-border);
-    border-width: 1px;
-    padding: 3px;
-}
