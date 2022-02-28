@@ -25,14 +25,21 @@ namespace ArteHacker.UITKEditorAid.Utils
         {
             if (obj == null) return false;
 
+            if (!obj.isEditingMultipleObjects)
+                return IsTargetEditable(obj.targetObject, queryOptions);
+
             foreach (var target in obj.targetObjects)
             {
-                if (!target || (target.hideFlags & HideFlags.NotEditable) != 0
-                    || (EditorUtility.IsPersistent(target) && !AssetDatabase.IsOpenForEdit(target, queryOptions)))
+                if (!IsTargetEditable(target, queryOptions))
                     return false;
             }
-
             return true;
+        }
+
+        private static bool IsTargetEditable(Object target, StatusQueryOptions queryOptions)
+        {
+            return target && (target.hideFlags & HideFlags.NotEditable) == 0
+                && (!EditorUtility.IsPersistent(target) || AssetDatabase.IsOpenForEdit(target, queryOptions));
         }
     }
 }
