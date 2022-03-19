@@ -367,6 +367,7 @@ namespace ArteHacker.UITKEditorAid
         protected override void OnReorderDragPerformed(int draggedIndex, int dropIndex)
         {
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
+            selectedItem = dropIndex > draggedIndex ? dropIndex - 1 : dropIndex;
         }
 
         protected override VisualElement CreateItemForIndex(int index)

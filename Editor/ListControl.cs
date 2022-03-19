@@ -36,6 +36,8 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string itemUssClassName = "editor-aid-list-control__item";
         /// <summary> USS class name of an item that's being dragged. </summary>
         public static readonly string draggedItemUssClassName = "editor-aid-list-control__item--dragged";
+        /// <summary> USS class name of an item that's selected. </summary>
+        public static readonly string selectedItemUssClassName = "editor-aid-list-control__item--selected";
 
         private readonly List<VisualElement> m_Items = new List<VisualElement>();
         private readonly VisualElement m_DropBar = new VisualElement();
@@ -45,6 +47,44 @@ namespace ArteHacker.UITKEditorAid
 
         private readonly Label m_EmptyListLabel = new Label("List is Empty");
         private string m_EmptyListMessage = "List is Empty";
+
+        private bool m_SupportItemSelection;
+        private int m_SelectedItem = -1;
+
+        /// <summary> Whether a list item can be selected. It's false by default.</summary>
+        public bool supportItemSelection
+        {
+            get => m_SupportItemSelection;
+            set
+            {
+                if (!value) selectedItem = -1;
+                m_SupportItemSelection = value;
+            }
+        }
+
+        /// <summary> The index of the selected item when <see cref="supportItemSelection"/> is true. Returns -1 when no item is selected.</summary>
+        public int selectedItem
+        {
+            get => m_SelectedItem;
+            set
+            {
+                if (!supportItemSelection) return;
+
+                if (value < 0 || value >= m_Items.Count)
+                    value = -1;
+
+                if (m_SelectedItem == value) return;
+                m_SelectedItem = value;
+
+                for (int i = 0; i < m_Items.Count; i++)
+                {
+                    if (i == m_SelectedItem)
+                        m_Items[i].AddToClassList(selectedItemUssClassName);
+                    else
+                        m_Items[i].RemoveFromClassList(selectedItemUssClassName);
+                }
+            }
+        }
 
         /// <summary> A message to indicate that the list is empty. Set it to null to hide it.</summary>
         public string emptyListMessage
@@ -63,7 +103,7 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary>Whether the list is drawn inside a box.</summary>
+        /// <summary> Whether the list is drawn inside a box.</summary>
         public bool boxed
         {
             get => ClassListContains(boxedUssClassName);
@@ -132,6 +172,8 @@ namespace ArteHacker.UITKEditorAid
                     m_Items.RemoveAt(i); // In this order to remove from m_Items even if there's an error after removing from hierarchy.
                     item.RemoveFromHierarchy();
                 }
+                if (selectedItem > size)
+                    selectedItem = -1;
             }
             else if (size > m_Items.Count)
             {
@@ -240,7 +282,7 @@ namespace ArteHacker.UITKEditorAid
             var dragMode = VerifyCustomDrag(dropIndex);
 
             // If it's none or rejected.
-            if ((dragMode & ~DragAndDropVisualMode.Rejected) == 0) 
+            if ((dragMode & ~DragAndDropVisualMode.Rejected) == 0)
             {
                 if (!VerifyReorderDrag())
                     return;
@@ -271,7 +313,11 @@ namespace ArteHacker.UITKEditorAid
             if (isCustomDrag)
                 OnCustomDragPerformed(dropIndex);
             else
+            {
+                // Unselect item before reordering because we don't know where the items will end up.
+                selectedItem = -1;
                 OnReorderDragPerformed(m_DraggedIndex, dropIndex);
+            }
         }
 
         private void OnDragEnd(IMouseEvent e)
@@ -293,7 +339,7 @@ namespace ArteHacker.UITKEditorAid
 
             if (index == m_Items.Count)
             {
-                var itemRect = this.WorldToLocal(m_Items[index-1].worldBound);
+                var itemRect = this.WorldToLocal(m_Items[index - 1].worldBound);
                 m_DropBar.transform.position = new Vector2(0, itemRect.yMax);
             }
             else
@@ -319,7 +365,7 @@ namespace ArteHacker.UITKEditorAid
 
             if (worldPos.y < m_Items[0].worldBound.yMin)
                 return 0;
-            else if (worldPos.y > m_Items[m_Items.Count-1].worldBound.yMax)
+            else if (worldPos.y > m_Items[m_Items.Count - 1].worldBound.yMax)
                 return m_Items.Count;
 
             return -1;

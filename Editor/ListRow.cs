@@ -5,7 +5,6 @@ using UnityEditor;
 
 namespace ArteHacker.UITKEditorAid
 {
-    // TODO We could make this class work without ListControl by passing an onDragStart delegate to a constructor.
     /// <summary>
     /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used by <see cref="ArrayPropertyField"/>
     /// </summary>
@@ -125,6 +124,7 @@ namespace ArteHacker.UITKEditorAid
             if (e.button != 0 || e.commandKey || e.altKey || e.ctrlKey || e.shiftKey)
                 return;
 
+            m_List.selectedItem = m_Index;
             m_ReadyToDrag = true;
             this.CaptureMouse();
             e.StopImmediatePropagation();
