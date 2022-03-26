@@ -300,7 +300,7 @@ namespace ArteHacker.UITKEditorAid
             get => m_ShowSeparators;
             set
             {
-                m_ShowAlternatedBackgrounds = value;
+                m_ShowSeparators = value;
                 ForEachItem(item => item.SetSeparators(value));
             }
         }
