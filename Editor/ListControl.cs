@@ -172,7 +172,7 @@ namespace ArteHacker.UITKEditorAid
                     m_Items.RemoveAt(i); // In this order to remove from m_Items even if there's an error after removing from hierarchy.
                     item.RemoveFromHierarchy();
                 }
-                if (selectedItem > size)
+                if (selectedItem >= size)
                     selectedItem = -1;
             }
             else if (size > m_Items.Count)
