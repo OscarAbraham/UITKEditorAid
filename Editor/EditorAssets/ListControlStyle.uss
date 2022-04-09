@@ -138,10 +138,13 @@
     background-color: transparent;
 }
 
-.editor-aid-list-row.editor-aid-list-control__item--dragged,
-.editor-aid-list-row.editor-aid-list-control__item--dragged:hover,
 .editor-aid-list-row.editor-aid-list-control__item--selected,
 .editor-aid-list-row.editor-aid-list-control__item--selected:hover {
+    background-color: var(--editor-aid-colors-list_item-background-selected);
+}
+
+.editor-aid-list-row.editor-aid-list-control__item--dragged,
+.editor-aid-list-row.editor-aid-list-control__item--dragged:hover {
     background-color: var(--editor-aid-colors-list_item-background-dragged);
 }
 

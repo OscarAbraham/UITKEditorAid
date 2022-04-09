@@ -24,6 +24,7 @@
     --editor-aid-colors-list_item-separator: #2A2A2A;
     --editor-aid-colors-list_item-background-hover: rgba(255, 255, 255, .026); /*Translucid so it works with nested lists.*/
     --editor-aid-colors-list_item-background-dragged: rgba(28, 141, 255, .125);
+    --editor-aid-colors-list_item-background-selected: rgba(28, 141, 255, .275);
     --editor-aid-colors-list_item-background-alternated: rgba(0, 0, 0, .095);
     --editor-aid-colors-list_item-handle: rgba(196, 196, 196, 0.27);
     --editor-aid-colors-list_button-hover: rgba(255, 255, 255, .044);
