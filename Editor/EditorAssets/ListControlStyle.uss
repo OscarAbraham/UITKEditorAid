@@ -8,10 +8,6 @@
     margin-left: 0;
 }
 
-.editor-aid-list-control {
-    background-color: transparent;
-}
-
 .editor-aid-list-control--boxed {
     padding: 1px 0px;
     margin: 1px 3px;
