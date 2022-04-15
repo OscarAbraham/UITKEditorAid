@@ -14,6 +14,7 @@
 
     /*There's no light theme for GraphView; these values seem to do the job.*/
     --editor-aid-colors-graph-background: #999999;
+    --editor-aid-colors-graph_node-background: #C2C2C2;
     --editor-aid-colors-graph_node-background_accent: #B0B0B0;
     --editor-aid-colors-graph_node-border-selected: #003A76;
     --editor-aid-colors-graph_node-border-hover: rgba(12, 63, 118, 0.57);
