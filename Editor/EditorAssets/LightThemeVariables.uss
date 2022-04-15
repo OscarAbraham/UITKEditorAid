@@ -13,7 +13,7 @@
     --editor-aid-colors-helpbox-text: #161616;
 
     /*There's no light theme for GraphView; these values seem to do the job.*/
-    --editor-aid-colors-graph-background: #999999;
+    --editor-aid-colors-graph-background: #5D5D5D;
     --editor-aid-colors-graph_node-background: #C2C2C2;
     --editor-aid-colors-graph_node-background_accent: #B0B0B0;
     --editor-aid-colors-graph_node-border-selected: #003A76;
