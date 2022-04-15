@@ -22,6 +22,8 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string withFooterUssClassName = "editor-aid-list-control--with-footer";
         /// <summary> USS class name of Lists in the middle of a drag operation. </summary>
         public static readonly string draggingListUssClassName = "editor-aid-list-control--dragging";
+        /// <summary> USS class name of Empty Lists. </summary>
+        public static readonly string emptyUssClassName = "editor-aid-list-control--empty";
 
         /// <summary> USS class name of the drop indicator bar for Drag and Drop. </summary>
         public static readonly string dropIndicatorUssClassName = "editor-aid-list-control__drop-indicator";
@@ -192,6 +194,8 @@ namespace ArteHacker.UITKEditorAid
                 m_EmptyListLabel.style.display = StyleKeyword.Null;
             else
                 m_EmptyListLabel.style.display = DisplayStyle.None;
+
+            EnableInClassList(emptyUssClassName, size == 0);
         }
 
         /// <summary>
