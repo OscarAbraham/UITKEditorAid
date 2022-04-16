@@ -16,8 +16,8 @@
     --editor-aid-colors-graph-background: #5D5D5D;
     --editor-aid-colors-graph_node-background: #C2C2C2;
     --editor-aid-colors-graph_node-background_accent: #B0B0B0;
-    --editor-aid-colors-graph_node-border-selected: #003A76;
-    --editor-aid-colors-graph_node-border-hover: rgba(12, 63, 118, 0.57);
+    --editor-aid-colors-graph_node-border-selected: rgba(82, 188, 255, 1);
+    --editor-aid-colors-graph_node-border-hover: rgba(82, 188, 255, .73);
 
     /*ListControl colors*/
     --editor-aid-colors-list-background: #C8C8C8;
