@@ -47,7 +47,7 @@ namespace ArteHacker.UITKEditorAid
         [Obsolete("There's no custom tooltip element for item headers anymore.")]
         public static readonly string itemHeaderTooltipUssClassName = "editor-aid-list-control__item-header-tooltip";
 
-        private static Action<GenericMenu, Rect, Object[], int> s_ShowContextMenu;
+        private static readonly Action<GenericMenu, Rect, Object[], int> s_ShowContextMenu;
 
         private readonly SerializedProperty m_ArrayProp;
         private readonly VisualElement m_TrackersContainer = new VisualElement();
@@ -170,7 +170,7 @@ namespace ArteHacker.UITKEditorAid
         protected virtual void AddPrelabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject)
         {
             Image icon = new Image { image = AssetPreview.GetMiniThumbnail(serializedObject.targetObject) };
-            icon.AddToClassList(itemHeaderButtonUssClassName);
+            icon.AddToClassList(itemHeaderIconUssClassName);
             header.Add(icon);
         }
 
