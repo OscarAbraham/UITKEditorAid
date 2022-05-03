@@ -185,6 +185,7 @@ namespace ArteHacker.UITKEditorAid
             var label = new EditableLabel { bindingPath = "m_Name", isDelayed = true };
             label.AddToClassList(itemHeaderLabelUssClassName);
             label.editOnDoubleClick = false;
+            label.emptyTextLabel = ObjectNames.NicifyVariableName(serializedObject.targetObject.GetType().Name);
             header.Add(label);
             header.RegisterCallback<MouseDownEvent>(e =>
             {
