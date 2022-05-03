@@ -16,6 +16,7 @@ namespace ArteHacker.UITKEditorAid
         public new class UxmlTraits : BindableElement.UxmlTraits
         {
             UxmlStringAttributeDescription m_Value = new UxmlStringAttributeDescription { name = "value" };
+            UxmlStringAttributeDescription m_EmptyTextLabel = new UxmlStringAttributeDescription { name = "empty-text-label" };
             UxmlBoolAttributeDescription m_IsDelayed = new UxmlBoolAttributeDescription { name = "delayed", defaultValue = true };
             UxmlBoolAttributeDescription m_Multiline = new UxmlBoolAttributeDescription { name = "multiline" };
 
@@ -29,18 +30,31 @@ namespace ArteHacker.UITKEditorAid
                 base.Init(ve, bag, cc);
                 var label = ve as EditableLabel;
                 label.SetValueWithoutNotify(m_Value.GetValueFromBag(bag, cc));
+                label.emptyTextLabel = m_EmptyTextLabel.GetValueFromBag(bag, cc);
                 label.isDelayed = m_IsDelayed.GetValueFromBag(bag, cc);
                 label.multiline = m_Multiline.GetValueFromBag(bag, cc);
             }
         }
 
+        private class EditableLabelTextField : TextField
+        {
+            public override void SetValueWithoutNotify(string newValue)
+            {
+                base.SetValueWithoutNotify(newValue);
+                (parent as EditableLabel)?.UpdateEmptyTextLabelVisibility();
+            }
+        }
+
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-editable-label";
-        /// <summary> USS class name of the TextField inside this element.</summary>
+        /// <summary> USS class name of the TextField inside this element. </summary>
         public static readonly string textFieldUssClassName = ussClassName + "__text-field";
+        /// <summary> Uss class name of an optional label that appears when the text is empty. </summary>
+        public static readonly string emptyTextLabelUssClassName = ussClassName + "__empty-text-label";
 
-        private readonly TextField m_TextField = new TextField();
+        private readonly EditableLabelTextField m_TextField = new EditableLabelTextField();
         private readonly VisualElement m_InnerTextInput;
+        private readonly Label m_EmptyTextLabel = new Label { pickingMode = PickingMode.Ignore };
 
         /// <summary> Whether to enable editing by double clicking the label. See <see cref="BeginEditing"/> for other ways to enable it. </summary>
         public bool editOnDoubleClick { get; set; } = true;
@@ -57,6 +71,17 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> The string value of this element.</summary>
         public string value { get => m_TextField.value; set => m_TextField.value = value; }
 
+        /// <summary> An optional label that appears when the EditableLabel's text is empty. </summary>
+        public string emptyTextLabel
+        {
+            get => m_EmptyTextLabel.text;
+            set
+            {
+                m_EmptyTextLabel.text = value;
+                UpdateEmptyTextLabelVisibility();
+            }
+        }
+
         /// <summary> EditableLabel constructor. </summary>
         public EditableLabel()
         {
@@ -68,7 +93,7 @@ namespace ArteHacker.UITKEditorAid
             m_TextField.AddToClassList(textFieldUssClassName);
             Add(m_TextField);
 
-            // We resend change events with this as target because bindings release themselves when a ChangeEvent has another target.
+            // We resend change events with this as target for bindings to work properly.
             m_TextField.RegisterValueChangedCallback(RetargetChangeEvent);
 
             // We need to access the inner text input, which is the element that really handles interaction, to disable/enable it.
@@ -77,7 +102,12 @@ namespace ArteHacker.UITKEditorAid
             // Since 2021.2, disabled elements can still be pointer targets, so we need to disable/enable picking manually.
             m_InnerTextInput.pickingMode = PickingMode.Ignore;
 
+            m_EmptyTextLabel.AddToClassList(emptyTextLabelUssClassName);
+            Add(m_EmptyTextLabel);
+
             isDelayed = true;
+
+            UpdateEmptyTextLabelVisibility();
         }
 
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
@@ -96,6 +126,9 @@ namespace ArteHacker.UITKEditorAid
 
         private void EnableEditing()
         {
+            m_EmptyTextLabel.style.display = DisplayStyle.None;
+            m_TextField.style.display = DisplayStyle.Flex;
+
             m_TextField.SetEnabled(true);
             m_InnerTextInput.pickingMode = PickingMode.Position;
             // We focus manually, even though we'll simulate a click later, because simulated clicks don't
@@ -128,6 +161,7 @@ namespace ArteHacker.UITKEditorAid
         {
             m_TextField.SetEnabled(false);
             m_InnerTextInput.pickingMode = PickingMode.Ignore;
+            UpdateEmptyTextLabelVisibility();
         }
 
         /// <summary> Set the element's value without triggering a change event.</summary>
@@ -144,6 +178,24 @@ namespace ArteHacker.UITKEditorAid
             {
                 evt.target = this;
                 SendEvent(evt);
+            }
+        }
+
+        private void UpdateEmptyTextLabelVisibility()
+        {
+            // If we are editing text, we wait for the editing to stop before potentially hiding the text field.
+            if (m_TextField.enabledSelf)
+                return;
+
+            if (string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(emptyTextLabel))
+            {
+                m_EmptyTextLabel.style.display = DisplayStyle.Flex;
+                m_TextField.style.display = DisplayStyle.None;
+            }
+            else
+            {
+                m_EmptyTextLabel.style.display = DisplayStyle.None;
+                m_TextField.style.display = DisplayStyle.Flex;
             }
         }
     }
