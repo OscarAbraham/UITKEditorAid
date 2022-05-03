@@ -128,13 +128,7 @@ namespace ArteHacker.UITKEditorAid.Utils
         /// <param name="child">The element to be added</param>
         public static void AddDelayed(this VisualElement parent, VisualElement child)
         {
-            EventCallback<AttachToPanelEvent> onAttach = null;
-            onAttach = e =>
-            {
-                EditorApplication.delayCall += () => parent.Add(child);
-                parent.UnregisterCallback(onAttach);
-            };
-            parent.RegisterCallback(onAttach);
+            parent.schedule.Execute(() => parent.Add(child)).StartingIn(120);
         }
 
         /// <summary>
