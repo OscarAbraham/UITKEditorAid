@@ -139,7 +139,7 @@ namespace ArteHacker.UITKEditorAid
 
         private void RetargetChangeEvent(ChangeEvent<string> e)
         {
-            e.StopPropagation();
+            e.StopImmediatePropagation();
             using (ChangeEvent<string> evt = ChangeEvent<string>.GetPooled(e.previousValue, e.newValue))
             {
                 evt.target = this;
