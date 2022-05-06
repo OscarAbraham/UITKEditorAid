@@ -16,8 +16,6 @@ namespace ArteHacker.UITKEditorAid
     /// <summary>
     /// A UIToolkit list similar to the component list in a GameObject's inspector. It's been tested with a SerializedProperty that represent's
     /// an array of <see cref="ScriptableObject"/>. It doesn't do too well with multitarget SerializedObjects.
-    /// <para>It's recommended to add it with <see cref="UIToolkitExtensions.AddDelayed(VisualElement, VisualElement)"/>, specially
-    /// when used inside inspectors, to avoid the child inspectors being bound to the root's SerializedObject.</para>
     /// </summary>
     /// <remarks>
     /// This class is really an internal tool that's probably not needed by most people, but I figured it might help somebody.
@@ -272,7 +270,9 @@ namespace ArteHacker.UITKEditorAid
 
         protected override VisualElement CreateItemForIndex(int index)
         {
-            return new InspectorItem(this, index);
+            var stopper = new BindingStopper();
+            stopper.Add(new InspectorItem(this, index));
+            return stopper;
         }
 
         protected override void OnReorderDragPerformed(int draggedIndex, int dropIndex)

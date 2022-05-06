@@ -120,9 +120,10 @@ namespace ArteHacker.UITKEditorAid.Utils
                     action(element);
         }
 
+        // TODO: Deprecate this? BindingStopper seems to solve the same problems but better, as this
+        // method is vulnerable to throttled bindings taking multiple frames in newer Unity versions.
         /// <summary>
-        /// Adds a child element to a parent a frame after the parent has been attached to a panel.
-        /// Useful to add elements to an inspector when they shouldn't be bound to the inspected object.
+        /// Adds a child element to a parent with a delay after the parent has been attached to a panel.
         /// </summary>
         /// <param name="parent">The parent element</param>
         /// <param name="child">The element to be added</param>
