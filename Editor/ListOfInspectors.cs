@@ -131,9 +131,7 @@ namespace ArteHacker.UITKEditorAid
             header.RegisterCallback<MouseDownEvent>(e =>
             {
                 if (e.button == 1)
-                {
                     ShowInspectorContextMenu(new Rect(e.mousePosition, default), headerContainer, itemIndex, serializedObject);
-                }
             });
 
             AddPrelabelHeaderElements(headerContainer, itemIndex, serializedObject);
@@ -150,7 +148,7 @@ namespace ArteHacker.UITKEditorAid
             InternalEditorUtility.SetIsInspectorExpanded(target, expanded);
         }
 
-        private Foldout AddHeaderFoldout(VisualElement header, bool expanded)
+        private static Foldout AddHeaderFoldout(VisualElement header, bool expanded)
         {
             var foldout = new Foldout { pickingMode = PickingMode.Ignore, value = expanded };
             foldout.Query().Descendents<VisualElement>().ForEach(el => el.pickingMode = PickingMode.Ignore);
@@ -289,30 +287,27 @@ namespace ArteHacker.UITKEditorAid
         {
             private readonly ListOfInspectors m_OwnerList;
             private readonly int m_Index;
+            private readonly SerializedProperty m_BackingProperty;
             private readonly ValueTracker<Object> m_ObjectTracker = new ValueTracker<Object>();
             
-            private SerializedObject m_SerializedObject;
-            private InspectorElement m_Inspector;
-            private VisualElement m_Header;
-
             public InspectorItem(ListOfInspectors ownerList, int index)
             {
                 AddToClassList(inspectorItemUssClassName);
 
                 m_OwnerList = ownerList;
                 m_Index = index;
-                SerializedProperty property = ownerList.m_ArrayProp.GetArrayElementAtIndex(m_Index);
+                m_BackingProperty = ownerList.m_ArrayProp.GetArrayElementAtIndex(m_Index);
 
-                if (property.propertyType != SerializedPropertyType.ObjectReference)
+                if (m_BackingProperty.propertyType != SerializedPropertyType.ObjectReference)
                 {
                     Debug.LogError("Property needs to be an object reference to create an inspector");
                     return;
                 }
 
-                m_ObjectTracker.SetUp(property, e => AssignObject(e.newValue), property.objectReferenceValue);
+                m_ObjectTracker.SetUp(m_BackingProperty, e => AssignObject(), m_BackingProperty.objectReferenceValue);
                 m_OwnerList.m_TrackersContainer.Add(m_ObjectTracker);
 
-                AssignObject(property.objectReferenceValue);
+                AssignObject();
 
                 RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
                 RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
@@ -329,26 +324,69 @@ namespace ArteHacker.UITKEditorAid
                 m_ObjectTracker.RemoveFromHierarchy();
             }
 
-            private void AssignObject(Object newObject)
+            private void AssignObject()
             {
-                //It seems, at least in 2019.4 with IMGUI, that just rebinding the inspector is not enough; we need to recreate it.
-                m_Inspector?.RemoveFromHierarchy();
-                m_Inspector = null;
-                m_Header?.RemoveFromHierarchy();
-                m_Header = null;
+                Object obj = m_BackingProperty.objectReferenceValue;
 
-                // TODO Display a missing script notice or something?
-                if (!newObject) return;
+                Clear();
 
-                m_SerializedObject = new SerializedObject(newObject);
-                m_Inspector = new InspectorElement();
-                m_Header = m_OwnerList.CreateHeader(m_Index, m_SerializedObject, m_Inspector);
+                if (!obj)
+                {
+                    if (m_BackingProperty.objectReferenceInstanceIDValue != 0)
+                        AssignControlsForInvalidScript();
+                    return;
+                }
 
-                if (m_Header != null)
-                    Add(m_Header);
-                Add(m_Inspector);
+                var serializedObject = new SerializedObject(obj);
+                var inspector = new InspectorElement();
+                var header = m_OwnerList.CreateHeader(m_Index, serializedObject, inspector);
 
-                this.Bind(m_SerializedObject);
+                if (header != null)
+                    Add(header);
+                Add(inspector);
+
+                this.Bind(serializedObject);
+            }
+
+            private void AssignControlsForInvalidScript()
+            {
+                var header = new VisualElement { style = { height = 22 } };
+                header.AddToClassList(itemHeaderUssClassName);
+                var body = new VisualElement();
+                body.style.SetPadding(3, 0, 3, 15);
+
+                var foldout = AddHeaderFoldout(header, true);
+                foldout.RegisterValueChangedCallback(e =>
+                {
+                    header.EnableInClassList(itemHeaderCollapsedUssClassName, !e.newValue);
+                    body.style.display = e.newValue ? DisplayStyle.Flex : DisplayStyle.None;
+                });
+
+                var icon = new Image { image = EditorGUIUtility.IconContent("Warning").image };
+                icon.AddToClassList(itemHeaderIconUssClassName);
+                header.Add(icon);
+
+                var label = new Label("Object With Invalid Script");
+                label.AddToClassList(itemHeaderLabelUssClassName);
+                header.Add(label);
+
+                header.AddManipulator(new DragAndClickManipulator
+                {
+                    onStartDragging = () => m_OwnerList.StartDraggingItem(m_Index),
+                    onClick = () => foldout.value = !foldout.value
+                });
+
+                body.Add(new HelpBox(
+                            "This object's script is invalid. Make sure it doesn't have errors, its" +
+                            " class has the same name as its file, and it's the right type.", HelpBoxMessageType.Warning));
+
+                body.Add(new Button(() => Selection.activeInstanceID = m_BackingProperty.objectReferenceInstanceIDValue)
+                {
+                    text = "Select Object With Invalid Script"
+                });
+
+                Add(header);
+                Add(body);
             }
         }
     }
