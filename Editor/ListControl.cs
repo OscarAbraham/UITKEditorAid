@@ -48,7 +48,6 @@ namespace ArteHacker.UITKEditorAid
         private int m_DraggedIndex = -1;
 
         private readonly Label m_EmptyListLabel = new Label("List is Empty");
-        private string m_EmptyListMessage = "List is Empty";
 
         private bool m_SupportItemSelection;
         private int m_SelectedItem = -1;
@@ -91,17 +90,14 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> A message to indicate that the list is empty. Set it to null to hide it.</summary>
         public string emptyListMessage
         {
-            get => m_EmptyListMessage;
+            get => m_EmptyListLabel.text;
             set
             {
-                if (m_EmptyListMessage == value)
+                if (m_EmptyListLabel.text == value)
                     return;
-                m_EmptyListMessage = value;
 
-                if (GetListSize() == 0 && !string.IsNullOrEmpty(value))
-                    m_EmptyListLabel.style.display = StyleKeyword.Null;
-                else
-                    m_EmptyListLabel.style.display = DisplayStyle.None;
+                m_EmptyListLabel.text = value;
+                UpdateEmptyMessageVisibility();
             }
         }
 
@@ -190,11 +186,7 @@ namespace ArteHacker.UITKEditorAid
                 m_DropBar.BringToFront();
             }
 
-            if (size == 0 && !string.IsNullOrEmpty(emptyListMessage))
-                m_EmptyListLabel.style.display = StyleKeyword.Null;
-            else
-                m_EmptyListLabel.style.display = DisplayStyle.None;
-
+            UpdateEmptyMessageVisibility();
             EnableInClassList(emptyUssClassName, size == 0);
         }
 
@@ -373,6 +365,14 @@ namespace ArteHacker.UITKEditorAid
                 return m_Items.Count;
 
             return -1;
+        }
+
+        private void UpdateEmptyMessageVisibility()
+        {
+            if (GetListSize() == 0 && !string.IsNullOrEmpty(emptyListMessage))
+                m_EmptyListLabel.style.display = StyleKeyword.Null;
+            else
+                m_EmptyListLabel.style.display = DisplayStyle.None;
         }
     }
 }
