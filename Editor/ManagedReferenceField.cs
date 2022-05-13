@@ -100,6 +100,9 @@ namespace ArteHacker.UITKEditorAid
             // This generates garbage.
             string newType = prop.managedReferenceFullTypename;
 
+            // This might help with performance in some extreme cases.
+            prop.Dispose();
+
             if (m_ReferenceType != newType)
             {
                 using (ReferenceTypeChangeEvent e = ReferenceTypeChangeEvent.GetPooled(m_ReferenceType, newType))
