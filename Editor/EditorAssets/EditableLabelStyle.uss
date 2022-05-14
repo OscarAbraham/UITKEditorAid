@@ -6,6 +6,7 @@
 .editor-aid-editable-label__empty-text-label {
     padding: 2px 3px 1px 3px;
     color: var(--editor-aid-colors-label-text);
+    overflow: hidden;
 }
 
 .editor-aid-editable-label__text-field {
