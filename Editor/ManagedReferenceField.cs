@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -38,8 +39,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name for the PropertyField inside. </summary>
         public static readonly string propertyFieldUssClassName = ussClassName + "__property-field";
 
-        // We wait for Unity to update the SerializedObject; it happens every 100ms, and we wait a bit more for good measure.
-        private const int k_PollingDelay = 164;
+        private static readonly HashSet<SerializedObject> m_SerializedObjectsUpdatedRecently = new HashSet<SerializedObject>();
 
         private string m_Path;
         private SerializedObject m_SerializedObject;
@@ -58,7 +58,7 @@ namespace ArteHacker.UITKEditorAid
             get => m_PeriodicalUpdateInterval;
             set
             {
-                m_PeriodicalUpdateInterval = System.Math.Max(value, k_PollingDelay);
+                m_PeriodicalUpdateInterval = System.Math.Max(value, 100);
                 m_UpdateSchedule.Every(m_PeriodicalUpdateInterval);
             }
         }
@@ -115,27 +115,45 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        private void QueueUpdate()
+        private void ReactToEditorChange()
         {
-            // This makes the next update happen in k_PollingDelay ms from now; it doesn't matter if it was going to run sooner or later than that.
-            // It also resumes execution if the scheduled item was paused.
-            m_UpdateSchedule.ExecuteLater(k_PollingDelay);
+            UpdateSerializedObjectIfNeeded();
+            Update();
+        }
+
+        private void UpdateSerializedObjectIfNeeded()
+        {
+            // We keep a record of Objects that have been updated this frame to avoid the expensive cost of redundant updates.
+            if (m_SerializedObjectsUpdatedRecently.Contains(m_SerializedObject))
+                return;
+
+            m_SerializedObject.Update();
+
+            bool isTheFirstAddition = m_SerializedObjectsUpdatedRecently.Count == 0;
+            m_SerializedObjectsUpdatedRecently.Add(m_SerializedObject);
+
+            // We clear the HashSet on the next frame so the Objects can be updated again later.
+            if (isTheFirstAddition)
+                EditorApplication.delayCall = ClearSerializedObjectsUpdatedRecently;
+
+            // Assigning a static method instead of an instance method to the delay delgate avoids creating garbage.
+            static void ClearSerializedObjectsUpdatedRecently() => m_SerializedObjectsUpdatedRecently.Clear();
         }
 
         private void OnAttachToPanel(AttachToPanelEvent evt)
         {
-            Undo.undoRedoPerformed -= QueueUpdate;
-            Undo.undoRedoPerformed += QueueUpdate;
+            Undo.undoRedoPerformed -= ReactToEditorChange;
+            Undo.undoRedoPerformed += ReactToEditorChange;
             Undo.postprocessModifications -= OnPropertyModification;
             Undo.postprocessModifications += OnPropertyModification;
 
             // In case we just changed tabs.
-            QueueUpdate();
+            ReactToEditorChange();
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent evt)
         {
-            Undo.undoRedoPerformed -= QueueUpdate;
+            Undo.undoRedoPerformed -= ReactToEditorChange;
             Undo.postprocessModifications -= OnPropertyModification;
         }
 
@@ -146,7 +164,7 @@ namespace ArteHacker.UITKEditorAid
                     // TODO Should we check that propertyPath is our path? Would it work even if multiple properties refer to the same object?
                     if (mod.previousValue.target == target || mod.currentValue.target == target)
                     {
-                        QueueUpdate();
+                        ReactToEditorChange();
                         return modifications;
                     }
             return modifications;
