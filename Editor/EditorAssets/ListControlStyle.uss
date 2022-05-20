@@ -52,12 +52,17 @@
     padding: 1px 0 0;
 }
 
-.editor-aid-list-control--boxed > .editor-aid-list-control__footer  {
+.editor-aid-list-control--boxed > .editor-aid-list-control__footer {
     background-color: var(--editor-aid-colors-list-background);
     border-color: var(--editor-aid-colors-list-border);
     border-radius: 0 0 3px 3px;
     border-width: 0 1px 1px 1px;
     right: -1px;
+}
+
+.editor-aid-list-control__footer-content {
+    flex-direction: row;
+    padding-left: 3px;
 }
 
 .editor-aid-list-control--with-header > .editor-aid-list-control__header {
@@ -160,6 +165,7 @@
 
 /*We don't assign editor icons in style sheets to avoid warnings if they stop existing.*/
 .editor-aid-list-control__add-button,
+.editor-aid-list-control__remove-button,
 .editor-aid-list-row__remove-button {
     margin: 0 3px 0 0;
     border-width: 0;
@@ -171,16 +177,14 @@
     background-color: transparent;
 }
 
-.editor-aid-list-control__add-button {
-    margin-left: 3px;
-}
-
     .editor-aid-list-control__add-button:hover,
+    .editor-aid-list-control__remove-button:hover,
     .editor-aid-list-row__remove-button:hover {
         background-color: var(--editor-aid-colors-list_button-hover);
     }
 
     .editor-aid-list-control__add-button:active,
+    .editor-aid-list-control__remove-button:active,
     .editor-aid-list-row__remove-button:active {
         background-color: transparent;
     }

@@ -162,8 +162,12 @@ namespace ArteHacker.UITKEditorAid
     {
         /// <summary> USS class name of elements of this type. </summary>
         public new static readonly string ussClassName = "editor-aid-array-property-field";
+        /// <summary> USS class name of the footer content. </summary>
+        public static readonly string footerContentUssClassName = "editor-aid-list-control__footer-content";
         /// <summary> USS class name of the add button. </summary>
         public static readonly string addButtonUssClassName = "editor-aid-list-control__add-button";
+        /// <summary> USS class name of the remove button. </summary>
+        public static readonly string removeButtonUssClassName = "editor-aid-list-control__remove-button";
         /// <summary> USS class name of the list's foldout. </summary>
         public static readonly string headerFoldoutUssClassName = "editor-aid-list-control__header-foldout";
         /// <summary> USS class name of the list's label. </summary>
@@ -173,6 +177,14 @@ namespace ArteHacker.UITKEditorAid
         //TODO It seems we could use the size tracker as a local variable.
         private readonly ValueTracker<int> m_SizeTracker = new ValueTracker<int>();
         private readonly Button m_AddButton = new Button();
+        private readonly Button m_RemoveButton = new Button
+        {
+            style = 
+            {
+                display = DisplayStyle.None,
+                backgroundImage = EditorGUIUtility.IconContent("Toolbar Minus").image as Texture2D
+            }
+        };
         private readonly Label m_HeaderLabel = new Label();
         private readonly Foldout m_HeaderFoldout = new Foldout();
         private Func<int, VisualElement> m_MakeItem;
@@ -245,7 +257,8 @@ namespace ArteHacker.UITKEditorAid
             set
             {
                 m_AddButtonMode = value;
-                SetFooterVisibility(value != AddButtonMode.None);
+                m_AddButton.style.display = value != AddButtonMode.None ? DisplayStyle.Flex : DisplayStyle.None;
+
                 switch (value)
                 {
                     case AddButtonMode.Simple:
@@ -258,6 +271,22 @@ namespace ArteHacker.UITKEditorAid
                     default:
                         break;
                 }
+
+                SetFooterVisibility(value != AddButtonMode.None || showMainRemoveButton);
+            }
+        }
+
+        /// <summary>
+        /// Whether to show a footer button to remove selected items from the list. If nothing is selected,
+        /// it removes the last item. Set <see cref="supportItemSelection"/> to true to enable item selection.
+        /// </summary>
+        public bool showMainRemoveButton
+        {
+            get => m_RemoveButton.style.display == DisplayStyle.Flex;
+            set
+            {
+                m_RemoveButton.style.display = value ? DisplayStyle.Flex : DisplayStyle.None;
+                SetFooterVisibility(value || addButtonMode != AddButtonMode.None);
             }
         }
 
@@ -350,10 +379,18 @@ namespace ArteHacker.UITKEditorAid
             SetHeaderContent(headerContent);
             headerMode = ListHeaderMode.Foldout;
 
+            var footerContent = new VisualElement();
+            footerContent.AddToClassList(footerContentUssClassName);
+            SetFooterContent(footerContent);
+
             m_AddButton.AddToClassList(addButtonUssClassName);
             m_AddButton.clicked += () => AddItem(m_AddButton.worldBound);
-            SetFooterContent(m_AddButton);
+            footerContent.Add(m_AddButton);
             addButtonMode = AddButtonMode.Simple;
+
+            m_RemoveButton.AddToClassList(removeButtonUssClassName);
+            m_RemoveButton.clicked += RemoveSelectedItem;
+            footerContent.Add(m_RemoveButton);
 
             var sizeProp = m_ArrayProp.FindPropertyRelative("Array.size");
             m_SizeTracker.SetUp(sizeProp, OnSizeChange, sizeProp.intValue);
@@ -402,6 +439,18 @@ namespace ArteHacker.UITKEditorAid
             // NOTE: Should we bind only the added elements for better performance?
             if (GetListSize() > prevListSize)
                 this.Bind(m_ArrayProp.serializedObject);
+        }
+
+        private void RemoveSelectedItem()
+        {
+            var index = selectedItem;
+            var size = GetListSize();
+
+            if (index < 0 || index >= size)
+                index = size - 1;
+
+            if (index >= 0)
+                RemoveItem(index);
         }
 
         private void RemoveItem(int index)
