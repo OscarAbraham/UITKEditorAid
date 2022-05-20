@@ -174,8 +174,6 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string headerLabelUssClasName = "editor-aid-list-control__header-label";
 
         private readonly SerializedProperty m_ArrayProp;
-        //TODO It seems we could use the size tracker as a local variable.
-        private readonly ValueTracker<int> m_SizeTracker = new ValueTracker<int>();
         private readonly Button m_AddButton = new Button();
         private readonly Button m_RemoveButton = new Button
         {
@@ -393,8 +391,7 @@ namespace ArteHacker.UITKEditorAid
             footerContent.Add(m_RemoveButton);
 
             var sizeProp = m_ArrayProp.FindPropertyRelative("Array.size");
-            m_SizeTracker.SetUp(sizeProp, OnSizeChange, sizeProp.intValue);
-            Add(m_SizeTracker);
+            Add(new ValueTracker<int>(sizeProp, OnSizeChange, sizeProp.intValue) { name = "Size Tracker" });
 
             SetListSize(m_ArrayProp.arraySize);
         }
