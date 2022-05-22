@@ -179,7 +179,10 @@
 
     .editor-aid-list-control__add-button:hover,
     .editor-aid-list-control__remove-button:hover,
-    .editor-aid-list-row__remove-button:hover {
+    .editor-aid-list-row__remove-button:hover,
+    .editor-aid-list-control__add-button:focus,
+    .editor-aid-list-control__remove-button:focus,
+    .editor-aid-list-row__remove-button:focus{
         background-color: var(--editor-aid-colors-list_button-hover);
     }
 
