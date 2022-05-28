@@ -158,15 +158,40 @@ namespace ArteHacker.UITKEditorAid
 
         private UndoPropertyModification[] OnPropertyModification(UndoPropertyModification[] modifications)
         {
-            foreach (var mod in modifications)
-                foreach (var target in m_SerializedObject.targetObjects)
-                    // TODO Should we check that propertyPath is our path? Would it work even if multiple properties refer to the same object?
-                    if (mod.previousValue.target == target || mod.currentValue.target == target)
-                    {
-                        ReactToEditorChange();
+            // We optimize editing a single Object, which may be the most common case if not the only one,
+            // as these fields aren't very usable when editing multiple Objects.
+            if (!m_SerializedObject.isEditingMultipleObjects)
+            {
+                foreach (var mod in modifications)
+                {
+                    if (ReactToModificationIfItMatches(mod.previousValue, m_SerializedObject.targetObject))
                         return modifications;
+                }
+            }
+
+            else
+            {
+                foreach (var target in m_SerializedObject.targetObjects)
+                {
+                    foreach (var mod in modifications)
+                    {
+                        if (ReactToModificationIfItMatches(mod.previousValue, target))
+                            return modifications;
                     }
+                }
+            }
+
             return modifications;
+
+            bool ReactToModificationIfItMatches(PropertyModification modification, Object target)
+            {
+                if (modification.target == target)
+                {
+                    ReactToEditorChange();
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }
