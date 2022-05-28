@@ -48,8 +48,6 @@ namespace ArteHacker.UITKEditorAid
         private long m_PeriodicalUpdateInterval = 5024;
         private readonly IVisualElementScheduledItem m_UpdateSchedule;
 
-        private bool m_HasBeenAttachedToPanel;
-
         /// <summary>
         /// In addition to checking the reference's type when things change in the editor, there's a periodical check to
         /// catch changes made from runtime. By default it's done around every five seconds, but the interval can be changed
@@ -149,15 +147,7 @@ namespace ArteHacker.UITKEditorAid
             Undo.postprocessModifications -= OnPropertyModification;
             Undo.postprocessModifications += OnPropertyModification;
 
-            // In case we changed tabs. It's important to skip it in the first event because there's
-            // a bug where using delayCall right after a Domain Reload, with some weird conditions
-            // (e.g. the Scene View being hidden), stops Unity from handling keyboard shortcuts.
-            // Even without the bug, it's still nice skip it the firs time for a bit of performance.
-            // TODO: Report the bug.
-            if (m_HasBeenAttachedToPanel)
-                ReactToEditorChange();
-
-            m_HasBeenAttachedToPanel = true;
+            ReactToEditorChange();
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent evt)
