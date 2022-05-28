@@ -136,7 +136,7 @@ namespace ArteHacker.UITKEditorAid
 
             // We clear the HashSet on the next frame so the Objects can be updated again later.
             if (isTheFirstAddition)
-                EditorApplication.delayCall = ClearSerializedObjectsUpdatedRecently;
+                EditorApplication.delayCall += ClearSerializedObjectsUpdatedRecently;
 
             // Assigning a static method instead of an instance method to the delay delgate avoids creating garbage.
             static void ClearSerializedObjectsUpdatedRecently() => m_SerializedObjectsUpdatedRecently.Clear();
