@@ -168,7 +168,6 @@ namespace ArteHacker.UITKEditorAid
                         return modifications;
                 }
             }
-
             else
             {
                 foreach (var target in m_SerializedObject.targetObjects)
