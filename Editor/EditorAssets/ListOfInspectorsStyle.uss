@@ -11,7 +11,7 @@
 }
 
 .editor-aid-list-of-inspectors__inspector-item > .unity-inspector-element {
-    padding-bottom: 2px;
+    padding-bottom: 7px;
 }
 
 .editor-aid-list-of-inspectors__item-header {
