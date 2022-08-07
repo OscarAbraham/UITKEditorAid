@@ -19,7 +19,3 @@
 .editor-aid-tabbed-view__tab--selected {
     background-color: var(--unity-colors-toolbar_button-background-checked);
 }
-
-.editor-aid-tabbed-view__tab-content-display {
-    padding: 3px 5px;
-}
