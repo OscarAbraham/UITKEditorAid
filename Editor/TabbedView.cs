@@ -76,6 +76,9 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. </summary>
         public int tabCount => m_TabPairs.Count;
 
+        /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
+        public event System.Action<int, bool> onTabSelectionChange;
+
         /// <summary> TabbedView constructor. </summary>
         public TabbedView()
         {
@@ -172,35 +175,53 @@ namespace ArteHacker.UITKEditorAid
 
         private void AddTabToSelection(VisualElement tab)
         {
-            foreach (var pair in m_TabPairs)
+            for (int i = 0; i < m_TabPairs.Count; i++)
             {
+                var pair = m_TabPairs[i];
                 if (pair.tab != tab) continue;
+
+                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
 
                 pair.tab.AddToClassList(selectedTabUssClassName);
                 pair.content.style.display = DisplayStyle.Flex;
+
+                if (!wasSelected)
+                    onTabSelectionChange?.Invoke(i, true);
                 break;
             }
         }
 
         private void RemoveTabFromSelection(VisualElement tab)
         {
-            foreach (var pair in m_TabPairs)
+            for (int i = 0; i < m_TabPairs.Count; i++)
             {
+                TabPair pair = m_TabPairs[i];
                 if (pair.tab != tab) continue;
+
+                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
 
                 pair.tab.RemoveFromClassList(selectedTabUssClassName);
                 pair.content.style.display = DisplayStyle.None;
+
+                if (wasSelected)
+                    onTabSelectionChange?.Invoke(i, false);
                 break;
             }
         }
 
         private void SetSelectedTab(VisualElement tab)
         {
-            foreach (var pair in m_TabPairs)
+            for (int i = 0; i < m_TabPairs.Count; i++)
             {
+                TabPair pair = m_TabPairs[i];
                 bool shouldSelect = pair.tab == tab;
+                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
+
                 pair.tab.EnableInClassList(selectedTabUssClassName, shouldSelect);
                 pair.content.style.display = shouldSelect ? DisplayStyle.Flex : DisplayStyle.None;
+
+                if (wasSelected != shouldSelect)
+                    onTabSelectionChange?.Invoke(i, shouldSelect);
             }
         }
     }
