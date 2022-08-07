@@ -163,14 +163,26 @@ namespace ArteHacker.UITKEditorAid
         /// <param name="tabIndex"> Index of the tab. </param>
         public void AddTabToSelection(int tabIndex)
         {
-            AddTabToSelection(m_TabPairs[tabIndex].tab);
+            var pair = m_TabPairs[tabIndex];
+            if (pair.tab.ClassListContains(selectedTabUssClassName))
+                return;
+
+            pair.tab.AddToClassList(selectedTabUssClassName);
+            pair.content.style.display = DisplayStyle.Flex;
+            onTabSelectionChange?.Invoke(tabIndex, true);
         }
 
         /// <summary> Unselects a tab. </summary>
         /// <param name="tabIndex"> Index of the tab. </param>
         public void RemoveTabFromSelection(int tabIndex)
         {
-            RemoveTabFromSelection(m_TabPairs[tabIndex].tab);
+            var pair = m_TabPairs[tabIndex];
+            if (!pair.tab.ClassListContains(selectedTabUssClassName))
+                return;
+
+            pair.tab.RemoveFromClassList(selectedTabUssClassName);
+            pair.content.style.display = DisplayStyle.None;
+            onTabSelectionChange?.Invoke(tabIndex, false);
         }
 
         private void HandleTabSelection(PointerDownEvent e, VisualElement tab)
@@ -194,17 +206,11 @@ namespace ArteHacker.UITKEditorAid
         {
             for (int i = 0; i < m_TabPairs.Count; i++)
             {
-                var pair = m_TabPairs[i];
-                if (pair.tab != tab) continue;
-
-                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
-
-                pair.tab.AddToClassList(selectedTabUssClassName);
-                pair.content.style.display = DisplayStyle.Flex;
-
-                if (!wasSelected)
-                    onTabSelectionChange?.Invoke(i, true);
-                break;
+                if (m_TabPairs[i].tab == tab)
+                {
+                    AddTabToSelection(i);
+                    break;
+                }
             }
         }
 
@@ -212,17 +218,11 @@ namespace ArteHacker.UITKEditorAid
         {
             for (int i = 0; i < m_TabPairs.Count; i++)
             {
-                TabPair pair = m_TabPairs[i];
-                if (pair.tab != tab) continue;
-
-                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
-
-                pair.tab.RemoveFromClassList(selectedTabUssClassName);
-                pair.content.style.display = DisplayStyle.None;
-
-                if (wasSelected)
-                    onTabSelectionChange?.Invoke(i, false);
-                break;
+                if (m_TabPairs[i].tab == tab)
+                {
+                    RemoveTabFromSelection(i);
+                    break;
+                }
             }
         }
 
@@ -230,15 +230,10 @@ namespace ArteHacker.UITKEditorAid
         {
             for (int i = 0; i < m_TabPairs.Count; i++)
             {
-                TabPair pair = m_TabPairs[i];
-                bool shouldSelect = pair.tab == tab;
-                bool wasSelected = pair.tab.ClassListContains(selectedTabUssClassName);
-
-                pair.tab.EnableInClassList(selectedTabUssClassName, shouldSelect);
-                pair.content.style.display = shouldSelect ? DisplayStyle.Flex : DisplayStyle.None;
-
-                if (wasSelected != shouldSelect)
-                    onTabSelectionChange?.Invoke(i, shouldSelect);
+                if (m_TabPairs[i].tab == tab)
+                    AddTabToSelection(i);
+                else
+                    RemoveTabFromSelection(i);
             }
         }
     }
