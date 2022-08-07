@@ -105,6 +105,14 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Adds a tab and the content associated to it. </summary>
         /// <param name="title"> A title displayed in the tab. </param>
         /// <param name="content"> The content to be associated with the tab. </param>
+        public void AddTab(string title, VisualElement content)
+        {
+            AddTab(new Label(title), content);
+        }
+
+        /// <summary> Adds a tab and the content associated to it. </summary>
+        /// <param name="title"> A title displayed in the tab. </param>
+        /// <param name="content"> The content to be associated with the tab. </param>
         public void AddTab(VisualElement title, VisualElement content)
         {
             Assert.IsNotNull(content, "Tab content can't be null.");
