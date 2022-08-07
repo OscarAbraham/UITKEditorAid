@@ -21,12 +21,21 @@ namespace ArteHacker.UITKEditorAid
     ///         // by holding shift or ctrl (cmd on macOS) when clicking on them.
     ///         tabbedView.allowMultipleSelection = true;
     /// 
+    ///         tabbedView.AddTab(new Label("Tab 0"), new Label("Tab 0 Content"));
     ///         tabbedView.AddTab(new Label("Tab 1"), new Label("Tab 1 Content"));
     ///         tabbedView.AddTab(new Label("Tab 2"), new Label("Tab 2 Content"));
-    ///         tabbedView.AddTab(new Label("Tab 3"), new Label("Tab 3 Content"));
     /// 
     ///         // The first tab added is selected by default. This selects the last tab.
     ///         tabbedView.SetSelectedTab(2);
+    /// 
+    ///         // Listen to this event to know when a tab's selection status changes.
+    ///         tabbedView.onTabSelectionChange += (index, selected) =>
+    ///         {
+    ///             if (selected)
+    ///                 Debug.Log($"Tab {index} selected");
+    ///             else
+    ///                 Debug.Log($"Tab {index} unselected");
+    ///         };
     /// 
     ///         return tabbedView;
     ///     }
