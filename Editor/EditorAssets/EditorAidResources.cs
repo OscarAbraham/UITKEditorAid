@@ -23,6 +23,7 @@ namespace ArteHacker.UITKEditorAid
         private static StyleSheet s_ListControlStyle;
         private static StyleSheet s_EditableLabelStyle;
         private static StyleSheet s_ListOfInspectorsStyle;
+        private static StyleSheet s_TabbedViewStyle;
 
         /// <summary> StyleSheet for <see cref="ListControl"/> </summary>
         public static StyleSheet listControlStyle
@@ -54,6 +55,17 @@ namespace ArteHacker.UITKEditorAid
                 if (!s_ListOfInspectorsStyle)
                     s_ListOfInspectorsStyle = GetAsset<StyleSheet>("ListOfInspectorsStyle.uss");
                 return s_ListOfInspectorsStyle;
+            }
+        }
+
+        /// <summary> StyleSheet for <see cref="TabbedView"/> </summary>
+        public static StyleSheet tabbedViewStyle
+        {
+            get
+            {
+                if (!s_TabbedViewStyle)
+                    s_TabbedViewStyle = GetAsset<StyleSheet>("TabbedViewStyle.uss");
+                return s_TabbedViewStyle;
             }
         }
 
