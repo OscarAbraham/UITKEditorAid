@@ -139,7 +139,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Gets the tab title element at the specified index. </summary>
         /// <param name="tabIndex"> Index of the tab. </param>
         /// <returns> The tab title element. </returns>
-        public VisualElement GetTabTitle(int tabIndex)
+        public VisualElement GetTabTitleElement(int tabIndex)
         {
             return m_TabPairs[tabIndex].tab?.Q();
         }
