@@ -16,6 +16,6 @@
         background-color: var(--unity-colors-toolbar_button-background-hover);
     }
 
-.editor-aid-tabbed-view__tab--selected {
+.editor-aid-tabbed-view__tab--selected, .editor-aid-tabbed-view__tab--selected:hover {
     background-color: var(--unity-colors-toolbar_button-background-checked);
 }
