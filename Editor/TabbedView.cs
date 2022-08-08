@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
@@ -36,6 +37,10 @@ namespace ArteHacker.UITKEditorAid
     ///             else
     ///                 Debug.Log($"Tab {index} unselected");
     ///         };
+    /// 
+    ///         // Pass a unique string to this method to remember the tab selection in views that
+    ///         // use the same key. Make sure to call it after all the tabs have been added.
+    ///         tabbedView.ApplyPersistenceKey("ACustomEditor_TabsKey");
     /// 
     ///         return tabbedView;
     ///     }
@@ -76,6 +81,9 @@ namespace ArteHacker.UITKEditorAid
         private readonly List<TabPair> m_TabPairs = new List<TabPair>();
         private readonly VisualElement m_TabBar = new VisualElement();
         private readonly VisualElement m_TabContentDisplay = new VisualElement();
+
+        private int m_PersistenceState;
+        private string m_PersistenceKey;
 
         /// <summary>
         /// When true, allows showing multiple tabs at the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab.
@@ -152,6 +160,24 @@ namespace ArteHacker.UITKEditorAid
             return m_TabPairs[tabIndex].tab?.Q();
         }
 
+        /// <summary>
+        /// Use a persistence key to remember user selection of tabs. The selection is stored in <see cref="SessionState"/>.
+        /// </summary>
+        /// <param name="key"></param>
+        public void ApplyPersistenceKey(string key)
+        {
+            m_PersistenceKey = key;
+            m_PersistenceState = SessionState.GetInt(m_PersistenceKey, m_PersistenceState);
+
+            for (int i = 0; i < m_TabPairs.Count; i++)
+            {
+                if (IsTabSelectedInPersistanceState(i))
+                    AddTabToSelection(i);
+                else
+                    RemoveTabFromSelection(i);
+            }
+        }
+
         /// <summary> Sets a single selected tab. </summary>
         /// <param name="tabIndex"> Index of the tab. </param>
         public void SetSelectedTab(int tabIndex)
@@ -169,6 +195,8 @@ namespace ArteHacker.UITKEditorAid
 
             pair.tab.AddToClassList(selectedTabUssClassName);
             pair.content.style.display = DisplayStyle.Flex;
+            SelectTabInPersistanceState(tabIndex);
+
             onTabSelectionChange?.Invoke(tabIndex, true);
         }
 
@@ -182,6 +210,8 @@ namespace ArteHacker.UITKEditorAid
 
             pair.tab.RemoveFromClassList(selectedTabUssClassName);
             pair.content.style.display = DisplayStyle.None;
+            UnselectTabInPersistanceState(tabIndex);
+
             onTabSelectionChange?.Invoke(tabIndex, false);
         }
 
@@ -199,6 +229,7 @@ namespace ArteHacker.UITKEditorAid
                 SetSelectedTab(tab);
             }
 
+            FlushPersistenceState();
             e.StopPropagation();
         }
 
@@ -235,6 +266,31 @@ namespace ArteHacker.UITKEditorAid
                 else
                     RemoveTabFromSelection(i);
             }
+        }
+
+        private bool IsTabSelectedInPersistanceState(int tabIndex)
+        {
+            // Our persistence state is an int, so we can't store more than 32 tabs. 
+            return tabIndex < 32 && (m_PersistenceState & (1 << tabIndex)) != 0;
+        }
+
+        private void SelectTabInPersistanceState(int tabIndex)
+        {
+            if (tabIndex < 32)
+                m_PersistenceState |= 1 << tabIndex;
+        }
+
+        private void UnselectTabInPersistanceState(int tabIndex)
+        {
+            if (tabIndex < 32)
+                m_PersistenceState &= ~(1 << tabIndex);
+        }
+
+        private void FlushPersistenceState()
+        {
+            if (string.IsNullOrEmpty(m_PersistenceKey))
+                return;
+            SessionState.SetInt(m_PersistenceKey, m_PersistenceState);
         }
     }
 }
