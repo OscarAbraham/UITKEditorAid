@@ -22,12 +22,21 @@ namespace ArteHacker.UITKEditorAid
     ///         // by holding shift or ctrl (cmd on macOS) when clicking on them.
     ///         tabbedView.allowMultipleSelection = true;
     /// 
+    ///         // Use AddTab to create new tabs.
     ///         tabbedView.AddTab(new Label("Tab 0"), new Label("Tab 0 Content"));
     ///         tabbedView.AddTab(new Label("Tab 1"), new Label("Tab 1 Content"));
-    ///         tabbedView.AddTab(new Label("Tab 2"), new Label("Tab 2 Content"));
+    ///         // You can use a string as the title if you only need a simple label.
+    ///         tabbedView.AddTab("Tab 2", new Label("Tab 2 Content"));
     /// 
     ///         // The first tab added is selected by default. This selects the last tab.
     ///         tabbedView.SetSelectedTab(2);
+    ///         
+    ///         // This selects Tab 0 and Tab 1 without unselecting any other tab.
+    ///         tabbedView.AddTabToSelection(0);
+    ///         tabbedView.AddTabToSelection(1);
+    ///         
+    ///         // This unselects Tab 2 without needing to select another tab.
+    ///         tabbedView.RemoveTabFromSelection(2);
     /// 
     ///         // Listen to this event to know when a tab's selection status changes.
     ///         tabbedView.onTabSelectionChange += (index, selected) =>
