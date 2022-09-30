@@ -199,6 +199,26 @@ namespace ArteHacker.UITKEditorAid
         protected virtual void AddPostlabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject)
         {
             var target = serializedObject.targetObject;
+            var targetType = target.GetType();
+            // Check for attribute because Help.HasHelpForObject always returns true for most custom objects.
+            bool hasHelp = Attribute.IsDefined(targetType, typeof(HelpURLAttribute));
+            bool hasTooltip = Attribute.IsDefined(targetType, typeof(TooltipAttribute));
+
+            var help = new Button();
+            help.AddToClassList(itemHeaderButtonUssClassName);
+            help.style.backgroundImage = EditorGUIUtility.IconContent("_Help").image as Texture2D;
+            help.SetEnabled(hasHelp || hasTooltip);
+            if (hasHelp)
+            {
+                help.tooltip = $"Open Help for {targetType.Name}.";
+                help.clicked += () => Help.ShowHelpForObject(target);
+            }
+            if (hasTooltip)
+            {
+                var tooltipAttr = (TooltipAttribute)Attribute.GetCustomAttributes(targetType, typeof(TooltipAttribute))[0];
+                help.tooltip = tooltipAttr.tooltip;
+            }
+            header.Add(help);
 
             var presets = new Button();
             presets.AddToClassList(itemHeaderButtonUssClassName);
@@ -224,20 +244,11 @@ namespace ArteHacker.UITKEditorAid
 
         private void ShowInspectorContextMenu(Rect position, VisualElement header, int itemIndex, SerializedObject serializedObject)
         {
+            if (!serializedObject.IsEditable())
+                return;
+
             var menu = new GenericMenu();
             var target = serializedObject.targetObject;
-
-            // Check for attribute because Help.HasHelpForObject always returns true for most custom objects.
-            if (Attribute.IsDefined(target.GetType(), typeof(HelpURLAttribute)))
-            {
-                menu.AddItem(new GUIContent($"Open Help for {target.GetType().Name}"), false, () => Help.ShowHelpForObject(target));
-            }
-            // If the object is not editable, we still can show its help page, but anything else is too risky.
-            if (!serializedObject.IsEditable())
-            {
-                menu.DropDown(position);
-                return;
-            }
 
             var editableLabel = header?.Q<EditableLabel>(null, itemHeaderLabelUssClassName);
             if (editableLabel != null
