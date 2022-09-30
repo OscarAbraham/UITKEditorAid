@@ -68,6 +68,8 @@
     background-color: transparent;
     border-radius: 0;
     border-width: 0;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
     .editor-aid-list-of-inspectors__item-header-button:hover {
