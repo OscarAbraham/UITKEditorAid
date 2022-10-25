@@ -220,11 +220,14 @@ namespace ArteHacker.UITKEditorAid
             }
             header.Add(help);
 
-            var presets = new Button();
-            presets.AddToClassList(itemHeaderButtonUssClassName);
-            presets.style.backgroundImage = EditorGUIUtility.IconContent("Preset.Context").image as Texture2D;
-            presets.clicked += () => ShowPresetSelector(serializedObject);
-            header.Add(presets);
+            if (new PresetType(target).IsValid() && (target.hideFlags & HideFlags.NotEditable) == 0)
+            {
+                var presets = new Button();
+                presets.AddToClassList(itemHeaderButtonUssClassName);
+                presets.style.backgroundImage = EditorGUIUtility.IconContent("Preset.Context").image as Texture2D;
+                presets.clicked += () => ShowPresetSelector(serializedObject);
+                header.Add(presets);
+            }
 
             var settings = new Button();
             settings.AddToClassList(itemHeaderButtonUssClassName);
