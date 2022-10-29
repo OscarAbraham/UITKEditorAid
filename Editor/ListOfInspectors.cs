@@ -49,7 +49,7 @@ namespace ArteHacker.UITKEditorAid
 
         private readonly SerializedProperty m_ArrayProp;
         private readonly VisualElement m_TrackersContainer = new VisualElement();
-        //TODO It seems we could use the size tracker as a local variable.
+        // CONSIDER: It seems we could use the size tracker as a local variable.
         private readonly ValueTracker<int> m_SizeTracker = new ValueTracker<int>();
 
         static ListOfInspectors()

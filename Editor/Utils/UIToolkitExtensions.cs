@@ -120,7 +120,7 @@ namespace ArteHacker.UITKEditorAid.Utils
                     action(element);
         }
 
-        // TODO: Deprecate this? BindingStopper seems to solve the same problems but better, as this
+        // CONSIDER: Deprecate this? BindingStopper seems to solve the same problems but better, as this
         // method is vulnerable to throttled bindings taking multiple frames in newer Unity versions.
         /// <summary>
         /// Adds a child element to a parent with a delay after the parent has been attached to a panel.

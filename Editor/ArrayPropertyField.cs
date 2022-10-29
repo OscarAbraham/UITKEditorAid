@@ -24,7 +24,7 @@ namespace ArteHacker.UITKEditorAid
         WithOptions = 2
     }
 
-    // TODO Should we add a way to disable foldout binding?
+    // CONSIDER: Should we add a way to disable foldout binding?
     /// <summary>
     /// Defines the way that a list's header looks.
     /// <para>
