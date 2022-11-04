@@ -17,6 +17,12 @@ namespace ArteHacker.UITKEditorAid
         /// </summary>
         public static readonly string variablesContainerUssClassName = "editor-aid-variables";
 
+        /// <summary> Uss class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in dark mode. </summary>
+        public static readonly string darkModeContainerUssClassName = "editor-aid-dark-mode";
+
+        /// <summary> Uss class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in light mode. </summary>
+        public static readonly string lightModeContainerUssClassName = "editor-aid-light-mode";
+
         private static string s_FolderPath;
         private static StyleSheet s_DarkTheme;
         private static StyleSheet s_LightTheme;
@@ -104,15 +110,20 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary>
-        /// Pass a custom root element to this method to use the appropiate USS variables for Unity's current skin.
+        /// Pass a custom root element to this method to use the appropiate USS variables and class names for Unity's current skin.
         /// The relevant elements in this package already use this method, so you don't need to call it for them.
         /// </summary>
         /// <param name="rootElement">The custom root element that will contain the variables. </param>
         public static void ApplyCurrentTheme(VisualElement rootElement)
         {
-            var style = EditorGUIUtility.isProSkin ? darkTheme : lightTheme;
+            bool isDark = EditorGUIUtility.isProSkin;
+
+            var style = isDark ? darkTheme : lightTheme;
             rootElement.styleSheets.Add(style);
             rootElement.AddToClassList(variablesContainerUssClassName);
+
+            rootElement.EnableInClassList(darkModeContainerUssClassName, isDark);
+            rootElement.EnableInClassList(lightModeContainerUssClassName, !isDark);
         }
 
         private static T GetAsset<T>(string relativePath) where T : Object
