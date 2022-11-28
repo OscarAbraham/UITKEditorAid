@@ -9,19 +9,19 @@ namespace ArteHacker.UITKEditorAid
     /// An Element that represents a <see cref="SerializedProperty"/>. It shows the property's menu on context click,
     /// and it displays the relevant color indicators when the property is overriden or other similar statuses.
     /// </summary>
-    public class PropertyContainer : VisualElement
+    public class PropertyContainer : VisualElement, IBindable
     {
         public new class UxmlFactory : UxmlFactory<PropertyContainer, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
-            UxmlStringAttributeDescription m_PropertyPath = new UxmlStringAttributeDescription { name = "property-path" };
+            UxmlStringAttributeDescription m_PropertyPath = new UxmlStringAttributeDescription { name = "binding-path" };
 
             public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
             {
                 base.Init(ve, bag, cc);
                 var propertyContainer = ve as PropertyContainer;
-                propertyContainer.propertyPath = m_PropertyPath.GetValueFromBag(bag, cc);
+                propertyContainer.bindingPath = m_PropertyPath.GetValueFromBag(bag, cc);
             }
         }
 
@@ -34,8 +34,10 @@ namespace ArteHacker.UITKEditorAid
         private readonly Toggle m_ProxyToggle;
         private readonly VisualElement m_ContentContainer;
 
+        public IBinding binding { get; set; }
+
         /// <summary> The path to property represented by this element. </summary>
-        public string propertyPath { get  => m_PropertyProxy.bindingPath; set => m_PropertyProxy.bindingPath = value; }
+        public string bindingPath { get  => m_PropertyProxy.bindingPath; set => m_PropertyProxy.bindingPath = value; }
 
         public override VisualElement contentContainer => m_ContentContainer;
 
@@ -72,7 +74,7 @@ namespace ArteHacker.UITKEditorAid
             m_ProxyToggle.style.marginBottom = m_ProxyToggle.style.marginTop = m_ProxyToggle.style.marginLeft = m_ProxyToggle.style.marginRight = 0;
 
             hierarchy.Add(m_PropertyProxy);
-            this.propertyPath = propertyPath;
+            bindingPath = propertyPath;
 
             RegisterCallback<MouseUpEvent>(OnMouseUp);
         }
