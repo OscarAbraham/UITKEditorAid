@@ -103,7 +103,7 @@ namespace ArteHacker.UITKEditorAid
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
-    ///         var root = new VisualElement(serializedObject);
+    ///         var root = new VisualElement();
     /// 
     ///         // "field" would be an array with the [SerializeReference] attribute.
     ///         var arrayProp = serializedObject.FindProperty("field");
