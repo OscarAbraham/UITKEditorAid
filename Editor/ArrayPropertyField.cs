@@ -168,6 +168,8 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string addButtonUssClassName = "editor-aid-list-control__add-button";
         /// <summary> USS class name of the remove button. </summary>
         public static readonly string removeButtonUssClassName = "editor-aid-list-control__remove-button";
+        /// <summary> USS class name of the element that contains the header's label or foldout. </summary>
+        public static readonly string headerContentUssClassName = "editor-aid-list-control__header-content";
         /// <summary> USS class name of the list's foldout. </summary>
         public static readonly string headerFoldoutUssClassName = "editor-aid-list-control__header-foldout";
         /// <summary> USS class name of the list's label. </summary>
@@ -372,6 +374,7 @@ namespace ArteHacker.UITKEditorAid
             });
 
             var headerContent = new VisualElement();
+            headerContent.AddToClassList(headerContentUssClassName);
             headerContent.Add(m_HeaderFoldout);
             headerContent.Add(m_HeaderLabel);
             SetHeaderContent(headerContent);
