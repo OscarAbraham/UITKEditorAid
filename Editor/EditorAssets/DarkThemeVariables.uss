@@ -16,7 +16,8 @@
     --editor-aid-colors-graph-background: #202020;
     --editor-aid-colors-graph_node-background: #393939;
     --editor-aid-colors-graph_node-background_accent: #2B2B2B;
-    --editor-aid-colors-graph_node-border-selected: rgba(68, 174, 255, .82); /*TODO: Revise this. I'm trying to find a better color*/
+    --editor-aid-colors-graph_node-border: #191919;
+    --editor-aid-colors-graph_node-border-selected: rgba(68, 174, 255, .82);
     --editor-aid-colors-graph_node-border-hover: rgba(68, 174, 255, .52);
 
     /*ListControl colors*/
