@@ -86,7 +86,6 @@ namespace ArteHacker.UITKEditorAid
         public EditableLabel()
         {
             AddToClassList(ussClassName);
-            EditorAidResources.ApplyCurrentTheme(this);
             styleSheets.Add(EditorAidResources.editableLabelStyle);
 
             m_TextField.SetEnabled(false);

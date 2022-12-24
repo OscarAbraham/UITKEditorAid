@@ -5,7 +5,7 @@
 
 .editor-aid-editable-label__empty-text-label {
     padding: 2px 3px 1px 3px;
-    color: var(--editor-aid-colors-label-text);
+    color: var(--unity-colors-label-text);
     overflow: hidden;
 }
 
@@ -20,5 +20,5 @@
         .editor-aid-editable-label__text-field:disabled > .unity-text-field__input {
             background-color: transparent;
             border-color: transparent;
-            color: var(--editor-aid-colors-label-text);
+            color: var(--unity-colors-label-text);
         }
