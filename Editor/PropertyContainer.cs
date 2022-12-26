@@ -9,7 +9,7 @@ namespace ArteHacker.UITKEditorAid
     /// An Element that represents a <see cref="SerializedProperty"/>. It shows the property's menu on context click,
     /// and it displays the relevant color indicators when the property is overriden or other similar statuses.
     /// </summary>
-    public class PropertyContainer : VisualElement, IBindable
+    public class PropertyContainer : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<PropertyContainer, UxmlTraits> { }
 
@@ -33,8 +33,6 @@ namespace ArteHacker.UITKEditorAid
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
         private readonly VisualElement m_ContentContainer;
-
-        public IBinding binding { get; set; }
 
         /// <summary> The path to property represented by this element. </summary>
         public string bindingPath { get  => m_PropertyProxy.bindingPath; set => m_PropertyProxy.bindingPath = value; }
