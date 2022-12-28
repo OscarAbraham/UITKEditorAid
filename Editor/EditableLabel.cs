@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
+using ArteHacker.UITKEditorAid.Utils;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -36,49 +37,74 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        private class EditableLabelTextField : TextField
-        {
-            public override void SetValueWithoutNotify(string newValue)
-            {
-                base.SetValueWithoutNotify(newValue);
-                (parent as EditableLabel)?.UpdateEmptyTextLabelVisibility();
-            }
-        }
-
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-editable-label";
         /// <summary> USS class name of the TextField inside this element. </summary>
         public static readonly string textFieldUssClassName = ussClassName + "__text-field";
-        /// <summary> Uss class name of an optional label that appears when the text is empty. </summary>
-        public static readonly string emptyTextLabelUssClassName = ussClassName + "__empty-text-label";
+        /// <summary> USS class name of the label used to show non-editable text. </summary>
+        public static readonly string labelUssClassName = ussClassName + "__label";
 
-        private readonly EditableLabelTextField m_TextField = new EditableLabelTextField();
-        private readonly VisualElement m_InnerTextInput;
-        private readonly Label m_EmptyTextLabel = new Label { pickingMode = PickingMode.Ignore };
+        private string m_Value;
+        private string m_EmptyTextLabel;
+        private readonly TextField m_TextField;
+        private readonly Label m_Label;
 
         /// <summary> Whether to enable editing by double clicking the label. See <see cref="BeginEditing"/> for other ways to enable it. </summary>
         public bool editOnDoubleClick { get; set; } = true;
 
-        /// <summary> Whether the TextField inside this label is multiline </summary>
-        public bool multiline { get => m_TextField.multiline; set => m_TextField.multiline = value; }
+        /// <summary> Whether to use multiline text. </summary>
+        public bool multiline
+        {
+            get => m_TextField.multiline;
+            set
+            {
+                m_TextField.multiline = value;
+                m_TextField.style.whiteSpace = value ? WhiteSpace.Normal : WhiteSpace.NoWrap;
+                m_Label.style.whiteSpace = value ? WhiteSpace.Normal : WhiteSpace.NoWrap;
+            }
+        }
 
-        /// <summary> Whether the TextField inside this label is delayed </summary>
+        /// <summary> Whether the TextField inside this element is delayed. It's true by default. </summary>
         public bool isDelayed { get => m_TextField.isDelayed; set => m_TextField.isDelayed = value; }
 
-        /// <summary> The maximum character length of the TextField. -1 means no limit and it's the default.  </summary>
+        /// <summary> The maximum character length of this element's TextField. -1 means no limit and it's the default.  </summary>
         public int maxLength { get => m_TextField.maxLength; set => m_TextField.maxLength = value; }
 
         /// <summary> The string value of this element.</summary>
-        public string value { get => m_TextField.value; set => m_TextField.value = value; }
-
-        /// <summary> An optional label that appears when the EditableLabel's text is empty. </summary>
-        public string emptyTextLabel
+        public string value
         {
-            get => m_EmptyTextLabel.text;
+            get => m_Value;
             set
             {
-                m_EmptyTextLabel.text = value;
-                UpdateEmptyTextLabelVisibility();
+                if (!EqualityComparer<string>.Default.Equals(m_Value, value))
+                {
+                    if (panel != null)
+                    {
+                        using (ChangeEvent<string> e = ChangeEvent<string>.GetPooled(m_Value, value))
+                        {
+                            e.target = this;
+                            SetValueWithoutNotify(value);
+                            SendEvent(e);
+                        }
+                    }
+                    else
+                    {
+                        SetValueWithoutNotify(value);
+                    }
+                }
+            }
+        }
+
+        /// <summary> A text that appears when the EditableLabel's text is empty. </summary>
+        public string emptyTextLabel
+        {
+            get => m_EmptyTextLabel;
+            set
+            {
+                m_EmptyTextLabel = value;
+
+                if (string.IsNullOrEmpty(m_Value))
+                    (m_Label as INotifyValueChanged<string>).SetValueWithoutNotify(m_EmptyTextLabel);
             }
         }
 
@@ -88,27 +114,24 @@ namespace ArteHacker.UITKEditorAid
             AddToClassList(ussClassName);
             styleSheets.Add(EditorAidResources.editableLabelStyle);
 
-            m_TextField.SetEnabled(false);
+            m_TextField = new TextField { isDelayed = true, style = { display = DisplayStyle.None } };
             m_TextField.AddToClassList(textFieldUssClassName);
+            m_TextField.RegisterValueChangedCallback(e =>
+            {
+                e.StopImmediatePropagation();
+                value = e.newValue;
+            });
+            m_TextField.RegisterCallback<BlurEvent>(e => StopEditing());
             Add(m_TextField);
 
-            // We resend change events with this as target for bindings to work properly.
-            m_TextField.RegisterValueChangedCallback(RetargetChangeEvent);
-
-            // We need to access the inner text input, which is the element that really handles interaction, to disable/enable it.
-            m_InnerTextInput = m_TextField.Q(TextField.textInputUssName);
-            m_InnerTextInput.RegisterCallback<BlurEvent>(DisableEditing);
-            // Since 2021.2, disabled elements can still be pointer targets, so we need to disable/enable picking manually.
-            m_InnerTextInput.pickingMode = PickingMode.Ignore;
-
-            m_EmptyTextLabel.AddToClassList(emptyTextLabelUssClassName);
-            Add(m_EmptyTextLabel);
-
-            isDelayed = true;
-
-            UpdateEmptyTextLabelVisibility();
+            m_Label = new Label { pickingMode = PickingMode.Ignore };
+            m_Label.AddToClassList(labelUssClassName);
+            Add(m_Label);
         }
 
+#if UNITY_2022_2_OR_NEWER
+        [EventInterest(typeof(MouseDownEvent))]
+#endif
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
             base.ExecuteDefaultActionAtTarget(evt);
@@ -119,83 +142,56 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Call this method to put the label in edit mode. </summary>
         public void BeginEditing()
         {
-            // Delay to let a previously focused element be unfocused first. Otherwise, focus doesn't take sometimes.
-            EditorApplication.delayCall += EnableEditing;
-        }
-
-        private void EnableEditing()
-        {
-            m_EmptyTextLabel.style.display = DisplayStyle.None;
+            m_Label.style.display = DisplayStyle.None;
             m_TextField.style.display = DisplayStyle.Flex;
+            m_TextField.Focus();
 
-            m_TextField.SetEnabled(true);
-            m_InnerTextInput.pickingMode = PickingMode.Position;
-            // We focus manually, even though we'll simulate a click later, because simulated clicks don't
-            // focus the field since 2021. I don't know why, but even if we could fix it, this seems safer.
-            m_InnerTextInput.Focus();
+            // Delay it to avoid unpredictable behavior from clicking inside a click event.
+            EditorApplication.delayCall += SimulateClick;
 
             // In 2021 and newer, the first Click on a focused field selects the text, even if it was already selected.
             // 2022 adds a way to stop it with selectAllOnMouseUp, but we want to use the same code in all versions to
             // foster consistent behavior. So we solve this by simulating the first click on the field.
-            var e = new Event { type = EventType.MouseDown, mousePosition = m_InnerTextInput.worldBound.center };
-
-            using (var mouseDownEvt = MouseDownEvent.GetPooled(e))
+            void SimulateClick()
             {
-                mouseDownEvt.target = m_InnerTextInput;
-                m_InnerTextInput.SendEvent(mouseDownEvt);
-            }
+                // UITK started using a different element to handle text in 2022.
+#if UNITY_2022_1_OR_NEWER
+                var textHandler = m_TextField.Q(null, TextElement.ussClassName);
+#else
+                var textHandler = m_TextField.Q(TextField.textInputUssName);
+#endif
+                var position = textHandler.worldBound.center;
 
-            e.type = EventType.MouseUp;
-            using (var mouseUpEvt = MouseUpEvent.GetPooled(e))
-            {
-                mouseUpEvt.target = m_InnerTextInput;
-                m_InnerTextInput.SendEvent(mouseUpEvt);
-            }
+                using (var mouseDown = MouseDownEvent.GetPooled(position, 0, 1, Vector2.zero))
+                {
+                    mouseDown.target = textHandler;
+                    textHandler.SendEvent(mouseDown);
+                }
+                using (var mouseUp = MouseUpEvent.GetPooled(position, 0, 1, Vector2.zero))
+                {
+                    mouseUp.target = textHandler;
+                    textHandler.SendEvent(mouseUp);
+                }
 
-            // We need SelectAll because the simulated click deselects the text in 2020.3.
-            m_TextField.SelectAll();
+                // Select al text for Unity versions that don't select all in the first click (i.e. 2020).
+                m_TextField.SelectAll();
+            }
         }
 
-        private void DisableEditing(EventBase evt)
+        private void StopEditing()
         {
-            m_TextField.SetEnabled(false);
-            m_InnerTextInput.pickingMode = PickingMode.Ignore;
-            UpdateEmptyTextLabelVisibility();
+            m_Label.style.display = DisplayStyle.Flex;
+            m_TextField.style.display = DisplayStyle.None;
         }
 
         /// <summary> Set the element's value without triggering a change event.</summary>
         /// <param name="newValue">The new value.</param>
         public void SetValueWithoutNotify(string newValue)
         {
-            m_TextField.SetValueWithoutNotify(newValue);
-        }
+            m_Value = newValue;
 
-        private void RetargetChangeEvent(ChangeEvent<string> e)
-        {
-            e.StopImmediatePropagation();
-            using (ChangeEvent<string> evt = ChangeEvent<string>.GetPooled(e.previousValue, e.newValue))
-            {
-                evt.target = this;
-                SendEvent(evt);
-            }
-        }
-
-        private void UpdateEmptyTextLabelVisibility()
-        {
-            // If we are editing text, we wait for the editing to stop before potentially hiding the text field.
-            if (m_TextField.enabledSelf)
-                return;
-
-            if (string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(emptyTextLabel))
-            {
-                m_EmptyTextLabel.style.display = DisplayStyle.Flex;
-                m_TextField.style.display = DisplayStyle.None;
-            }
-            else
-            {
-                m_EmptyTextLabel.style.display = DisplayStyle.None;
-                m_TextField.style.display = DisplayStyle.Flex;
-            }
+            m_TextField.SetValueWithoutNotify(m_Value);
+            (m_Label as INotifyValueChanged<string>).SetValueWithoutNotify(string.IsNullOrEmpty(m_Value) ? emptyTextLabel : m_Value);
         }
     }
 }
