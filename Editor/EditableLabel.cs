@@ -135,8 +135,14 @@ namespace ArteHacker.UITKEditorAid
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
             base.ExecuteDefaultActionAtTarget(evt);
-            if (editOnDoubleClick && evt is MouseDownEvent mouseDown && mouseDown.clickCount >= 2)
+            if (editOnDoubleClick
+                && evt is MouseDownEvent mouseDown
+                && mouseDown.button == 0
+                && mouseDown.modifiers == EventModifiers.None
+                && mouseDown.clickCount >= 2)
+            {
                 BeginEditing();
+            }
         }
 
         /// <summary> Call this method to put the label in edit mode. </summary>
