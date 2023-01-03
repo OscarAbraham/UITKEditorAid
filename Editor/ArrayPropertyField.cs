@@ -162,6 +162,8 @@ namespace ArteHacker.UITKEditorAid
     {
         /// <summary> USS class name of elements of this type. </summary>
         public new static readonly string ussClassName = "editor-aid-array-property-field";
+        /// <summary> USS class name of Lists with separators. </summary>
+        public static readonly string withSeparatorsUSSClassName = "editor-aid-list-control--with-separators";
         /// <summary> USS class name of the footer content. </summary>
         public static readonly string footerContentUssClassName = "editor-aid-list-control__footer-content";
         /// <summary> USS class name of the add button. </summary>
@@ -195,7 +197,6 @@ namespace ArteHacker.UITKEditorAid
         private bool m_ShowRemoveButtons = true;
         private bool m_ShowDragHandles = true;
         private bool m_ShowAlternatedBackgrounds = true;
-        private bool m_ShowSeparators = false;
 
         /// <summary> Whether list items can be reordered by dragging. </summary>
         public bool reorderable { get; set; } = true;
@@ -326,10 +327,10 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Whether to show lines and small paddings between items. Default false.</summary>
         public bool showSeparators
         {
-            get => m_ShowSeparators;
+            get => ClassListContains(withSeparatorsUSSClassName);
             set
             {
-                m_ShowSeparators = value;
+                EnableInClassList(withSeparatorsUSSClassName, value);
                 ForEachItem(item => item.SetSeparators(value));
             }
         }
