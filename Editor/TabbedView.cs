@@ -136,7 +136,6 @@ namespace ArteHacker.UITKEditorAid
         {
             AddToClassList(ussClassName);
             AddToClassList(allowTabsOverflowUssClassName);
-            EditorAidResources.ApplyCurrentTheme(this);
             styleSheets.Add(EditorAidResources.tabbedViewStyle);
 
             m_TabBarContainer.AddToClassList(tabBarContainerUssClassName);
