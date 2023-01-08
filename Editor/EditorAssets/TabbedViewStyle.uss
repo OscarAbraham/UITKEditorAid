@@ -1,12 +1,60 @@
-
-.editor-aid-tabbed-view__tab-bar {
-    flex-direction: row;
-    flex-wrap:wrap;
+.editor-aid-tabbed-view__tab-bar-container {
+    overflow: hidden;
+    align-items: flex-start;
     border-width: 1px 0 1px 0;
     border-color: var(--unity-colors-toolbar-border);
 }
 
+.editor-aid-tabbed-view__tab-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.editor-aid-tabbed-view--allow-tabs-overflow > .editor-aid-tabbed-view__tab-bar-container > .editor-aid-tabbed-view__tab-bar {
+    flex-wrap: nowrap;
+}
+
+.editor-aid-tabbed-view__tab-bar-scroll-left-button, .editor-aid-tabbed-view__tab-bar-scroll-right-button
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 17px;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-radius: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--unity-colors-toolbar_button-background-focus);
+    border-color: var(--unity-colors-button-border);
+}
+    .editor-aid-tabbed-view__tab-bar-scroll-left-button:hover, .editor-aid-tabbed-view__tab-bar-scroll-right-button:hover {
+        background-color: var(--unity-colors-toolbar_button-background-checked);
+    }
+
+.editor-aid-tabbed-view__tab-bar-scroll-left-button {
+    border-right-width: 1px;
+    left: 0;
+}
+    .editor-aid-tabbed-view__tab-bar-scroll-left-button > .unity-image {
+        --unity-image: var(--unity-icons-scroll_left);
+        width: 12px;
+        height: 16px;
+    }
+
+.editor-aid-tabbed-view__tab-bar-scroll-right-button {
+    border-left-width: 1px;
+    right: 0;
+}
+    .editor-aid-tabbed-view__tab-bar-scroll-right-button > .unity-image {
+        --unity-image: var(--unity-icons-scroll_right);
+        width: 12px;
+        height: 16px;
+    }
+
 .editor-aid-tabbed-view__tab {
+    flex-shrink: 0;
     padding: 2px 5px;
     border-right-width: 1px;
     border-color: var(--unity-colors-inspector_titlebar-border_accent);

@@ -72,9 +72,18 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-tabbed-view";
+        /// <summary> USS class name of Tabbed Views that allow tabs overflow. </summary>
+        public static readonly string allowTabsOverflowUssClassName = ussClassName + "--allow-tabs-overflow";
 
+        /// <summary> USS class name of the element that contains the tab bar. </summary>
+        public static readonly string tabBarContainerUssClassName = ussClassName + "__tab-bar-container";
         /// <summary> USS class name of the bar that contains all the tabs. </summary>
         public static readonly string tabBarUssClassName = ussClassName + "__tab-bar";
+        /// <summary> USS class name of the button to scroll tabs to the left when <see cref="allowTabsOverflow"/> is true. </summary>
+        public static readonly string tabBarScrollLeftButtonUssClassName = ussClassName + "__tab-bar-scroll-left-button";
+        /// <summary> USS class name of the button to scroll tabs to the right when <see cref="allowTabsOverflow"/> is true. </summary>
+        public static readonly string tabBarScrollRightButtonUssClassName = ussClassName + "__tab-bar-scroll-right-button";
+
         /// <summary> USS class name of a tab element. </summary>
         public static readonly string tabUssClassName = ussClassName + "__tab";
         /// <summary> USS class name of a selected tab element. </summary>
@@ -88,7 +97,10 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string tabContentUssClassName = ussClassName + "__tab-content";
 
         private readonly List<TabPair> m_TabPairs = new List<TabPair>();
-        private readonly VisualElement m_TabBar = new VisualElement();
+        private readonly VisualElement m_TabBarContainer = new VisualElement();
+        private readonly VisualElement m_TabBar = new VisualElement { usageHints = UsageHints.DynamicTransform };
+        private readonly RepeatButton m_LeftScrollButton = new RepeatButton { focusable = false, style = { display = DisplayStyle.None } };
+        private readonly RepeatButton m_RightScrollButton = new RepeatButton { focusable = false, style = { display = DisplayStyle.None } };
         private readonly VisualElement m_TabContentDisplay = new VisualElement();
 
         private int m_PersistenceState;
@@ -99,6 +111,20 @@ namespace ArteHacker.UITKEditorAid
         /// It's false by default.
         /// </summary>
         public bool allowMultipleSelection { get; set; }
+
+        /// <summary>
+        /// When true, the Tabbed View will keep tabs in a single row, clipping them when they don't fit and showing additional buttons to 
+        /// scroll through them. When false, tabs that don't fit will be wrapped around, adding as many rows of tabs as necessary to fit them all.
+        /// </summary>
+        public bool allowTabsOverflow
+        {
+            get => ClassListContains(allowTabsOverflowUssClassName);
+            set => EnableInClassList(allowTabsOverflowUssClassName, value);
+        }
+
+        /// <summary> The scroll speed for the tab bar when <see cref="allowTabsOverflow"/> is true. </summary>
+        public float tabsScrollSpeed { get; set; } = 7;
+
         /// <summary> Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. </summary>
         public int tabCount => m_TabPairs.Count;
 
@@ -109,14 +135,33 @@ namespace ArteHacker.UITKEditorAid
         public TabbedView()
         {
             AddToClassList(ussClassName);
+            AddToClassList(allowTabsOverflowUssClassName);
             EditorAidResources.ApplyCurrentTheme(this);
             styleSheets.Add(EditorAidResources.tabbedViewStyle);
 
+            m_TabBarContainer.AddToClassList(tabBarContainerUssClassName);
+            Add(m_TabBarContainer);
             m_TabBar.AddToClassList(tabBarUssClassName);
-            Add(m_TabBar);
+            m_TabBarContainer.Add(m_TabBar);
+
+            m_LeftScrollButton.AddToClassList(tabBarScrollLeftButtonUssClassName);
+            m_TabBarContainer.Add(m_LeftScrollButton);
+            m_LeftScrollButton.Add(new Image { scaleMode = ScaleMode.ScaleToFit, pickingMode = PickingMode.Ignore });
+            m_LeftScrollButton.SetAction(ScrollTabsLeft, 0, 16);
+
+            m_RightScrollButton.AddToClassList(tabBarScrollRightButtonUssClassName);
+            m_TabBarContainer.Add(m_RightScrollButton);
+            m_RightScrollButton.Add(new Image { scaleMode = ScaleMode.ScaleToFit, pickingMode = PickingMode.Ignore });
+            m_RightScrollButton.SetAction(ScrollTabsRight, 0, 16);
 
             m_TabContentDisplay.AddToClassList(tabContentDisplayUssClassName);
             Add(m_TabContentDisplay);
+
+            RegisterCallback<GeometryChangedEvent>(e =>
+            {
+                if (allowTabsOverflow)
+                    UpdateScrollButtonsVisibility();
+            });
         }
 
         /// <summary> Adds a tab and the content associated to it. </summary>
@@ -300,6 +345,37 @@ namespace ArteHacker.UITKEditorAid
             if (string.IsNullOrEmpty(m_PersistenceKey))
                 return;
             SessionState.SetInt(m_PersistenceKey, m_PersistenceState);
+        }
+
+        private void ScrollTabsLeft()
+        {
+            var tabBarRect = m_TabBar.worldBound;
+            var tabBarContainerRect = m_TabBarContainer.worldBound;
+            float scrollAmount = Mathf.Max(0, Mathf.Min(tabsScrollSpeed, tabBarContainerRect.xMin - tabBarRect.xMin));
+
+            m_TabBar.transform.position = m_TabBar.transform.position + (Vector3.right * scrollAmount);
+
+            UpdateScrollButtonsVisibility();
+        }
+
+        private void ScrollTabsRight()
+        {
+            var tabBarRect = m_TabBar.worldBound;
+            var tabBarContainerRect = m_TabBarContainer.worldBound;
+            float scrollAmount = Mathf.Max(0, Mathf.Min(tabsScrollSpeed, tabBarRect.xMax - tabBarContainerRect.xMax));
+
+            m_TabBar.transform.position = m_TabBar.transform.position + (Vector3.left * scrollAmount);
+
+            UpdateScrollButtonsVisibility();
+        }
+
+        private void UpdateScrollButtonsVisibility()
+        {
+            var tabBarRect = m_TabBar.worldBound;
+            var tabBarContainerRect = m_TabBarContainer.worldBound;
+
+            m_LeftScrollButton.style.display = tabBarRect.xMin < tabBarContainerRect.xMin ? DisplayStyle.Flex : DisplayStyle.None;
+            m_RightScrollButton.style.display = tabBarRect.xMax > tabBarContainerRect.xMax ? DisplayStyle.Flex : DisplayStyle.None;
         }
     }
 }
