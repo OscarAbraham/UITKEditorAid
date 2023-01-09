@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Utility UIToolkit element to listen for changes in a <see cref="SerializedProperty"/>. It needs to be added to a panel and bound to work.
+    /// Utility element to listen for changes in a <see cref="SerializedProperty"/>. It needs to be added to a panel and bound to work.
     /// </summary>
     /// <typeparam name="TValue">The type of the property, it doesn't seem to work if it isn't one mentioned in <see cref="SerializedPropertyType"/></typeparam>
     /// <example>
@@ -50,6 +50,11 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// </code>
     /// </example>
+    /// <remarks>
+    /// A lot of the uses for this element are covered in Unity 2021 by the
+    /// <see cref="BindingExtensions.TrackPropertyValue"/> and <see cref=" <see cref="BindingExtensions.TrackSerializedObjectValue"/>"/>
+    /// extension methods.
+    /// </remarks>
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
     {
         /// <summary> USS class name of elements of this type. </summary>
