@@ -5,13 +5,12 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// UIToolkit element that disables and enables contents according to the <see cref="shouldDisable"/> callback. It's equivalent to
-    /// <see cref="EditorGUI.DisabledScope"/>. This has a custom contentContainer, so make sure to add children using <b>VisualElement.Add</b>;
-    /// children added with <b>VisualElement.hierarchy.Add</b> will not be handled by the Disabler. UXML shouldn't have this problem.
+    /// UIToolkit element that disables and enables its content according to the <see cref="shouldDisable"/> callback. It's equivalent to
+    /// <see cref="EditorGUI.DisabledScope"/>.
     /// <para>
     /// This element is specially useful in combination with <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/>
     /// to avoid editing objects that shouldn't be edited. This helps in replicating what happens in IMGUI editors, which become disabled
-    /// when an object is closed to edit by Version Control or HideFlags.
+    /// when an object made non-editable by Version Control or HideFlags.
     /// </para>
     /// </summary>
     public class Disabler : VisualElement
