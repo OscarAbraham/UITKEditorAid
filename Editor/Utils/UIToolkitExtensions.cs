@@ -120,18 +120,6 @@ namespace ArteHacker.UITKEditorAid.Utils
                     action(element);
         }
 
-        // CONSIDER: Deprecate this? BindingStopper seems to solve the same problems but better, as this
-        // method is vulnerable to throttled bindings taking multiple frames in newer Unity versions.
-        /// <summary>
-        /// Adds a child element to a parent with a delay after the parent has been attached to a panel.
-        /// </summary>
-        /// <param name="parent">The parent element</param>
-        /// <param name="child">The element to be added</param>
-        public static void AddDelayed(this VisualElement parent, VisualElement child)
-        {
-            parent.schedule.Execute(() => parent.Add(child)).StartingIn(120);
-        }
-
         /// <summary>
         /// Gets the main label element of a Property Field when using a default property drawer.
         /// This can be useful to set its tooltip, or to change its text. It should be called after the
