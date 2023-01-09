@@ -18,7 +18,7 @@ namespace ArteHacker.UITKEditorAid
     /// this one allows for some customizations.
     /// </summary>
     /// <example>
-    /// 
+    /// <code>
     /// class CustomEditorWithListOfInspectors : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -66,6 +66,7 @@ namespace ArteHacker.UITKEditorAid
     ///         menu.AddItem(new GUIContent("My Custom Menu Item"), true, () => { /*Do Something*/});
     ///     }
     /// }
+    /// </code>
     /// </example>
     /// <remarks>
     /// This class is really an internal tool that's probably not needed by most people, but I figured it might help somebody.
