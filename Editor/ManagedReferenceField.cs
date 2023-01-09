@@ -7,12 +7,9 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UIToolkit element that's like a PropertyField for a field with the <see cref="SerializeReference"/> attribute.
+    /// A UI Toolkit element that handles fields with the <see cref="SerializeReference"/> attribute.
     /// It contains a <see cref="PropertyField"/> and rebinds it when the managed reference changes type.
-    /// <para>
-    /// WARNING: Do not use this directly with the property received in <see cref="PropertyDrawer.CreatePropertyGUI(SerializedProperty)"/>;
-    /// it'll cause an infinite loop because the PropertyField inside will call the same property drawer again.
-    /// </para>
+    /// It sends a <see cref="ReferenceTypeChangeEvent"/> when the field changes type.
     /// </summary>
     /// <example>
     /// A basic example. See <see cref="ArrayPropertyField"/> for a way to use it with reorderable lists.
@@ -30,6 +27,11 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// </code>
     /// </example>
+    /// <remarks>
+    /// Unity 2022 adds support for Managed References in UI Toolkit, but it's currently a bit buggy in some edge cases
+    /// (for example, it doesn't like when two classes contain fields with the same name but different type).
+    /// Use this element in 2022 to go around those bugs or to take advantage of the <see cref="ReferenceTypeChangeEvent"/>.
+    /// </remarks>
     public class ManagedReferenceField : VisualElement
     {
         /// <summary> USS class name of elements of this type. </summary>
