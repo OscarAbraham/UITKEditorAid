@@ -26,12 +26,12 @@ Click a name to go to the relevant documentation page for usage info and some co
 
 ### [EditableLabel](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.EditableLabel.html)
 A label that tranforms into a text field to be edited. It's edited with a double-click by default.<br/>
-![EditableLabel preview](doc_images/EditableLabel.png)
+![EditableLabel preview](doc_images~/EditableLabel.png)
 
 ### [ArrayPropertyField](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ArrayPropertyField.html)
 A UITK version of the good old reorderable list, very customizable. Here's what it looks like by default:
 
-![ArrayPropertyField preview](doc_images/DefaultReorderableList.png)
+![ArrayPropertyField preview](doc_images~/DefaultReorderableList.png)
 
 There's also an abstract [ListControl](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListControl.html)
 class that you can use to create your own lists that don't depend on a SerializedProperty
@@ -42,7 +42,7 @@ attribute break when they change type. This element is like a PropertyField that
 The next gif shows a customized ArrayPropertyField that uses ManagedReferenceFields for its items. Notice that the
 interface updates itself when the elements change type due to being reordered:
 
-![A customized list of Managed References](doc_images/ManagedRefsList.png)
+![A customized list of Managed References](doc_images~/ManagedRefsList.png)
 
 ### [ValueTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ValueTracker-1.html)
 Some times you don't need a VisualElement for anything visual, sometimes you just need a quick way to get a callback when
@@ -53,7 +53,7 @@ A list that is similar to the component's list in GameObjects. I use it with Scr
 do the stuff that's not related to UIToolkit yourself, like handling assets and the lifetime of your objects, which is
 outside the scope of this package; but if you know how to do that, this could be very helpful.
 
-![ListOfInspectors preview](doc_images/ListOfInspectors.png)
+![ListOfInspectors preview](doc_images~/ListOfInspectors.png)
 <br/>
 
 ### [More Stuff](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.html)
