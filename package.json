@@ -1,9 +1,9 @@
 {
   "name": "com.artehacker.uitkeditoraid",
-  "version": "2.0.1",
+  "version": "3.0.1",
   "displayName": "UITK Editor Aid",
-  "description": "Elements and scripts that help to make Unity editors with UIToolkit.",
-  "unity": "2020.2",
+  "description": "Elements and scripts that help when making Editor interfaces with Unity's UI Toolkit.",
+  "unity": "2021.3",
   "keywords": [
     "UIToolkit",
     "Editor",
