@@ -279,7 +279,7 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary>
         /// Whether to show a footer button to remove selected items from the list. If nothing is selected,
-        /// it removes the last item. Set <see cref="supportItemSelection"/> to true to enable item selection.
+        /// it removes the last item. Set <see cref="ListControl.supportItemSelection"/> true to enable item selection.
         /// </summary>
         public bool showMainRemoveButton
         {

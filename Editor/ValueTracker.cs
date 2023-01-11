@@ -52,7 +52,7 @@ namespace ArteHacker.UITKEditorAid
     /// </example>
     /// <remarks>
     /// A lot of the uses for this element are covered in Unity 2021 by the
-    /// <see cref="BindingExtensions.TrackPropertyValue"/> and <see cref=" <see cref="BindingExtensions.TrackSerializedObjectValue"/>"/>
+    /// <see cref="BindingExtensions.TrackPropertyValue"/> and <see cref="BindingExtensions.TrackSerializedObjectValue"/>
     /// extension methods.
     /// </remarks>
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
