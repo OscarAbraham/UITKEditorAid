@@ -240,7 +240,7 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary> The way to display the list's header. Default <see cref="ListHeaderMode.Foldout"/></summary>
+        /// <summary> The way to display the list's header. Default <see cref="ListHeaderMode.Foldout"/>.</summary>
         public ListHeaderMode headerMode
         {
             get => m_ListHeaderMode;
@@ -273,7 +273,7 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary> The way to display the add button. Default <see cref="AddButtonMode.Simple"/></summary>
+        /// <summary> The way to display the add button. Default <see cref="AddButtonMode.Simple"/>.</summary>
         public AddButtonMode addButtonMode
         {
             get => m_AddButtonMode;
