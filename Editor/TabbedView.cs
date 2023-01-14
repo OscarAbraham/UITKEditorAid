@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A visual element for organizing content with tabs.
+    /// An element for organizing content with tabs.
     /// </summary>
     /// <remarks>
     /// Set <see cref="allowMultipleSelection"/> true to support opening multiple tabs.
