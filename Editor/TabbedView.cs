@@ -131,7 +131,6 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
         public event System.Action<int, bool> onTabSelectionChange;
 
-        /// <summary> TabbedView constructor. </summary>
         public TabbedView()
         {
             AddToClassList(ussClassName);

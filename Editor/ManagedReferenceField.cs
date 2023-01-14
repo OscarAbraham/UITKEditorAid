@@ -65,8 +65,19 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
+        /// <summary>
+        /// Constructor. Receives a SerializedProperty for a field that has the <see cref="SerializeReference"/> attribute.
+        /// It still needs to be bound to work properly.
+        /// </summary>
+        /// <param name="property"> A SerializedProperty for a field with the <see cref="SerializeReference"/> attribute. </param>
         public ManagedReferenceField(SerializedProperty property) : this(property, null) { }
 
+        /// <summary>
+        /// Constructor. Receives a SerializedProperty for a field that has the <see cref="SerializeReference"/> attribute.
+        /// It still needs to be Bound to work properly.
+        /// </summary>
+        /// <param name="property"> A SerializedProperty for a field with the <see cref="SerializeReference"/> attribute. </param>
+        /// <param name="label"> Optional string to override the property label. </param>
         public ManagedReferenceField(SerializedProperty property, string label)
         {
             AddToClassList(ussClassName);

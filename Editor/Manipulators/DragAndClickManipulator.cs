@@ -22,13 +22,11 @@ namespace ArteHacker.UITKEditorAid.Manipulators
         /// <summary> The distance the mouse has to move before <see cref="onStartDragging"/> is called. </summary>
         public float dragDistanceThreshold { get; set; } = 5;
 
-        /// <summary> DragAndClickManipulator constructor</summary>
         public DragAndClickManipulator()
         {
             activators.Add(new ManipulatorActivationFilter { button = MouseButton.LeftMouse });
         }
 
-        /// <summary> DragAndClickManipulator constructor</summary>
         /// <param name="onStartDragging">Sets <see cref="onStartDragging"/></param>
         /// <param name="onProcessClick">Sets <see cref="onClick"/></param>
         public DragAndClickManipulator(System.Action onStartDragging, System.Action onProcessClick) : this()

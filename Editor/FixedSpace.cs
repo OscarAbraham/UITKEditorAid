@@ -31,10 +31,10 @@ namespace ArteHacker.UITKEditorAid
 
         private const float k_DefaultSize = 6;
 
-        /// <summary> FixedSpace constructor. Uses a small default size. </summary>
+        /// <summary> Constructor. Uses a small default size. </summary>
         public FixedSpace() : this(k_DefaultSize) { }
 
-        /// <summary> FixedSpace constructor. </summary>
+        /// <summary> Constructor. Receives the size of the space. </summary>
         /// <param name="size">The size of the space. Sets the element's flex-basis style property.</param>
         public FixedSpace(float size)
         {

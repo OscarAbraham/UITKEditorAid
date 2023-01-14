@@ -29,7 +29,6 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Set this callback to indicate when to enable/disable contents. Elements will be disabled when it returns true.</summary>
         public Func<bool> shouldDisable { get; set; }
 
-        /// <summary> Disabler constructor. </summary>
         public Disabler()
         {
             AddToClassList(ussClassName);
@@ -43,7 +42,6 @@ namespace ArteHacker.UITKEditorAid
             RegisterCallback<AttachToPanelEvent>(e => UpdateDisabledStatus(), TrickleDown.TrickleDown);
         }
 
-        /// <summary> Disabler constructor. </summary>
         /// <param name="shouldDisable"> The callback that will be used to disable contents.</param>
         public Disabler(Func<bool> shouldDisable) : this()
         {

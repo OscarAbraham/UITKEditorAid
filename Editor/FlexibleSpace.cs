@@ -22,7 +22,6 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary> FlexibleSpace constructor. </summary>
         public FlexibleSpace()
         {
             pickingMode = PickingMode.Ignore;

@@ -108,7 +108,6 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary> EditableLabel constructor. </summary>
         public EditableLabel()
         {
             AddToClassList(ussClassName);

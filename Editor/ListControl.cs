@@ -114,7 +114,6 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        /// <summary> ListControl constructor.</summary>
         protected ListControl()
         {
             AddToClassList(ussClassName);

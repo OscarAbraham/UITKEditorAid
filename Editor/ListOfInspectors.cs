@@ -122,7 +122,8 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary>
-        /// ListOfInspectors constructor.
+        /// Constructor. It receives a <see cref="SerializedProperty"/> for an array or a list of Objects
+        /// with a type derived from <see cref="Object">UnityEngine.Object</see>.
         /// </summary>
         /// <param name="arrayProp">A serialized property that represents an array of Unity Objects</param>
         public ListOfInspectors(SerializedProperty arrayProp) : base()

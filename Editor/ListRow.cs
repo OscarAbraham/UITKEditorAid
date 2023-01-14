@@ -6,7 +6,7 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used by <see cref="ArrayPropertyField"/>
+    /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used by <see cref="ArrayPropertyField"/>.
     /// </summary>
     public class ListRow : VisualElement
     {
@@ -32,7 +32,6 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> The main content of the row. </summary>
         public VisualElement content { get; }
 
-        /// <summary> ListRow constructor. </summary>
         /// <param name="list">The List that contains this row</param>
         /// <param name="content">The main content of this item</param>
         /// <param name="index">The index in the list</param>

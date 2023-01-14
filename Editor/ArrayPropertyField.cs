@@ -345,10 +345,11 @@ namespace ArteHacker.UITKEditorAid
         public Action<ContextualMenuPopulateEvent, VisualElement, int> onPopulateItemMenu { get; set; }
 
         /// <summary>
-        /// ArrayPropertyField Constructor. You still have to call Bind for it work. Also, only bind to the Object that owns the arrayProp to avoid ugly problems.
+        /// Constructor. It receives a array/list <see cref="SerializedProperty"/> and an optional makeItem delegate.
+        /// It still needs to be bound to work properly.
         /// </summary>
         /// <param name="arrayProp"> A SerializedProperty that points to an array or a list</param>
-        /// <param name="makeItem"> Set this callback to make custom list items. It receives the item's index as a parameter.</param>
+        /// <param name="makeItem"> Optional callback to make custom list items. It receives the item's index as a parameter.</param>
         public ArrayPropertyField(SerializedProperty arrayProp, Func<int, VisualElement> makeItem = null)
         {
             AddToClassList(ussClassName);

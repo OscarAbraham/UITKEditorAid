@@ -11,6 +11,7 @@ namespace ArteHacker.UITKEditorAid
     {
         /// <summary>The previous value of <see cref="SerializedProperty.managedReferenceFullTypename"/></summary>
         public string previousTypeName { get; protected set; }
+
         /// <summary>The new value of <see cref="SerializedProperty.managedReferenceFullTypename"/></summary>
         public string newTypeName { get; protected set; }
 
@@ -22,11 +23,10 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary>
-        /// It's the same as <see cref="EventBase{T}.GetPooled()"/>, but it initializes the event with parameters/>
+        /// It's the same as <see cref="EventBase{T}.GetPooled()"/>, but it initializes the event with parameters.
         /// </summary>
         /// <param name="previousTypeName">The previous value of <see cref="SerializedProperty.managedReferenceFullTypename"/></param>
         /// <param name="newTypeName">The new value of <see cref="SerializedProperty.managedReferenceFullTypename"/></param>
-        /// <returns></returns>
         public static ReferenceTypeChangeEvent GetPooled(string previousTypeName, string newTypeName)
         {
             ReferenceTypeChangeEvent e = GetPooled();

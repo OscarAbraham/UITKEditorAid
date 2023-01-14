@@ -39,14 +39,17 @@ namespace ArteHacker.UITKEditorAid
 
         public override VisualElement contentContainer => m_ContentContainer;
 
-        /// <summary> PropertyContainer constructor. </summary>
+        /// <summary> Constructor. </summary>
         public PropertyContainer() : this((string)null) { }
 
-        /// <summary> PropertyContainer constructor. </summary>
+        /// <summary>
+        /// Constructor. The SerializedProperty parameter just sets the <see cref="bindingPath"/>;
+        /// it still needs to be bound.
+        /// </summary>
         /// <param name="property"> The property represented by this element. </param>
         public PropertyContainer(SerializedProperty property) : this(property.propertyPath) { }
 
-        /// <summary> PropertyContainer constructor. </summary>
+        /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
         /// <param name="propertyPath"> The path of the property represented by this element. </param>
         public PropertyContainer(string propertyPath)
         {
