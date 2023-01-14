@@ -132,6 +132,8 @@ namespace ArteHacker.UITKEditorAid
 #if UNITY_2022_2_OR_NEWER
         [EventInterest(typeof(MouseDownEvent))]
 #endif
+
+        [RemoveFromDocs]
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
             base.ExecuteDefaultActionAtTarget(evt);

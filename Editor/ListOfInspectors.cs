@@ -341,6 +341,7 @@ namespace ArteHacker.UITKEditorAid
             PresetSelector.ShowSelector(serializedObject.targetObjects, null, true);
         }
 
+        [RemoveFromDocs]
         protected override VisualElement CreateItemForIndex(int index)
         {
             var stopper = new BindingStopper();
@@ -348,11 +349,13 @@ namespace ArteHacker.UITKEditorAid
             return stopper;
         }
 
+        [RemoveFromDocs]
         protected override void OnReorderDragPerformed(int draggedIndex, int dropIndex)
         {
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
         }
 
+        [RemoveFromDocs]
         protected override bool IsReorderable()
         {
             return m_ArrayProp.serializedObject.IsEditable();

@@ -37,6 +37,7 @@ namespace ArteHacker.UITKEditorAid.Manipulators
             this.onClick = onProcessClick;
         }
 
+        [RemoveFromDocs]
         protected override void RegisterCallbacksOnTarget()
         {
             target.RegisterCallback<MouseDownEvent>(OnMouseDown);
@@ -45,6 +46,7 @@ namespace ArteHacker.UITKEditorAid.Manipulators
             target.RegisterCallback<MouseCaptureOutEvent>(OnMouseCaptureOut);
         }
 
+        [RemoveFromDocs]
         protected override void UnregisterCallbacksFromTarget()
         {
             target.UnregisterCallback<MouseDownEvent>(OnMouseDown);

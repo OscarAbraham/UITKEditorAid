@@ -13,6 +13,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary>The new value of <see cref="SerializedProperty.managedReferenceFullTypename"/></summary>
         public string newTypeName { get; protected set; }
 
+        [RemoveFromDocs]
         protected override void Init()
         {
             base.Init();

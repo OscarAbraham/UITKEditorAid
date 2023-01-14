@@ -423,14 +423,17 @@ namespace ArteHacker.UITKEditorAid
             SetListSize(m_ArrayProp.arraySize);
         }
 
+        [RemoveFromDocs]
         protected override bool IsReorderable() => reorderable;
 
+        [RemoveFromDocs]
         protected override void OnReorderDragPerformed(int draggedIndex, int dropIndex)
         {
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
             selectedItem = dropIndex > draggedIndex ? dropIndex - 1 : dropIndex;
         }
 
+        [RemoveFromDocs]
         protected override VisualElement CreateItemForIndex(int index)
         {
             VisualElement content = m_MakeItem?.Invoke(index) ?? new PropertyField(m_ArrayProp.GetArrayElementAtIndex(index));

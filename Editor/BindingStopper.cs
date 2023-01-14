@@ -41,6 +41,7 @@ namespace ArteHacker.UITKEditorAid
             AddToClassList(ussClassName);
         }
 
+        [RemoveFromDocs]
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
             base.ExecuteDefaultActionAtTarget(evt);
