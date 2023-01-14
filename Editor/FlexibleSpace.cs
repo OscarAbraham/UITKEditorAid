@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// A UIToolkit element that's equivalent to <see cref="GUILayout.FlexibleSpace"/>.
-    /// Use it to quickly fill the remaining space along the parent's flex-direction.  Supports UXML. 
-    /// </summary>
-    /// <remarks>Its USS flex-basis property is 0 and its flex-grow property is 1.</remarks>
+    /// <summary> An element for quickly filling the remaining space along its parent's <see cref="IStyle.flexDirection"/>. </summary>
+    /// <remarks>
+    /// This element is analogous to IMGUI's <see cref="GUILayout.FlexibleSpace"/>.
+    /// Its <see cref="IStyle.flexBasis"/> is 0 and its <see cref="IStyle.flexGrow"/> is 1.
+    /// </remarks>
     public class FlexibleSpace : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<FlexibleSpace, UxmlTraits> { }

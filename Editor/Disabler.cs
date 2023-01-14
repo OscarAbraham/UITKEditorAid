@@ -4,15 +4,11 @@ using UnityEditor;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// UIToolkit element that disables and enables its content according to the <see cref="shouldDisable"/> callback. It's equivalent to
-    /// <see cref="EditorGUI.DisabledScope"/>.
-    /// <para>
-    /// This element is specially useful in combination with <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/>
-    /// to avoid editing objects that shouldn't be edited. This helps in replicating what happens in IMGUI editors, which become disabled
-    /// when an object made non-editable by Version Control or HideFlags.
-    /// </para>
-    /// </summary>
+    /// <summary> UIToolkit element that disables and enables its content according to its <see cref="shouldDisable"/> callback. </summary>
+    /// <remarks>
+    /// This element is analogous to IMGUI's <see cref="EditorGUI.DisabledScope"/>. It could be used in combination with
+    /// <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/> to avoid editing objects that shouldn't be edited.
+    /// </remarks>
     public class Disabler : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<Disabler> { }

@@ -42,8 +42,20 @@ namespace ArteHacker.UITKEditorAid
     }
 
     /// <summary>
-    /// A UIToolkit reorderable list for a given SerializedProperty. It's drawn inside a box by default.
+    /// A reorderable list for a given SerializedProperty. It has many customization options.
     /// </summary>
+    /// 
+    /// <remarks>
+    /// UI Toolkit's <see cref="ListView"/> covers many of the use-cases for this element, but there are still
+    /// good reasons to use this instead of ListView. Use ArrayPropertyField when you need to go around bugs
+    /// in ListView, or when you need the customization options. Use ListView when you need to take advantage
+    /// of its virtualization system to handle thousands of elements with good performance.
+    /// <para>
+    /// More customization options and features are available by creating child classes of this element. Check
+    /// <see cref="ListControl"/> for some of them (for example, to handle custom mouse drops).
+    /// </para>
+    /// </remarks>
+    /// 
     /// <example>
     /// Basic Usage:
     /// <code>
@@ -75,29 +87,39 @@ namespace ArteHacker.UITKEditorAid
     ///         list.label = "custom label";
     ///         // Hide the header.
     ///         list.headerMode = ListHeaderMode.None;
+    ///         // Show the header as a Label without a Foldout
+    ///         list.headerMode = ListHeaderMode.Label;
     ///         // Set a custom empty message. Null to hide it.
     ///         list.emptyListMessage = null;
     ///         // Hide drag handles.
     ///         list.showDragHandles = false;
     ///         // Don't use zebra-like background to differentiate odd and even items.
     ///         list.showAlternatedBackgrounds = false;
-    ///         // Hide remove buttons.
+    ///         // Hide remove buttons on each item.
     ///         list.showRemoveButtons = false;
-    ///         // Hide the add button.
+    ///         // Hide the add button in the footer.
     ///         list.addButtonMode = AddButtonMode.None;
+    ///         // Show the add button as a plus sign with a little downwards arrow.
+    ///         list.addButtonMode = AddButtonMode.WithOptions;
     ///         // Customize remove behavior
     ///         list.onRemove = (int itemIndex) => { };
     ///         // Customize add behavior
     ///         list.onAdd = (Rect buttonPosition) => { };
     ///         // Show separator lines between items.
     ///         list.showSeparators = true;
-    /// 
+    ///         
+    ///         // Add a single button to remove the selected item, or the last one if none is selected.
+    ///         list.showMainRemoveButton = true;
+    ///         // Set this to true to enable item selection; it works great with the previous feature.
+    ///         list.supportItemSelection = true;
+    ///         
     ///         root.Add(list);
     ///         return root;
     ///     }
     /// }
     /// </code>
-    /// A custom list with <see cref="ManagedReferenceField"/>s (with the <see cref="SerializeReference"/> attribute):
+    /// A custom example with <see cref="ManagedReferenceField">ManagedReferenceFields</see> for lists/arrays
+    /// that use the <see cref="SerializeReference"/> attribute:
     /// <code>
     /// class ACustomEditor : Editor
     /// {

@@ -9,13 +9,13 @@ namespace ArteHacker.UITKEditorAid.Utils
     public static class SerializedObjectExtensions
     {
         /// <summary>
-        /// Returns whether the serialized object is considered editable.
-        /// It will return false if targetObjects are marked with <see cref="HideFlags.NotEditable"/>
-        /// or if there's an asset that isn't open for edit in version control.
+        /// Returns whether a <see cref="SerializedObject"/> is considered editable.
+        /// It will return false if any of its <see cref="SerializedObject.targetObjects"/> are marked with <see cref="HideFlags.NotEditable"/>
+        /// or if there's an asset that isn't open for editing in version control.
         /// It's specially useful in combination with <see cref="Disabler"/>.
         /// </summary>
-        /// <param name="obj">The object to check.</param>
-        /// <returns>Whether obj is editable.</returns>
+        /// <param name="obj"> The object to check. </param>
+        /// <returns> Whether object is editable. </returns>
         public static bool IsEditable(this SerializedObject obj)
         {
             return IsEditable(obj, StatusQueryOptions.UseCachedIfPossible);

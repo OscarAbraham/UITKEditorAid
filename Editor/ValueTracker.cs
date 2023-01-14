@@ -7,9 +7,19 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Utility element to listen for changes in a <see cref="SerializedProperty"/>. It needs to be added to a panel and bound to work.
+    /// Utility element to listen for changes in a <see cref="SerializedProperty"/>.
     /// </summary>
-    /// <typeparam name="TValue">The type of the property, it doesn't seem to work if it isn't one mentioned in <see cref="SerializedPropertyType"/></typeparam>
+    /// 
+    /// <typeparam name="TValue">
+    /// The type of the property, it doesn't seem to work if it isn't one mentioned in <see cref="SerializedPropertyType"/>
+    /// </typeparam>
+    /// 
+    /// <remarks>
+    /// It needs to be added to a panel and bound to work. Many of the uses for this element are covered in Unity 2021 by the
+    /// <see cref="BindingExtensions.TrackPropertyValue">TrackPropertyValue</see> and
+    /// <see cref="BindingExtensions.TrackSerializedObjectValue">TrackSerializedObjectValue</see> extension methods.
+    /// </remarks>
+    /// 
     /// <example>
     /// <code>
     /// class ACustomEditor : Editor
@@ -50,11 +60,6 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// </code>
     /// </example>
-    /// <remarks>
-    /// A lot of the uses for this element are covered in Unity 2021 by the
-    /// <see cref="BindingExtensions.TrackPropertyValue"/> and <see cref="BindingExtensions.TrackSerializedObjectValue"/>
-    /// extension methods.
-    /// </remarks>
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
     {
         /// <summary> USS class name of elements of this type. </summary>
@@ -64,7 +69,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Delegate called when value changes. </summary>
         public EventCallback<ChangeEvent<TValue>> valueChangedCallback {get; set;}
 
-        /// <summary> ValueTracker constructor. </summary>
+        /// <summary> Constructor. </summary>
         public ValueTracker()
         {
             pickingMode = PickingMode.Ignore;
@@ -72,7 +77,7 @@ namespace ArteHacker.UITKEditorAid
             AddToClassList(ussClassName);
         }
 
-        /// <summary> Convenience ValueTracker constructor.</summary>
+        /// <summary> Convenience constructor that setups the ValueTracker.</summary>
         /// <param name="propertyPath">Path of the property to be tracked</param>
         /// <param name="callback">Set a callback to be called when the property changes</param>
         /// <param name="initialValue">The initial value of the property. Set it to avoid triggering the callback when the element is bound.</param>
@@ -84,7 +89,7 @@ namespace ArteHacker.UITKEditorAid
             SetUp(propertyPath, callback, initialValue);
         }
 
-        /// <summary> Convenience ValueTracker constructor.</summary>
+        /// <summary> Convenience constructor that setups the ValueTracker.</summary>
         /// <param name="property">Property to be tracked</param>
         /// <param name="callback">Set a callback to be called when the property changes</param>
         /// <param name="initialValue">The initial value of the property. Set it to avoid triggering the callback when the element is bound.</param>
@@ -97,7 +102,7 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary>
-        /// Convenience Setup method. It sets the <see cref="IBindable.bindingPath"/> of the tracker, registers a callback and sets an initial value.
+        /// Sets the <see cref="IBindable.bindingPath"/> of the tracker, registers a callback and sets an initial value.
         /// </summary>
         /// <param name="propertyPath">Path of the property to be tracked</param>
         /// <param name="callback">Set a callback to be called when the property changes</param>
@@ -119,7 +124,7 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary>
-        /// Convenience Setup method. It sets the <see cref="IBindable.bindingPath"/> of the tracker, registers a callback and sets an initial value.
+        /// Sets the <see cref="IBindable.bindingPath"/> of the tracker, registers a callback and sets an initial value.
         /// </summary>
         /// <param name="property">Property to be tracked</param>
         /// <param name="callback">Set a callback to be called when the property changes</param>

@@ -4,9 +4,7 @@ using UnityEditor.UIElements;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// UIToolkit event sent by <see cref="ManagedReferenceField"/> when the full type name changes.
-    /// </summary>
+    /// <summary> Event sent by <see cref="ManagedReferenceField"/> when the full type name changes. </summary>
     public class ReferenceTypeChangeEvent : EventBase<ReferenceTypeChangeEvent>
     {
         /// <summary>The previous value of <see cref="SerializedProperty.managedReferenceFullTypename"/></summary>

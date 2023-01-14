@@ -4,10 +4,10 @@ using UnityEditor;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// A UIToolkit element that's equivalent to <see cref="EditorGUILayout.Space"/>.
-    /// Use it to quickly add a space between elements along the parent's flex-direction. Supports UXML.
-    /// </summary>
+    /// <summary> An element for quickly adding a space between elements along its parent's <see cref="IStyle.flexDirection"/>. </summary>
+    /// <remarks>
+    /// This element is analogous to IMGUI's <see cref="EditorGUILayout.Space"/>.
+    /// </remarks>
     public class FixedSpace : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<FixedSpace, UxmlTraits> { }

@@ -6,7 +6,7 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Base class to create Reorderable List UIToolkit elements.
+    /// Base class to create a reorderable list.
     /// </summary>
     public abstract class ListControl : VisualElement
     {

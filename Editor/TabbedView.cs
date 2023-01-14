@@ -8,8 +8,13 @@ namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
     /// A visual element for organizing content with tabs.
-    /// It allows viewing multiple tabs at the same time when <see cref="allowMultipleSelection"/> is true;
     /// </summary>
+    /// <remarks>
+    /// Set <see cref="allowMultipleSelection"/> true to support opening multiple tabs.
+    /// Set <see cref="allowTabsOverflow"/> false to use multiple rows when tabs don't fit in a single line.
+    /// Use the <see cref="AddTab(VisualElement, VisualElement)">AddTab</see> method that receives a VisualElement
+    /// as a title if you need more than simple labels in the tabs. 
+    /// </remarks>
     /// <example>
     /// A basic usage example with three tabs.
     /// <code>

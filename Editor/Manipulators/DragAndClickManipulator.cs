@@ -6,8 +6,10 @@ namespace ArteHacker.UITKEditorAid.Manipulators
 {
     /// <summary>
     /// Manipulator that executes an <see cref="onStartDragging"/> callback when the mouse is dragged,
-    /// and an <see cref="onClick"/> callback when the mouse is just clicked.
+    /// and an <see cref="onClick"/> callback when the mouse is only clicked.
     /// </summary>
+    /// <remarks> This is useful for draggable foldouts and toggles, like the headers of Components in the inspector,
+    /// that only process the click on MouseUp when the mouse is not dragged. </remarks>
     public class DragAndClickManipulator : MouseManipulator
     {
         private bool m_Active = false;

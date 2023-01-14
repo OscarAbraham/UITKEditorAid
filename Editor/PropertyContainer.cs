@@ -6,9 +6,18 @@ namespace ArteHacker.UITKEditorAid
 {
     // TODO: Find a practical way to make child texts bold when overriden, and make it optional. 
     /// <summary>
-    /// An Element that represents a <see cref="SerializedProperty"/>. It shows the property's menu on context click,
-    /// and it displays the relevant color indicators when the property is overriden or other similar statuses.
+    /// An Element that shows a <see cref="SerializedProperty">SerializedProperty's</see> prefab override indicators,
+    /// and the property's menu on context click.
     /// </summary>
+    /// <remarks>
+    /// Currently, Unity only adds these capabilities for fields that inherit from <see cref="BaseField{TValueType}"/> or <see cref="Foldout"/>.
+    /// This element makes those features available everywhere. It can be used with any SerializedProperty, even those that have nested
+    /// properties inside. To use it, assign a <see cref="bindingPath"/> to the property it represents, and call the
+    /// <see cref="VisualElement.Add(VisualElement)"/> method to add the UI for that property.
+    /// <para>
+    /// It should also show other kind of indicators, like the yellow ones from the localization package, but I haven't tested that.
+    /// </para>
+    /// </remarks>
     public class PropertyContainer : VisualElement
     {
         public new class UxmlFactory : UxmlFactory<PropertyContainer, UxmlTraits> { }
@@ -42,10 +51,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Constructor. </summary>
         public PropertyContainer() : this((string)null) { }
 
-        /// <summary>
-        /// Constructor. The SerializedProperty parameter just sets the <see cref="bindingPath"/>;
-        /// it still needs to be bound.
-        /// </summary>
+        /// <summary> Constructor. The Property parameter just sets the <see cref="bindingPath"/>; it still needs to be bound. </summary>
         /// <param name="property"> The property represented by this element. </param>
         public PropertyContainer(SerializedProperty property) : this(property.propertyPath) { }
 

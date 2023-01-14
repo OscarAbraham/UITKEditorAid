@@ -8,8 +8,11 @@ using ArteHacker.UITKEditorAid.Utils;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UIToolkit label that transforms into a text field to allow editing. By default, it becomes editable with a double click. Supports UXML.
+    /// A label that transforms into a text field for editing its text.
     /// </summary>
+    /// <remarks>
+    /// By default, it becomes editable with a double click. 
+    /// </remarks>
     public class EditableLabel : BindableElement, INotifyValueChanged<string>
     {
         public new class UxmlFactory : UxmlFactory<EditableLabel, UxmlTraits> { }
@@ -49,7 +52,7 @@ namespace ArteHacker.UITKEditorAid
         private readonly TextField m_TextField;
         private readonly Label m_Label;
 
-        /// <summary> Whether to enable editing by double clicking the label. See <see cref="BeginEditing"/> for other ways to enable it. </summary>
+        /// <summary> Whether to start editing by double clicking the label. See <see cref="BeginEditing"/> to start editing from code. </summary>
         public bool editOnDoubleClick { get; set; } = true;
 
         /// <summary> Whether to use multiline text. </summary>

@@ -5,9 +5,7 @@ using UnityEditor;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// UIToolkit element to be used as an item inside a <see cref="ListControl"/>. It's used by <see cref="ArrayPropertyField"/>.
-    /// </summary>
+    /// <summary> Element used as an item inside <see cref="ArrayPropertyField"/>. </summary>
     public class ListRow : VisualElement
     {
         /// <summary> USS class name of elements of this type. </summary>

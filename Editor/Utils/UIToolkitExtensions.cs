@@ -10,8 +10,11 @@ using Hierarchy = UnityEngine.UIElements.VisualElement.Hierarchy;
 namespace ArteHacker.UITKEditorAid.Utils
 {
     /// <summary>
-    /// Extension methods for VisualElements
+    /// Extension methods for VisualElements.
     /// </summary>
+    /// <remarks>
+    /// When using extension methods that modify style properties, call them from the VisualElement's <see cref="VisualElement.style"/> property.
+    /// </remarks>
     public static class UIToolkitExtensions
     {
         /// <summary> Get an element's layout rect in local space.</summary>
