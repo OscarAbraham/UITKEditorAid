@@ -7,9 +7,7 @@ using ArteHacker.UITKEditorAid.Utils;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary>
-    /// A label that transforms into a text field for editing its text.
-    /// </summary>
+    /// <summary> A label that transforms into a text field for editing its text. <i>UXML support.</i> </summary>
     /// <remarks>
     /// By default, it becomes editable with a double click. 
     /// </remarks>

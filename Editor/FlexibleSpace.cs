@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary> An element for quickly filling the remaining space along its parent's <see cref="IStyle.flexDirection"/>. </summary>
+    /// <summary>
+    /// An element for quickly filling the remaining space along its parent's <see cref="IStyle.flexDirection"/>. <i>UXML support.</i>
+    /// </summary>
     /// <remarks>
     /// This element is analogous to IMGUI's <see cref="GUILayout.FlexibleSpace"/>.
     /// Its <see cref="IStyle.flexBasis"/> is 0 and its <see cref="IStyle.flexGrow"/> is 1.

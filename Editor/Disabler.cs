@@ -4,7 +4,9 @@ using UnityEditor;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary> UIToolkit element that disables and enables its content according to its <see cref="shouldDisable"/> callback. </summary>
+    /// <summary>
+    /// UIToolkit element that disables and enables its content according to its <see cref="shouldDisable"/> callback. <i>UXML support.</i>
+    /// </summary>
     /// <remarks>
     /// This element is analogous to IMGUI's <see cref="EditorGUI.DisabledScope"/>. It could be used in combination with
     /// <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/> to avoid editing objects that shouldn't be edited.
