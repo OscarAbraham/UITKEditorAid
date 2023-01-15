@@ -9,7 +9,7 @@ namespace ArteHacker.UITKEditorAid.Utils
     public static class ListControlUtils
     {
         /// <summary>
-        /// If your custom list is backed by a SerializedProperty, you can call this method inside
+        /// If your custom <see cref="ListControl"/> is backed by a SerializedProperty, you can call this method inside
         /// <see cref="ListControl.OnReorderDragPerformed(int, int)"/> to implement it.
         /// </summary>
         /// <param name="arrayProp">The serialized array</param>

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine.UIElements;
 using UnityEditor;
+using UnityEngine.Internal;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -22,6 +23,7 @@ namespace ArteHacker.UITKEditorAid
 
         private readonly VisualElement m_Container = new VisualElement();
 
+        [ExcludeFromDocs]
         public override VisualElement contentContainer => m_Container;
 
         /// <summary> Set this callback to indicate when to enable/disable contents. Elements will be disabled when it returns true.</summary>

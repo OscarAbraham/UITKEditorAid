@@ -17,19 +17,19 @@ namespace ArteHacker.UITKEditorAid
     /// </summary>
     /// 
     /// <remarks>
+    /// Using ListOfInspectors with multitarget SerializedObjects and Editors is not supported.
     /// This element is typically used with a serialized list or array of <see cref="ScriptableObject"/> subassets.
-    /// Working with subassets requires code and knowledge that's outside the scope of this package. If you're just looking for a way to
-    /// embed inspectors from other Objects in your UI, you may be better off looking at <see cref="InspectorElement"/>.
+    /// Working with subassets requires code and knowledge that's outside the scope of this package. If you just want to
+    /// embed inspectors from other Objects in your UI, you may be better off using <see cref="InspectorElement"/>.
     /// <para>
     /// The inspectors emulate the behavior of Component lists in GameObjects, with some differences and extra features.
     /// They will detect the presence of a <see cref="TooltipAttribute"/> in an Object and show it when hovering the Help button.
-    /// By default, the header's label is an <see cref="EditableLabel"/> that allows changing the Object's name. Creating a derived
+    /// By default, the header's label is an <see cref="EditableLabel"/> that allows changing the Object's name. Creating a child
     /// class from this one allows for some customizations.
     /// </para>
     /// <para>
-    /// Using ListOfInspectors with multitarget SerializedObjects and Editors is not supported. The list will try to detect when an
-    /// Object's script is missing and show dedicated UI for it; to support this, make sure the base type of the Object array field
-    /// is constructable by Unity (i.e. not abstract and not generic).
+    /// The list will try to detect when an Object's script is missing and show dedicated UI for it; to support this, make sure the
+    /// base type of the Object array field is constructable by Unity (i.e. not abstract and not generic).
     /// </para>
     /// </remarks>
     /// 
@@ -63,7 +63,7 @@ namespace ArteHacker.UITKEditorAid
     ///     }
     /// 
     ///     // Override this method to change how a label is added to an inspector header.
-    ///     // By default, it adds an editable label that allows changing the object's name.
+    ///     // The base implementation adds an editable label that allows changing the object's name.
     ///     protected override void AddHeaderLabel(VisualElement header, int itemIndex, SerializedObject serializedObject)
     ///     {
     ///         base.AddHeaderLabel(header, itemIndex, serializedObject);

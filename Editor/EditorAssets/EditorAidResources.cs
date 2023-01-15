@@ -11,16 +11,13 @@ namespace ArteHacker.UITKEditorAid
     /// </summary>
     public static class EditorAidResources
     {
-        /// <summary>
-        /// Uss class that contains variables like theme colors to be applied to its hierarchy.
-        /// It is added to rootElement when calling <see cref="ApplyCurrentTheme(VisualElement)"/>
-        /// </summary>
+        /// <summary> USS applied by <see cref="ApplyCurrentTheme(VisualElement)"/> to add style variables. </summary>
         public static readonly string variablesContainerUssClassName = "editor-aid-variables";
 
-        /// <summary> Uss class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in dark mode. </summary>
+        /// <summary> USS class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in dark mode. </summary>
         public static readonly string darkModeContainerUssClassName = "editor-aid-dark-mode";
 
-        /// <summary> Uss class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in light mode. </summary>
+        /// <summary> USS class applied by <see cref="ApplyCurrentTheme(VisualElement)"/> when the Editor is in light mode. </summary>
         public static readonly string lightModeContainerUssClassName = "editor-aid-light-mode";
 
         private static string s_FolderPath;
@@ -111,7 +108,6 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary>
         /// Pass a custom root element to this method to use the appropiate USS variables and class names for Unity's current skin.
-        /// The relevant elements in this package already use this method, so you don't need to call it for them.
         /// </summary>
         /// <param name="rootElement">The custom root element that will contain the variables. </param>
         public static void ApplyCurrentTheme(VisualElement rootElement)

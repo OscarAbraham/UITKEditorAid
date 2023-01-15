@@ -98,7 +98,7 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> USS class name of the element that contains all the tab contents. </summary>
         public static readonly string tabContentDisplayUssClassName = ussClassName + "__tab-content-display";
-        /// <summary> USS class name a single tab's content. </summary>
+        /// <summary> USS class name of a single tab's content. </summary>
         public static readonly string tabContentUssClassName = ussClassName + "__tab-content";
 
         private readonly List<TabPair> m_TabPairs = new List<TabPair>();

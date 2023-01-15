@@ -13,7 +13,7 @@ namespace ArteHacker.UITKEditorAid.Utils
     /// Extension methods for VisualElements.
     /// </summary>
     /// <remarks>
-    /// When using extension methods that modify style properties, call them from the VisualElement's <see cref="VisualElement.style"/> property.
+    /// When using extension methods that modify USS properties, call them from the VisualElement's <see cref="VisualElement.style"/> property.
     /// </remarks>
     public static class UIToolkitExtensions
     {
@@ -28,9 +28,7 @@ namespace ArteHacker.UITKEditorAid.Utils
 
         /// <summary>
         /// Get the direct children of a VisualElement filtered by type and an optional filter delegate. It stores them in a List parameter
-        /// to avoid garbage allocations.
-        /// Sometimes it's hard to work on children using UQuery without getting the parent too. Also, UQuery can have noticeable
-        /// performance drawbacks in certain cases.
+        /// to avoid memory allocations.
         /// </summary>
         /// <typeparam name="TElement">The type of the child elements</typeparam>
         /// <param name="ve">The parent element</param>
@@ -47,7 +45,7 @@ namespace ArteHacker.UITKEditorAid.Utils
 
         /// <summary>
         /// Get the direct children of a <see cref="Hierarchy"/> filtered by type and an optional filter delegate. It stores them in a List parameter
-        /// to avoid garbage allocations.
+        /// to avoid memory allocations.
         /// </summary>
         /// <typeparam name="TElement">The type of the child elements</typeparam>
         /// <param name="hierarchy">The parent hierarchy</param>
@@ -124,11 +122,13 @@ namespace ArteHacker.UITKEditorAid.Utils
         }
 
         /// <summary>
-        /// Gets the main label element of a Property Field when using a default property drawer.
-        /// This can be useful to set its tooltip, or to change its text. It should be called after the
-        /// field has been bound and attached to panel. Custom PropertyDrawers aren't really supported;
-        /// usually, they can take care of their own labels.
+        /// Gets the main label element of a PropertyField when using a default property drawer.
+        /// It should be called after the PropertyField has been processed by Unity's binding system.
         /// </summary>
+        /// <remarks>
+        /// This can be useful to set the label's tooltip, or to change its text.
+        /// Custom PropertyDrawers aren't really supported; usually, they can take care of their own labels.
+        /// </remarks>
         /// <param name="propertyField">The property field to search for a main Label Element.</param>
         /// <returns>The main Label Element, or null if it isn't found.</returns>
         public static Label GetLabelElement(this PropertyField propertyField)
@@ -152,11 +152,10 @@ namespace ArteHacker.UITKEditorAid.Utils
         private static FieldInfo s_CachedBoundPropertyField;
 
         /// <summary>
-        /// Tries to get the bound SerializedProperty from a bindable element through reflection.
-        /// Use it to get the property that is bound to a <see cref="VisualElement"/> if you really need it.
+        /// Tries to get the bound <see cref="SerializedProperty"/> from a bindable <see cref="VisualElement"/> through reflection.
         /// </summary>
         /// <param name="bindable">A bindable element</param>
-        /// <returns>A serialized property if it's found and reflection works, null otherwise.</returns>
+        /// <returns>The bound property if it's found, null otherwise.</returns>
         public static SerializedProperty GetBoundSerializedProperty(this IBindable bindable)
         {
             var binding = bindable.binding;

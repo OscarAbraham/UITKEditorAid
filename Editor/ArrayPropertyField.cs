@@ -51,7 +51,7 @@ namespace ArteHacker.UITKEditorAid
     /// or when you need the customization options. Use ListView when you need to take advantage of its
     /// virtualization system to handle thousands of elements with good performance.
     /// <para>
-    /// More customization options and features are available by creating child classes of this element. Check
+    /// More customization options and features are available by creating child classes of this element; see
     /// <see cref="ListControl"/> for some of them (for example, to handle custom mouse drops).
     /// </para>
     /// </remarks>

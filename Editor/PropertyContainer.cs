@@ -46,6 +46,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> The path to property represented by this element. </summary>
         public string bindingPath { get  => m_PropertyProxy.bindingPath; set => m_PropertyProxy.bindingPath = value; }
 
+        [RemoveFromDocs]
         public override VisualElement contentContainer => m_ContentContainer;
 
         /// <summary> Constructor. </summary>
