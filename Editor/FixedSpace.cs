@@ -5,7 +5,7 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element for quickly adding a space between elements along its parent's <see cref="IStyle.flexDirection"/>. <i>UXML support.</i>
+    /// An element for quickly adding a space between elements along its parent's <see cref="IStyle.flexDirection"/>. <mark>UXML support</mark>
     /// </summary>
     /// <remarks>
     /// This element is analogous to IMGUI's <see cref="EditorGUILayout.Space"/>.

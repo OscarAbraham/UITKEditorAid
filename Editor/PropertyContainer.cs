@@ -7,7 +7,7 @@ namespace ArteHacker.UITKEditorAid
     // TODO: Find a practical way to make child texts bold when overriden, and make it optional. 
     /// <summary>
     /// An Element that shows a <see cref="SerializedProperty">SerializedProperty's</see> prefab override indicators,
-    /// and the property's menu on context click. <i>UXML support.</i>
+    /// and the property's menu on context click. <mark>UXML support</mark>
     /// </summary>
     /// <remarks>
     /// Currently, Unity only adds these capabilities for fields that inherit from <see cref="BaseField{TValueType}"/> or <see cref="Foldout"/>.
