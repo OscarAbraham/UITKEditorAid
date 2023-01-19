@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Defines the way that an add button looks in a list control.
+    /// Defines the way that an add button looks in a list.
     /// <para>
     /// See also: <see cref="ArrayPropertyField.addButtonMode"/>
     /// </para>
@@ -26,7 +26,7 @@ namespace ArteHacker.UITKEditorAid
 
     // CONSIDER: Should we add a way to disable foldout binding?
     /// <summary>
-    /// Defines the way that a list's header looks.
+    /// Defines behavior of a list header.
     /// <para>
     /// See also: <see cref="ArrayPropertyField.headerMode"/>
     /// </para>
