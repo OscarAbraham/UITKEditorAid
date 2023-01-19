@@ -46,7 +46,7 @@ namespace ArteHacker.UITKEditorAid
     /// </summary>
     /// 
     /// <remarks>
-    /// UI Toolkit's <see cref="ListView"/> covers many of the use cases for ArrayPropertyField, but you may
+    /// UI Toolkit's <see cref="ListView"/> covers many of ArrayPropertyField's use cases, but you may
     /// prefer this element sometimes. Use ArrayPropertyField when you need to go around bugs in ListView,
     /// or when you need the customization options. Use ListView when you need to take advantage of its
     /// virtualization system to handle thousands of elements with good performance.
