@@ -14,7 +14,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// <example>
     /// Here's an example for customizing an editable label.
-    /// <code>
+    /// <code language="csharp">
     /// <![CDATA[
     /// public class MyCustomEditor : Editor
     /// {

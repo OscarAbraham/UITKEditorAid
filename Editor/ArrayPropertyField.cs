@@ -58,7 +58,7 @@ namespace ArteHacker.UITKEditorAid
     /// 
     /// <example>
     /// Basic Usage:
-    /// <code>
+    /// <code language="csharp">
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -71,7 +71,7 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// </code>
     /// Configuration Options:
-    /// <code>
+    /// <code language="csharp">
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -120,7 +120,7 @@ namespace ArteHacker.UITKEditorAid
     /// </code>
     /// A custom example with <see cref="ManagedReferenceField">ManagedReferenceFields</see> for lists/arrays
     /// that use the <see cref="SerializeReference"/> attribute:
-    /// <code>
+    /// <code language="csharp">
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()

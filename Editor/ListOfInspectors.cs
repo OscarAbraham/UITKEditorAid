@@ -33,7 +33,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// 
     /// <example>
-    /// <code>
+    /// <code language="csharp">
     /// class CustomEditorWithListOfInspectors : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()

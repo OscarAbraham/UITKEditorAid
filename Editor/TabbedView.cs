@@ -17,7 +17,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// <example>
     /// A basic usage example with three tabs.
-    /// <code>
+    /// <code language="csharp">
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
