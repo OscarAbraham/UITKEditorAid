@@ -13,23 +13,22 @@ using Object = UnityEngine.Object;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UI Toolkit list similar to the component list in a GameObject's inspector.
+    /// A UI Toolkit list similar to the components list in GameObject's inspector.
     /// </summary>
     /// 
     /// <remarks>
-    /// Using ListOfInspectors with multitarget SerializedObjects and Editors is not supported.
-    /// This element is typically used with a serialized list or array of <see cref="ScriptableObject"/> subassets.
-    /// Working with subassets requires code and knowledge that's outside the scope of this package. If you just want to
-    /// embed inspectors from other Objects in your UI, you may be better off using <see cref="InspectorElement"/>.
     /// <para>
-    /// The inspectors emulate the behavior of Component lists in GameObjects, with some differences and extra features.
-    /// They will detect the presence of a <see cref="TooltipAttribute"/> in an Object and show it when hovering the Help button.
-    /// By default, the header's label is an <see cref="EditableLabel"/> that allows changing the Object's name. Creating a child
-    /// class from this one allows for some customizations.
+    /// This element is typically used with a list of subassets. Subasset systems require code that's outside the scope of this
+    /// package. You may be better off using <see cref="InspectorElement"/> if you just want to embed inspectors from different Objects.
     /// </para>
     /// <para>
-    /// The list will try to detect when an Object's script is missing and show dedicated UI for it; to support this, make sure the
-    /// base type of the Object array field is constructable by Unity (i.e. not abstract and not generic).
+    /// The inspector's Help button shows a custom tooltip if there's a <see cref="TooltipAttribute"/> in the Object's class.
+    /// By default, the header's have an <see cref="EditableLabel"/> for changing the Object's name. More customizations
+    /// are available by creating a child class. Multitarget SerializedObjects and Editors aren't supported.
+    /// </para>
+    /// <para>
+    /// Inspectors will try to show special UI when an Object's script is missing. To support this, the base type of the Object
+    /// array must be creatable (i.e. not abstract nor generic).
     /// </para>
     /// </remarks>
     /// 
