@@ -9,8 +9,54 @@ namespace ArteHacker.UITKEditorAid
 {
     /// <summary> A label that transforms into a text field for editing its text. <mark>UXML support</mark> </summary>
     /// <remarks>
-    /// By default, it becomes editable with a double click. 
+    /// By default, it becomes editable with a double click. Use <see cref="BeginEditing"/> to enter edit mode from code.
+    /// Set <see cref="emptyTextLabel"/> to show a placeholder text when the label is empty.
     /// </remarks>
+    /// <example>
+    /// Here's an example for customizing an editable label.
+    /// <code>
+    /// <![CDATA[
+    /// public class MyCustomEditor : Editor
+    /// {
+    ///     public override VisualElement CreateInspectorGUI()
+    ///     {
+    ///         var root = new VisualElement();
+    ///         var editableLabel = new EditableLabel();
+    ///         root.Add(editableLabel);
+    /// 
+    ///         // We can disable editing on double click this way:
+    ///         editableLabel.editOnDoubleClick = false;
+    /// 
+    ///         // EditableLabels can enter edit mode from code. 
+    ///         // For example, we can add a listener to edit it on Alt+Click:
+    ///         editableLabel.RegisterCallback<MouseDownEvent>(e =>
+    ///         {
+    ///             if (e.altKey && e.button == 0)
+    ///                 editableLabel.BeginEditing();
+    ///         });
+    /// 
+    ///         // We can also make it editable from a context menu action:
+    ///         var menuManipulator = new ContextualMenuManipulator(e =>
+    ///         {
+    ///             e.menu.AppendAction("Edit label's text", a => editableLabel.BeginEditing());
+    ///         });
+    ///         root.AddManipulator(menuManipulator);
+    /// 
+    ///         // We can add a placeholder text for when the label is empty:
+    ///         editableLabel.emptyTextLabel = "Alt+Click to edit this label";
+    ///         // Or we can set the label's actual text like this:
+    ///         editableLabel.value = "Initial text";
+    /// 
+    ///         // EditableLabels can be bound to any string property, just like any
+    ///         // TextField. We can do it by setting it's bindingPath:
+    ///         editableLabel.bindingPath = "m_Name";
+    /// 
+    ///         return root;
+    ///     }
+    /// }
+    /// ]]>
+    /// </code>
+    /// </example>
     public class EditableLabel : BindableElement, INotifyValueChanged<string>
     {
         public new class UxmlFactory : UxmlFactory<EditableLabel, UxmlTraits> { }
@@ -132,7 +178,6 @@ namespace ArteHacker.UITKEditorAid
 #if UNITY_2022_2_OR_NEWER
         [EventInterest(typeof(MouseDownEvent))]
 #endif
-
         [RemoveFromDocs]
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
