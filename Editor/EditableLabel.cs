@@ -14,8 +14,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// <example>
     /// Here's an example for customizing an editable label.
-    /// <code language="csharp">
-    /// <![CDATA[
+    /// <code language="csharp"><![CDATA[
     /// public class MyCustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -54,8 +53,7 @@ namespace ArteHacker.UITKEditorAid
     ///         return root;
     ///     }
     /// }
-    /// ]]>
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class EditableLabel : BindableElement, INotifyValueChanged<string>
     {

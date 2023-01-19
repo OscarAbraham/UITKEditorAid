@@ -58,7 +58,7 @@ namespace ArteHacker.UITKEditorAid
     /// 
     /// <example>
     /// Basic Usage:
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -69,9 +69,9 @@ namespace ArteHacker.UITKEditorAid
     ///         return root;
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// Configuration Options:
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -117,10 +117,10 @@ namespace ArteHacker.UITKEditorAid
     ///         return root;
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// A custom example with <see cref="ManagedReferenceField">ManagedReferenceFields</see> for lists/arrays
     /// that use the <see cref="SerializeReference"/> attribute:
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -178,7 +178,7 @@ namespace ArteHacker.UITKEditorAid
     ///         gm.DropDown(buttonPosition);
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class ArrayPropertyField : ListControl
     {

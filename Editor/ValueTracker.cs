@@ -21,13 +21,13 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// 
     /// <example>
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
     ///         var root = new VisualElement();
-    ///         var intTracker = new ValueTracker&lt;int&gt;();
+    ///         var intTracker = new ValueTracker<int>();
     ///         root.Add(intTracker);
     /// 
     ///         // You can pass a property path relative to the object that will be bound.
@@ -45,7 +45,7 @@ namespace ArteHacker.UITKEditorAid
     ///             intProp.intValue);
     /// 
     ///         // You can set up all this from the constructor:
-    ///         var intTracker2 = new ValueTracker&lt;int&gt;(
+    ///         var intTracker2 = new ValueTracker<int>(
     ///             intProp,
     ///             e => Debug.Log($"new value: {e.newValue}"),
     ///             intProp.intValue);
@@ -58,7 +58,7 @@ namespace ArteHacker.UITKEditorAid
     ///         // root.Bind(serializedObject);
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
     {

@@ -33,7 +33,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// 
     /// <example>
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class CustomEditorWithListOfInspectors : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -81,7 +81,7 @@ namespace ArteHacker.UITKEditorAid
     ///         menu.AddItem(new GUIContent("My Custom Menu Item"), true, () => { /*Do Something*/});
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class ListOfInspectors : ListControl
     {

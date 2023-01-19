@@ -22,7 +22,7 @@ namespace ArteHacker.UITKEditorAid
     /// 
     /// <example>
     /// A basic example. See <see cref="ArrayPropertyField"/> for how to use it with reorderable lists.
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -34,7 +34,7 @@ namespace ArteHacker.UITKEditorAid
     ///         return root;
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class ManagedReferenceField : VisualElement
     {

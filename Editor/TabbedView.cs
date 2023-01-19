@@ -17,7 +17,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     /// <example>
     /// A basic usage example with three tabs.
-    /// <code language="csharp">
+    /// <code language="csharp"><![CDATA[
     /// class ACustomEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
@@ -59,7 +59,7 @@ namespace ArteHacker.UITKEditorAid
     ///         return tabbedView;
     ///     }
     /// }
-    /// </code>
+    /// ]]></code>
     /// </example>
     public class TabbedView : VisualElement
     {
