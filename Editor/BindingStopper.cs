@@ -8,14 +8,14 @@ using Object = UnityEngine.Object;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element that prevents binding operations from higher in the hierarchy from reaching its children. <mark>UXML support</mark>
+    /// An element that prevents binding its children from higher in the hierarchy. <mark>UXML support</mark>
     /// </summary>
     /// <remarks>
     /// It's still possible to bind the children, just not from outside this element.
     /// <para>
-    /// This element is useful for adding fields that must be bound to a different Object than the rest of the UI.
-    /// For example, this is used by the <see cref="ListOfInspectors"/> so each item is bound to its respective
-    /// Object instead of being bound to the Object from the parent inspector.
+    /// Use this element to keep fields bound to different Objects than the rest of the UI.
+    /// For example, it's used by <see cref="ListOfInspectors"/> to ensure inspector headers aren't
+    /// bound to the parent inspector's Object.
     /// </para>
     /// </remarks>
     public class BindingStopper : VisualElement
