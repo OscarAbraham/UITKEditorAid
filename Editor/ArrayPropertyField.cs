@@ -197,7 +197,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name of the list's foldout. </summary>
         public static readonly string headerFoldoutUssClassName = "editor-aid-list-control__header-foldout";
         /// <summary> USS class name of the list's label. </summary>
-        public static readonly string headerLabelUssClasName = "editor-aid-list-control__header-label";
+        public static readonly string headerLabelUssClassName = "editor-aid-list-control__header-label";
 
         private readonly SerializedProperty m_ArrayProp;
         private readonly Button m_AddButton = new Button();
@@ -387,7 +387,7 @@ namespace ArteHacker.UITKEditorAid
             viewDataKey = arrayProp.serializedObject.targetObject.GetInstanceID() + "_" + arrayProp.propertyPath;
 
             label = null;
-            m_HeaderLabel.AddToClassList(headerLabelUssClasName);
+            m_HeaderLabel.AddToClassList(headerLabelUssClassName);
             m_HeaderFoldout.AddToClassList(headerFoldoutUssClassName);
             m_HeaderFoldout.bindingPath = arrayProp.propertyPath;
             m_HeaderFoldout.SetValueWithoutNotify(arrayProp.isExpanded);
