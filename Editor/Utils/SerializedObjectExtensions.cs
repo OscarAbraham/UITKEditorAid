@@ -4,7 +4,7 @@ using UnityEditor;
 namespace ArteHacker.UITKEditorAid.Utils
 {
     /// <summary>
-    /// Extension methods for <see cref="SerializedObject"/> that are specially useful in combination with UIToolkit.
+    /// Extension methods for <see cref="SerializedObject"/> that are specially useful in combination with UI Toolkit.
     /// </summary>
     public static class SerializedObjectExtensions
     {

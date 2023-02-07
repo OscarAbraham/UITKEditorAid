@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element for organizing content with tabs.
+    /// Element for organizing content with tabs.
     /// </summary>
     /// <remarks>
     /// Set <see cref="allowMultipleSelection"/> true to support opening multiple tabs.
@@ -23,24 +23,26 @@ namespace ArteHacker.UITKEditorAid
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
     ///         var tabbedView = new TabbedView();
-    ///         // Set allowMultipleSelection to true to view multiple tabs at the same time
-    ///         // by holding shift or ctrl (cmd on macOS) when clicking on them.
+    ///         // Set allowMultipleSelection to view multiple tabs at the same time.
+    ///         // It works by holding shift or ctrl (cmd on macOS) when clicking them.
     ///         tabbedView.allowMultipleSelection = true;
     /// 
     ///         // Use AddTab to create new tabs.
+    ///         // The first parameter is an element used as the tab's title.
+    ///         // The second parameter is an element used as the tab's content.
     ///         tabbedView.AddTab(new Label("Tab 0"), new Label("Tab 0 Content"));
     ///         tabbedView.AddTab(new Label("Tab 1"), new Label("Tab 1 Content"));
-    ///         // You can use a string as the title if you only need a simple label.
+    ///         // You can use a string for the tab's title if you only need some text.
     ///         tabbedView.AddTab("Tab 2", new Label("Tab 2 Content"));
     /// 
-    ///         // The first tab added is selected by default. This selects the last tab.
+    ///         // The first tab is selected by default. This selects Tab 2.
     ///         tabbedView.SetSelectedTab(2);
     ///         
     ///         // This selects Tab 0 and Tab 1 without unselecting any other tab.
     ///         tabbedView.AddTabToSelection(0);
     ///         tabbedView.AddTabToSelection(1);
     ///         
-    ///         // This unselects Tab 2 without needing to select another tab.
+    ///         // This unselects Tab 2.
     ///         tabbedView.RemoveTabFromSelection(2);
     /// 
     ///         // Listen to this event to know when a tab's selection status changes.
@@ -52,8 +54,8 @@ namespace ArteHacker.UITKEditorAid
     ///                 Debug.Log($"Tab {index} unselected");
     ///         };
     /// 
-    ///         // Pass a unique string to this method to remember the tab selection in views that
-    ///         // use the same key. Make sure to call it after all the tabs have been added.
+    ///         // Use a unique string as a key remember tab selection in views that use
+    ///         // the same key. Make sure to call this after all the tabs are added.
     ///         tabbedView.ApplyPersistenceKey("ACustomEditor_TabsKey");
     /// 
     ///         return tabbedView;

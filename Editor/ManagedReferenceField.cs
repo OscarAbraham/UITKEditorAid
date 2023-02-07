@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element that handles fields with the <see cref="SerializeReference"/> attribute.
+    /// Element that handles fields with the <see cref="SerializeReference"/> attribute.
     /// </summary>
     /// 
     /// <remarks>

@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// An element that prevents binding its children from higher in the hierarchy. <mark>UXML support</mark>
+    /// Element that prevents binding its children from higher in the hierarchy. <c>UXML support</c>
     /// </summary>
     /// <remarks>
     /// It's still possible to bind the children, just not from outside this element.

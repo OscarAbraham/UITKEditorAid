@@ -6,7 +6,7 @@ using UnityEngine.Internal;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Element that disables and enables its content according to its <see cref="shouldDisable"/> callback. <mark>UXML support</mark>
+    /// Element that disables its content according to its <see cref="shouldDisable"/> callback. <c>UXML support</c>
     /// </summary>
     /// <remarks>
     /// This element is analogous to IMGUI's <see cref="EditorGUI.DisabledScope"/>. It can be used in combination with

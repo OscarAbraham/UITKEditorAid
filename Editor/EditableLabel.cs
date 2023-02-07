@@ -7,7 +7,7 @@ using ArteHacker.UITKEditorAid.Utils;
 
 namespace ArteHacker.UITKEditorAid
 {
-    /// <summary> A label that transforms into a text field for editing its text. <mark>UXML support</mark> </summary>
+    /// <summary> A label that transforms into a field for editing its text. <c>UXML support</c> </summary>
     /// <remarks>
     /// By default, it becomes editable with a double click. Use <see cref="BeginEditing"/> to enter edit mode from code.
     /// Set <see cref="emptyTextLabel"/> to show a placeholder text when the label is empty.

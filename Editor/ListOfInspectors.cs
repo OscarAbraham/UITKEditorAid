@@ -13,7 +13,7 @@ using Object = UnityEngine.Object;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A UI Toolkit list similar to the components list in GameObject's inspector.
+    /// A list of Objects similar to the components list in a GameObject's inspector.
     /// </summary>
     /// 
     /// <remarks>
@@ -40,8 +40,9 @@ namespace ArteHacker.UITKEditorAid
     ///     {
     ///         var root = new VisualElement();
     /// 
-    ///         // The mylistOfObjects field should be a list or array of elements that derive from UnityEngine.Object.
-    ///         // Usually, it's a list of ScriptableObjects that are embedded as subassets in this Editor's target.
+    ///         // The mylistOfObjects field should be a list or array of elements that
+    ///         // derive from UnityEngine.Object. It's usually a list of ScriptableObjects
+    ///         // embedded as subassets in the field's owner.
     ///         var listOfObjectsProperty = serializedObject.FindProperty("mylistOfObjects");
     ///         var listOfInspectors = new MyListOfInspectors(listOfObjectsProperty);
     ///         root.Add(listOfInspectors);
@@ -55,30 +56,46 @@ namespace ArteHacker.UITKEditorAid
     /// {
     ///     public MyListOfInspectors(SerializedProperty arrayProp) : base(arrayProp) { }
     /// 
-    ///     // Override this method to add elements to an inspector header before its label. 
-    ///     protected override void AddPrelabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject)
+    ///     // Override this method to add elements to an inspector header before its label.
+    ///     protected override void AddPrelabelHeaderElements(
+    ///         VisualElement header,
+    ///         int itemIndex,
+    ///         SerializedObject serializedObject)
     ///     {
     ///         base.AddPrelabelHeaderElements(header, itemIndex, serializedObject);
     ///     }
     /// 
     ///     // Override this method to change how a label is added to an inspector header.
-    ///     // The base implementation adds an editable label that allows changing the object's name.
-    ///     protected override void AddHeaderLabel(VisualElement header, int itemIndex, SerializedObject serializedObject)
+    ///     // The base implementation adds an editable label for changing the object's name.
+    ///     protected override void AddHeaderLabel(
+    ///         VisualElement header,
+    ///         int itemIndex,
+    ///         SerializedObject serializedObject)
     ///     {
     ///         base.AddHeaderLabel(header, itemIndex, serializedObject);
     ///     }
     /// 
     ///     // Override this method to add elements to an inspector header after its label.
-    ///     protected override void AddPostlabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject)
+    ///     protected override void AddPostlabelHeaderElements(
+    ///         VisualElement header,
+    ///         int itemIndex,
+    ///         SerializedObject serializedObject)
     ///     {
     ///         base.AddPostlabelHeaderElements(header, itemIndex, serializedObject);
     ///     }
     /// 
     ///     // Override this method to add context menu items for an inspector header.
-    ///     protected override void AddItemsToContextMenu(GenericMenu menu, VisualElement header, int itemIndex, SerializedObject serializedObject)
+    ///     protected override void AddItemsToContextMenu(
+    ///         GenericMenu menu,
+    ///         VisualElement header,
+    ///         int itemIndex,
+    ///         SerializedObject serializedObject)
     ///     {
     ///         base.AddItemsToContextMenu(menu, header, itemIndex, serializedObject);
-    ///         menu.AddItem(new GUIContent("My Custom Menu Item"), true, () => { /*Do Something*/});
+    ///         menu.AddItem(new GUIContent("My Menu Item"), true, () =>
+    ///         {
+    ///             // Do something.
+    ///         });
     ///     }
     /// }
     /// ]]></code>

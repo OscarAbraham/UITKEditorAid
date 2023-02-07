@@ -7,7 +7,7 @@ using System.IO;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// A static class to access resources and style sheets used by this package.
+    /// A static class for accessing resources used by this package.
     /// </summary>
     public static class EditorAidResources
     {

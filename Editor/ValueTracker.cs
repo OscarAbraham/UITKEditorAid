@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 namespace ArteHacker.UITKEditorAid
 {
     /// <summary>
-    /// Utility element to listen for changes in a <see cref="SerializedProperty"/>.
+    /// Utility element that listens for changes in a <see cref="SerializedProperty"/>.
     /// </summary>
     /// 
     /// <typeparam name="TValue">

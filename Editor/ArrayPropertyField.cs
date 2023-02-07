@@ -42,7 +42,7 @@ namespace ArteHacker.UITKEditorAid
     }
 
     /// <summary>
-    /// A reorderable list for a given SerializedProperty. It has many customization options.
+    /// Control for a serialized Array or List. It has many customization options.
     /// </summary>
     /// 
     /// <remarks>
@@ -51,8 +51,8 @@ namespace ArteHacker.UITKEditorAid
     /// or when you need the customization options. Use ListView when you need to take advantage of its
     /// virtualization system to handle thousands of elements with good performance.
     /// <para>
-    /// More customizations are available by creating subclassing this element. See
-    /// <see cref="ListControl"/> for some of them (for example, to handle custom mouse drops).
+    /// More customizations are available by subclassing this element. See ArrayPropertyField's 
+    /// <see cref="ListControl">parent class</see> for some of them (for example, to handle custom mouse drops).
     /// </para>
     /// </remarks>
     /// 
@@ -79,40 +79,34 @@ namespace ArteHacker.UITKEditorAid
     ///         var root = new VisualElement();
     ///         var list = new ArrayPropertyField(serializedObject.FindProperty("field"));
     /// 
-    ///         // Make it non-reorderable.
-    ///         list.reorderable = false;
-    ///         // Remove the box that is drawn around the list by default.
-    ///         list.boxed = false;
-    ///         // Set the header's text.
-    ///         list.label = "custom label";
-    ///         // Hide the header.
-    ///         list.headerMode = ListHeaderMode.None;
-    ///         // Show the header as a Label without a Foldout
-    ///         list.headerMode = ListHeaderMode.Label;
-    ///         // Set a custom empty message. Null to hide it.
-    ///         list.emptyListMessage = null;
-    ///         // Hide drag handles.
-    ///         list.showDragHandles = false;
-    ///         // Don't use zebra-like background to differentiate odd and even items.
-    ///         list.showAlternatedBackgrounds = false;
-    ///         // Hide remove buttons on each item.
-    ///         list.showRemoveButtons = false;
+    ///         list.reorderable = false; // Make it non-reorderable.
+    ///         list.boxed = false; // Remove the box around the list.
+    /// 
+    ///         list.label = "custom label"; // Set the header's text
+    ///         list.headerMode = ListHeaderMode.Foldout; // Use a foldout in the header.
+    ///         list.headerMode = ListHeaderMode.Label; // Use a label in the header.
+    ///         list.headerMode = ListHeaderMode.None; // Hide the header.
+    /// 
+    ///         list.emptyListMessage = null; // Message for empty lists. Null hides it.
+    ///         list.showDragHandles = false; // Hide drag handles.
+    ///         list.showAlternatedBackgrounds = false; // Remove zebra-like backgrounds.
+    ///         list.showSeparators = true; // Show separator lines between items.
+    /// 
+    ///         // Add a little arrow to the add button.
+    ///         list.addButtonMode = AddButtonMode.WithOptions;
     ///         // Hide the add button in the footer.
     ///         list.addButtonMode = AddButtonMode.None;
-    ///         // Show the add button as a plus sign with a little downwards arrow.
-    ///         list.addButtonMode = AddButtonMode.WithOptions;
-    ///         // Customize remove behavior
-    ///         list.onRemove = (int itemIndex) => { };
-    ///         // Customize add behavior
-    ///         list.onAdd = (Rect buttonPosition) => { };
-    ///         // Show separator lines between items.
-    ///         list.showSeparators = true;
-    ///         
-    ///         // Add a single button to remove the selected item, or the last one if none is selected.
+    ///         // Hide the remove buttons on each item.
+    ///         list.showRemoveButtons = false;
+    /// 
+    ///         // Show a button in the footer to remove the selected or the last item.
     ///         list.showMainRemoveButton = true;
-    ///         // Set this to true to enable item selection; it works great with the previous feature.
+    ///         // Enable item selection. Works great with the previous property.
     ///         list.supportItemSelection = true;
     ///         
+    ///         list.onAdd = (Rect buttonPosition) => { }; // Customize add behavior.
+    ///         list.onRemove = (int itemIndex) => { }; // Customize remove behavior.
+    /// 
     ///         root.Add(list);
     ///         return root;
     ///     }
@@ -121,27 +115,36 @@ namespace ArteHacker.UITKEditorAid
     /// A custom example with <see cref="ManagedReferenceField">ManagedReferenceFields</see> for lists/arrays
     /// that use the <see cref="SerializeReference"/> attribute:
     /// <code language="csharp"><![CDATA[
-    /// class ACustomEditor : Editor
+    /// [System.Serializable] class ReferenceType1 { }
+    /// 
+    /// [System.Serializable] class ReferenceType2 { }
+    /// 
+    /// class ReferencesArrayContainer : ScriptableObject
+    /// {
+    ///     [SerializeReference]
+    ///     object[] m_ReferencesArray;
+    /// }
+    /// 
+    /// [CustomEditor(typeof(ReferencesArrayContainer))]
+    /// class ReferencesArrayContainerEditor : Editor
     /// {
     ///     public override VisualElement CreateInspectorGUI()
     ///     {
     ///         var root = new VisualElement();
     /// 
-    ///         // "field" would be an array with the [SerializeReference] attribute.
-    ///         var arrayProp = serializedObject.FindProperty("field");
+    ///         var arrayProperty = serializedObject.FindProperty("m_ReferencesArray");
     ///         var list = new ArrayPropertyField
     ///         (
-    ///             arrayProp,
-    ///             // The second constructor parameter is an optional item creation method.
+    ///             arrayProperty,
+    ///             // This constructor parameter is an optional item creation method.
     ///             // We use it to return a ManagedReferenceField, which will update the
-    ///             // PropertyField if the backing property changes type. That can happen
-    ///             // when the list is reordered, for example.
-    ///             i => new ManagedReferenceField(arrayProp.GetArrayElementAtIndex(i))
+    ///             // item's UI if the backing property changes type.
+    ///             i => new ManagedReferenceField(arrayProperty.GetArrayElementAtIndex(i))
     ///         );
     /// 
-    ///         // Add a little arrow to the add button
+    ///         // Add a little arrow to the add button.
     ///         list.addButtonMode = AddButtonMode.WithOptions;
-    ///         // We need custom add functionality, otherwise it'll just add null objects.
+    ///         // We need custom add functionality, otherwise it'll just add null items.
     ///         list.onAdd = DisplayAddMenu;
     /// 
     ///         root.Add(list);
@@ -150,32 +153,32 @@ namespace ArteHacker.UITKEditorAid
     /// 
     ///     private void DisplayAddMenu(Rect buttonPosition)
     ///     {
-    ///         SerializedProperty array = serializedObject.FindProperty("field");
-    ///         GenericMenu gm = new GenericMenu();
+    ///         var menu = new GenericMenu();
     /// 
-    ///         gm.AddItem(new GUIContent("Add Object Type 1"), false, () =>
-    ///         {
-    ///             serializedObject.Update();
+    ///         menu.AddItem(
+    ///             new GUIContent("Add Reference Type 1"),
+    ///             false,
+    ///             () => AddItemToArray(new ReferenceType1()));
     /// 
-    ///             array.arraySize++;
-    ///             var lastItem = array.GetArrayElementAtIndex(array.arraySize - 1);
-    ///             lastItem.managedReferenceValue = new ObjectType1();
+    ///         menu.AddItem(
+    ///             new GUIContent("Add Reference Type 2"),
+    ///             false,
+    ///             () => AddItemToArray(new ReferenceType2()));
     /// 
-    ///             serializedObject.ApplyModifiedProperties();
-    ///         });
+    ///         menu.DropDown(buttonPosition);
+    ///     }
     /// 
-    ///         gm.AddItem(new GUIContent("Add Object Type 2"), false, () =>
-    ///         {
-    ///             serializedObject.Update();
+    ///     private void AddItemToArray(object newItem)
+    ///     {
+    ///         serializedObject.Update();
+    ///         var arrayProperty = serializedObject.FindProperty("m_ReferencesArray");
     /// 
-    ///             array.arraySize++;
-    ///             var lastItem = array.GetArrayElementAtIndex(array.arraySize - 1);
-    ///             lastItem.managedReferenceValue = new ObjectType2();
+    ///         arrayProperty.arraySize++;
+    ///         var newItemProperty =
+    ///             arrayProperty.GetArrayElementAtIndex(arrayProperty.arraySize - 1);
+    ///         newItemProperty.managedReferenceValue = newItem;
     /// 
-    ///             serializedObject.ApplyModifiedProperties();
-    ///         });
-    /// 
-    ///         gm.DropDown(buttonPosition);
+    ///         serializedObject.ApplyModifiedProperties();
     ///     }
     /// }
     /// ]]></code>
