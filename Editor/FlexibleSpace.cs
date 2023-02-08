@@ -14,6 +14,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     public class FlexibleSpace : VisualElement
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<FlexibleSpace, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
@@ -23,6 +24,7 @@ namespace ArteHacker.UITKEditorAid
                 get { yield break; }
             }
         }
+#endif
 
         public FlexibleSpace()
         {

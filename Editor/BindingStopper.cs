@@ -20,7 +20,9 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     public class BindingStopper : VisualElement
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<BindingStopper> { }
+#endif
 
         private static readonly Type s_SerializedObjectBindEventType;
 

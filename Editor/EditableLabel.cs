@@ -57,6 +57,7 @@ namespace ArteHacker.UITKEditorAid
     /// </example>
     public class EditableLabel : BindableElement, INotifyValueChanged<string>
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<EditableLabel, UxmlTraits> { }
 
         public new class UxmlTraits : BindableElement.UxmlTraits
@@ -81,6 +82,7 @@ namespace ArteHacker.UITKEditorAid
                 label.multiline = m_Multiline.GetValueFromBag(bag, cc);
             }
         }
+#endif
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-editable-label";

@@ -12,6 +12,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     public class FixedSpace : VisualElement
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<FixedSpace, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
@@ -30,6 +31,7 @@ namespace ArteHacker.UITKEditorAid
                 space.style.flexBasis = m_Size.GetValueFromBag(bag, cc);
             }
         }
+#endif
 
         private const float k_DefaultSize = 6;
 

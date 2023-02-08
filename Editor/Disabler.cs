@@ -14,7 +14,9 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     public class Disabler : VisualElement
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<Disabler> { }
+#endif
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-disabler";

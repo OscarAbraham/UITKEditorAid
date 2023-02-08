@@ -20,6 +20,7 @@ namespace ArteHacker.UITKEditorAid
     /// </remarks>
     public class PropertyContainer : VisualElement
     {
+#if !REMOVE_UXML_FACTORIES
         public new class UxmlFactory : UxmlFactory<PropertyContainer, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
@@ -33,6 +34,7 @@ namespace ArteHacker.UITKEditorAid
                 propertyContainer.bindingPath = m_PropertyPath.GetValueFromBag(bag, cc);
             }
         }
+#endif
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-property-container";
