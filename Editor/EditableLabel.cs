@@ -64,7 +64,12 @@ namespace ArteHacker.UITKEditorAid
         {
             UxmlStringAttributeDescription m_Value = new UxmlStringAttributeDescription { name = "value" };
             UxmlStringAttributeDescription m_EmptyTextLabel = new UxmlStringAttributeDescription { name = "empty-text-label" };
-            UxmlBoolAttributeDescription m_IsDelayed = new UxmlBoolAttributeDescription { name = "delayed", defaultValue = true };
+            UxmlBoolAttributeDescription m_IsDelayed = new UxmlBoolAttributeDescription
+            {
+                name = "is-delayed",
+                obsoleteNames = new[] { "delayed" },
+                defaultValue = true
+            };
             UxmlBoolAttributeDescription m_Multiline = new UxmlBoolAttributeDescription { name = "multiline" };
 
             public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription

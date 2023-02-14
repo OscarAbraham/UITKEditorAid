@@ -28,12 +28,18 @@ namespace ArteHacker.UITKEditorAid
             {
                 base.Init(ve, bag, cc);
                 var space = ve as FixedSpace;
-                space.style.flexBasis = m_Size.GetValueFromBag(bag, cc);
+                space.size = m_Size.GetValueFromBag(bag, cc);
             }
         }
 #endif
 
         private const float k_DefaultSize = 6;
+
+        /// <summary>
+        /// The space's size along the parent's <see cref="IStyle.flexDirection"/>.
+        /// It works as a shorthand for this element's <see cref="IStyle.flexBasis"/> value.
+        /// </summary>
+        public float size { get => style.flexBasis.value.value; set => style.flexBasis = value; }
 
         /// <summary> Constructor. Uses a small default size. </summary>
         public FixedSpace() : this(k_DefaultSize) { }
@@ -43,7 +49,7 @@ namespace ArteHacker.UITKEditorAid
         public FixedSpace(float size)
         {
             pickingMode = PickingMode.Ignore;
-            style.flexBasis = size;
+            this.size = size;
             style.flexGrow = 0;
             style.flexShrink = 0;
         }
