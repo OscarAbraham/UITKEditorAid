@@ -22,13 +22,13 @@ namespace ArteHacker.UITKEditorAid
     /// package. You may be better off using <see cref="InspectorElement"/> if you just want to embed inspectors from different Objects.
     /// </para>
     /// <para>
-    /// The inspector's Help button shows a custom tooltip if there's a <see cref="TooltipAttribute"/> in the Object's class.
-    /// By default, the header's have an <see cref="EditableLabel"/> for changing the Object's name. More customizations
+    /// The inspector's help button shows a custom tooltip if there's a <see cref="TooltipAttribute"/> in the Object's class.
+    /// By default, the inspector's header has an <see cref="EditableLabel"/> for changing the Object's name. More customizations
     /// are available by creating a child class. Multitarget SerializedObjects and Editors aren't supported.
     /// </para>
     /// <para>
-    /// Inspectors will try to show special UI when an Object's script is missing. To support this, the base type of the Object
-    /// array must be creatable (i.e. not abstract nor generic).
+    /// Inspectors will try to show special UI when an Object's script is missing. To support this, Unity needs the base type
+    /// of the Object array/list to be creatable (i.e. not abstract nor generic).
     /// </para>
     /// </remarks>
     /// 
