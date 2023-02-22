@@ -8,7 +8,7 @@ namespace ArteHacker.UITKEditorAid
     /// Element that adds a fixed space along its parent's <see cref="IStyle.flexDirection"/>. <c>UXML support</c>
     /// </summary>
     /// <remarks>
-    /// This element is analogous to IMGUI's <see cref="EditorGUILayout.Space"/>.
+    /// This element is analogous to IMGUI's <see cref="UnityEngine.GUILayout.Space"/>.
     /// </remarks>
     public class FixedSpace : VisualElement
     {

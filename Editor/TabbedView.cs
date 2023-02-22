@@ -13,7 +13,9 @@ namespace ArteHacker.UITKEditorAid
     /// Set <see cref="allowMultipleSelection"/> true to support opening multiple tabs.
     /// Set <see cref="allowTabsOverflow"/> false to use multiple rows when tabs don't fit in a single line.
     /// Use the <see cref="AddTab(VisualElement, VisualElement)">AddTab</see> method that receives a VisualElement
-    /// as a title if you need more than simple labels in the tabs. 
+    /// as a title if you need more than simple labels in the tabs. Pass a unique string to 
+    /// <see cref="ApplyPersistenceKey(string)"/> to remember the last opened tabs.
+    /// 
     /// </remarks>
     /// <example>
     /// A basic usage example with three tabs.
