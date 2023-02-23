@@ -1,0 +1,505 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<!--
+This documentation site uses the ConciseFX template for DocFX, available here: https://github.com/OscarAbraham/ConciseFX.
+ConciseFX available under this license:
+The MIT License (MIT)
+
+Copyright (c) 2023 OscarAbraham
+Copyright (c) 2022 Singulink
+Copyright (c) Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+    <head>
+      <meta charset="utf-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ListOfInspectors Class
+     | Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ListOfInspectors Class
+     | Documentation ">
+      
+      <link rel="shortcut icon" href="../icons/ArteHackerIcon.png">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400..700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link id="light-code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css">
+      <link id="dark-code-style" rel="stylesheet" href="../styles/dark-code.css">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/concisefx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+      
+      <meta property="docfx:rel" content="../">
+      
+    </head>
+    <body data-spy="scroll" data-target="#affix" data-offset="120">
+        <header class="top-navbar">
+            <button id="menu-button" title="Navigation Menu" onclick="toggleMenu()">
+                <span class="burger-icon"></span>
+            </button>
+            <a class="brand" href="../index.html">
+              <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+              <span class="brand-title">UITK Editor Aid</span>
+            </a>        </header>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+                    <div>
+                      <div class="mobile-hide">
+                        <a class="brand" href="../index.html">
+                          <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+                          <span class="brand-title">UITK Editor Aid</span>
+                        </a>  </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+                    
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+                  <div class="theme-select">
+                    <button class="themes-menu-toggle">
+                      <i class="bi bi-circle-half theme-icon"></i>
+                      Theme
+                    </button>
+                
+                    <ul class="themes-menu">
+                      <li>
+                        <button class="dark-theme-option">
+                          <i class="bi bi-moon-fill"></i> Dark
+                        </button>
+                      </li>
+                      <li>
+                        <button class="light-theme-option">
+                          <i class="bi bi-sun-fill"></i> Light
+                        </button>
+                      </li>
+                      <li>
+                        <button class="auto-theme-option">
+                          <i class="bi bi-circle-half"></i> Auto
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <a href='https://github.com/OscarAbraham/UITKEditorAid'>UITKEditorAid on GitHub</a>
+                </div>
+            </nav>
+
+            <main class="main-panel">
+                <div id="search-results">
+                  <div class="search-list">Search Results for <span></span></div>
+                  <div class="sr-items">
+                    <p>Loading...</p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search article">
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors">
+  <div class="contribution-links mobile-hide">
+    <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/development/Editor/ListOfInspectors.cs/#L103">View Source</a>
+  
+  </div>
+  
+  <h1 id="ArteHacker_UITKEditorAid_ListOfInspectors" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors" class="text-break">ListOfInspectors Class
+  </h1>
+  
+  
+  
+  
+  <h4 class="description-header" id="description">Description</h4>
+  
+  <div class="markdown level0 summary"><p>A list of Objects similar to the components list in a GameObject&apos;s inspector.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ListOfInspectors : ListControl, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle</code></pre>
+  </div>
+  
+  
+    <h5>Inheritance</h5>
+    <div class="inheritance compact-inheritance">
+        <div class="level0 inheritance-item"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+        <div class="level1 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.CallbackEventHandler.html">CallbackEventHandler</a></div>
+        <div class="level2 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.Focusable.html">Focusable</a></div>
+        <div class="level3 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.VisualElement.html">VisualElement</a></div>
+        <div class="level4 inheritance-item"><a class="xref" href="ArteHacker.UITKEditorAid.ListControl.html">ListControl</a></div>
+      <div class="level5 inheritance-item current-inheritance-item"><span class="xref">ListOfInspectors</span></div>
+    </div>
+  
+  
+  
+  <h5 id="ArteHacker_UITKEditorAid_ListOfInspectors_remarks">Remarks</h5>
+  <div class="markdown level0 remarks"><p>
+This element is typically used with a list of subassets. Subasset systems require code that&apos;s outside the scope of this
+package. You may be better off using <a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.InspectorElement.html">InspectorElement</a> if you just want to embed inspectors from different Objects.
+</p>
+<p>
+The inspector&apos;s help button shows a custom tooltip if there&apos;s a <a class="xref" href="https://docs.unity3d.com/ScriptReference/TooltipAttribute.html">TooltipAttribute</a> in the Object&apos;s class.
+By default, the inspector&apos;s header has an <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.html">EditableLabel</a> for changing the Object&apos;s name. More customizations
+are available by creating a child class. Multitarget SerializedObjects and Editors aren&apos;t supported.
+</p>
+<p>
+Inspectors will try to show special UI when an Object&apos;s script is missing. To support this, Unity needs the base type
+of the Object array/list to be creatable (i.e. not abstract nor generic).
+</p>
+</div>
+  
+  <h3 id="ArteHacker_UITKEditorAid_ListOfInspectors_examples">Examples</h3>
+  <pre><code class="lang-csharp">class CustomEditorWithListOfInspectors : Editor
+{
+    public override VisualElement CreateInspectorGUI()
+    {
+        var root = new VisualElement();
+
+        // The mylistOfObjects field should be a list or array of elements that
+        // derive from UnityEngine.Object. It&apos;s usually a list of ScriptableObjects
+        // embedded as subassets in the field&apos;s owner.
+        var listOfObjectsProperty = serializedObject.FindProperty(&quot;mylistOfObjects&quot;);
+        var listOfInspectors = new MyListOfInspectors(listOfObjectsProperty);
+        root.Add(listOfInspectors);
+
+        return root;
+    }
+}
+
+// Creating a child class of ListOfInspectors allows for some customization:
+class MyListOfInspectors : ListOfInspectors
+{
+    public MyListOfInspectors(SerializedProperty arrayProp) : base(arrayProp) { }
+
+    // Override this method to add elements to an inspector header before its label.
+    protected override void AddPrelabelHeaderElements(
+        VisualElement header,
+        int itemIndex,
+        SerializedObject serializedObject)
+    {
+        base.AddPrelabelHeaderElements(header, itemIndex, serializedObject);
+    }
+
+    // Override this method to change how a label is added to an inspector header.
+    // The base implementation adds an editable label for changing the object&apos;s name.
+    protected override void AddHeaderLabel(
+        VisualElement header,
+        int itemIndex,
+        SerializedObject serializedObject)
+    {
+        base.AddHeaderLabel(header, itemIndex, serializedObject);
+    }
+
+    // Override this method to add elements to an inspector header after its label.
+    protected override void AddPostlabelHeaderElements(
+        VisualElement header,
+        int itemIndex,
+        SerializedObject serializedObject)
+    {
+        base.AddPostlabelHeaderElements(header, itemIndex, serializedObject);
+    }
+
+    // Override this method to add context menu items for an inspector header.
+    protected override void AddItemsToContextMenu(
+        GenericMenu menu,
+        VisualElement header,
+        int itemIndex,
+        SerializedObject serializedObject)
+    {
+        base.AddItemsToContextMenu(menu, header, itemIndex, serializedObject);
+        menu.AddItem(new GUIContent(&quot;My Menu Item&quot;), true, () =>
+        {
+            // Do something.
+        });
+    }
+}</code></pre>
+
+  <h3 id="constructors">Constructors
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors__ctor_UnityEditor_SerializedProperty_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.#ctor(UnityEditor.SerializedProperty)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.-ctor.html#ArteHacker_UITKEditorAid_ListOfInspectors__ctor_UnityEditor_SerializedProperty_">ListOfInspectors(SerializedProperty)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Constructor. It receives a <a class="xref" href="https://docs.unity3d.com/ScriptReference/SerializedProperty.html">SerializedProperty</a> for an array or a list of Objects
+with a type derived from <a class="xref" href="https://docs.unity3d.com/ScriptReference/Object.html">UnityEngine.Object</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_inspectorItemUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.inspectorItemUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.inspectorItemUssClassName.html">inspectorItemUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the items in the list. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderButtonUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderButtonUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderButtonUssClassName.html">itemHeaderButtonUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of inspector header buttons. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderCollapsedUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderCollapsedUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderCollapsedUssClassName.html">itemHeaderCollapsedUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of collapsed inspector headers. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderFoldoutUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderFoldoutUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderFoldoutUssClassName.html">itemHeaderFoldoutUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of inspector header foldouts. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderIconUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderIconUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderIconUssClassName.html">itemHeaderIconUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the inspector header icon. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderLabelUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderLabelUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderLabelUssClassName.html">itemHeaderLabelUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of inspector header labels. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderTooltipUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderTooltipUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderTooltipUssClassName.html">itemHeaderTooltipUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"></td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_itemHeaderUssClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderUssClassName.html">itemHeaderUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the inspector headers. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_ussClassName" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.ussClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.ussClassName.html">ussClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of elements of this type. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_AddHeaderLabel_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.AddHeaderLabel(UnityEngine.UIElements.VisualElement,System.Int32,UnityEditor.SerializedObject)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.AddHeaderLabel.html#ArteHacker_UITKEditorAid_ListOfInspectors_AddHeaderLabel_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_">AddHeaderLabel(VisualElement, Int32, SerializedObject)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Override this method to customize the header&apos;s label.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_AddItemsToContextMenu_UnityEditor_GenericMenu_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.AddItemsToContextMenu(UnityEditor.GenericMenu,UnityEngine.UIElements.VisualElement,System.Int32,UnityEditor.SerializedObject)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.AddItemsToContextMenu.html#ArteHacker_UITKEditorAid_ListOfInspectors_AddItemsToContextMenu_UnityEditor_GenericMenu_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_">AddItemsToContextMenu(GenericMenu, VisualElement, Int32, SerializedObject)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Override this method to add custom menu items to the header&apos;s context menu.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_AddPostlabelHeaderElements_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.AddPostlabelHeaderElements(UnityEngine.UIElements.VisualElement,System.Int32,UnityEditor.SerializedObject)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.AddPostlabelHeaderElements.html#ArteHacker_UITKEditorAid_ListOfInspectors_AddPostlabelHeaderElements_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_">AddPostlabelHeaderElements(VisualElement, Int32, SerializedObject)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Override this method to customize the elements after the header&apos;s label.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_AddPrelabelHeaderElements_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.AddPrelabelHeaderElements(UnityEngine.UIElements.VisualElement,System.Int32,UnityEditor.SerializedObject)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.AddPrelabelHeaderElements.html#ArteHacker_UITKEditorAid_ListOfInspectors_AddPrelabelHeaderElements_UnityEngine_UIElements_VisualElement_System_Int32_UnityEditor_SerializedObject_">AddPrelabelHeaderElements(VisualElement, Int32, SerializedObject)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Override this method to customize the elements before the header&apos;s label.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_ListOfInspectors_CreateHeader_System_Int32_UnityEditor_SerializedObject_UnityEditor_UIElements_InspectorElement_" data-uid="ArteHacker.UITKEditorAid.ListOfInspectors.CreateHeader(System.Int32,UnityEditor.SerializedObject,UnityEditor.UIElements.InspectorElement)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.ListOfInspectors.CreateHeader.html#ArteHacker_UITKEditorAid_ListOfInspectors_CreateHeader_System_Int32_UnityEditor_SerializedObject_UnityEditor_UIElements_InspectorElement_">CreateHeader(Int32, SerializedObject, InspectorElement)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Override this method in a child class to customize inspector headers as a whole.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3 id="inheritedmembers">Inherited Members</h3>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.boxedUssClassName.html">ListControl.boxedUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.foldedUssClassName.html">ListControl.foldedUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.withHeaderUssClassName.html">ListControl.withHeaderUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.withFooterUssClassName.html">ListControl.withFooterUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.draggingListUssClassName.html">ListControl.draggingListUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.emptyUssClassName.html">ListControl.emptyUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.dropIndicatorUssClassName.html">ListControl.dropIndicatorUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.emptyMessageUssClassName.html">ListControl.emptyMessageUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.headerUssClassName.html">ListControl.headerUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.footerUssClassName.html">ListControl.footerUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.itemUssClassName.html">ListControl.itemUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.draggedItemUssClassName.html">ListControl.draggedItemUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.selectedItemUssClassName.html">ListControl.selectedItemUssClassName</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.supportItemSelection.html#ArteHacker_UITKEditorAid_ListControl_supportItemSelection">ListControl.supportItemSelection</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.selectedItem.html#ArteHacker_UITKEditorAid_ListControl_selectedItem">ListControl.selectedItem</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.emptyListMessage.html#ArteHacker_UITKEditorAid_ListControl_emptyListMessage">ListControl.emptyListMessage</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.boxed.html#ArteHacker_UITKEditorAid_ListControl_boxed">ListControl.boxed</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.StartDraggingItem.html#ArteHacker_UITKEditorAid_ListControl_StartDraggingItem_System_Int32_">ListControl.StartDraggingItem(Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.GetListSize.html#ArteHacker_UITKEditorAid_ListControl_GetListSize">ListControl.GetListSize()</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.SetListSize.html#ArteHacker_UITKEditorAid_ListControl_SetListSize_System_Int32_">ListControl.SetListSize(Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.GetListItem.html#ArteHacker_UITKEditorAid_ListControl_GetListItem_System_Int32_">ListControl.GetListItem(Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.SetHeaderVisibility.html#ArteHacker_UITKEditorAid_ListControl_SetHeaderVisibility_System_Boolean_">ListControl.SetHeaderVisibility(Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.SetHeaderContent.html#ArteHacker_UITKEditorAid_ListControl_SetHeaderContent_UnityEngine_UIElements_VisualElement_">ListControl.SetHeaderContent(VisualElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.SetFooterVisibility.html#ArteHacker_UITKEditorAid_ListControl_SetFooterVisibility_System_Boolean_">ListControl.SetFooterVisibility(Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.SetFooterContent.html#ArteHacker_UITKEditorAid_ListControl_SetFooterContent_UnityEngine_UIElements_VisualElement_">ListControl.SetFooterContent(VisualElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.CreateItemForIndex.html#ArteHacker_UITKEditorAid_ListControl_CreateItemForIndex_System_Int32_">ListControl.CreateItemForIndex(Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.IsReorderable.html#ArteHacker_UITKEditorAid_ListControl_IsReorderable">ListControl.IsReorderable()</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.OnReorderDragPerformed.html#ArteHacker_UITKEditorAid_ListControl_OnReorderDragPerformed_System_Int32_System_Int32_">ListControl.OnReorderDragPerformed(Int32, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.VerifyCustomDrag.html#ArteHacker_UITKEditorAid_ListControl_VerifyCustomDrag_System_Int32_">ListControl.VerifyCustomDrag(Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.ListControl.OnCustomDragPerformed.html#ArteHacker_UITKEditorAid_ListControl_OnCustomDragPerformed_System_Int32_">ListControl.OnCustomDragPerformed(Int32)</a>
+  </div>
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetLocalRect_UnityEngine_UIElements_VisualElement_">UIToolkitExtensions.GetLocalRect(VisualElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetChildren__1_UnityEngine_UIElements_VisualElement_System_Collections_Generic_List___0__System_Func___0_System_Boolean__">UIToolkitExtensions.GetChildren&lt;TElement&gt;(VisualElement, List&lt;TElement&gt;, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetFirstChild__1_UnityEngine_UIElements_VisualElement_System_Func___0_System_Boolean__">UIToolkitExtensions.GetFirstChild&lt;TElement&gt;(VisualElement, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_ForEachChild__1_UnityEngine_UIElements_VisualElement_System_Action___0__">UIToolkitExtensions.ForEachChild&lt;TElement&gt;(VisualElement, Action&lt;TElement&gt;)</a>
+  </div>
+</article>
+                    <div class="sideaffix-container mobile-hide" role="complementary">
+                      <div class="sideaffix">
+                        <nav class="bs-docs-sidebar affix" id="affix">
+                          <h5>On this page</h5>
+                          <div></div>
+                        </nav>
+                      </div>
+                    </div>                </div>
+
+            </main>
+        </div>
+
+        <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/concisefx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

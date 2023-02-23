@@ -1,0 +1,2569 @@
+{
+  "sitemap": {
+    "fileOptions": {
+      "api/*": {
+        "baseUrl": "https://artehacker.com/UITKEditorAid/",
+        "changefreq": "daily"
+      }
+    },
+    "baseUrl": "https://artehacker.com/UITKEditorAid/",
+    "changefreq": "weekly"
+  },
+  "homepages": [],
+  "source_base_path": "C:/Users/usuario/Desktop/ArteHackerUnity/UITK Editor Aid development/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.AddButtonMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.AddButtonMode.html",
+          "hash": "3QQuJvuV/KleWQgBZDpmzToPwcCmIQZD3Pe+aoGVUmQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.ussClassName.html",
+          "hash": "EAra3D6MxvjdDLid0nGiiJravQjPiVchdW5Zp8OZq2c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.withSeparatorsUSSClassName.html",
+          "hash": "idPnLIZPgHOi0yTRxzyKDjgdlflqQd/795oyjFJUp0I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.footerContentUssClassName.html",
+          "hash": "6Ak+OU5KFvwGZHs7SBtsbjKy42tpJvlJM1C2Y7vB7Y8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonUssClassName.html",
+          "hash": "aC04Mh9zqskwkq/tdyZCQbIzMjU3H0g54Ll6VUbmgzw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.removeButtonUssClassName.html",
+          "hash": "9JRod4RApWJdFATBzibrN6MC4cPReNrc9NlmZ8IulxI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerContentUssClassName.html",
+          "hash": "lrYP6/jS8yEPWu/HkkNo3cSHAQa95JZMFUx/u9EIRL0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerFoldoutUssClassName.html",
+          "hash": "nXWk3SCdXCkmMR7sjQVAmiJjuSgREzbicWV0LM4wgrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerLabelUssClassName.html",
+          "hash": "/AFbt0CgaEMjXF3ckpngG5MzXsvfDhzQWZHLm/I7w9I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.reorderable.html",
+          "hash": "iuEV4tQwAtcBfXvWLD4gqUj1q2kIX74KZhh04xq+wPM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.label.html",
+          "hash": "RmPKOp8U79Uw0dvOWjLK5SMfDtiV4WO6Vi4pRg869S4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerMode.html",
+          "hash": "cP58nf29lqPo1U1jUGhcqkRBY4VaIul3ISkikCnVHFo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonMode.html",
+          "hash": "W25RtSc8R16uPG21EnOG3dV8JO18fN7ZIASzlfKVNLQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showMainRemoveButton.html",
+          "hash": "VeNlyw6TeZtBiwgnvxntTf75GanqDtHZnhSWyv0Biac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showRemoveButtons.html",
+          "hash": "8spO9w1Ji2SwaUKADE16jkbz9hzj+1eWOp1mdVjblAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showDragHandles.html",
+          "hash": "10mXp78fMxXNwK8scqfIRYUNP5dXn/QORwt+VUXuj9c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showAlternatedBackgrounds.html",
+          "hash": "/BvjFRUlR8/TKnBzIRiXagEgaQUBovHGEkSGTzmr9ZU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showSeparators.html",
+          "hash": "2lsj4rXGKYTaa+BfN/HqTUrEjTcKLLkmc1fY2hqFZLU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onRemove.html",
+          "hash": "gG5mPh020bIlY1YShihwHa4fIgwNKJbZaj2fJVuCZ0g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onAdd.html",
+          "hash": "VOr2E0LJN4TT9YjepH16PieL4UkK+eZ6PMfLQENywuQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onPopulateItemMenu.html",
+          "hash": "t4Z4qkdzUp+dM30gw+mb+7aLltVH/hXvpN05atrpPjc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.-ctor.html",
+          "hash": "7OImB7hmblXAvCP1uU2XOwDyil1xFAth9IGoxFFyHqA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.html",
+          "hash": "NAsK+oI03YY3BQp98pcj/3GES39oTCfEkVC2WQv+3c0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.ussClassName.html",
+          "hash": "FlZKkjnvuHS/9a3dAz4CAU+0xJWGtmo5iqsr2GHY+No="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.-ctor.html",
+          "hash": "1IHUKlQ0PMJyIRnf3WAX+spvLaGuktX+csXctLgxLGo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.BindingStopper.html",
+          "hash": "WkXiiY9sOYKURg+TxAebGefB5ZXAXgQ3G42cva3C9xU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Disabler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Disabler.ussClassName.html",
+          "hash": "wD/BtuCyQvwWZdQGI+5QFJFvNlv9JyH/aYvVTolXgEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Disabler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Disabler.contentContainerUssClassName.html",
+          "hash": "vFhMX+f1aMm8VuLOmpet76MiZ2P38n1ZkGSm4UBS+cU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Disabler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Disabler.shouldDisable.html",
+          "hash": "RgZ/0XCtxPOwnHQLnVs/SerV/ZJPZuMcdYK4/wQZ1jI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Disabler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Disabler.-ctor.html",
+          "hash": "FoqJ/VVRP+1j4GNUSeZZL90U2m/4DLwEYw1V3Uderrg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Disabler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Disabler.html",
+          "hash": "L2MhlEV5SmX2C/O99926xr2k5pD629dmJ2CgdgLJS/o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel.html",
+          "hash": "b8A/AovQxm2Cb17k3WRMtY6/uLT38aaZE/E5eXwAmbU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.-ctor.html",
+          "hash": "0o2yz3DPirAgBhOlwWEqphurlsjTKf1jXtmuiCI96LY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html",
+          "hash": "jJICbLmbNEmJL7QbHAkg5Dnb3J+1e0dJXWDY252vYqM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.SetValueWithoutNotify.html",
+          "hash": "Wge6X4hn+ph4U+LiJKFBjFNSQSieMMCRoCVJBt3vUg0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.html",
+          "hash": "tavdXj0RMd++Yy+Kams+ei8qoino+RzoDQXg9AbjrRI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.ussClassName.html",
+          "hash": "F1pnIJx29/SC+YDBCC1sHvCsNGfmlGnlGNfUCF8ZlD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.textFieldUssClassName.html",
+          "hash": "ccl+lQUPC4DqnzGdtu/P47r70d2RPvXBzeYvzvIxX9c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.labelUssClassName.html",
+          "hash": "WvHeFskmWTpnSD7dtrMilV/uAF0qeIbvuC8R20WbhSU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.editOnDoubleClick.html",
+          "hash": "mj8QDBDR+RbscfG2F5h9hLz/71j5D4WLi8FAHTprd+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.multiline.html",
+          "hash": "b0QPZUWkb+AiQjsK8Y4rP37MIchpgCMhRfieie2uq4E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.isDelayed.html",
+          "hash": "Pc3gnl7BcJr63bGR4f/J9xwhnEKenilwgBJU97QgruE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.maxLength.html",
+          "hash": "9lu6JvgalHGJfIvsD/QjEtDm3yghwqZ7SEav+MTHr7A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditableLabel.value.html",
+          "hash": "0+fhX8z2P41nJaFjk+pti+nXcgtBOjguhX27Ul1tlqQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.variablesContainerUssClassName.html",
+          "hash": "nVcJZRyEet7JHH5iaUSYzn2qLm5kKXl2lCf/oi8tnzM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.darkModeContainerUssClassName.html",
+          "hash": "k9ROXea6x7Bv75eoy0X/oZjTbngeaX9FK/OBD5/WKGg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.lightModeContainerUssClassName.html",
+          "hash": "Q/JNpqRSz26Yrc8mfAtZTh4pTh0gSgbQNcLJge9zcL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.listControlStyle.html",
+          "hash": "4j2/LUkUyRm0uAfa0Zf6uPtcECTdpiWpoF2UWbUS4aA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.editableLabelStyle.html",
+          "hash": "YHP//lr+hMKHcRhx+ms5R0qRWy8kH+WX/CYxg1+uNT0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.listOfInspectorsStyle.html",
+          "hash": "D+zrzvuHafP84opLbnnv8/VjnEQcQzIsOqcYSnk8Tu0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.tabbedViewStyle.html",
+          "hash": "QWVgZelVhAlGUiVzg3VJP/kwKCT2EPjdCQ2CfgySxGc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.ApplyCurrentTheme.html",
+          "hash": "DEzM25Cn3LcU0EM0MEomAxU6qn3472KN7DBnhIxfn2Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.EditorAidResources.html",
+          "hash": "0hMGx7D4RIfMlRuoN3fwjOv1A2JzgZdB6eYMUJDxocA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.size.html",
+          "hash": "unalrlzHPdiIkSlQ+S1nsGKV1797IkqUi/98cdRQNUs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.-ctor.html",
+          "hash": "dcIZWJ8J4tGw2BP2MSC58H+1fI3DEefXupukQdCQ6lc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.FixedSpace.html",
+          "hash": "ow2Gf7y7jq79FXed/hn6V6bla5NZVK/CPxUxRazXJf8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.FlexibleSpace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.FlexibleSpace.-ctor.html",
+          "hash": "4NnWmrwteKZKdfelNfPL8nG0TmZ93Tb6wPIls50PxDc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.FlexibleSpace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.FlexibleSpace.html",
+          "hash": "lAW36KETJyKhEVsfqhbp9yFW4q/dQhhxDAiAOQLE0eA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.ussClassName.html",
+          "hash": "zk7D28JUfuM0cMOd5JL84TNMHmK67+QMeg9wnLzVKEg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.boxedUssClassName.html",
+          "hash": "n9Os+mu+l7FQn1RI+PieWv54nkZqi02Yieh6ZhtJkK0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.foldedUssClassName.html",
+          "hash": "BOsw6YtkCQmdxr7ZDyk7iW/1OE7uQNBc2Pzy759WmWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.withHeaderUssClassName.html",
+          "hash": "xca/BVMdFumTrHRTZOLSW8PaM+NenzRdZHkDT53/rWw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.withFooterUssClassName.html",
+          "hash": "lTlaHOcH3AXD4AemxNKqZ7tanx1mfX83PFlmMK57qRc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.draggingListUssClassName.html",
+          "hash": "z9kVZTwlo6QFsWXAEoP0bpky9dZRiMjWikEyXgDP8Vo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.emptyUssClassName.html",
+          "hash": "YX3qhDbhzJAU07erBA5YJd+BUQxZ3EdVFjZu+Ce1G70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.dropIndicatorUssClassName.html",
+          "hash": "yVMCosag4o++G+g82PB14ZrxnNjI1Lj17PT7lzDuVe8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.emptyMessageUssClassName.html",
+          "hash": "Q2EWHsnH5NUOvWcoTmyvEY+nJWOnH0UbbJSnwRrWCno="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.headerUssClassName.html",
+          "hash": "VWsAaY3x1U6Kzls3qKscoWKrbfhXhrd9HXc7Hlo6z0w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.footerUssClassName.html",
+          "hash": "i9CYSemZJT+MzmUrUaJ4RnxPXoJD4s4ztNdwwh//B+c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.itemUssClassName.html",
+          "hash": "wSKUJub7BVmf8luDg2lkL4bRDqzNkjFamnpFKGe1Euw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.draggedItemUssClassName.html",
+          "hash": "nLkjjQUsuhT1GHDDim3NXT/h/CbhID0VD3PleOMd08M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.selectedItemUssClassName.html",
+          "hash": "tQW0ljJWIvSiXYzIEemO24qlv9r9830RlTSPTNYz/jo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.supportItemSelection.html",
+          "hash": "3/+YZAVWfftmGhUYnXlAySjyjxZtC5Hf4FsUV8TN+/k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.selectedItem.html",
+          "hash": "lDy59T1RDeA9CoUxCDF24yz4vVYxrlO+TiAKLSDel+Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.emptyListMessage.html",
+          "hash": "WZKdkqBsSO2wRGW1hYyfWSs71JXdGG8AG2QSqAUffg0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.boxed.html",
+          "hash": "JLWheIark02ekpPc5xdRLuWxvxbAKRwroxa6URYzBcw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.-ctor.html",
+          "hash": "dNZoXHJvGu2PEqHL5gARlrLomqRb54+LADl8KoTl/QI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.StartDraggingItem.html",
+          "hash": "XzABKknvSWC2M5rhSngu6P3X1oChLU/ei8iwpkmfmnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.GetListSize.html",
+          "hash": "SHoifR52EDkgCr64yD9W5nFHuODvHLiGLusEvhhq35U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.SetListSize.html",
+          "hash": "iul2O/p1hK5BNA+7MhBVPBzcSE7KN0E2mGEGuWnDjfw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.GetListItem.html",
+          "hash": "eILbZRcQi0+WZLEFXtdcMT6wZW9NWTr4t/s3L3RC09s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderVisibility.html",
+          "hash": "AfTVOFB0JEBitgRmOrCwxHjpasmnyijVbfQ2myLXpRk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderContent.html",
+          "hash": "KGRJ2RaQF+sMRd9j0R9Q/qCgSplIaXPfcTlCXevNuAg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.SetFooterVisibility.html",
+          "hash": "5FHJZrdZmocuanWwS9pM5SG22BLRpwPzoSBr7dR8ZLc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.SetFooterContent.html",
+          "hash": "Hw/2WyzzSzFcAyYJJVBJiBeX3SPuPmmM7Os2LtXEmIM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.CreateItemForIndex.html",
+          "hash": "6s05ayobKUtyknj8r4/TJ/yfAhEhiD5s/OjaiR2zgW8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.IsReorderable.html",
+          "hash": "M1BIP5xrwUwqvMQtoYVQaK97mG0A6y5aeOPjFCkvBa8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.OnReorderDragPerformed.html",
+          "hash": "0T6Btj4ywQFMabyFWh3J/Ohk6G+0bbQITlvxlVQhs3c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.VerifyCustomDrag.html",
+          "hash": "Ohf0sVEPtJrhP5Yu8vENz/gsYKCn1/bu+veTEs3ij/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.OnCustomDragPerformed.html",
+          "hash": "UsKXyqsLkdhZufTS1bNNVuxPUWpY7CVRk4ZCh8a565Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListControl.html",
+          "hash": "yYmnTi/JdL2Om8hiLBL7NijsV9v8l5XdUsweaXQktgE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListHeaderMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListHeaderMode.html",
+          "hash": "NlDMhbcxQ/fOSEJNJwXqhyUHYhAANW8vY9+HXQ5E/mk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.ussClassName.html",
+          "hash": "7nulVf5s+c3PjS6Vbrz0NkTlMh9mvL+3GEkN29liNd8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.inspectorItemUssClassName.html",
+          "hash": "pDbzbun5xn4+ygpHQ75tWgKDwvUK/iXhI0clFUmkZVI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderUssClassName.html",
+          "hash": "p/A2QTvsZQ6r62OiuQXDGlVhIONMkVo/gez3EZS3SQM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderCollapsedUssClassName.html",
+          "hash": "feIaj2VpV5PxjfaMhv8DtohDI61uI08IKjNI3EVjt8c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderFoldoutUssClassName.html",
+          "hash": "FPkI7pWx/kAfy49EiSkDnTJ/mUqEfjg8KaDknujpxjE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderLabelUssClassName.html",
+          "hash": "QdYHUGgWFfcY8qlWESWUmqmKuvfrYRjIwTPpKCGIJLI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderButtonUssClassName.html",
+          "hash": "06q7G6dHwjwi92OTRYScn0waHg2pBYLlyapt2W7H8gY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderIconUssClassName.html",
+          "hash": "wkysWElIt1x+0QwAo3TobFy8EbD7NhnNIeLTBmNKn+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderTooltipUssClassName.html",
+          "hash": "Bpq1TzQS719vdesKmWeyT6HYS9827oJE125U2M6BoYQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.-ctor.html",
+          "hash": "Corov8VjEJY+BADeWZUjcrGRzTXjZ5oDhpRbhKW8+l8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.CreateHeader.html",
+          "hash": "PUurXymZsADJmrFaj8V/5l0nX9q1BOqpd9DYD6/VBYk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPrelabelHeaderElements.html",
+          "hash": "HTMWM/FBhN6rkYXj9tQYn0UabLF7grZtCbQ2PmgL3dY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddHeaderLabel.html",
+          "hash": "863NC1g63J1lHiqNgMoTZ6eNgKHELpUoGmHr7Y5sPN0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPostlabelHeaderElements.html",
+          "hash": "2zpri+IAYgnEyHxDcB62LesiAxmMwv1xVSTuRctOM/c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddItemsToContextMenu.html",
+          "hash": "cEL68yfPWrQd1bMYRLvv9KdXXF/mnR0BpkBT5BglJMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListOfInspectors.html",
+          "hash": "Rls5P4jqCD7ZOQOobSKx8GkkEnovyHZ1u704fTgtelM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.ussClassName.html",
+          "hash": "KEsnrv1TdbD5LT6x0kusVwAr/cYzx+NKyRrLg3AQPns="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.dragHandleUssClassName.html",
+          "hash": "7d0FRBYA4jv/Dyl3OPpF8UVLRE41zq7L6Xwyb1hySWs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.contentUssClassName.html",
+          "hash": "VAP6VGaGXuzHDiB5aey6+UaV69kLXSgA+dnmx5b7MeY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.removeButtonUssClassName.html",
+          "hash": "osC9OrIFdbM4MrXJmZ7CvSooUcOsmLGnLPobLFsS71w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.alternatedUssClassName.html",
+          "hash": "BA6CfTFo+5vZdfFTBSKR3XLZ+b++4HbJG8pRc+n2yMk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.withSeparatorsUssClassName.html",
+          "hash": "a0qhQpq8zu1DVFoqV5tEf+N1N2wWoYex88i+EkeEz+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.content.html",
+          "hash": "6u/lo/c474vXxJVnywSjudg9EujXamq8GWRau9hzdak="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.-ctor.html",
+          "hash": "nUJ4AOUXLNS105+ribz2aA8tq0i6gQcaIsAZTsbSC/4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.SetAlternatedBackground.html",
+          "hash": "WEUZdzgYaiaPBfdG77jctm94tmyQL5mi9rrU2PFry7U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.SetSeparators.html",
+          "hash": "DZP4Mft6HAsps9017OGpTArzdN7XiAiqvX4kPSdfwLU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.SetDragHandle.html",
+          "hash": "MfLmDrOUN00YRVzCWZ9m8P8jLnt+SwIkYEKxC9zj+dk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.SetRemoveButton.html",
+          "hash": "mYmJgTIHTVs8UTOo0eNlLkvJPX7V7WwJp0Tja/tfcKg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.SetFeatures.html",
+          "hash": "BAcZt0twGmCiv32G95L5MVyWIbtcANkQvvXQEMNoiBQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ListRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ListRow.html",
+          "hash": "xgpHVc6LELVj/VWPGEl1K0rZN9hwviK59nGkwM/6cj4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.ussClassName.html",
+          "hash": "3+H7jPHclieltdgamYvquyz8cQkw6iXd8WNh3X2CtWk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.trackerUssClassName.html",
+          "hash": "43ruliO3Izex6RYRp84jGhvYWHlJPb255a/ZgQlj6i8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.propertyFieldUssClassName.html",
+          "hash": "Ls3atUQkfyRt5HPV6Eh7+ddIeLXODkUA2Cur6FUZh0o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.periodicalUpdateInterval.html",
+          "hash": "JyJaxdWiPhiQq/dUWain4G1vGeEtghrgEyC0QXwtL+A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.-ctor.html",
+          "hash": "MSifvIj7Nb78PIIWJ6NWJh17Oo2/crP5SBwji5sSXQc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.html",
+          "hash": "crtc5+6qh0xdw11oNH3Lsd1PSv4sfzXFIM555D3CMLs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onStartDragging.html",
+          "hash": "TIje3BoweP+oiAlEy3pmEZMhJQE3ZJSqMB7UICVCn2k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onClick.html",
+          "hash": "8vcknO6IQg2ZCGNlsOxZT0EcX5Ek2uA5Jl2axjQFXZc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.dragDistanceThreshold.html",
+          "hash": "iKfYB0laUXMz2k4gABnqIAMxtxQgyw5uZRrQT/gYMKc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.-ctor.html",
+          "hash": "G2z/s6QgQ6ubXD/+4edJMraOFVswhZx1fzuArTdb1yE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.html",
+          "hash": "wUYXqGdUd+n6hMOxXkUnflhxtZ29ixc4SZD096Pwbzc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Manipulators.html",
+          "hash": "pG6bGEL1po188cq08pnolgXyWmzXHgaEc7ha4FN87tQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.ussClassName.html",
+          "hash": "NOMZeipY58zbMZ49jymSy6FriMEv1QcWQhUgp416mqk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName.html",
+          "hash": "A3xZvQnfoCkCh9Qbe6KPzPORfjVhl2scEY80usG0dc4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.bindingPath.html",
+          "hash": "ZBgcH8+dE4SYqSCHjx+LpcDjyISG1vcxe0Uc1X4zExg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.-ctor.html",
+          "hash": "2vEBV8Egovd5zl870S7s+hQGX+nWdTufOaKkkHKIm4I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.PropertyContainer.html",
+          "hash": "nJ7THllbIeepTO3RaMuH5jxkjuv07L5udRqEY/APnSU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.previousTypeName.html",
+          "hash": "KVqnBd4rN3fmX/NBDKvBe6odjYC9RxNa1HvoGpWJUjI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.newTypeName.html",
+          "hash": "MDKSbRhrKt/dOBLgMAOwBVl8NmaVj2k01QMQ8NLueB0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.GetPooled.html",
+          "hash": "j5nQfkFII898k8MMEhkDgSrWotEWIm8/gZNfXP4Npxc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.html",
+          "hash": "0CeM6XJN9471rj4uiVfNDXTGt8r+mGyzShNULV7HKQs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.ussClassName.html",
+          "hash": "KMi1rAOOJk9Zq8UT+leITlVL+i9fzPZ2U11YOZaAmo0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflowUssClassName.html",
+          "hash": "lj9hml3H1ve+RYSX8xu67/bQYEFHv/IZsJqxURHVtu0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarContainerUssClassName.html",
+          "hash": "Gcr6MyHh7kkuaEIiS4tBW31arsjk6gfGgNGQhPoQG60="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarUssClassName.html",
+          "hash": "1yl6XdbJMYOfJSHjVUG3i4wIvBsz1l9x20DHmmLfAgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollLeftButtonUssClassName.html",
+          "hash": "1EH22NSClSJmDwTCEPt87W5CiQRugpbftYUTRzkpBP8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollRightButtonUssClassName.html",
+          "hash": "r2u9TsMLCwZHEnZ+9T5ZDK+m7S3hk5j3hAE6uNyuLd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabUssClassName.html",
+          "hash": "UtFS1EHSEHENLXAaybVdzoQj2fHc2Dv64mvgwV1fQdU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.selectedTabUssClassName.html",
+          "hash": "qjMxah3H8OBGaIp54OuvE9Ox1XjjZu1TzitPMb2jf3E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabTitleUssClassName.html",
+          "hash": "0Jo+U6t8enPBD8tPENj/BY2krBEf+czAjzhL+l2R+4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabContentDisplayUssClassName.html",
+          "hash": "njIgbUDgAonemXJ/Bxcb2gF593fgLXPETqSisHV9HEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabContentUssClassName.html",
+          "hash": "p07yLnld7Kz6zVKuMuug13ekX5jm6Ocj7L7s12roH3c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.onTabSelectionChange.html",
+          "hash": "2NImly4wxCvbcbGDuV+BvfMO7ZImZs2EOfifiv8a4Po="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection.html",
+          "hash": "Wdajs/9xuvsxVjnv/vb1hkpA4+ptNt0yge+vGglCM1A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html",
+          "hash": "Lv2thBWjaKqi7V7EuHIWrXqat1Aq1sBGzmBZbM7eTjQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabsScrollSpeed.html",
+          "hash": "KP+oFYeCMG3QND1nrMbOEoeC6s9aECA2+qFPqL14cp8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.tabCount.html",
+          "hash": "qUbAuWyUh4MRnaZ8r/Pn+wbP8aJP6Ue6U2JeyIn5zkA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.-ctor.html",
+          "hash": "q1NM/KwNy0183OFannGM8wegVgdr1ME79YvXhqE4zi8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.AddTab.html",
+          "hash": "+am6ytKBRMUeYLTZGBHl98Flo9wGLNeMNob7SSqctx4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.GetTabContent.html",
+          "hash": "p15pxxawzLI7Y/cH6DvlKM01GaMgFNd34jVC3iOkqu4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.GetTabTitleElement.html",
+          "hash": "KXVA1tg/O16UY3tlvTA+N+VlTaej6aj2H01HR9kGh6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey.html",
+          "hash": "+OdxEj+D7tCAYGwPHjyml/+J3bxIrPT8HTwjmVxjpKI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.SetSelectedTab.html",
+          "hash": "Az8e3HizeWWFgl7oHe3vSDtat7V8tNm0orA4ftFC6Xo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.AddTabToSelection.html",
+          "hash": "TR7rllIuyst05mQUUQwLAjDkElO9e2IM++UbPaijjWs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.RemoveTabFromSelection.html",
+          "hash": "oLS5j9c8mdCJp9Mq2ZDXKlpCdqceSClf2pGy0bZ2EAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.TabbedView.html",
+          "hash": "L6ecYs/4sVqABf02cMcb1JzjhA5BzG02yofS0Wh3fGY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.ReorderSerializedArray.html",
+          "hash": "AsHv1kNvFg4+1J97S54FmzNDegcICwIBzvws7x0RZv8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.html",
+          "hash": "VexejZDwYj+iktoUb39S1+YbTju8m4SmJq7iKUBiNE0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.IsEditable.html",
+          "hash": "LgUgYTNZPEjITrWi8gB0EmYmWwThUe3Wv0a3cJ6/43o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.html",
+          "hash": "slyuXK/GMXyTSjUKmc+xKaZe0YbIfTCDbhgWWZY0w8w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html",
+          "hash": "XaPBM7ND1WgwR1+xUIJ7YIvaQ+anoELTKyfjmRpHDH0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html",
+          "hash": "1FqnfGWB/5qGA2xmU0EsTjzv0pDNcULxp0KxLqWtDPM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html",
+          "hash": "qwQC0UH4nOZB/vetQULOiUNHeCuJA8x7r5W/AOPx220="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html",
+          "hash": "AYwHlmli64R8zSd857R49a+T08lCaPDNQLTr0Xza1cQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLabelElement.html",
+          "hash": "YZCsS2+AYAFit0zOVCy5ScXSfR8ip+UceILLLeql0UA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetBoundSerializedProperty.html",
+          "hash": "oif/AZXiPXDugOBV2dTCbiXbC2qwQgEXlGO2XM7leoU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetFlex.html",
+          "hash": "y1bXQQoSKtwMXkm9XAuB8PfujnTlIIkZ2LiPOeDMzpc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetMargin.html",
+          "hash": "yJwiZT2CoiAQSml4LdhBB3G07EZD5qD+4T69/+j6lHs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPadding.html",
+          "hash": "SabiyX6wgG1VHvOq6WmMDaYz/bpSotAZceJA6hVBZYg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPositionCoordinates.html",
+          "hash": "c0LBAq1vSYYckj0382ImQDCj6cJ+aSBwkpbuN6OzC70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderWidth.html",
+          "hash": "rzxEBndAKco3FxVX560/vKolihw/w68XHQ2JcCu1jlk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderRadius.html",
+          "hash": "2ttwcmAPkGt9hcR8v4RBKtRmFg1qCnHDjW7pKMA4YL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.html",
+          "hash": "Mkcd/KvG3tOBP37wGxJA+ZJBdJh2NBTjOsH10LT1ay0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.Utils.html",
+          "hash": "ip/b3vNkrQUul/hkZN/V7/zdgX7odaMiNxK+Uevv36Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.ussClassName.html",
+          "hash": "vwU0owLB8ueBr0JlFxEoUuHJ+yib+KrRwMLyaNJB1mc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.valueChangedCallback.html",
+          "hash": "20YKxggxSeE6s4+CskJfUUAtNME8FXSsYdALrPEQxHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.-ctor.html",
+          "hash": "Fd6z22t2R7hMJuTRx1WRtOEu5xDtOO/w38GgMQPvAMA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetUp.html",
+          "hash": "e0WGErOSbUFtCLhRX1S2LXxdTfc1+86DE00feERt+6k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.value.html",
+          "hash": "bYSiSXz04aXAQgTAtU0lX/4UYIiOJZ4S/rjXg23Kulk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetValueWithoutNotify.html",
+          "hash": "NVMl39rDzgJepT+/dUHq3IR/jCXjOw4S48cOBYH8h6k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.ValueTracker-1.html",
+          "hash": "p5Vnya8f238Q+CJepC6LGEfzvK+J0Bg0PyPL+rowuwg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ArteHacker.UITKEditorAid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ArteHacker.UITKEditorAid.html",
+          "hash": "pIkPDxaStvLZiwKxlTU54qyCBce9FtCv2Dn1RTGGZwg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "xkziYSWQTRqHmsAyRlvFpKM+bp40B9WgokVPH1LoNPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/DefaultReorderableList.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/DefaultReorderableList.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/EditableLabel.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/EditableLabel.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/ListOfInspectors.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/ListOfInspectors.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/ManagedRefsList.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/ManagedRefsList.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/TabbedView.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/TabbedView.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/copying_asmdef.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/copying_asmdef.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "doc_images/removing_uxml_support.png",
+      "output": {
+        "resource": {
+          "relative_path": "doc_images/removing_uxml_support.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "icons/ArteHackerDocBlue.png",
+      "output": {
+        "resource": {
+          "relative_path": "icons/ArteHackerDocBlue.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "icons/ArteHackerIcon.png",
+      "output": {
+        "resource": {
+          "relative_path": "icons/ArteHackerIcon.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "92r0oewY7OQ3B3EgxxvyfBbxtLINWdfaNVR/8/2KMsY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual_pages/embedding_this_package.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual_pages/embedding_this_package.html",
+          "hash": "G5Vf5wVwMET96ylnbtEIlHFKbYH6KDh/Y+2CYaFD/s0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "manual_pages/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "manual_pages/toc.html",
+          "hash": "8tVqx/gdjkf35YkTqHbMF0MdG4v+/CI0o8H1vuPqPBE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "unJqf3P4UADY0tErrKqPZOYJhUGoYH6r6g8VUcV2wnY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 24,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

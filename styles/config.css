@@ -1,0 +1,191 @@
+/* Layout variables */
+:root {
+    --base-font-size: 16px;
+    --max-content-width: 960px;
+    --main-padding-left: calc(40px + max(0px, (100vw - 1366px) * .15));
+    --main-padding-right: 40px; 
+
+    --topbar-height: 60px;
+
+    --min-affix-width: 230px;
+    --max-affix-space-left: 100px;
+    --sidebar-width: 360px;
+}
+
+@media (max-width: 1520px) {
+    :root {
+        --sidebar-width: 350px;
+        --min-affix-width: 210px
+    }
+}
+
+@media (max-width: 1460px) {
+    :root {
+        --sidebar-width: 24vw;
+        --min-affix-width: 181px;
+    }
+}
+
+@media (max-width: 1023.98px) {
+    :root {
+        --sidebar-width: 400px;
+    }
+}
+
+/* Dark colors */
+:root 
+{
+    --panel-bg-color: #25272b;
+    --panel-border-color: #2c2f32;
+
+    --main-bg-color: #1c1d20;
+    --text-color: #cdcdcd;
+    --link-color: #5dbbff;
+    --link-hover-color: #5dbbff;
+    --separator-color: #3f4042;
+
+    /* Header */
+    --topbar-bg-color: #2a2d32;
+    --menu-button-color: #7a7f86;
+
+    /* Breadcrumbs */
+    --breadcrumb-bg-color: var(--panel-bg-color);
+    --breadcrumb-border-color: var(--panel-border-color);
+    --breadcrumb-text-color: #afafaf;
+
+    /* Affix */
+    --affix-color: #8d9093;
+    --affix-active-color: #cacaca;
+    --affix-separator-color: #3f4042;
+
+    /* Sidebar */
+    --sidebar-bg-color: var(--panel-bg-color);
+    --sidebar-border-color: var(--panel-border-color);
+    --sidebar-item-color: #acafb2;
+    --sidebar-active-item-color: #d6d6d6;
+
+    /* Search */
+    --search-color: #d6d6d6;
+    --search-placeholder-color: #92979f;
+    --search-bg-color: #2c2f34;
+    --search-border-color: #3f4146;
+    --search-border-focus-color: #75787d;
+    --search-searchicon-color: #e2e2e2;
+    --search-clearicon-color: #92979f;
+
+    /* Buttons */
+    --button-bg-color: #2c2f34;
+    --button-hover-bg-color: #34393e;
+    --button-active-bg-color: #3a3e42;
+    --button-border-color: #3f4146;
+
+    /* Scrollbars */
+    --scrollbar-thumb-bg-color: #373a3e;
+    --scrollbar-thumb-code-bg-color: #393c40;
+
+    /* Tables */
+    --table-bg-color: var(--panel-bg-color);
+    --table-border-color: #313537;
+    --table-row-separator-color: #3a3d42;
+    --table-header-color: #ffffffcc;
+    --table-header-bg-color: #2e3136;
+    --table-header-border-color: #313537;
+
+    /* Code */
+    --inline-code-bg-color: #54585e2c;
+    --inline-code-border-color: #50575a4f;
+    --inline-code-color: #b8cde2;
+    --code-bg-color: var(--panel-bg-color);
+    --code-border-color: var(--panel-border-color);
+
+    /* Special texts */
+    --alert-info-border-color: rgba(114,137,218,.5);
+    --alert-info-bg-color: rgba(114,137,218,.1);
+
+    --alert-warning-border-color: rgba(250,166,26,.5);
+    --alert-warning-bg-color: rgba(250,166,26,.1);
+
+    --alert-danger-border-color: rgba(240,71,71,.5);
+    --alert-danger-bg-color: rgba(240,71,71,.1);
+
+    --blockquote-border-color: rgba(255,255,255,.5);
+}
+
+/* Light colors */
+.light-theme
+{
+    --panel-bg-color: #f3f6fc;
+    --panel-border-color: #e1e5ec;
+
+    --main-bg-color: #fff;
+    --text-color: #1f1f1f;
+    --link-color: #005aea;
+    --link-hover-color: #005aea;
+    --separator-color: #c9d0db;
+
+    /* Header */
+    --topbar-bg-color: #e1e5ee;
+    --menu-button-color: #7a7f86;
+
+    /* Breadcrumbs */
+    --breadcrumb-bg-color: var(--panel-bg-color);
+    --breadcrumb-border-color: var(--panel-border-color);
+    --breadcrumb-text-color: #505050;
+
+    /* Affix */
+    --affix-color: #6f6f6f;
+    --affix-active-color: #005aea;
+    --affix-separator-color: transparent;
+
+    /* Sidebar */
+    --sidebar-bg-color: var(--panel-bg-color);
+    --sidebar-border-color: var(--panel-border-color);
+    --sidebar-item-color: #202020;
+    --sidebar-active-item-color: #003fd0;
+
+    /* Search */
+    --search-color: #1f1f1f;
+    --search-placeholder-color: #636363;
+    --search-bg-color: #e3e8f3;
+    --search-border-color: #c9d1df;
+    --search-border-focus-color: #65696e;
+    --search-searchicon-color: #303030;
+    --search-clearicon-color: #636363;
+
+    /* Buttons */
+    --button-bg-color: #e3e8f3;
+    --button-hover-bg-color: #cacfda;
+    --button-active-bg-color: #bcc2cf;
+    --button-border-color: #c9d1df;
+
+    /* Scrollbars */
+    --scrollbar-thumb-bg-color: #7E8187;
+    --scrollbar-thumb-code-bg-color: #73757a;
+
+    /* Tables */
+    --table-bg-color: var(--panel-bg-color);
+    --table-border-color: #bfc5d3;
+    --table-row-separator-color: #bbc1cf;
+    --table-header-color: #1f1f1f;
+    --table-header-bg-color: #d7e1f1;
+    --table-header-border-color: #bbc1cf;
+
+    /* Code */
+    --inline-code-bg-color: #d2dae62c;
+    --inline-code-border-color: #e1e5ec;
+    --inline-code-color: #262ba0;
+    --code-bg-color: var(--panel-bg-color);
+    --code-border-color: var(--panel-border-color);
+
+    /* Special texts */
+    --alert-info-border-color: rgba(114,137,218,.5);
+    --alert-info-bg-color: rgba(114,137,218,.15);
+
+    --alert-warning-border-color: rgba(250,166,26,.5);
+    --alert-warning-bg-color: rgba(250,166,26,.15);
+
+    --alert-danger-border-color: rgba(240,71,71,.5);
+    --alert-danger-bg-color: rgba(240,71,71,.15);
+
+    --blockquote-border-color: rgba(0,0,0,.5);
+}

@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<!--
+This documentation site uses the ConciseFX template for DocFX, available here: https://github.com/OscarAbraham/ConciseFX.
+ConciseFX available under this license:
+The MIT License (MIT)
+
+Copyright (c) 2023 OscarAbraham
+Copyright (c) 2022 Singulink
+Copyright (c) Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+    <head>
+      <meta charset="utf-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Embedding this package | Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Embedding this package | Documentation ">
+      
+      <link rel="shortcut icon" href="../icons/ArteHackerIcon.png">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400..700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link id="light-code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css">
+      <link id="dark-code-style" rel="stylesheet" href="../styles/dark-code.css">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/concisefx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+      
+      <meta property="docfx:rel" content="../">
+      
+    </head>
+    <body data-spy="scroll" data-target="#affix" data-offset="120">
+        <header class="top-navbar">
+            <button id="menu-button" title="Navigation Menu" onclick="toggleMenu()">
+                <span class="burger-icon"></span>
+            </button>
+            <a class="brand" href="../index.html">
+              <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+              <span class="brand-title">UITK Editor Aid</span>
+            </a>        </header>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+                    <div>
+                      <div class="mobile-hide">
+                        <a class="brand" href="../index.html">
+                          <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+                          <span class="brand-title">UITK Editor Aid</span>
+                        </a>  </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+                    
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+                  <div class="theme-select">
+                    <button class="themes-menu-toggle">
+                      <i class="bi bi-circle-half theme-icon"></i>
+                      Theme
+                    </button>
+                
+                    <ul class="themes-menu">
+                      <li>
+                        <button class="dark-theme-option">
+                          <i class="bi bi-moon-fill"></i> Dark
+                        </button>
+                      </li>
+                      <li>
+                        <button class="light-theme-option">
+                          <i class="bi bi-sun-fill"></i> Light
+                        </button>
+                      </li>
+                      <li>
+                        <button class="auto-theme-option">
+                          <i class="bi bi-circle-half"></i> Auto
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <a href='https://github.com/OscarAbraham/UITKEditorAid'>UITKEditorAid on GitHub</a>
+                </div>
+            </nav>
+
+            <main class="main-panel">
+                <div id="search-results">
+                  <div class="search-list">Search Results for <span></span></div>
+                  <div class="sr-items">
+                    <p>Loading...</p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search article">
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="">
+<h1 id="embedding-this-package">Embedding this package</h1>
+
+<p>Sometimes, it&#39;s needed to embed this package inside another one, especially when publishing to the 
+Asset Store. We recommend the following steps to avoid collisions when your users have a reference 
+to this package themselves. You can do these steps right every time you are about to publish your
+package; that way you can work with the most recent version of UITKEditorAid while developing. For
+these steps to work, your package must have its own code under its own asmdefs.</p>
+<h2 id="1-generate-new-file-guids">1. Generate new file GUIDs</h2>
+<p>Unity uses <a href="https://docs.unity3d.com/Manual/AssetMetadata.html">unique ids stored in .meta files</a>
+to track different assets. When there are two files with the same id, Unity will generate a new id 
+for one of the files. This means that either your embedded UITKEditorAid or the user&#39;s copy of the 
+package could lose its file ids. That in turn can cause confusion, problems with Version Control, 
+and issues with the Package Manager.</p>
+<p>It&#39;s better for your embedded copy of UITKEditorAid to already have new file GUIDs. An easy way of
+achieving this is to copy UITKEditorAid into your package while keeping an existing reference to
+UITKEditorAid in your working Unity project. The Editor will detect the duplicate file ids and print
+a bunch of warnings in the console about changing them to avoid duplication. It will also print a
+couple of errors about duplicate assemblies; these will be fixed in the next step.</p>
+<h2 id="2-prepare-the-asmdef">2. Prepare the asmdef</h2>
+<p>Select the asmdef inside the Editor folder in your copy of UITKEditorAid in the Unity Editor. 
+Change the asmdef&#39;s <strong>name</strong> to a unique one to avoid duplicate assemblies. The <strong>name</strong> is set in
+the inspector; you can also rename the file&#39;s name for clarity, but the inspector&#39;s field is the
+important part.</p>
+<p>Set <strong>Auto Referenced</strong> to false in the asmdef&#39;s inspector. This will prevent users from depending
+on this code, and it&#39;ll save you from having to rename namespaces to avoid collisions. In your
+package&#39;s own assembly definitions, replace references to the original UITKEditorAid&#39;s asmdef with
+your copy.</p>
+<p>Here&#39;s an image that shows how the asmdef&#39;s copy should look in the inspector. Replace <em>MyCompany</em>
+with your own brand or name.</p>
+<p><img src="../doc_images/copying_asmdef.png" alt="asmdef copy settings"></p>
+<h2 id="3-remove-uxml-support">3. Remove UXML support</h2>
+<p>We really recommend not using custom UI Toolkit elements with UXML inside packages, unless the
+package is intentionally sharing those elements with users. If you&#39;re able to use a custom element
+with UXML or the UI Builder, the users of your package are too. This can cause unintended 
+dependencies on parts of your package, and it will pollute the user&#39;s UXML options
+with undocumented features that don&#39;t explain their origin.</p>
+<p>UITKEditorAid has the ability to remove UXML support with a symbol define.
+If <strong>REMOVE_UXML_FACTORIES</strong> is defined, UXML related code will be removed. This symbol should only 
+be defined for your copy of UITKEditorAid to avoid affecting user&#39;s packages. An easy way of doing
+this is to add a custom <strong>Version Define</strong> in your copy&#39;s asmdef&#39;s inspector. Set the <strong>Resource</strong>
+field to <em>Unity</em> and the <strong>Define</strong> field to <em>REMOVE_UXML_FACTORIES</em>; leave <strong>Expression</strong> empty.</p>
+<p>This is how it looks in the inspector:</p>
+<p><img src="../doc_images/removing_uxml_support.png" alt="Removing UXML support"></p>
+<p>Usually, replacing UXML layouts that use custom elements with pure code is relatively easy,
+especially because you can still use USS. The benefits of removing these UXML uses from packages
+normally outweigh the cost. If you really need to use UITKEditorAid elements with UXML, please
+rename the package&#39;s namespaces to avoid collisions, as UXML only uses namespaces and ignores
+assembly names for identifying elements.</p>
+</article>
+                    <div class="sideaffix-container mobile-hide" role="complementary">
+                      <div class="sideaffix">
+                        <nav class="bs-docs-sidebar affix" id="affix">
+                          <h5>On this page</h5>
+                          <div></div>
+                        </nav>
+                      </div>
+                    </div>                </div>
+
+            </main>
+        </div>
+
+        <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/concisefx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

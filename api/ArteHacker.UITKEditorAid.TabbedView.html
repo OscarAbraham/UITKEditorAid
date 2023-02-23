@@ -1,0 +1,468 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<!--
+This documentation site uses the ConciseFX template for DocFX, available here: https://github.com/OscarAbraham/ConciseFX.
+ConciseFX available under this license:
+The MIT License (MIT)
+
+Copyright (c) 2023 OscarAbraham
+Copyright (c) 2022 Singulink
+Copyright (c) Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+    <head>
+      <meta charset="utf-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>TabbedView Class
+     | Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="TabbedView Class
+     | Documentation ">
+      
+      <link rel="shortcut icon" href="../icons/ArteHackerIcon.png">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400..700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link id="light-code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css">
+      <link id="dark-code-style" rel="stylesheet" href="../styles/dark-code.css">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/concisefx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+      
+      <meta property="docfx:rel" content="../">
+      
+    </head>
+    <body data-spy="scroll" data-target="#affix" data-offset="120">
+        <header class="top-navbar">
+            <button id="menu-button" title="Navigation Menu" onclick="toggleMenu()">
+                <span class="burger-icon"></span>
+            </button>
+            <a class="brand" href="../index.html">
+              <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+              <span class="brand-title">UITK Editor Aid</span>
+            </a>        </header>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+                    <div>
+                      <div class="mobile-hide">
+                        <a class="brand" href="../index.html">
+                          <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+                          <span class="brand-title">UITK Editor Aid</span>
+                        </a>  </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+                    
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+                  <div class="theme-select">
+                    <button class="themes-menu-toggle">
+                      <i class="bi bi-circle-half theme-icon"></i>
+                      Theme
+                    </button>
+                
+                    <ul class="themes-menu">
+                      <li>
+                        <button class="dark-theme-option">
+                          <i class="bi bi-moon-fill"></i> Dark
+                        </button>
+                      </li>
+                      <li>
+                        <button class="light-theme-option">
+                          <i class="bi bi-sun-fill"></i> Light
+                        </button>
+                      </li>
+                      <li>
+                        <button class="auto-theme-option">
+                          <i class="bi bi-circle-half"></i> Auto
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <a href='https://github.com/OscarAbraham/UITKEditorAid'>UITKEditorAid on GitHub</a>
+                </div>
+            </nav>
+
+            <main class="main-panel">
+                <div id="search-results">
+                  <div class="search-list">Search Results for <span></span></div>
+                  <div class="sr-items">
+                    <p>Loading...</p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search article">
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.TabbedView">
+  <div class="contribution-links mobile-hide">
+    <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/development/Editor/TabbedView.cs/#L68">View Source</a>
+  
+  </div>
+  
+  <h1 id="ArteHacker_UITKEditorAid_TabbedView" data-uid="ArteHacker.UITKEditorAid.TabbedView" class="text-break">TabbedView Class
+  </h1>
+  
+  
+  
+  
+  <h4 class="description-header" id="description">Description</h4>
+  
+  <div class="markdown level0 summary"><p>Element for organizing content with tabs.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TabbedView : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle</code></pre>
+  </div>
+  
+  
+    <h5>Inheritance</h5>
+    <div class="inheritance compact-inheritance">
+        <div class="level0 inheritance-item"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+        <div class="level1 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.CallbackEventHandler.html">CallbackEventHandler</a></div>
+        <div class="level2 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.Focusable.html">Focusable</a></div>
+        <div class="level3 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.VisualElement.html">VisualElement</a></div>
+      <div class="level4 inheritance-item current-inheritance-item"><span class="xref">TabbedView</span></div>
+    </div>
+  
+  
+  
+  <h5 id="ArteHacker_UITKEditorAid_TabbedView_remarks">Remarks</h5>
+  <div class="markdown level0 remarks"><p>Set <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection.html#ArteHacker_UITKEditorAid_TabbedView_allowMultipleSelection">allowMultipleSelection</a> true to support opening multiple tabs.
+Set <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html#ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow">allowTabsOverflow</a> false to use multiple rows when tabs don&apos;t fit in a single line.
+Use the <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.AddTab.html#ArteHacker_UITKEditorAid_TabbedView_AddTab_UnityEngine_UIElements_VisualElement_UnityEngine_UIElements_VisualElement_">AddTab</a> method that receives a VisualElement
+as a title if you need more than simple labels in the tabs. Pass a unique string to 
+<a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey.html#ArteHacker_UITKEditorAid_TabbedView_ApplyPersistenceKey_System_String_">ApplyPersistenceKey(String)</a> to remember the last opened tabs.</p>
+</div>
+  
+  <h3 id="ArteHacker_UITKEditorAid_TabbedView_examples">Examples</h3>
+  <p>A basic usage example with three tabs.</p>
+<pre><code class="lang-csharp">class ACustomEditor : Editor
+{
+    public override VisualElement CreateInspectorGUI()
+    {
+        var tabbedView = new TabbedView();
+        // Set allowMultipleSelection to view multiple tabs at the same time.
+        // It works by holding shift or ctrl (cmd on macOS) when clicking them.
+        tabbedView.allowMultipleSelection = true;
+
+        // Use AddTab to create new tabs.
+        // The first parameter is an element used as the tab&apos;s title.
+        // The second parameter is an element used as the tab&apos;s content.
+        tabbedView.AddTab(new Label(&quot;Tab 0&quot;), new Label(&quot;Tab 0 Content&quot;));
+        tabbedView.AddTab(new Label(&quot;Tab 1&quot;), new Label(&quot;Tab 1 Content&quot;));
+        // You can use a string for the tab&apos;s title if you only need some text.
+        tabbedView.AddTab(&quot;Tab 2&quot;, new Label(&quot;Tab 2 Content&quot;));
+
+        // The first tab is selected by default. This selects Tab 2.
+        tabbedView.SetSelectedTab(2);
+
+        // This selects Tab 0 and Tab 1 without unselecting any other tab.
+        tabbedView.AddTabToSelection(0);
+        tabbedView.AddTabToSelection(1);
+
+        // This unselects Tab 2.
+        tabbedView.RemoveTabFromSelection(2);
+
+        // Listen to this event to know when a tab&apos;s selection status changes.
+        tabbedView.onTabSelectionChange += (index, selected) =>
+        {
+            if (selected)
+                Debug.Log($&quot;Tab {index} selected&quot;);
+            else
+                Debug.Log($&quot;Tab {index} unselected&quot;);
+        };
+
+        // Use a unique string as a key remember tab selection in views that use
+        // the same key. Make sure to call this after all the tabs are added.
+        tabbedView.ApplyPersistenceKey(&quot;ACustomEditor_TabsKey&quot;);
+
+        return tabbedView;
+    }
+}</code></pre>
+
+  <h3 id="constructors">Constructors
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView__ctor" data-uid="ArteHacker.UITKEditorAid.TabbedView.#ctor">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.-ctor.html#ArteHacker_UITKEditorAid_TabbedView__ctor">TabbedView()</a>
+        </td>
+        <td class="markdown level1 summary description-cell"></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflowUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflowUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflowUssClassName.html">allowTabsOverflowUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of Tabbed Views that allow tabs overflow. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_selectedTabUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.selectedTabUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.selectedTabUssClassName.html">selectedTabUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of a selected tab element. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabBarContainerUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabBarContainerUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabBarContainerUssClassName.html">tabBarContainerUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the element that contains the tab bar. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabBarScrollLeftButtonUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabBarScrollLeftButtonUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabBarScrollLeftButtonUssClassName.html">tabBarScrollLeftButtonUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the button to scroll tabs to the left when <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html#ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow">allowTabsOverflow</a> is true. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabBarScrollRightButtonUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabBarScrollRightButtonUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabBarScrollRightButtonUssClassName.html">tabBarScrollRightButtonUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the button to scroll tabs to the right when <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html#ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow">allowTabsOverflow</a> is true. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabBarUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabBarUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabBarUssClassName.html">tabBarUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the bar that contains all the tabs. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabContentDisplayUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabContentDisplayUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabContentDisplayUssClassName.html">tabContentDisplayUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the element that contains all the tab contents. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabContentUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabContentUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabContentUssClassName.html">tabContentUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of a single tab&apos;s content. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabTitleUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabTitleUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabTitleUssClassName.html">tabTitleUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of a tab&apos;s title. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabUssClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabUssClassName.html">tabUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of a tab element. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_ussClassName" data-uid="ArteHacker.UITKEditorAid.TabbedView.ussClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.ussClassName.html">ussClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of elements of this type. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_allowMultipleSelection" data-uid="ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection.html#ArteHacker_UITKEditorAid_TabbedView_allowMultipleSelection">allowMultipleSelection</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>When true, allows showing multiple tabs at the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab.
+It&apos;s false by default.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow" data-uid="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html#ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow">allowTabsOverflow</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>When true, the Tabbed View will keep tabs in a single row, clipping them when they don&apos;t fit and showing additional buttons to 
+scroll through them. When false, tabs that don&apos;t fit will be wrapped around, adding as many rows of tabs as necessary to fit them all.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabCount" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabCount">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabCount.html#ArteHacker_UITKEditorAid_TabbedView_tabCount">tabCount</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_tabsScrollSpeed" data-uid="ArteHacker.UITKEditorAid.TabbedView.tabsScrollSpeed">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.tabsScrollSpeed.html#ArteHacker_UITKEditorAid_TabbedView_tabsScrollSpeed">tabsScrollSpeed</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>The scroll speed for the tab bar when <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html#ArteHacker_UITKEditorAid_TabbedView_allowTabsOverflow">allowTabsOverflow</a> is true. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_AddTab_System_String_UnityEngine_UIElements_VisualElement_" data-uid="ArteHacker.UITKEditorAid.TabbedView.AddTab(System.String,UnityEngine.UIElements.VisualElement)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.AddTab.html#ArteHacker_UITKEditorAid_TabbedView_AddTab_System_String_UnityEngine_UIElements_VisualElement_">AddTab(String, VisualElement)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Adds a tab and the content associated to it. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_AddTab_UnityEngine_UIElements_VisualElement_UnityEngine_UIElements_VisualElement_" data-uid="ArteHacker.UITKEditorAid.TabbedView.AddTab(UnityEngine.UIElements.VisualElement,UnityEngine.UIElements.VisualElement)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.AddTab.html#ArteHacker_UITKEditorAid_TabbedView_AddTab_UnityEngine_UIElements_VisualElement_UnityEngine_UIElements_VisualElement_">AddTab(VisualElement, VisualElement)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Adds a tab and the content associated to it. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_AddTabToSelection_System_Int32_" data-uid="ArteHacker.UITKEditorAid.TabbedView.AddTabToSelection(System.Int32)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.AddTabToSelection.html#ArteHacker_UITKEditorAid_TabbedView_AddTabToSelection_System_Int32_">AddTabToSelection(Int32)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Selects a tab without unselecting others. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_ApplyPersistenceKey_System_String_" data-uid="ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey(System.String)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey.html#ArteHacker_UITKEditorAid_TabbedView_ApplyPersistenceKey_System_String_">ApplyPersistenceKey(String)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Use a persistence key to remember user selection of tabs. The selection is stored in <a class="xref" href="https://docs.unity3d.com/ScriptReference/SessionState.html">SessionState</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_GetTabContent_System_Int32_" data-uid="ArteHacker.UITKEditorAid.TabbedView.GetTabContent(System.Int32)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.GetTabContent.html#ArteHacker_UITKEditorAid_TabbedView_GetTabContent_System_Int32_">GetTabContent(Int32)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Gets the tab content at the specified index. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_GetTabTitleElement_System_Int32_" data-uid="ArteHacker.UITKEditorAid.TabbedView.GetTabTitleElement(System.Int32)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.GetTabTitleElement.html#ArteHacker_UITKEditorAid_TabbedView_GetTabTitleElement_System_Int32_">GetTabTitleElement(Int32)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Gets the tab title element at the specified index. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_RemoveTabFromSelection_System_Int32_" data-uid="ArteHacker.UITKEditorAid.TabbedView.RemoveTabFromSelection(System.Int32)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.RemoveTabFromSelection.html#ArteHacker_UITKEditorAid_TabbedView_RemoveTabFromSelection_System_Int32_">RemoveTabFromSelection(Int32)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Unselects a tab. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_SetSelectedTab_System_Int32_" data-uid="ArteHacker.UITKEditorAid.TabbedView.SetSelectedTab(System.Int32)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.SetSelectedTab.html#ArteHacker_UITKEditorAid_TabbedView_SetSelectedTab_System_Int32_">SetSelectedTab(Int32)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Sets a single selected tab. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_TabbedView_onTabSelectionChange" data-uid="ArteHacker.UITKEditorAid.TabbedView.onTabSelectionChange">
+          <a class="xref" href="ArteHacker.UITKEditorAid.TabbedView.onTabSelectionChange.html">onTabSelectionChange</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Event triggered when a tab&apos;s selection changed. Receives the tab&apos;s index and a bool indicating whether it&apos;s selected. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetLocalRect_UnityEngine_UIElements_VisualElement_">UIToolkitExtensions.GetLocalRect(VisualElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetChildren__1_UnityEngine_UIElements_VisualElement_System_Collections_Generic_List___0__System_Func___0_System_Boolean__">UIToolkitExtensions.GetChildren&lt;TElement&gt;(VisualElement, List&lt;TElement&gt;, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetFirstChild__1_UnityEngine_UIElements_VisualElement_System_Func___0_System_Boolean__">UIToolkitExtensions.GetFirstChild&lt;TElement&gt;(VisualElement, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_ForEachChild__1_UnityEngine_UIElements_VisualElement_System_Action___0__">UIToolkitExtensions.ForEachChild&lt;TElement&gt;(VisualElement, Action&lt;TElement&gt;)</a>
+  </div>
+</article>
+                    <div class="sideaffix-container mobile-hide" role="complementary">
+                      <div class="sideaffix">
+                        <nav class="bs-docs-sidebar affix" id="affix">
+                          <h5>On this page</h5>
+                          <div></div>
+                        </nav>
+                      </div>
+                    </div>                </div>
+
+            </main>
+        </div>
+
+        <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/concisefx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

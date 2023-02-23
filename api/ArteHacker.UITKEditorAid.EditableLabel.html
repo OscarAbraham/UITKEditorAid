@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<!--
+This documentation site uses the ConciseFX template for DocFX, available here: https://github.com/OscarAbraham/ConciseFX.
+ConciseFX available under this license:
+The MIT License (MIT)
+
+Copyright (c) 2023 OscarAbraham
+Copyright (c) 2022 Singulink
+Copyright (c) Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+    <head>
+      <meta charset="utf-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>EditableLabel Class
+     | Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="EditableLabel Class
+     | Documentation ">
+      
+      <link rel="shortcut icon" href="../icons/ArteHackerIcon.png">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400..700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link id="light-code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css">
+      <link id="dark-code-style" rel="stylesheet" href="../styles/dark-code.css">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/concisefx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+      
+      <meta property="docfx:rel" content="../">
+      
+    </head>
+    <body data-spy="scroll" data-target="#affix" data-offset="120">
+        <header class="top-navbar">
+            <button id="menu-button" title="Navigation Menu" onclick="toggleMenu()">
+                <span class="burger-icon"></span>
+            </button>
+            <a class="brand" href="../index.html">
+              <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+              <span class="brand-title">UITK Editor Aid</span>
+            </a>        </header>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+                    <div>
+                      <div class="mobile-hide">
+                        <a class="brand" href="../index.html">
+                          <img src="../icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+                          <span class="brand-title">UITK Editor Aid</span>
+                        </a>  </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+                    
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+                  <div class="theme-select">
+                    <button class="themes-menu-toggle">
+                      <i class="bi bi-circle-half theme-icon"></i>
+                      Theme
+                    </button>
+                
+                    <ul class="themes-menu">
+                      <li>
+                        <button class="dark-theme-option">
+                          <i class="bi bi-moon-fill"></i> Dark
+                        </button>
+                      </li>
+                      <li>
+                        <button class="light-theme-option">
+                          <i class="bi bi-sun-fill"></i> Light
+                        </button>
+                      </li>
+                      <li>
+                        <button class="auto-theme-option">
+                          <i class="bi bi-circle-half"></i> Auto
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <a href='https://github.com/OscarAbraham/UITKEditorAid'>UITKEditorAid on GitHub</a>
+                </div>
+            </nav>
+
+            <main class="main-panel">
+                <div id="search-results">
+                  <div class="search-list">Search Results for <span></span></div>
+                  <div class="sr-items">
+                    <p>Loading...</p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search article">
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.EditableLabel">
+  <div class="contribution-links mobile-hide">
+    <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/development/Editor/EditableLabel.cs/#L58">View Source</a>
+  
+  </div>
+  
+  <h1 id="ArteHacker_UITKEditorAid_EditableLabel" data-uid="ArteHacker.UITKEditorAid.EditableLabel" class="text-break">EditableLabel Class
+  </h1>
+  
+  
+  
+  
+  <h4 class="description-header" id="description">Description</h4>
+  
+  <div class="markdown level0 summary"><p>A label that transforms into a field for editing its text. <code>UXML support</code> </p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EditableLabel : BindableElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle, IBindable, INotifyValueChanged&lt;string&gt;</code></pre>
+  </div>
+  
+  
+    <h5>Inheritance</h5>
+    <div class="inheritance compact-inheritance">
+        <div class="level0 inheritance-item"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+        <div class="level1 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.CallbackEventHandler.html">CallbackEventHandler</a></div>
+        <div class="level2 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.Focusable.html">Focusable</a></div>
+        <div class="level3 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.VisualElement.html">VisualElement</a></div>
+        <div class="level4 inheritance-item"><a class="xref" href="https://docs.unity3d.com/ScriptReference/UIElements.BindableElement.html">BindableElement</a></div>
+      <div class="level5 inheritance-item current-inheritance-item"><span class="xref">EditableLabel</span></div>
+    </div>
+  
+  
+  
+  <h5 id="ArteHacker_UITKEditorAid_EditableLabel_remarks">Remarks</h5>
+  <div class="markdown level0 remarks"><p>By default, it becomes editable with a double click. Use <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html#ArteHacker_UITKEditorAid_EditableLabel_BeginEditing">BeginEditing()</a> to enter edit mode from code.
+Set <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel.html#ArteHacker_UITKEditorAid_EditableLabel_emptyTextLabel">emptyTextLabel</a> to show a placeholder text when the label is empty.</p>
+</div>
+  
+  <h3 id="ArteHacker_UITKEditorAid_EditableLabel_examples">Examples</h3>
+  <p>Here&apos;s an example for customizing an editable label.</p>
+<pre><code class="lang-csharp">public class MyCustomEditor : Editor
+{
+    public override VisualElement CreateInspectorGUI()
+    {
+        var root = new VisualElement();
+        var editableLabel = new EditableLabel();
+        root.Add(editableLabel);
+
+        // We can disable editing on double click this way:
+        editableLabel.editOnDoubleClick = false;
+
+        // EditableLabels can enter edit mode from code. 
+        // For example, we can add a listener to edit it on Alt+Click:
+        editableLabel.RegisterCallback&lt;MouseDownEvent>(e =>
+        {
+            if (e.altKey &amp;&amp; e.button == 0)
+                editableLabel.BeginEditing();
+        });
+
+        // We can also make it editable from a context menu action:
+        var menuManipulator = new ContextualMenuManipulator(e =>
+        {
+            e.menu.AppendAction(&quot;Edit label&apos;s text&quot;, a => editableLabel.BeginEditing());
+        });
+        root.AddManipulator(menuManipulator);
+
+        // We can add a placeholder text for when the label is empty:
+        editableLabel.emptyTextLabel = &quot;Alt+Click to edit this label&quot;;
+        // Or we can set the label&apos;s actual text like this:
+        editableLabel.value = &quot;Initial text&quot;;
+
+        // EditableLabels can be bound to any string property, just like any
+        // TextField. We can do it by setting it&apos;s bindingPath:
+        editableLabel.bindingPath = &quot;m_Name&quot;;
+
+        return root;
+    }
+}</code></pre>
+
+  <h3 id="constructors">Constructors
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel__ctor" data-uid="ArteHacker.UITKEditorAid.EditableLabel.#ctor">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.-ctor.html#ArteHacker_UITKEditorAid_EditableLabel__ctor">EditableLabel()</a>
+        </td>
+        <td class="markdown level1 summary description-cell"></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_labelUssClassName" data-uid="ArteHacker.UITKEditorAid.EditableLabel.labelUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.labelUssClassName.html">labelUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the label used to show non-editable text. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_textFieldUssClassName" data-uid="ArteHacker.UITKEditorAid.EditableLabel.textFieldUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.textFieldUssClassName.html">textFieldUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of the TextField inside this element. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_ussClassName" data-uid="ArteHacker.UITKEditorAid.EditableLabel.ussClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.ussClassName.html">ussClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of elements of this type. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_editOnDoubleClick" data-uid="ArteHacker.UITKEditorAid.EditableLabel.editOnDoubleClick">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.editOnDoubleClick.html#ArteHacker_UITKEditorAid_EditableLabel_editOnDoubleClick">editOnDoubleClick</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Whether to start editing by double clicking the label. See <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html#ArteHacker_UITKEditorAid_EditableLabel_BeginEditing">BeginEditing()</a> to start editing from code. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_emptyTextLabel" data-uid="ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel.html#ArteHacker_UITKEditorAid_EditableLabel_emptyTextLabel">emptyTextLabel</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>A text that appears when the EditableLabel&apos;s text is empty. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_isDelayed" data-uid="ArteHacker.UITKEditorAid.EditableLabel.isDelayed">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.isDelayed.html#ArteHacker_UITKEditorAid_EditableLabel_isDelayed">isDelayed</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Whether the TextField inside this element is delayed. It&apos;s true by default. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_maxLength" data-uid="ArteHacker.UITKEditorAid.EditableLabel.maxLength">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.maxLength.html#ArteHacker_UITKEditorAid_EditableLabel_maxLength">maxLength</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>The maximum character length of this element&apos;s TextField. -1 means no limit and it&apos;s the default.  </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_multiline" data-uid="ArteHacker.UITKEditorAid.EditableLabel.multiline">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.multiline.html#ArteHacker_UITKEditorAid_EditableLabel_multiline">multiline</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Whether to use multiline text. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_value" data-uid="ArteHacker.UITKEditorAid.EditableLabel.value">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.value.html#ArteHacker_UITKEditorAid_EditableLabel_value">value</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>The string value of this element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_BeginEditing" data-uid="ArteHacker.UITKEditorAid.EditableLabel.BeginEditing">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html#ArteHacker_UITKEditorAid_EditableLabel_BeginEditing">BeginEditing()</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Call this method to put the label in edit mode. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_EditableLabel_SetValueWithoutNotify_System_String_" data-uid="ArteHacker.UITKEditorAid.EditableLabel.SetValueWithoutNotify(System.String)">
+          <a class="xref" href="ArteHacker.UITKEditorAid.EditableLabel.SetValueWithoutNotify.html#ArteHacker_UITKEditorAid_EditableLabel_SetValueWithoutNotify_System_String_">SetValueWithoutNotify(String)</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>Set the element&apos;s value without triggering a change event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetLocalRect_UnityEngine_UIElements_VisualElement_">UIToolkitExtensions.GetLocalRect(VisualElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetChildren__1_UnityEngine_UIElements_VisualElement_System_Collections_Generic_List___0__System_Func___0_System_Boolean__">UIToolkitExtensions.GetChildren&lt;TElement&gt;(VisualElement, List&lt;TElement&gt;, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetFirstChild__1_UnityEngine_UIElements_VisualElement_System_Func___0_System_Boolean__">UIToolkitExtensions.GetFirstChild&lt;TElement&gt;(VisualElement, Func&lt;TElement, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_ForEachChild__1_UnityEngine_UIElements_VisualElement_System_Action___0__">UIToolkitExtensions.ForEachChild&lt;TElement&gt;(VisualElement, Action&lt;TElement&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetBoundSerializedProperty.html#ArteHacker_UITKEditorAid_Utils_UIToolkitExtensions_GetBoundSerializedProperty_UnityEngine_UIElements_IBindable_">UIToolkitExtensions.GetBoundSerializedProperty(IBindable)</a>
+  </div>
+</article>
+                    <div class="sideaffix-container mobile-hide" role="complementary">
+                      <div class="sideaffix">
+                        <nav class="bs-docs-sidebar affix" id="affix">
+                          <h5>On this page</h5>
+                          <div></div>
+                        </nav>
+                      </div>
+                    </div>                </div>
+
+            </main>
+        </div>
+
+        <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/concisefx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

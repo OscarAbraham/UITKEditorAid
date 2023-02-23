@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<!--
+This documentation site uses the ConciseFX template for DocFX, available here: https://github.com/OscarAbraham/ConciseFX.
+ConciseFX available under this license:
+The MIT License (MIT)
+
+Copyright (c) 2023 OscarAbraham
+Copyright (c) 2022 Singulink
+Copyright (c) Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+    <head>
+      <meta charset="utf-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>UITK Editor Aid | Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="UITK Editor Aid | Documentation ">
+      
+      <link rel="shortcut icon" href="icons/ArteHackerIcon.png">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400..700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link id="light-code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css">
+      <link id="dark-code-style" rel="stylesheet" href="styles/dark-code.css">
+      <link rel="stylesheet" href="styles/config.css">
+      <link rel="stylesheet" href="styles/concisefx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="manual_pages/toc.html">
+      
+      <meta property="docfx:rel" content="">
+      
+    </head>
+    <body data-spy="scroll" data-target="#affix" data-offset="120">
+        <header class="top-navbar">
+            <button id="menu-button" title="Navigation Menu" onclick="toggleMenu()">
+                <span class="burger-icon"></span>
+            </button>
+            <a class="brand" href="index.html">
+              <img src="icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+              <span class="brand-title">UITK Editor Aid</span>
+            </a>        </header>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+                    <div>
+                      <div class="mobile-hide">
+                        <a class="brand" href="index.html">
+                          <img src="icons/ArteHackerDocBlue.png" alt="UITK Editor Aid" class="logomark">
+                          <span class="brand-title">UITK Editor Aid</span>
+                        </a>  </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+                    
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+                  <div class="theme-select">
+                    <button class="themes-menu-toggle">
+                      <i class="bi bi-circle-half theme-icon"></i>
+                      Theme
+                    </button>
+                
+                    <ul class="themes-menu">
+                      <li>
+                        <button class="dark-theme-option">
+                          <i class="bi bi-moon-fill"></i> Dark
+                        </button>
+                      </li>
+                      <li>
+                        <button class="light-theme-option">
+                          <i class="bi bi-sun-fill"></i> Light
+                        </button>
+                      </li>
+                      <li>
+                        <button class="auto-theme-option">
+                          <i class="bi bi-circle-half"></i> Auto
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <a href='https://github.com/OscarAbraham/UITKEditorAid'>UITKEditorAid on GitHub</a>
+                </div>
+            </nav>
+
+            <main class="main-panel">
+                <div id="search-results">
+                  <div class="search-list">Search Results for <span></span></div>
+                  <div class="sr-items">
+                    <p>Loading...</p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search article">
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="">
+<h1 id="uitk-editor-aid">UITK Editor Aid</h1>
+
+<p>This package contains UI Toolkit elements and utilities for custom Editor interfaces in Unity.</p>
+<h2 id="how-to-install">How to install</h2>
+<p>See <a href="https://docs.unity3d.com/Manual/upm-ui-giturl.html">Install a package from a Git URL</a> to install with
+the Package Manager. The git URL for this package is <code>https://github.com/OscarAbraham/UITKEditorAid.git</code>.</p>
+<p>You can also download this package into your Assets folder.</p>
+<h2 id="brief-rundown-of-this-package">Brief rundown of this package</h2>
+<p>Visit the package&#39;s API <a class="xref" href="api/ArteHacker.UITKEditorAid.html">documentation</a> for more information.
+Click a name to go to the relevant documentation page for usage info and some code examples:</p>
+<h3 id="editablelabelxrefartehackeruitkeditoraideditablelabel"><a class="xref" href="api/ArteHacker.UITKEditorAid.EditableLabel.html">EditableLabel</a></h3>
+<p>A label that transforms into a field for editing its text. It becomes editable with a double click by default.</p>
+<p><img src="doc_images/EditableLabel.png" alt="EditableLabel preview"></p>
+<h3 id="tabbedviewxrefartehackeruitkeditoraidtabbedview"><a class="xref" href="api/ArteHacker.UITKEditorAid.TabbedView.html">TabbedView</a></h3>
+<p>A UI Toolkit element for organizing content with tabs. It has the option to support opening multiple tabs at
+the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab. It also supports remembering
+the last opened tabs by assigning a unique string as a persistence key.</p>
+<p><img src="doc_images/TabbedView.png" alt="TabbedView preview"></p>
+<h3 id="arraypropertyfieldxrefartehackeruitkeditoraidarraypropertyfield"><a class="xref" href="api/ArteHacker.UITKEditorAid.ArrayPropertyField.html">ArrayPropertyField</a></h3>
+<p>A UITK control for a serialized Array or List. It has many customization options.</p>
+<p><img src="doc_images/DefaultReorderableList.png" alt="ArrayPropertyField preview"></p>
+<h3 id="listofinspectorsxrefartehackeruitkeditoraidlistofinspectors"><a class="xref" href="api/ArteHacker.UITKEditorAid.ListOfInspectors.html">ListOfInspectors</a></h3>
+<p>A list of Objects similar to the components list in a GameObject&#39;s inspector.
+This element is typically used with a list of subassets.</p>
+<p><img src="doc_images/ListOfInspectors.png" alt="ListOfInspectors preview"></p>
+<h3 id="propertycontainerxrefartehackeruitkeditoraidpropertycontainer"><a class="xref" href="api/ArteHacker.UITKEditorAid.PropertyContainer.html">PropertyContainer</a></h3>
+<p>Element that shows a SerializedProperty&#39;s prefab override indicators, and the property&#39;s context menu.
+Currently, Unity only shows these things for some specific fields under specific circumstances. This
+element makes those features available everywhere.</p>
+<h3 id="managedreferencefieldxrefartehackeruitkeditoraidmanagedreferencefield"><a class="xref" href="api/ArteHacker.UITKEditorAid.ManagedReferenceField.html">ManagedReferenceField</a></h3>
+<p>Supports <a href="https://docs.unity3d.com/ScriptReference/SerializeReference.html">SerializeReference</a> before 2022.2.
+Unity 2022.2 adds support for Managed References in UITK, but this element can still be useful there to go
+around some bugs (for example, UITK doesn&#39;t like when two classes contain fields with the same name but 
+different type).</p>
+<p><img src="doc_images/ManagedRefsList.png" alt="A customized list of Managed References"></p>
+<h3 id="bindingstopperxrefartehackeruitkeditoraidbindingstopper"><a class="xref" href="api/ArteHacker.UITKEditorAid.BindingStopper.html">BindingStopper</a></h3>
+<p>Element that prevents binding its children from higher in the hierarchy. 
+Use this element to keep fields bound to different Objects than the rest of the UI.</p>
+<h3 id="disablerxrefartehackeruitkeditoraiddisabler"><a class="xref" href="api/ArteHacker.UITKEditorAid.Disabler.html">Disabler</a></h3>
+<p>Element that disables its content according to a callback. It&#39;s analogous to IMGUI&#39;s 
+<a href="https://docs.unity3d.com/ScriptReference/EditorGUI.DisabledScope.html">DisabledScope</a>.</p>
+<h3 id="fixedspacexrefartehackeruitkeditoraidfixedspace-and-flexiblespacexrefartehackeruitkeditoraidflexiblespace"><a class="xref" href="api/ArteHacker.UITKEditorAid.FixedSpace.html">FixedSpace</a> and <a class="xref" href="api/ArteHacker.UITKEditorAid.FlexibleSpace.html">FlexibleSpace</a></h3>
+<p>Elements for quickly adding a space along their parent&#39;s flex direction. They&#39;re analogous to IMGUI&#39;s
+<a href="https://docs.unity3d.com/ScriptReference/GUILayout.Space.html">Space</a> and 
+<a href="https://docs.unity3d.com/ScriptReference/GUILayout.FlexibleSpace.html">FlexibleSpace</a>.</p>
+<h3 id="dragandclickmanipulatorxrefartehackeruitkeditoraidmanipulatorsdragandclickmanipulator"><a class="xref" href="api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.html">DragAndClickManipulator</a></h3>
+<p>A Manipulator that handles treating a click as a drag when the mouse is dragged, and as a click when the mouse 
+is clicked without moving it. It&#39;s useful for things that can be both clicked and dragged, like the headers of 
+Components in the inspector.</p>
+<h3 id="serializedobjectextensionsxrefartehackeruitkeditoraidutilsserializedobjectextensions"><a class="xref" href="api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.html">SerializedObjectExtensions</a></h3>
+<p>Extension methods for SerializedObject that are specially useful in combination with UI Toolkit.
+It contains an IsEditable method that can be used in combination with the Disabler element to avoid editing 
+objects that shouldn&#39;t be edited</p>
+<h3 id="uitoolkitextensionsxrefartehackeruitkeditoraidutilsuitoolkitextensions"><a class="xref" href="api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.html">UIToolkitExtensions</a></h3>
+<p>Contains many extension methods for VisualElements. It has methods to manipulate only the direct children of 
+an Element, some other methods for quickly setting multiple style properties in one go, and a method for 
+getting the SerializedProperty that is bound to a field, among other things.</p>
+<h2 id="important-embedding-this-package">IMPORTANT: Embedding this package</h2>
+<p>If you are going to include this package inside another package or Asset Store plugin, please follow 
+<a href="manual_pages/embedding_this_package.html">these steps</a> to avoid collisions in projects that use this package 
+by themselves.</p>
+</article>
+                    <div class="sideaffix-container mobile-hide" role="complementary">
+                      <div class="sideaffix">
+                        <nav class="bs-docs-sidebar affix" id="affix">
+                          <h5>On this page</h5>
+                          <div></div>
+                        </nav>
+                      </div>
+                    </div>                </div>
+
+            </main>
+        </div>
+
+        <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+        <script type="text/javascript" src="styles/docfx.js"></script>
+        <script type="text/javascript" src="styles/concisefx.js"></script>
+        <script type="text/javascript" src="styles/main.js"></script>    </body>
+</html>

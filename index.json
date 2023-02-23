@@ -1,0 +1,982 @@
+{
+  "api/ArteHacker.UITKEditorAid.AddButtonMode.html": {
+    "href": "api/ArteHacker.UITKEditorAid.AddButtonMode.html",
+    "title": "AddButtonMode Enum | Documentation",
+    "keywords": "View Source AddButtonMode Enum Description Defines the way that an add button looks in a list. See also: addButtonMode public enum AddButtonMode Fields None Hide add button. Simple Show a normal add button. WithOptions Show an add button with a little arrow."
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonMode.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonMode.html",
+    "title": "addButtonMode Property | Documentation",
+    "keywords": "addButtonMode Property View Source addButtonMode The way to display the add button. Default Simple . Declaration public AddButtonMode addButtonMode { get; set; } Property Value AddButtonMode"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.addButtonUssClassName.html",
+    "title": "addButtonUssClassName Field | Documentation",
+    "keywords": "View Source addButtonUssClassName Field Description USS class name of the add button. public static readonly string addButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.-ctor.html",
+    "title": "ArrayPropertyField Constructor | Documentation",
+    "keywords": "ArrayPropertyField Constructor View Source ArrayPropertyField(SerializedProperty, Func<Int32, VisualElement>) Constructor. It receives a array/list SerializedProperty and an optional makeItem delegate. It still needs to be bound to work properly. Declaration public ArrayPropertyField(SerializedProperty arrayProp, Func<int, VisualElement> makeItem = null) Parameters SerializedProperty arrayProp A SerializedProperty that points to an array or a list Func < Int32 , VisualElement > makeItem Optional callback to make custom list items. It receives the item's index as a parameter."
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.footerContentUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.footerContentUssClassName.html",
+    "title": "footerContentUssClassName Field | Documentation",
+    "keywords": "View Source footerContentUssClassName Field Description USS class name of the footer content. public static readonly string footerContentUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerContentUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerContentUssClassName.html",
+    "title": "headerContentUssClassName Field | Documentation",
+    "keywords": "View Source headerContentUssClassName Field Description USS class name of the element that contains the header's label or foldout. public static readonly string headerContentUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerFoldoutUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerFoldoutUssClassName.html",
+    "title": "headerFoldoutUssClassName Field | Documentation",
+    "keywords": "View Source headerFoldoutUssClassName Field Description USS class name of the list's foldout. public static readonly string headerFoldoutUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerLabelUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerLabelUssClassName.html",
+    "title": "headerLabelUssClassName Field | Documentation",
+    "keywords": "View Source headerLabelUssClassName Field Description USS class name of the list's label. public static readonly string headerLabelUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerMode.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.headerMode.html",
+    "title": "headerMode Property | Documentation",
+    "keywords": "headerMode Property View Source headerMode The way to display the list's header. Default Foldout . Declaration public ListHeaderMode headerMode { get; set; } Property Value ListHeaderMode"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.html",
+    "title": "ArrayPropertyField Class | Documentation",
+    "keywords": "View Source ArrayPropertyField Class Description Control for a serialized Array or List. It has many customization options. public class ArrayPropertyField : ListControl, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement ListControl ArrayPropertyField Remarks UI Toolkit's ListView covers many of ArrayPropertyField's use cases, but you may prefer this element sometimes. Use ArrayPropertyField when you need to go around bugs in ListView, or when you need the customization options. Use ListView when you need to take advantage of its virtualization system to handle thousands of elements with good performance. More customizations are available by subclassing this element. See ArrayPropertyField's parent class for some of them (for example, to handle custom mouse drops). Examples Basic Usage: class ACustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); var list = new ArrayPropertyField(serializedObject.FindProperty(\"arrayField\")); root.Add(list); return root; } } Configuration Options: class ACustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); var list = new ArrayPropertyField(serializedObject.FindProperty(\"field\")); list.reorderable = false; // Make it non-reorderable. list.boxed = false; // Remove the box around the list. list.label = \"custom label\"; // Set the header's text list.headerMode = ListHeaderMode.Foldout; // Use a foldout in the header. list.headerMode = ListHeaderMode.Label; // Use a label in the header. list.headerMode = ListHeaderMode.None; // Hide the header. list.emptyListMessage = null; // Message for empty lists. Null hides it. list.showDragHandles = false; // Hide drag handles. list.showAlternatedBackgrounds = false; // Remove zebra-like backgrounds. list.showSeparators = true; // Show separator lines between items. // Add a little arrow to the add button. list.addButtonMode = AddButtonMode.WithOptions; // Hide the add button in the footer. list.addButtonMode = AddButtonMode.None; // Hide the remove buttons on each item. list.showRemoveButtons = false; // Show a button in the footer to remove the selected or the last item. list.showMainRemoveButton = true; // Enable item selection. Works great with the previous property. list.supportItemSelection = true; list.onAdd = (Rect buttonPosition) => { }; // Customize add behavior. list.onRemove = (int itemIndex) => { }; // Customize remove behavior. root.Add(list); return root; } } A custom example with ManagedReferenceFields for lists/arrays that use the SerializeReference attribute: [System.Serializable] class ReferenceType1 { } [System.Serializable] class ReferenceType2 { } class ReferencesArrayContainer : ScriptableObject { [SerializeReference] object[] m_ReferencesArray; } [CustomEditor(typeof(ReferencesArrayContainer))] class ReferencesArrayContainerEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); var arrayProperty = serializedObject.FindProperty(\"m_ReferencesArray\"); var list = new ArrayPropertyField ( arrayProperty, // This constructor parameter is an optional item creation method. // We use it to return a ManagedReferenceField, which will update the // item's UI if the backing property changes type. i => new ManagedReferenceField(arrayProperty.GetArrayElementAtIndex(i)) ); // Add a little arrow to the add button. list.addButtonMode = AddButtonMode.WithOptions; // We need custom add functionality, otherwise it'll just add null items. list.onAdd = DisplayAddMenu; root.Add(list); return root; } private void DisplayAddMenu(Rect buttonPosition) { var menu = new GenericMenu(); menu.AddItem( new GUIContent(\"Add Reference Type 1\"), false, () => AddItemToArray(new ReferenceType1())); menu.AddItem( new GUIContent(\"Add Reference Type 2\"), false, () => AddItemToArray(new ReferenceType2())); menu.DropDown(buttonPosition); } private void AddItemToArray(object newItem) { serializedObject.Update(); var arrayProperty = serializedObject.FindProperty(\"m_ReferencesArray\"); arrayProperty.arraySize++; var newItemProperty = arrayProperty.GetArrayElementAtIndex(arrayProperty.arraySize - 1); newItemProperty.managedReferenceValue = newItem; serializedObject.ApplyModifiedProperties(); } } Constructors ArrayPropertyField(SerializedProperty, Func<Int32, VisualElement>) Constructor. It receives a array/list SerializedProperty and an optional makeItem delegate. It still needs to be bound to work properly. Fields addButtonUssClassName USS class name of the add button. footerContentUssClassName USS class name of the footer content. headerContentUssClassName USS class name of the element that contains the header's label or foldout. headerFoldoutUssClassName USS class name of the list's foldout. headerLabelUssClassName USS class name of the list's label. removeButtonUssClassName USS class name of the remove button. ussClassName USS class name of elements of this type. withSeparatorsUSSClassName USS class name of Lists with separators. Properties addButtonMode The way to display the add button. Default Simple . headerMode The way to display the list's header. Default Foldout . label The text to show in the header. Set it to null to show the SerializedProperty's name. onAdd Set this callback to override what happens when clicking the add button. It gets passed the button's position. onPopulateItemMenu Set this callback to populate context menu for each list item. It gets passed the event, the item's context and its index. onRemove Set this callback to override what happens when clicking a remove button. It gets passed the item's index. reorderable Whether list items can be reordered by dragging. showAlternatedBackgrounds Whether to show backgrounds to differentiate between even and odd items. Default true. showDragHandles Whether to show handles in the list's items. Default true. showMainRemoveButton Whether to show a footer button to remove selected items from the list. If nothing is selected, it removes the last item. Set supportItemSelection true to enable item selection. showRemoveButtons Whether to show buttons to remove list items. Default true. showSeparators Whether to show lines and small paddings between items. Default false. Inherited Members ListControl.boxedUssClassName ListControl.foldedUssClassName ListControl.withHeaderUssClassName ListControl.withFooterUssClassName ListControl.draggingListUssClassName ListControl.emptyUssClassName ListControl.dropIndicatorUssClassName ListControl.emptyMessageUssClassName ListControl.headerUssClassName ListControl.footerUssClassName ListControl.itemUssClassName ListControl.draggedItemUssClassName ListControl.selectedItemUssClassName ListControl.supportItemSelection ListControl.selectedItem ListControl.emptyListMessage ListControl.boxed ListControl.StartDraggingItem(Int32) ListControl.GetListSize() ListControl.SetListSize(Int32) ListControl.GetListItem(Int32) ListControl.SetHeaderVisibility(Boolean) ListControl.SetHeaderContent(VisualElement) ListControl.SetFooterVisibility(Boolean) ListControl.SetFooterContent(VisualElement) ListControl.CreateItemForIndex(Int32) ListControl.IsReorderable() ListControl.OnReorderDragPerformed(Int32, Int32) ListControl.VerifyCustomDrag(Int32) ListControl.OnCustomDragPerformed(Int32) Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.label.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.label.html",
+    "title": "label Property | Documentation",
+    "keywords": "label Property View Source label The text to show in the header. Set it to null to show the SerializedProperty's name. Declaration public string label { get; set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onAdd.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onAdd.html",
+    "title": "onAdd Property | Documentation",
+    "keywords": "onAdd Property View Source onAdd Set this callback to override what happens when clicking the add button. It gets passed the button's position. Declaration public Action<Rect> onAdd { get; set; } Property Value Action < Rect >"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onPopulateItemMenu.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onPopulateItemMenu.html",
+    "title": "onPopulateItemMenu Property | Documentation",
+    "keywords": "onPopulateItemMenu Property View Source onPopulateItemMenu Set this callback to populate context menu for each list item. It gets passed the event, the item's context and its index. Declaration public Action<ContextualMenuPopulateEvent, VisualElement, int> onPopulateItemMenu { get; set; } Property Value Action < ContextualMenuPopulateEvent , VisualElement , Int32 >"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onRemove.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.onRemove.html",
+    "title": "onRemove Property | Documentation",
+    "keywords": "onRemove Property View Source onRemove Set this callback to override what happens when clicking a remove button. It gets passed the item's index. Declaration public Action<int> onRemove { get; set; } Property Value Action < Int32 >"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.removeButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.removeButtonUssClassName.html",
+    "title": "removeButtonUssClassName Field | Documentation",
+    "keywords": "View Source removeButtonUssClassName Field Description USS class name of the remove button. public static readonly string removeButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.reorderable.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.reorderable.html",
+    "title": "reorderable Property | Documentation",
+    "keywords": "reorderable Property View Source reorderable Whether list items can be reordered by dragging. Declaration public bool reorderable { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showAlternatedBackgrounds.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showAlternatedBackgrounds.html",
+    "title": "showAlternatedBackgrounds Property | Documentation",
+    "keywords": "showAlternatedBackgrounds Property View Source showAlternatedBackgrounds Whether to show backgrounds to differentiate between even and odd items. Default true. Declaration public bool showAlternatedBackgrounds { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showDragHandles.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showDragHandles.html",
+    "title": "showDragHandles Property | Documentation",
+    "keywords": "showDragHandles Property View Source showDragHandles Whether to show handles in the list's items. Default true. Declaration public bool showDragHandles { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showMainRemoveButton.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showMainRemoveButton.html",
+    "title": "showMainRemoveButton Property | Documentation",
+    "keywords": "showMainRemoveButton Property View Source showMainRemoveButton Whether to show a footer button to remove selected items from the list. If nothing is selected, it removes the last item. Set supportItemSelection true to enable item selection. Declaration public bool showMainRemoveButton { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showRemoveButtons.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showRemoveButtons.html",
+    "title": "showRemoveButtons Property | Documentation",
+    "keywords": "showRemoveButtons Property View Source showRemoveButtons Whether to show buttons to remove list items. Default true. Declaration public bool showRemoveButtons { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showSeparators.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.showSeparators.html",
+    "title": "showSeparators Property | Documentation",
+    "keywords": "showSeparators Property View Source showSeparators Whether to show lines and small paddings between items. Default false. Declaration public bool showSeparators { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ArrayPropertyField.withSeparatorsUSSClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ArrayPropertyField.withSeparatorsUSSClassName.html",
+    "title": "withSeparatorsUSSClassName Field | Documentation",
+    "keywords": "View Source withSeparatorsUSSClassName Field Description USS class name of Lists with separators. public static readonly string withSeparatorsUSSClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.BindingStopper.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.BindingStopper.-ctor.html",
+    "title": "BindingStopper Constructor | Documentation",
+    "keywords": "BindingStopper Constructor View Source BindingStopper() Declaration public BindingStopper()"
+  },
+  "api/ArteHacker.UITKEditorAid.BindingStopper.html": {
+    "href": "api/ArteHacker.UITKEditorAid.BindingStopper.html",
+    "title": "BindingStopper Class | Documentation",
+    "keywords": "View Source BindingStopper Class Description Element that prevents binding its children from higher in the hierarchy. UXML support public class BindingStopper : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement BindingStopper Remarks It's still possible to bind the children, just not from outside this element. Use this element to keep fields bound to different Objects than the rest of the UI. For example, it's used by ListOfInspectors to ensure inspector headers aren't bound to the parent inspector's Object. Constructors BindingStopper() Fields ussClassName USS class name of elements of this type. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.BindingStopper.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.BindingStopper.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.Disabler.contentContainerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Disabler.contentContainerUssClassName.html",
+    "title": "contentContainerUssClassName Field | Documentation",
+    "keywords": "View Source contentContainerUssClassName Field Description USS class name of the disabler's contentContainer. public static readonly string contentContainerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.Disabler.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Disabler.-ctor.html",
+    "title": "Disabler Constructor | Documentation",
+    "keywords": "Disabler Constructor View Source Disabler() Declaration public Disabler() View Source Disabler(Func<Boolean>) Declaration public Disabler(Func<bool> shouldDisable) Parameters Func < Boolean > shouldDisable The callback that will be used to disable contents."
+  },
+  "api/ArteHacker.UITKEditorAid.Disabler.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Disabler.html",
+    "title": "Disabler Class | Documentation",
+    "keywords": "View Source Disabler Class Description Element that disables its content according to its shouldDisable callback. UXML support public class Disabler : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement Disabler Remarks This element is analogous to IMGUI's EditorGUI.DisabledScope . It can be used in combination with IsEditable(SerializedObject) to avoid editing objects that shouldn't be edited. Constructors Disabler() Disabler(Func<Boolean>) Fields contentContainerUssClassName USS class name of the disabler's contentContainer. ussClassName USS class name of elements of this type. Properties shouldDisable Set this callback to indicate when to enable/disable contents. Elements will be disabled when it returns true. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.Disabler.shouldDisable.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Disabler.shouldDisable.html",
+    "title": "shouldDisable Property | Documentation",
+    "keywords": "shouldDisable Property View Source shouldDisable Set this callback to indicate when to enable/disable contents. Elements will be disabled when it returns true. Declaration public Func<bool> shouldDisable { get; set; } Property Value Func < Boolean >"
+  },
+  "api/ArteHacker.UITKEditorAid.Disabler.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Disabler.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.BeginEditing.html",
+    "title": "BeginEditing Method | Documentation",
+    "keywords": "BeginEditing Method View Source BeginEditing() Call this method to put the label in edit mode. Declaration public void BeginEditing()"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.-ctor.html",
+    "title": "EditableLabel Constructor | Documentation",
+    "keywords": "EditableLabel Constructor View Source EditableLabel() Declaration public EditableLabel()"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.editOnDoubleClick.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.editOnDoubleClick.html",
+    "title": "editOnDoubleClick Property | Documentation",
+    "keywords": "editOnDoubleClick Property View Source editOnDoubleClick Whether to start editing by double clicking the label. See BeginEditing() to start editing from code. Declaration public bool editOnDoubleClick { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.emptyTextLabel.html",
+    "title": "emptyTextLabel Property | Documentation",
+    "keywords": "emptyTextLabel Property View Source emptyTextLabel A text that appears when the EditableLabel's text is empty. Declaration public string emptyTextLabel { get; set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.html",
+    "title": "EditableLabel Class | Documentation",
+    "keywords": "View Source EditableLabel Class Description A label that transforms into a field for editing its text. UXML support public class EditableLabel : BindableElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle, IBindable, INotifyValueChanged<string> Inheritance Object CallbackEventHandler Focusable VisualElement BindableElement EditableLabel Remarks By default, it becomes editable with a double click. Use BeginEditing() to enter edit mode from code. Set emptyTextLabel to show a placeholder text when the label is empty. Examples Here's an example for customizing an editable label. public class MyCustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); var editableLabel = new EditableLabel(); root.Add(editableLabel); // We can disable editing on double click this way: editableLabel.editOnDoubleClick = false; // EditableLabels can enter edit mode from code. // For example, we can add a listener to edit it on Alt+Click: editableLabel.RegisterCallback<MouseDownEvent>(e => { if (e.altKey && e.button == 0) editableLabel.BeginEditing(); }); // We can also make it editable from a context menu action: var menuManipulator = new ContextualMenuManipulator(e => { e.menu.AppendAction(\"Edit label's text\", a => editableLabel.BeginEditing()); }); root.AddManipulator(menuManipulator); // We can add a placeholder text for when the label is empty: editableLabel.emptyTextLabel = \"Alt+Click to edit this label\"; // Or we can set the label's actual text like this: editableLabel.value = \"Initial text\"; // EditableLabels can be bound to any string property, just like any // TextField. We can do it by setting it's bindingPath: editableLabel.bindingPath = \"m_Name\"; return root; } } Constructors EditableLabel() Fields labelUssClassName USS class name of the label used to show non-editable text. textFieldUssClassName USS class name of the TextField inside this element. ussClassName USS class name of elements of this type. Properties editOnDoubleClick Whether to start editing by double clicking the label. See BeginEditing() to start editing from code. emptyTextLabel A text that appears when the EditableLabel's text is empty. isDelayed Whether the TextField inside this element is delayed. It's true by default. maxLength The maximum character length of this element's TextField. -1 means no limit and it's the default. multiline Whether to use multiline text. value The string value of this element. Methods BeginEditing() Call this method to put the label in edit mode. SetValueWithoutNotify(String) Set the element's value without triggering a change event. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>) UIToolkitExtensions.GetBoundSerializedProperty(IBindable)"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.isDelayed.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.isDelayed.html",
+    "title": "isDelayed Property | Documentation",
+    "keywords": "isDelayed Property View Source isDelayed Whether the TextField inside this element is delayed. It's true by default. Declaration public bool isDelayed { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.labelUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.labelUssClassName.html",
+    "title": "labelUssClassName Field | Documentation",
+    "keywords": "View Source labelUssClassName Field Description USS class name of the label used to show non-editable text. public static readonly string labelUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.maxLength.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.maxLength.html",
+    "title": "maxLength Property | Documentation",
+    "keywords": "maxLength Property View Source maxLength The maximum character length of this element's TextField. -1 means no limit and it's the default. Declaration public int maxLength { get; set; } Property Value Int32"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.multiline.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.multiline.html",
+    "title": "multiline Property | Documentation",
+    "keywords": "multiline Property View Source multiline Whether to use multiline text. Declaration public bool multiline { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.SetValueWithoutNotify.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.SetValueWithoutNotify.html",
+    "title": "SetValueWithoutNotify Method | Documentation",
+    "keywords": "SetValueWithoutNotify Method View Source SetValueWithoutNotify(String) Set the element's value without triggering a change event. Declaration public void SetValueWithoutNotify(string newValue) Parameters String newValue The new value."
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.textFieldUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.textFieldUssClassName.html",
+    "title": "textFieldUssClassName Field | Documentation",
+    "keywords": "View Source textFieldUssClassName Field Description USS class name of the TextField inside this element. public static readonly string textFieldUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditableLabel.value.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditableLabel.value.html",
+    "title": "value Property | Documentation",
+    "keywords": "value Property View Source value The string value of this element. Declaration public string value { get; set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.ApplyCurrentTheme.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.ApplyCurrentTheme.html",
+    "title": "ApplyCurrentTheme Method | Documentation",
+    "keywords": "ApplyCurrentTheme Method View Source ApplyCurrentTheme(VisualElement) Pass a custom root element to this method to use the appropiate USS variables and class names for Unity's current skin. Declaration public static void ApplyCurrentTheme(VisualElement rootElement) Parameters VisualElement rootElement The custom root element that will contain the variables."
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.darkModeContainerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.darkModeContainerUssClassName.html",
+    "title": "darkModeContainerUssClassName Field | Documentation",
+    "keywords": "View Source darkModeContainerUssClassName Field Description USS class applied by ApplyCurrentTheme(VisualElement) when the Editor is in dark mode. public static readonly string darkModeContainerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.editableLabelStyle.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.editableLabelStyle.html",
+    "title": "editableLabelStyle Property | Documentation",
+    "keywords": "editableLabelStyle Property View Source editableLabelStyle StyleSheet for EditableLabel Declaration public static StyleSheet editableLabelStyle { get; } Property Value StyleSheet"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.html",
+    "title": "EditorAidResources Class | Documentation",
+    "keywords": "View Source EditorAidResources Class Description A static class for accessing resources used by this package. public static class EditorAidResources Inheritance Object EditorAidResources Fields darkModeContainerUssClassName USS class applied by ApplyCurrentTheme(VisualElement) when the Editor is in dark mode. lightModeContainerUssClassName USS class applied by ApplyCurrentTheme(VisualElement) when the Editor is in light mode. variablesContainerUssClassName USS applied by ApplyCurrentTheme(VisualElement) to add style variables. Properties editableLabelStyle StyleSheet for EditableLabel listControlStyle StyleSheet for ListControl listOfInspectorsStyle StyleSheet for ListOfInspectors tabbedViewStyle StyleSheet for TabbedView Methods ApplyCurrentTheme(VisualElement) Pass a custom root element to this method to use the appropiate USS variables and class names for Unity's current skin."
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.lightModeContainerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.lightModeContainerUssClassName.html",
+    "title": "lightModeContainerUssClassName Field | Documentation",
+    "keywords": "View Source lightModeContainerUssClassName Field Description USS class applied by ApplyCurrentTheme(VisualElement) when the Editor is in light mode. public static readonly string lightModeContainerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.listControlStyle.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.listControlStyle.html",
+    "title": "listControlStyle Property | Documentation",
+    "keywords": "listControlStyle Property View Source listControlStyle StyleSheet for ListControl Declaration public static StyleSheet listControlStyle { get; } Property Value StyleSheet"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.listOfInspectorsStyle.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.listOfInspectorsStyle.html",
+    "title": "listOfInspectorsStyle Property | Documentation",
+    "keywords": "listOfInspectorsStyle Property View Source listOfInspectorsStyle StyleSheet for ListOfInspectors Declaration public static StyleSheet listOfInspectorsStyle { get; } Property Value StyleSheet"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.tabbedViewStyle.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.tabbedViewStyle.html",
+    "title": "tabbedViewStyle Property | Documentation",
+    "keywords": "tabbedViewStyle Property View Source tabbedViewStyle StyleSheet for TabbedView Declaration public static StyleSheet tabbedViewStyle { get; } Property Value StyleSheet"
+  },
+  "api/ArteHacker.UITKEditorAid.EditorAidResources.variablesContainerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.EditorAidResources.variablesContainerUssClassName.html",
+    "title": "variablesContainerUssClassName Field | Documentation",
+    "keywords": "View Source variablesContainerUssClassName Field Description USS applied by ApplyCurrentTheme(VisualElement) to add style variables. public static readonly string variablesContainerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.FixedSpace.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.FixedSpace.-ctor.html",
+    "title": "FixedSpace Constructor | Documentation",
+    "keywords": "FixedSpace Constructor View Source FixedSpace() Constructor. Uses a small default size. Declaration public FixedSpace() View Source FixedSpace(Single) Constructor. Receives the size of the space. Declaration public FixedSpace(float size) Parameters Single size The size of the space. Sets the element's flex-basis style property."
+  },
+  "api/ArteHacker.UITKEditorAid.FixedSpace.html": {
+    "href": "api/ArteHacker.UITKEditorAid.FixedSpace.html",
+    "title": "FixedSpace Class | Documentation",
+    "keywords": "View Source FixedSpace Class Description Element that adds a fixed space along its parent's flexDirection . UXML support public class FixedSpace : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement FixedSpace Remarks This element is analogous to IMGUI's Space(Single) . Constructors FixedSpace() Constructor. Uses a small default size. FixedSpace(Single) Constructor. Receives the size of the space. Properties size The space's size along the parent's flexDirection . It works as a shorthand for this element's flexBasis value. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.FixedSpace.size.html": {
+    "href": "api/ArteHacker.UITKEditorAid.FixedSpace.size.html",
+    "title": "size Property | Documentation",
+    "keywords": "size Property View Source size The space's size along the parent's flexDirection . It works as a shorthand for this element's flexBasis value. Declaration public float size { get; set; } Property Value Single"
+  },
+  "api/ArteHacker.UITKEditorAid.FlexibleSpace.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.FlexibleSpace.-ctor.html",
+    "title": "FlexibleSpace Constructor | Documentation",
+    "keywords": "FlexibleSpace Constructor View Source FlexibleSpace() Declaration public FlexibleSpace()"
+  },
+  "api/ArteHacker.UITKEditorAid.FlexibleSpace.html": {
+    "href": "api/ArteHacker.UITKEditorAid.FlexibleSpace.html",
+    "title": "FlexibleSpace Class | Documentation",
+    "keywords": "View Source FlexibleSpace Class Description Element takes any leftover space along its parent's flexDirection . UXML support public class FlexibleSpace : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement FlexibleSpace Remarks This element is analogous to IMGUI's FlexibleSpace() . Its flexBasis is 0 and its flexGrow is 1. Constructors FlexibleSpace() Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.html": {
+    "href": "api/ArteHacker.UITKEditorAid.html",
+    "title": "ArteHacker.UITKEditorAid Namespace | Documentation",
+    "keywords": "ArteHacker.UITKEditorAid Namespace Classes ArrayPropertyField Control for a serialized Array or List. It has many customization options. BindingStopper Element that prevents binding its children from higher in the hierarchy. UXML support Disabler Element that disables its content according to its shouldDisable callback. UXML support EditableLabel A label that transforms into a field for editing its text. UXML support EditorAidResources A static class for accessing resources used by this package. FixedSpace Element that adds a fixed space along its parent's flexDirection . UXML support FlexibleSpace Element takes any leftover space along its parent's flexDirection . UXML support ListControl Base class to create a reorderable list. ListOfInspectors A list of Objects similar to the components list in a GameObject's inspector. ListRow Element used as an item inside ArrayPropertyField . ManagedReferenceField Element that handles fields with the SerializeReference attribute. PropertyContainer Element that shows a SerializedProperty's prefab override indicators, and the property's menu on context click. UXML support ReferenceTypeChangeEvent Event sent by ManagedReferenceField when the field's type changes. TabbedView Element for organizing content with tabs. ValueTracker<TValue> Utility element that listens for changes in a SerializedProperty . Enums AddButtonMode Defines the way that an add button looks in a list. See also: addButtonMode ListHeaderMode Defines behavior of a list header. See also: headerMode"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.boxed.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.boxed.html",
+    "title": "boxed Property | Documentation",
+    "keywords": "boxed Property View Source boxed Whether the list is drawn inside a box. Declaration public bool boxed { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.boxedUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.boxedUssClassName.html",
+    "title": "boxedUssClassName Field | Documentation",
+    "keywords": "View Source boxedUssClassName Field Description USS class name of Lists drawn inside a box. public static readonly string boxedUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.CreateItemForIndex.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.CreateItemForIndex.html",
+    "title": "CreateItemForIndex Method | Documentation",
+    "keywords": "CreateItemForIndex Method View Source CreateItemForIndex(Int32) Implement this method to create the list's items. Declaration protected abstract VisualElement CreateItemForIndex(int index) Parameters Int32 index The item index Returns VisualElement A new item"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.-ctor.html",
+    "title": "ListControl Constructor | Documentation",
+    "keywords": "ListControl Constructor View Source ListControl() Declaration protected ListControl()"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.draggedItemUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.draggedItemUssClassName.html",
+    "title": "draggedItemUssClassName Field | Documentation",
+    "keywords": "View Source draggedItemUssClassName Field Description USS class name of an item that's being dragged. public static readonly string draggedItemUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.draggingListUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.draggingListUssClassName.html",
+    "title": "draggingListUssClassName Field | Documentation",
+    "keywords": "View Source draggingListUssClassName Field Description USS class name of Lists in the middle of a drag operation. public static readonly string draggingListUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.dropIndicatorUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.dropIndicatorUssClassName.html",
+    "title": "dropIndicatorUssClassName Field | Documentation",
+    "keywords": "View Source dropIndicatorUssClassName Field Description USS class name of the drop indicator bar for Drag and Drop. public static readonly string dropIndicatorUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.emptyListMessage.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.emptyListMessage.html",
+    "title": "emptyListMessage Property | Documentation",
+    "keywords": "emptyListMessage Property View Source emptyListMessage A message to indicate that the list is empty. Set it to null to hide it. Declaration public string emptyListMessage { get; set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.emptyMessageUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.emptyMessageUssClassName.html",
+    "title": "emptyMessageUssClassName Field | Documentation",
+    "keywords": "View Source emptyMessageUssClassName Field Description USS class name of a message to indicate the list is empty. public static readonly string emptyMessageUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.emptyUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.emptyUssClassName.html",
+    "title": "emptyUssClassName Field | Documentation",
+    "keywords": "View Source emptyUssClassName Field Description USS class name of Empty Lists. public static readonly string emptyUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.foldedUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.foldedUssClassName.html",
+    "title": "foldedUssClassName Field | Documentation",
+    "keywords": "View Source foldedUssClassName Field Description USS class name of Lists that are folded (hidden except for the header). public static readonly string foldedUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.footerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.footerUssClassName.html",
+    "title": "footerUssClassName Field | Documentation",
+    "keywords": "View Source footerUssClassName Field Description USS class name of the list's footer. public static readonly string footerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.GetListItem.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.GetListItem.html",
+    "title": "GetListItem Method | Documentation",
+    "keywords": "GetListItem Method View Source GetListItem(Int32) Get an item from the list. Declaration protected VisualElement GetListItem(int index) Parameters Int32 index The item's index Returns VisualElement The item"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.GetListSize.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.GetListSize.html",
+    "title": "GetListSize Method | Documentation",
+    "keywords": "GetListSize Method View Source GetListSize() Get the item count of the list. Declaration public int GetListSize() Returns Int32 The item count"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.headerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.headerUssClassName.html",
+    "title": "headerUssClassName Field | Documentation",
+    "keywords": "View Source headerUssClassName Field Description USS class name of the list's header. public static readonly string headerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.html",
+    "title": "ListControl Class | Documentation",
+    "keywords": "View Source ListControl Class Description Base class to create a reorderable list. public abstract class ListControl : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement ListControl Derived ArrayPropertyField ListOfInspectors Constructors ListControl() Fields boxedUssClassName USS class name of Lists drawn inside a box. draggedItemUssClassName USS class name of an item that's being dragged. draggingListUssClassName USS class name of Lists in the middle of a drag operation. dropIndicatorUssClassName USS class name of the drop indicator bar for Drag and Drop. emptyMessageUssClassName USS class name of a message to indicate the list is empty. emptyUssClassName USS class name of Empty Lists. foldedUssClassName USS class name of Lists that are folded (hidden except for the header). footerUssClassName USS class name of the list's footer. headerUssClassName USS class name of the list's header. itemUssClassName USS class name of the list's items. selectedItemUssClassName USS class name of an item that's selected. ussClassName USS class name of elements of this type. withFooterUssClassName USS class name of Lists with a footer. withHeaderUssClassName USS class name of Lists with a header. Properties boxed Whether the list is drawn inside a box. emptyListMessage A message to indicate that the list is empty. Set it to null to hide it. selectedItem The index of the selected item when supportItemSelection is true. Returns -1 when no item is selected. supportItemSelection Whether a list item can be selected. It's false by default. Methods CreateItemForIndex(Int32) Implement this method to create the list's items. GetListItem(Int32) Get an item from the list. GetListSize() Get the item count of the list. IsReorderable() Override this method to define whether a list is reorderable. OnCustomDragPerformed(Int32) Called when the mouse is released and VerifyCustomDrag(Int32) returns a valid mode. OnReorderDragPerformed(Int32, Int32) Implement this method to do the actual reordering of the data backing the list control. SetFooterContent(VisualElement) Set the footer's content. SetFooterVisibility(Boolean) Set whether to show the list's footer. SetHeaderContent(VisualElement) Set the header's content. SetHeaderVisibility(Boolean) Set whether to show the list's header. SetListSize(Int32) Set the number of items in the list. It will call CreateItemForIndex(Int32) to create items if needed. StartDraggingItem(Int32) Start dragging an item to reorder the list. Only call this from mouse events where a button is pressed to avoid errors. VerifyCustomDrag(Int32) Implement this method to support dragging other than list reordering (i.e. to insert objects). Return anything other than Rejected and None to support custom dragging. Use it together with OnCustomDragPerformed(Int32) . Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.IsReorderable.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.IsReorderable.html",
+    "title": "IsReorderable Method | Documentation",
+    "keywords": "IsReorderable Method View Source IsReorderable() Override this method to define whether a list is reorderable. Declaration protected virtual bool IsReorderable() Returns Boolean Whether the list is reorderable"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.itemUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.itemUssClassName.html",
+    "title": "itemUssClassName Field | Documentation",
+    "keywords": "View Source itemUssClassName Field Description USS class name of the list's items. public static readonly string itemUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.OnCustomDragPerformed.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.OnCustomDragPerformed.html",
+    "title": "OnCustomDragPerformed Method | Documentation",
+    "keywords": "OnCustomDragPerformed Method View Source OnCustomDragPerformed(Int32) Called when the mouse is released and VerifyCustomDrag(Int32) returns a valid mode. Declaration protected virtual void OnCustomDragPerformed(int dropIndex) Parameters Int32 dropIndex The place where the item is dropped."
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.OnReorderDragPerformed.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.OnReorderDragPerformed.html",
+    "title": "OnReorderDragPerformed Method | Documentation",
+    "keywords": "OnReorderDragPerformed Method View Source OnReorderDragPerformed(Int32, Int32) Implement this method to do the actual reordering of the data backing the list control. Declaration protected virtual void OnReorderDragPerformed(int draggedIndex, int dropIndex) Parameters Int32 draggedIndex The index of the dragged item Int32 dropIndex The index where the item is being dropped"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.selectedItem.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.selectedItem.html",
+    "title": "selectedItem Property | Documentation",
+    "keywords": "selectedItem Property View Source selectedItem The index of the selected item when supportItemSelection is true. Returns -1 when no item is selected. Declaration public int selectedItem { get; set; } Property Value Int32"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.selectedItemUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.selectedItemUssClassName.html",
+    "title": "selectedItemUssClassName Field | Documentation",
+    "keywords": "View Source selectedItemUssClassName Field Description USS class name of an item that's selected. public static readonly string selectedItemUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.SetFooterContent.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.SetFooterContent.html",
+    "title": "SetFooterContent Method | Documentation",
+    "keywords": "SetFooterContent Method View Source SetFooterContent(VisualElement) Set the footer's content. Declaration protected void SetFooterContent(VisualElement content) Parameters VisualElement content The footer's content"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.SetFooterVisibility.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.SetFooterVisibility.html",
+    "title": "SetFooterVisibility Method | Documentation",
+    "keywords": "SetFooterVisibility Method View Source SetFooterVisibility(Boolean) Set whether to show the list's footer. Declaration protected void SetFooterVisibility(bool visible) Parameters Boolean visible The footer's visibility"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderContent.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderContent.html",
+    "title": "SetHeaderContent Method | Documentation",
+    "keywords": "SetHeaderContent Method View Source SetHeaderContent(VisualElement) Set the header's content. Declaration protected void SetHeaderContent(VisualElement content) Parameters VisualElement content The header's content"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderVisibility.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.SetHeaderVisibility.html",
+    "title": "SetHeaderVisibility Method | Documentation",
+    "keywords": "SetHeaderVisibility Method View Source SetHeaderVisibility(Boolean) Set whether to show the list's header. Declaration protected void SetHeaderVisibility(bool visible) Parameters Boolean visible The header's visibility"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.SetListSize.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.SetListSize.html",
+    "title": "SetListSize Method | Documentation",
+    "keywords": "SetListSize Method View Source SetListSize(Int32) Set the number of items in the list. It will call CreateItemForIndex(Int32) to create items if needed. Declaration protected void SetListSize(int size) Parameters Int32 size The number of items."
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.StartDraggingItem.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.StartDraggingItem.html",
+    "title": "StartDraggingItem Method | Documentation",
+    "keywords": "StartDraggingItem Method View Source StartDraggingItem(Int32) Start dragging an item to reorder the list. Only call this from mouse events where a button is pressed to avoid errors. Declaration public void StartDraggingItem(int index) Parameters Int32 index Index of the item to drag."
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.supportItemSelection.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.supportItemSelection.html",
+    "title": "supportItemSelection Property | Documentation",
+    "keywords": "supportItemSelection Property View Source supportItemSelection Whether a list item can be selected. It's false by default. Declaration public bool supportItemSelection { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.VerifyCustomDrag.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.VerifyCustomDrag.html",
+    "title": "VerifyCustomDrag Method | Documentation",
+    "keywords": "VerifyCustomDrag Method View Source VerifyCustomDrag(Int32) Implement this method to support dragging other than list reordering (i.e. to insert objects). Return anything other than Rejected and None to support custom dragging. Use it together with OnCustomDragPerformed(Int32) . Declaration protected virtual DragAndDropVisualMode VerifyCustomDrag(int dropIndex) Parameters Int32 dropIndex The place where the an item is to be droped. Returns DragAndDropVisualMode"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.withFooterUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.withFooterUssClassName.html",
+    "title": "withFooterUssClassName Field | Documentation",
+    "keywords": "View Source withFooterUssClassName Field Description USS class name of Lists with a footer. public static readonly string withFooterUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListControl.withHeaderUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListControl.withHeaderUssClassName.html",
+    "title": "withHeaderUssClassName Field | Documentation",
+    "keywords": "View Source withHeaderUssClassName Field Description USS class name of Lists with a header. public static readonly string withHeaderUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListHeaderMode.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListHeaderMode.html",
+    "title": "ListHeaderMode Enum | Documentation",
+    "keywords": "View Source ListHeaderMode Enum Description Defines behavior of a list header. See also: headerMode public enum ListHeaderMode Fields Foldout Show a foldout in the header. Label Show a label in the header. None Hide the header."
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddHeaderLabel.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddHeaderLabel.html",
+    "title": "AddHeaderLabel Method | Documentation",
+    "keywords": "AddHeaderLabel Method View Source AddHeaderLabel(VisualElement, Int32, SerializedObject) Override this method to customize the header's label. Declaration protected virtual void AddHeaderLabel(VisualElement header, int itemIndex, SerializedObject serializedObject) Parameters VisualElement header The header Int32 itemIndex The index in the list SerializedObject serializedObject The inspected object"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddItemsToContextMenu.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddItemsToContextMenu.html",
+    "title": "AddItemsToContextMenu Method | Documentation",
+    "keywords": "AddItemsToContextMenu Method View Source AddItemsToContextMenu(GenericMenu, VisualElement, Int32, SerializedObject) Override this method to add custom menu items to the header's context menu. Declaration protected virtual void AddItemsToContextMenu(GenericMenu menu, VisualElement header, int itemIndex, SerializedObject serializedObject) Parameters GenericMenu menu The context menu VisualElement header The header Int32 itemIndex The index in the list SerializedObject serializedObject The inspected object"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPostlabelHeaderElements.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPostlabelHeaderElements.html",
+    "title": "AddPostlabelHeaderElements Method | Documentation",
+    "keywords": "AddPostlabelHeaderElements Method View Source AddPostlabelHeaderElements(VisualElement, Int32, SerializedObject) Override this method to customize the elements after the header's label. Declaration protected virtual void AddPostlabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject) Parameters VisualElement header The header Int32 itemIndex The index in the list SerializedObject serializedObject The inspected object"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPrelabelHeaderElements.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.AddPrelabelHeaderElements.html",
+    "title": "AddPrelabelHeaderElements Method | Documentation",
+    "keywords": "AddPrelabelHeaderElements Method View Source AddPrelabelHeaderElements(VisualElement, Int32, SerializedObject) Override this method to customize the elements before the header's label. Declaration protected virtual void AddPrelabelHeaderElements(VisualElement header, int itemIndex, SerializedObject serializedObject) Parameters VisualElement header The header Int32 itemIndex The index in the list SerializedObject serializedObject The inspected object"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.CreateHeader.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.CreateHeader.html",
+    "title": "CreateHeader Method | Documentation",
+    "keywords": "CreateHeader Method View Source CreateHeader(Int32, SerializedObject, InspectorElement) Override this method in a child class to customize inspector headers as a whole. Declaration protected virtual VisualElement CreateHeader(int itemIndex, SerializedObject serializedObject, InspectorElement inspector) Parameters Int32 itemIndex The index in the list SerializedObject serializedObject The inspected object InspectorElement inspector The inspector element under the header. Returns VisualElement The created header."
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.-ctor.html",
+    "title": "ListOfInspectors Constructor | Documentation",
+    "keywords": "ListOfInspectors Constructor View Source ListOfInspectors(SerializedProperty) Constructor. It receives a SerializedProperty for an array or a list of Objects with a type derived from UnityEngine.Object . Declaration public ListOfInspectors(SerializedProperty arrayProp) Parameters SerializedProperty arrayProp A serialized property that represents an array of Unity Objects"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.html",
+    "title": "ListOfInspectors Class | Documentation",
+    "keywords": "View Source ListOfInspectors Class Description A list of Objects similar to the components list in a GameObject's inspector. public class ListOfInspectors : ListControl, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement ListControl ListOfInspectors Remarks This element is typically used with a list of subassets. Subasset systems require code that's outside the scope of this package. You may be better off using InspectorElement if you just want to embed inspectors from different Objects. The inspector's help button shows a custom tooltip if there's a TooltipAttribute in the Object's class. By default, the inspector's header has an EditableLabel for changing the Object's name. More customizations are available by creating a child class. Multitarget SerializedObjects and Editors aren't supported. Inspectors will try to show special UI when an Object's script is missing. To support this, Unity needs the base type of the Object array/list to be creatable (i.e. not abstract nor generic). Examples class CustomEditorWithListOfInspectors : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); // The mylistOfObjects field should be a list or array of elements that // derive from UnityEngine.Object. It's usually a list of ScriptableObjects // embedded as subassets in the field's owner. var listOfObjectsProperty = serializedObject.FindProperty(\"mylistOfObjects\"); var listOfInspectors = new MyListOfInspectors(listOfObjectsProperty); root.Add(listOfInspectors); return root; } } // Creating a child class of ListOfInspectors allows for some customization: class MyListOfInspectors : ListOfInspectors { public MyListOfInspectors(SerializedProperty arrayProp) : base(arrayProp) { } // Override this method to add elements to an inspector header before its label. protected override void AddPrelabelHeaderElements( VisualElement header, int itemIndex, SerializedObject serializedObject) { base.AddPrelabelHeaderElements(header, itemIndex, serializedObject); } // Override this method to change how a label is added to an inspector header. // The base implementation adds an editable label for changing the object's name. protected override void AddHeaderLabel( VisualElement header, int itemIndex, SerializedObject serializedObject) { base.AddHeaderLabel(header, itemIndex, serializedObject); } // Override this method to add elements to an inspector header after its label. protected override void AddPostlabelHeaderElements( VisualElement header, int itemIndex, SerializedObject serializedObject) { base.AddPostlabelHeaderElements(header, itemIndex, serializedObject); } // Override this method to add context menu items for an inspector header. protected override void AddItemsToContextMenu( GenericMenu menu, VisualElement header, int itemIndex, SerializedObject serializedObject) { base.AddItemsToContextMenu(menu, header, itemIndex, serializedObject); menu.AddItem(new GUIContent(\"My Menu Item\"), true, () => { // Do something. }); } } Constructors ListOfInspectors(SerializedProperty) Constructor. It receives a SerializedProperty for an array or a list of Objects with a type derived from UnityEngine.Object . Fields inspectorItemUssClassName USS class name of the items in the list. itemHeaderButtonUssClassName USS class name of inspector header buttons. itemHeaderCollapsedUssClassName USS class name of collapsed inspector headers. itemHeaderFoldoutUssClassName USS class name of inspector header foldouts. itemHeaderIconUssClassName USS class name of the inspector header icon. itemHeaderLabelUssClassName USS class name of inspector header labels. itemHeaderTooltipUssClassName itemHeaderUssClassName USS class name of the inspector headers. ussClassName USS class name of elements of this type. Methods AddHeaderLabel(VisualElement, Int32, SerializedObject) Override this method to customize the header's label. AddItemsToContextMenu(GenericMenu, VisualElement, Int32, SerializedObject) Override this method to add custom menu items to the header's context menu. AddPostlabelHeaderElements(VisualElement, Int32, SerializedObject) Override this method to customize the elements after the header's label. AddPrelabelHeaderElements(VisualElement, Int32, SerializedObject) Override this method to customize the elements before the header's label. CreateHeader(Int32, SerializedObject, InspectorElement) Override this method in a child class to customize inspector headers as a whole. Inherited Members ListControl.boxedUssClassName ListControl.foldedUssClassName ListControl.withHeaderUssClassName ListControl.withFooterUssClassName ListControl.draggingListUssClassName ListControl.emptyUssClassName ListControl.dropIndicatorUssClassName ListControl.emptyMessageUssClassName ListControl.headerUssClassName ListControl.footerUssClassName ListControl.itemUssClassName ListControl.draggedItemUssClassName ListControl.selectedItemUssClassName ListControl.supportItemSelection ListControl.selectedItem ListControl.emptyListMessage ListControl.boxed ListControl.StartDraggingItem(Int32) ListControl.GetListSize() ListControl.SetListSize(Int32) ListControl.GetListItem(Int32) ListControl.SetHeaderVisibility(Boolean) ListControl.SetHeaderContent(VisualElement) ListControl.SetFooterVisibility(Boolean) ListControl.SetFooterContent(VisualElement) ListControl.CreateItemForIndex(Int32) ListControl.IsReorderable() ListControl.OnReorderDragPerformed(Int32, Int32) ListControl.VerifyCustomDrag(Int32) ListControl.OnCustomDragPerformed(Int32) Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.inspectorItemUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.inspectorItemUssClassName.html",
+    "title": "inspectorItemUssClassName Field | Documentation",
+    "keywords": "View Source inspectorItemUssClassName Field Description USS class name of the items in the list. public static readonly string inspectorItemUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderButtonUssClassName.html",
+    "title": "itemHeaderButtonUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderButtonUssClassName Field Description USS class name of inspector header buttons. public static readonly string itemHeaderButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderCollapsedUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderCollapsedUssClassName.html",
+    "title": "itemHeaderCollapsedUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderCollapsedUssClassName Field Description USS class name of collapsed inspector headers. public static readonly string itemHeaderCollapsedUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderFoldoutUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderFoldoutUssClassName.html",
+    "title": "itemHeaderFoldoutUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderFoldoutUssClassName Field Description USS class name of inspector header foldouts. public static readonly string itemHeaderFoldoutUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderIconUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderIconUssClassName.html",
+    "title": "itemHeaderIconUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderIconUssClassName Field Description USS class name of the inspector header icon. public static readonly string itemHeaderIconUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderLabelUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderLabelUssClassName.html",
+    "title": "itemHeaderLabelUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderLabelUssClassName Field Description USS class name of inspector header labels. public static readonly string itemHeaderLabelUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderTooltipUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderTooltipUssClassName.html",
+    "title": "itemHeaderTooltipUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderTooltipUssClassName Field Description [Obsolete(\"There's no custom tooltip element for item headers anymore.\")] public static readonly string itemHeaderTooltipUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.itemHeaderUssClassName.html",
+    "title": "itemHeaderUssClassName Field | Documentation",
+    "keywords": "View Source itemHeaderUssClassName Field Description USS class name of the inspector headers. public static readonly string itemHeaderUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListOfInspectors.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListOfInspectors.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.alternatedUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.alternatedUssClassName.html",
+    "title": "alternatedUssClassName Field | Documentation",
+    "keywords": "View Source alternatedUssClassName Field Description USS class name of a row with an alternated background. public static readonly string alternatedUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.content.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.content.html",
+    "title": "content Property | Documentation",
+    "keywords": "content Property View Source content The main content of the row. Declaration public VisualElement content { get; } Property Value VisualElement"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.contentUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.contentUssClassName.html",
+    "title": "contentUssClassName Field | Documentation",
+    "keywords": "View Source contentUssClassName Field Description USS class name of the row's main content. public static readonly string contentUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.-ctor.html",
+    "title": "ListRow Constructor | Documentation",
+    "keywords": "ListRow Constructor View Source ListRow(ListControl, VisualElement, Int32, Action<Int32>) Declaration public ListRow(ListControl list, VisualElement content, int index, Action<int> onRemove) Parameters ListControl list The List that contains this row VisualElement content The main content of this item Int32 index The index in the list Action < Int32 > onRemove Delegate called when clicking a remove button"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.dragHandleUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.dragHandleUssClassName.html",
+    "title": "dragHandleUssClassName Field | Documentation",
+    "keywords": "View Source dragHandleUssClassName Field Description USS class name of the drag handle. public static readonly string dragHandleUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.html",
+    "title": "ListRow Class | Documentation",
+    "keywords": "View Source ListRow Class Description Element used as an item inside ArrayPropertyField . public class ListRow : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement ListRow Constructors ListRow(ListControl, VisualElement, Int32, Action<Int32>) Fields alternatedUssClassName USS class name of a row with an alternated background. contentUssClassName USS class name of the row's main content. dragHandleUssClassName USS class name of the drag handle. removeButtonUssClassName USS class name of the remove button. ussClassName USS class name of elements of this type. withSeparatorsUssClassName USS class name of a row with separators. Properties content The main content of the row. Methods SetAlternatedBackground(Boolean) Enable/Disable alternated background to differentiate even and odd items. SetDragHandle(Boolean) Show/hide a drag handle. SetFeatures(Boolean, Boolean, Boolean, Boolean) Enable/Disable the row's features. SetRemoveButton(Boolean) Show/hide a remove button. SetSeparators(Boolean) Enable/Disable separators before and after the row. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.removeButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.removeButtonUssClassName.html",
+    "title": "removeButtonUssClassName Field | Documentation",
+    "keywords": "View Source removeButtonUssClassName Field Description USS class name of the remove button. public static readonly string removeButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.SetAlternatedBackground.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.SetAlternatedBackground.html",
+    "title": "SetAlternatedBackground Method | Documentation",
+    "keywords": "SetAlternatedBackground Method View Source SetAlternatedBackground(Boolean) Enable/Disable alternated background to differentiate even and odd items. Declaration public void SetAlternatedBackground(bool enable) Parameters Boolean enable Whether to enable alternated background."
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.SetDragHandle.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.SetDragHandle.html",
+    "title": "SetDragHandle Method | Documentation",
+    "keywords": "SetDragHandle Method View Source SetDragHandle(Boolean) Show/hide a drag handle. Declaration public void SetDragHandle(bool enable) Parameters Boolean enable Whether to show a drag handle."
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.SetFeatures.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.SetFeatures.html",
+    "title": "SetFeatures Method | Documentation",
+    "keywords": "SetFeatures Method View Source SetFeatures(Boolean, Boolean, Boolean, Boolean) Enable/Disable the row's features. Declaration public void SetFeatures(bool removeButton = true, bool dragHandle = true, bool alternatedBackground = true, bool separators = false) Parameters Boolean removeButton Show/hide remove button Boolean dragHandle Show/hide drag handle Boolean alternatedBackground Enable/disable alternated background Boolean separators Enable/disable separators"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.SetRemoveButton.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.SetRemoveButton.html",
+    "title": "SetRemoveButton Method | Documentation",
+    "keywords": "SetRemoveButton Method View Source SetRemoveButton(Boolean) Show/hide a remove button. Declaration public void SetRemoveButton(bool enable) Parameters Boolean enable Whether to show a remove button."
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.SetSeparators.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.SetSeparators.html",
+    "title": "SetSeparators Method | Documentation",
+    "keywords": "SetSeparators Method View Source SetSeparators(Boolean) Enable/Disable separators before and after the row. Declaration public void SetSeparators(bool enable) Parameters Boolean enable Whether to enable separators."
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ListRow.withSeparatorsUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ListRow.withSeparatorsUssClassName.html",
+    "title": "withSeparatorsUssClassName Field | Documentation",
+    "keywords": "View Source withSeparatorsUssClassName Field Description USS class name of a row with separators. public static readonly string withSeparatorsUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.-ctor.html",
+    "title": "ManagedReferenceField Constructor | Documentation",
+    "keywords": "ManagedReferenceField Constructor View Source ManagedReferenceField(SerializedProperty) Constructor. Receives a SerializedProperty for a field that has the SerializeReference attribute. It still needs to be bound to work properly. Declaration public ManagedReferenceField(SerializedProperty property) Parameters SerializedProperty property A SerializedProperty for a field with the SerializeReference attribute. View Source ManagedReferenceField(SerializedProperty, String) Constructor. Receives a SerializedProperty for a field that has the SerializeReference attribute. It still needs to be Bound to work properly. Declaration public ManagedReferenceField(SerializedProperty property, string label) Parameters SerializedProperty property A SerializedProperty for a field with the SerializeReference attribute. String label Optional string to override the property label."
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.html",
+    "title": "ManagedReferenceField Class | Documentation",
+    "keywords": "View Source ManagedReferenceField Class Description Element that handles fields with the SerializeReference attribute. public class ManagedReferenceField : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement ManagedReferenceField Remarks This element contains a PropertyField and rebinds it when the field's reference changes type. It also sends a ReferenceTypeChangeEvent when that happens. Unity 2022 adds support for Managed References in UI Toolkit, but it's currently a bit buggy in some edge cases (for example, it doesn't like when two classes contain fields with the same name but different type). Use this element in 2022 if you need to go around those bugs or to take advantage of the ReferenceTypeChangeEvent . Examples A basic example. See ArrayPropertyField for how to use it with reorderable lists. class ACustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); // \"managed\" would be a field with the [SerializeReference] attribute. SerializedProperty managedProp = serializedObject.FindProperty(\"managed\"); root.Add(new ManagedReferenceField(managedProp)); return root; } } Constructors ManagedReferenceField(SerializedProperty) Constructor. Receives a SerializedProperty for a field that has the SerializeReference attribute. It still needs to be bound to work properly. ManagedReferenceField(SerializedProperty, String) Constructor. Receives a SerializedProperty for a field that has the SerializeReference attribute. It still needs to be Bound to work properly. Fields propertyFieldUssClassName USS class name for the PropertyField inside. trackerUssClassName USS class name for the ManagedReferenceTypeTracker inside. ussClassName USS class name of elements of this type. Properties periodicalUpdateInterval In addition to checking the reference's type when things change in the editor, there's a periodical check to catch changes made from runtime. By default it's done around every five seconds, but the interval can be changed through this property. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.periodicalUpdateInterval.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.periodicalUpdateInterval.html",
+    "title": "periodicalUpdateInterval Property | Documentation",
+    "keywords": "periodicalUpdateInterval Property View Source periodicalUpdateInterval In addition to checking the reference's type when things change in the editor, there's a periodical check to catch changes made from runtime. By default it's done around every five seconds, but the interval can be changed through this property. Declaration public long periodicalUpdateInterval { get; set; } Property Value Int64"
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.propertyFieldUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.propertyFieldUssClassName.html",
+    "title": "propertyFieldUssClassName Field | Documentation",
+    "keywords": "View Source propertyFieldUssClassName Field Description USS class name for the PropertyField inside. public static readonly string propertyFieldUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.trackerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.trackerUssClassName.html",
+    "title": "trackerUssClassName Field | Documentation",
+    "keywords": "View Source trackerUssClassName Field Description USS class name for the ManagedReferenceTypeTracker inside. public static readonly string trackerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ManagedReferenceField.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ManagedReferenceField.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.-ctor.html",
+    "title": "DragAndClickManipulator Constructor | Documentation",
+    "keywords": "DragAndClickManipulator Constructor View Source DragAndClickManipulator() Declaration public DragAndClickManipulator() View Source DragAndClickManipulator(Action, Action) Declaration public DragAndClickManipulator(Action onStartDragging, Action onProcessClick) Parameters Action onStartDragging Sets onStartDragging Action onProcessClick Sets onClick"
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.dragDistanceThreshold.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.dragDistanceThreshold.html",
+    "title": "dragDistanceThreshold Property | Documentation",
+    "keywords": "dragDistanceThreshold Property View Source dragDistanceThreshold The distance the mouse has to move before onStartDragging is called. Declaration public float dragDistanceThreshold { get; set; } Property Value Single"
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.html",
+    "title": "DragAndClickManipulator Class | Documentation",
+    "keywords": "View Source DragAndClickManipulator Class Description Manipulator that executes an onStartDragging callback when the mouse is dragged, and an onClick callback when the mouse is only clicked. public class DragAndClickManipulator : MouseManipulator, IManipulator Inheritance Object Manipulator MouseManipulator DragAndClickManipulator Remarks This is useful for draggable foldouts and toggles, like the headers of Components in the inspector, that only process the click on MouseUp when the mouse is not dragged. Constructors DragAndClickManipulator() DragAndClickManipulator(Action, Action) Properties dragDistanceThreshold The distance the mouse has to move before onStartDragging is called. onClick Delegate called when mouse is released and it hasn't been dragged. onStartDragging Delegate called when mouse begins dragged. It usually should start a drag operation using the DragAndDrop API."
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onClick.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onClick.html",
+    "title": "onClick Property | Documentation",
+    "keywords": "onClick Property View Source onClick Delegate called when mouse is released and it hasn't been dragged. Declaration public Action onClick { get; set; } Property Value Action"
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onStartDragging.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.onStartDragging.html",
+    "title": "onStartDragging Property | Documentation",
+    "keywords": "onStartDragging Property View Source onStartDragging Delegate called when mouse begins dragged. It usually should start a drag operation using the DragAndDrop API. Declaration public Action onStartDragging { get; set; } Property Value Action"
+  },
+  "api/ArteHacker.UITKEditorAid.Manipulators.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Manipulators.html",
+    "title": "ArteHacker.UITKEditorAid.Manipulators Namespace | Documentation",
+    "keywords": "ArteHacker.UITKEditorAid.Manipulators Namespace Classes DragAndClickManipulator Manipulator that executes an onStartDragging callback when the mouse is dragged, and an onClick callback when the mouse is only clicked."
+  },
+  "api/ArteHacker.UITKEditorAid.PropertyContainer.bindingPath.html": {
+    "href": "api/ArteHacker.UITKEditorAid.PropertyContainer.bindingPath.html",
+    "title": "bindingPath Property | Documentation",
+    "keywords": "bindingPath Property View Source bindingPath The path to property represented by this element. Declaration public string bindingPath { get; set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName.html",
+    "title": "contentUssClassName Field | Documentation",
+    "keywords": "View Source contentUssClassName Field Description USS class name for the content element. public static readonly string contentUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.PropertyContainer.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.PropertyContainer.-ctor.html",
+    "title": "PropertyContainer Constructor | Documentation",
+    "keywords": "PropertyContainer Constructor View Source PropertyContainer() Constructor. Declaration public PropertyContainer() View Source PropertyContainer(SerializedProperty) Constructor. The Property parameter just sets the bindingPath ; it still needs to be bound. Declaration public PropertyContainer(SerializedProperty property) Parameters SerializedProperty property The property represented by this element. View Source PropertyContainer(String) Constructor. Receives a string that is assigned to bindingPath . Declaration public PropertyContainer(string propertyPath) Parameters String propertyPath The path of the property represented by this element."
+  },
+  "api/ArteHacker.UITKEditorAid.PropertyContainer.html": {
+    "href": "api/ArteHacker.UITKEditorAid.PropertyContainer.html",
+    "title": "PropertyContainer Class | Documentation",
+    "keywords": "View Source PropertyContainer Class Description Element that shows a SerializedProperty's prefab override indicators, and the property's menu on context click. UXML support public class PropertyContainer : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement PropertyContainer Remarks Currently, Unity only adds these capabilities for fields that inherit from BaseField<TValueType> or Foldout . This element makes those features available everywhere. It can be used with any SerializedProperty, even those that have nested properties inside. To use it, assign a bindingPath to the property it represents, and call the Add(VisualElement) method to add the UI for that property. It should also show other kinds of indicators, like the yellow ones from the localization package, but I haven't tested that. Constructors PropertyContainer() Constructor. PropertyContainer(String) Constructor. Receives a string that is assigned to bindingPath . PropertyContainer(SerializedProperty) Constructor. The Property parameter just sets the bindingPath ; it still needs to be bound. Fields contentUssClassName USS class name for the content element. ussClassName USS class name of elements of this type. Properties bindingPath The path to property represented by this element. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.PropertyContainer.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.PropertyContainer.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.GetPooled.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.GetPooled.html",
+    "title": "GetPooled Method | Documentation",
+    "keywords": "GetPooled Method View Source GetPooled(String, String) It's the same as GetPooled() , but it initializes the event with parameters. Declaration public static ReferenceTypeChangeEvent GetPooled(string previousTypeName, string newTypeName) Parameters String previousTypeName The previous value of managedReferenceFullTypename String newTypeName The new value of managedReferenceFullTypename Returns ReferenceTypeChangeEvent"
+  },
+  "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.html",
+    "title": "ReferenceTypeChangeEvent Class | Documentation",
+    "keywords": "View Source ReferenceTypeChangeEvent Class Description Event sent by ManagedReferenceField when the field's type changes. public class ReferenceTypeChangeEvent : EventBase<ReferenceTypeChangeEvent>, IDisposable Inheritance Object EventBase EventBase < ReferenceTypeChangeEvent > ReferenceTypeChangeEvent Properties newTypeName The new value of managedReferenceFullTypename previousTypeName The previous value of managedReferenceFullTypename Methods GetPooled(String, String) It's the same as GetPooled() , but it initializes the event with parameters."
+  },
+  "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.newTypeName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.newTypeName.html",
+    "title": "newTypeName Property | Documentation",
+    "keywords": "newTypeName Property View Source newTypeName The new value of managedReferenceFullTypename Declaration public string newTypeName { get; protected set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.previousTypeName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ReferenceTypeChangeEvent.previousTypeName.html",
+    "title": "previousTypeName Property | Documentation",
+    "keywords": "previousTypeName Property View Source previousTypeName The previous value of managedReferenceFullTypename Declaration public string previousTypeName { get; protected set; } Property Value String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.AddTab.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.AddTab.html",
+    "title": "AddTab Method | Documentation",
+    "keywords": "AddTab Method View Source AddTab(String, VisualElement) Adds a tab and the content associated to it. Declaration public void AddTab(string title, VisualElement content) Parameters String title A title displayed in the tab. VisualElement content The content to be associated with the tab. View Source AddTab(VisualElement, VisualElement) Adds a tab and the content associated to it. Declaration public void AddTab(VisualElement title, VisualElement content) Parameters VisualElement title A title displayed in the tab. VisualElement content The content to be associated with the tab."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.AddTabToSelection.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.AddTabToSelection.html",
+    "title": "AddTabToSelection Method | Documentation",
+    "keywords": "AddTabToSelection Method View Source AddTabToSelection(Int32) Selects a tab without unselecting others. Declaration public void AddTabToSelection(int tabIndex) Parameters Int32 tabIndex Index of the tab."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.allowMultipleSelection.html",
+    "title": "allowMultipleSelection Property | Documentation",
+    "keywords": "allowMultipleSelection Property View Source allowMultipleSelection When true, allows showing multiple tabs at the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab. It's false by default. Declaration public bool allowMultipleSelection { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflow.html",
+    "title": "allowTabsOverflow Property | Documentation",
+    "keywords": "allowTabsOverflow Property View Source allowTabsOverflow When true, the Tabbed View will keep tabs in a single row, clipping them when they don't fit and showing additional buttons to scroll through them. When false, tabs that don't fit will be wrapped around, adding as many rows of tabs as necessary to fit them all. Declaration public bool allowTabsOverflow { get; set; } Property Value Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflowUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.allowTabsOverflowUssClassName.html",
+    "title": "allowTabsOverflowUssClassName Field | Documentation",
+    "keywords": "View Source allowTabsOverflowUssClassName Field Description USS class name of Tabbed Views that allow tabs overflow. public static readonly string allowTabsOverflowUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.ApplyPersistenceKey.html",
+    "title": "ApplyPersistenceKey Method | Documentation",
+    "keywords": "ApplyPersistenceKey Method View Source ApplyPersistenceKey(String) Use a persistence key to remember user selection of tabs. The selection is stored in SessionState . Declaration public void ApplyPersistenceKey(string key) Parameters String key"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.-ctor.html",
+    "title": "TabbedView Constructor | Documentation",
+    "keywords": "TabbedView Constructor View Source TabbedView() Declaration public TabbedView()"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.GetTabContent.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.GetTabContent.html",
+    "title": "GetTabContent Method | Documentation",
+    "keywords": "GetTabContent Method View Source GetTabContent(Int32) Gets the tab content at the specified index. Declaration public VisualElement GetTabContent(int tabIndex) Parameters Int32 tabIndex Index of the tab. Returns VisualElement The tab content."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.GetTabTitleElement.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.GetTabTitleElement.html",
+    "title": "GetTabTitleElement Method | Documentation",
+    "keywords": "GetTabTitleElement Method View Source GetTabTitleElement(Int32) Gets the tab title element at the specified index. Declaration public VisualElement GetTabTitleElement(int tabIndex) Parameters Int32 tabIndex Index of the tab. Returns VisualElement The tab title element."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.html",
+    "title": "TabbedView Class | Documentation",
+    "keywords": "View Source TabbedView Class Description Element for organizing content with tabs. public class TabbedView : VisualElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle Inheritance Object CallbackEventHandler Focusable VisualElement TabbedView Remarks Set allowMultipleSelection true to support opening multiple tabs. Set allowTabsOverflow false to use multiple rows when tabs don't fit in a single line. Use the AddTab method that receives a VisualElement as a title if you need more than simple labels in the tabs. Pass a unique string to ApplyPersistenceKey(String) to remember the last opened tabs. Examples A basic usage example with three tabs. class ACustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var tabbedView = new TabbedView(); // Set allowMultipleSelection to view multiple tabs at the same time. // It works by holding shift or ctrl (cmd on macOS) when clicking them. tabbedView.allowMultipleSelection = true; // Use AddTab to create new tabs. // The first parameter is an element used as the tab's title. // The second parameter is an element used as the tab's content. tabbedView.AddTab(new Label(\"Tab 0\"), new Label(\"Tab 0 Content\")); tabbedView.AddTab(new Label(\"Tab 1\"), new Label(\"Tab 1 Content\")); // You can use a string for the tab's title if you only need some text. tabbedView.AddTab(\"Tab 2\", new Label(\"Tab 2 Content\")); // The first tab is selected by default. This selects Tab 2. tabbedView.SetSelectedTab(2); // This selects Tab 0 and Tab 1 without unselecting any other tab. tabbedView.AddTabToSelection(0); tabbedView.AddTabToSelection(1); // This unselects Tab 2. tabbedView.RemoveTabFromSelection(2); // Listen to this event to know when a tab's selection status changes. tabbedView.onTabSelectionChange += (index, selected) => { if (selected) Debug.Log($\"Tab {index} selected\"); else Debug.Log($\"Tab {index} unselected\"); }; // Use a unique string as a key remember tab selection in views that use // the same key. Make sure to call this after all the tabs are added. tabbedView.ApplyPersistenceKey(\"ACustomEditor_TabsKey\"); return tabbedView; } } Constructors TabbedView() Fields allowTabsOverflowUssClassName USS class name of Tabbed Views that allow tabs overflow. selectedTabUssClassName USS class name of a selected tab element. tabBarContainerUssClassName USS class name of the element that contains the tab bar. tabBarScrollLeftButtonUssClassName USS class name of the button to scroll tabs to the left when allowTabsOverflow is true. tabBarScrollRightButtonUssClassName USS class name of the button to scroll tabs to the right when allowTabsOverflow is true. tabBarUssClassName USS class name of the bar that contains all the tabs. tabContentDisplayUssClassName USS class name of the element that contains all the tab contents. tabContentUssClassName USS class name of a single tab's content. tabTitleUssClassName USS class name of a tab's title. tabUssClassName USS class name of a tab element. ussClassName USS class name of elements of this type. Properties allowMultipleSelection When true, allows showing multiple tabs at the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab. It's false by default. allowTabsOverflow When true, the Tabbed View will keep tabs in a single row, clipping them when they don't fit and showing additional buttons to scroll through them. When false, tabs that don't fit will be wrapped around, adding as many rows of tabs as necessary to fit them all. tabCount Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. tabsScrollSpeed The scroll speed for the tab bar when allowTabsOverflow is true. Methods AddTab(String, VisualElement) Adds a tab and the content associated to it. AddTab(VisualElement, VisualElement) Adds a tab and the content associated to it. AddTabToSelection(Int32) Selects a tab without unselecting others. ApplyPersistenceKey(String) Use a persistence key to remember user selection of tabs. The selection is stored in SessionState . GetTabContent(Int32) Gets the tab content at the specified index. GetTabTitleElement(Int32) Gets the tab title element at the specified index. RemoveTabFromSelection(Int32) Unselects a tab. SetSelectedTab(Int32) Sets a single selected tab. Events onTabSelectionChange Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>)"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.onTabSelectionChange.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.onTabSelectionChange.html",
+    "title": "onTabSelectionChange Event | Documentation",
+    "keywords": "View Source onTabSelectionChange Event Description Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. public event Action<int, bool> onTabSelectionChange Returns Action < Int32 , Boolean >"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.RemoveTabFromSelection.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.RemoveTabFromSelection.html",
+    "title": "RemoveTabFromSelection Method | Documentation",
+    "keywords": "RemoveTabFromSelection Method View Source RemoveTabFromSelection(Int32) Unselects a tab. Declaration public void RemoveTabFromSelection(int tabIndex) Parameters Int32 tabIndex Index of the tab."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.selectedTabUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.selectedTabUssClassName.html",
+    "title": "selectedTabUssClassName Field | Documentation",
+    "keywords": "View Source selectedTabUssClassName Field Description USS class name of a selected tab element. public static readonly string selectedTabUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.SetSelectedTab.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.SetSelectedTab.html",
+    "title": "SetSelectedTab Method | Documentation",
+    "keywords": "SetSelectedTab Method View Source SetSelectedTab(Int32) Sets a single selected tab. Declaration public void SetSelectedTab(int tabIndex) Parameters Int32 tabIndex Index of the tab."
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabBarContainerUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarContainerUssClassName.html",
+    "title": "tabBarContainerUssClassName Field | Documentation",
+    "keywords": "View Source tabBarContainerUssClassName Field Description USS class name of the element that contains the tab bar. public static readonly string tabBarContainerUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollLeftButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollLeftButtonUssClassName.html",
+    "title": "tabBarScrollLeftButtonUssClassName Field | Documentation",
+    "keywords": "View Source tabBarScrollLeftButtonUssClassName Field Description USS class name of the button to scroll tabs to the left when allowTabsOverflow is true. public static readonly string tabBarScrollLeftButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollRightButtonUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarScrollRightButtonUssClassName.html",
+    "title": "tabBarScrollRightButtonUssClassName Field | Documentation",
+    "keywords": "View Source tabBarScrollRightButtonUssClassName Field Description USS class name of the button to scroll tabs to the right when allowTabsOverflow is true. public static readonly string tabBarScrollRightButtonUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabBarUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabBarUssClassName.html",
+    "title": "tabBarUssClassName Field | Documentation",
+    "keywords": "View Source tabBarUssClassName Field Description USS class name of the bar that contains all the tabs. public static readonly string tabBarUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabContentDisplayUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabContentDisplayUssClassName.html",
+    "title": "tabContentDisplayUssClassName Field | Documentation",
+    "keywords": "View Source tabContentDisplayUssClassName Field Description USS class name of the element that contains all the tab contents. public static readonly string tabContentDisplayUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabContentUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabContentUssClassName.html",
+    "title": "tabContentUssClassName Field | Documentation",
+    "keywords": "View Source tabContentUssClassName Field Description USS class name of a single tab's content. public static readonly string tabContentUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabCount.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabCount.html",
+    "title": "tabCount Property | Documentation",
+    "keywords": "tabCount Property View Source tabCount Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. Declaration public int tabCount { get; } Property Value Int32"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabsScrollSpeed.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabsScrollSpeed.html",
+    "title": "tabsScrollSpeed Property | Documentation",
+    "keywords": "tabsScrollSpeed Property View Source tabsScrollSpeed The scroll speed for the tab bar when allowTabsOverflow is true. Declaration public float tabsScrollSpeed { get; set; } Property Value Single"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabTitleUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabTitleUssClassName.html",
+    "title": "tabTitleUssClassName Field | Documentation",
+    "keywords": "View Source tabTitleUssClassName Field Description USS class name of a tab's title. public static readonly string tabTitleUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.tabUssClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.tabUssClassName.html",
+    "title": "tabUssClassName Field | Documentation",
+    "keywords": "View Source tabUssClassName Field Description USS class name of a tab element. public static readonly string tabUssClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.TabbedView.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.TabbedView.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.html",
+    "title": "ArteHacker.UITKEditorAid.Utils Namespace | Documentation",
+    "keywords": "ArteHacker.UITKEditorAid.Utils Namespace Classes ListControlUtils Some utilities to create custom ListControl child classes. SerializedObjectExtensions Extension methods for SerializedObject that are especially useful in combination with UI Toolkit. UIToolkitExtensions Extension methods for VisualElements."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.html",
+    "title": "ListControlUtils Class | Documentation",
+    "keywords": "View Source ListControlUtils Class Description Some utilities to create custom ListControl child classes. public static class ListControlUtils Inheritance Object ListControlUtils Methods ReorderSerializedArray(SerializedProperty, Int32, Int32) If your custom ListControl is backed by a SerializedProperty, you can call this method inside OnReorderDragPerformed(Int32, Int32) to implement it."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.ReorderSerializedArray.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.ListControlUtils.ReorderSerializedArray.html",
+    "title": "ReorderSerializedArray Method | Documentation",
+    "keywords": "ReorderSerializedArray Method View Source ReorderSerializedArray(SerializedProperty, Int32, Int32) If your custom ListControl is backed by a SerializedProperty, you can call this method inside OnReorderDragPerformed(Int32, Int32) to implement it. Declaration public static void ReorderSerializedArray(SerializedProperty arrayProp, int draggedIndex, int dropIndex) Parameters SerializedProperty arrayProp The serialized array Int32 draggedIndex The item that was dragged Int32 dropIndex The place where the item was dropped"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.html",
+    "title": "SerializedObjectExtensions Class | Documentation",
+    "keywords": "View Source SerializedObjectExtensions Class Description Extension methods for SerializedObject that are especially useful in combination with UI Toolkit. public static class SerializedObjectExtensions Inheritance Object SerializedObjectExtensions Methods IsEditable(SerializedObject) Returns whether a SerializedObject is considered editable. It will return false if any of its targetObjects are marked with NotEditable or if there's an asset that isn't open for editing in version control. It's especially useful in combination with Disabler . IsEditable(SerializedObject, StatusQueryOptions)"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.IsEditable.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.IsEditable.html",
+    "title": "IsEditable Method | Documentation",
+    "keywords": "IsEditable Method View Source IsEditable(SerializedObject) Returns whether a SerializedObject is considered editable. It will return false if any of its targetObjects are marked with NotEditable or if there's an asset that isn't open for editing in version control. It's especially useful in combination with Disabler . Declaration public static bool IsEditable(this SerializedObject obj) Parameters SerializedObject obj The object to check. Returns Boolean Whether object is editable. View Source IsEditable(SerializedObject, StatusQueryOptions) Declaration public static bool IsEditable(this SerializedObject obj, StatusQueryOptions queryOptions) Parameters SerializedObject obj StatusQueryOptions queryOptions Returns Boolean"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.ForEachChild.html",
+    "title": "ForEachChild Method | Documentation",
+    "keywords": "ForEachChild Method View Source ForEachChild<TElement>(VisualElement, Action<TElement>) Execute an action on all direct children with a certain type. Declaration public static void ForEachChild<TElement>(this VisualElement ve, Action<TElement> action) where TElement : VisualElement Parameters VisualElement ve The parent element. Action <TElement> action The action to execute. Type Parameters TElement The type of the child elements. View Source ForEachChild<TElement>(VisualElement.Hierarchy, Action<TElement>) Execute an action on all direct children with a certain type. Declaration public static void ForEachChild<TElement>(this VisualElement.Hierarchy hierarchy, Action<TElement> action) where TElement : VisualElement Parameters VisualElement.Hierarchy hierarchy The parent hierarchy. Action <TElement> action The action to execute. Type Parameters TElement The type of the child elements."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetBoundSerializedProperty.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetBoundSerializedProperty.html",
+    "title": "GetBoundSerializedProperty Method | Documentation",
+    "keywords": "GetBoundSerializedProperty Method View Source GetBoundSerializedProperty(IBindable) Tries to get the bound SerializedProperty from a bindable VisualElement through reflection. Declaration public static SerializedProperty GetBoundSerializedProperty(this IBindable bindable) Parameters IBindable bindable A bindable element Returns SerializedProperty The bound property if it's found, null otherwise."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetChildren.html",
+    "title": "GetChildren Method | Documentation",
+    "keywords": "GetChildren Method View Source GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) Get the direct children of a VisualElement filtered by type and an optional filter delegate. It stores them in a List parameter to avoid memory allocations. Declaration public static void GetChildren<TElement>(this VisualElement ve, List<TElement> results, Func<TElement, bool> filter = null) where TElement : VisualElement Parameters VisualElement ve The parent element List <TElement> results A list to store the results. Func <TElement, Boolean > filter An optional filter callback. Type Parameters TElement The type of the child elements View Source GetChildren<TElement>(VisualElement.Hierarchy, List<TElement>, Func<TElement, Boolean>) Get the direct children of a VisualElement.Hierarchy filtered by type and an optional filter delegate. It stores them in a List parameter to avoid memory allocations. Declaration public static void GetChildren<TElement>(this VisualElement.Hierarchy hierarchy, List<TElement> results, Func<TElement, bool> filter = null) where TElement : VisualElement Parameters VisualElement.Hierarchy hierarchy The parent hierarchy List <TElement> results A List to store the results Func <TElement, Boolean > filter An optional filter callback Type Parameters TElement The type of the child elements"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetFirstChild.html",
+    "title": "GetFirstChild Method | Documentation",
+    "keywords": "GetFirstChild Method View Source GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) Get the first direct child with a certain type that passes an optional filter delegate. Declaration public static TElement GetFirstChild<TElement>(this VisualElement ve, Func<TElement, bool> filter = null) where TElement : VisualElement Parameters VisualElement ve The parent element Func <TElement, Boolean > filter An optional filter callback Returns TElement A child that satisfies conditions or null. Type Parameters TElement The type of the child View Source GetFirstChild<TElement>(VisualElement.Hierarchy, Func<TElement, Boolean>) Get the first direct child with a certain type that passes an optional filter delegate. Declaration public static TElement GetFirstChild<TElement>(this VisualElement.Hierarchy hierarchy, Func<TElement, bool> filter = null) where TElement : VisualElement Parameters VisualElement.Hierarchy hierarchy The parent element Func <TElement, Boolean > filter An optional filter callback Returns TElement A child that satisfies conditions or null. Type Parameters TElement The type of the child"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLabelElement.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLabelElement.html",
+    "title": "GetLabelElement Method | Documentation",
+    "keywords": "GetLabelElement Method View Source GetLabelElement(PropertyField) Gets the main label element of a PropertyField when using a default property drawer. It should be called after the PropertyField has been processed by Unity's binding system. Declaration public static Label GetLabelElement(this PropertyField propertyField) Parameters PropertyField propertyField The property field to search for a main Label Element. Returns Label The main Label Element, or null if it isn't found. Remarks This can be useful to set the label's tooltip, or to change its text. Custom PropertyDrawers aren't really supported; usually, they can take care of their own labels."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.GetLocalRect.html",
+    "title": "GetLocalRect Method | Documentation",
+    "keywords": "GetLocalRect Method View Source GetLocalRect(VisualElement) Get an element's layout rect in local space. Declaration public static Rect GetLocalRect(this VisualElement ve) Parameters VisualElement ve The VisualElement. Returns Rect The local layout rect."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.html",
+    "title": "UIToolkitExtensions Class | Documentation",
+    "keywords": "View Source UIToolkitExtensions Class Description Extension methods for VisualElements. public static class UIToolkitExtensions Inheritance Object UIToolkitExtensions Remarks When using extension methods that modify USS properties, call them from the VisualElement's style property. Methods ForEachChild<TElement>(VisualElement, Action<TElement>) Execute an action on all direct children with a certain type. ForEachChild<TElement>(VisualElement.Hierarchy, Action<TElement>) Execute an action on all direct children with a certain type. GetBoundSerializedProperty(IBindable) Tries to get the bound SerializedProperty from a bindable VisualElement through reflection. GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) Get the direct children of a VisualElement filtered by type and an optional filter delegate. It stores them in a List parameter to avoid memory allocations. GetChildren<TElement>(VisualElement.Hierarchy, List<TElement>, Func<TElement, Boolean>) Get the direct children of a VisualElement.Hierarchy filtered by type and an optional filter delegate. It stores them in a List parameter to avoid memory allocations. GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) Get the first direct child with a certain type that passes an optional filter delegate. GetFirstChild<TElement>(VisualElement.Hierarchy, Func<TElement, Boolean>) Get the first direct child with a certain type that passes an optional filter delegate. GetLabelElement(PropertyField) Gets the main label element of a PropertyField when using a default property drawer. It should be called after the PropertyField has been processed by Unity's binding system. GetLocalRect(VisualElement) Get an element's layout rect in local space. SetBorderRadius(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting border radius properties in one go, like in the USS border-radius property. SetBorderWidth(IStyle, StyleFloat, StyleFloat, StyleFloat, StyleFloat) Short hand for setting border width properties in one go, like in the USS border-width property. SetFlex(IStyle, StyleFloat, StyleFloat, StyleLength) Short hand for setting flex properties in one go, like in the USS flex property. SetMargin(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting margin properties in one go, like in the USS margin property. SetPadding(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting padding properties in one go, like in the USS padding property. SetPositionCoordinates(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting a style's position coordinates."
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderRadius.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderRadius.html",
+    "title": "SetBorderRadius Method | Documentation",
+    "keywords": "SetBorderRadius Method View Source SetBorderRadius(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting border radius properties in one go, like in the USS border-radius property. Declaration public static void SetBorderRadius(this IStyle style, StyleLength topLeft, StyleLength topRight, StyleLength bottomRight, StyleLength bottomLeft) Parameters IStyle style The style to modify StyleLength topLeft The value for borderTopLeftRadius StyleLength topRight The value for borderTopRightRadius StyleLength bottomRight The value for borderBottomRightRadius StyleLength bottomLeft The value for borderBottomLeftRadius"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderWidth.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetBorderWidth.html",
+    "title": "SetBorderWidth Method | Documentation",
+    "keywords": "SetBorderWidth Method View Source SetBorderWidth(IStyle, StyleFloat, StyleFloat, StyleFloat, StyleFloat) Short hand for setting border width properties in one go, like in the USS border-width property. Declaration public static void SetBorderWidth(this IStyle style, StyleFloat top, StyleFloat right, StyleFloat bottom, StyleFloat left) Parameters IStyle style The style to modify StyleFloat top The value for borderTopWidth StyleFloat right The value for borderRightWidth StyleFloat bottom The value for borderBottomWidth StyleFloat left The value for borderLeftWidth"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetFlex.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetFlex.html",
+    "title": "SetFlex Method | Documentation",
+    "keywords": "SetFlex Method View Source SetFlex(IStyle, StyleFloat, StyleFloat, StyleLength) Short hand for setting flex properties in one go, like in the USS flex property. Declaration public static void SetFlex(this IStyle style, StyleFloat grow, StyleFloat shrink, StyleLength basis) Parameters IStyle style The style to modify StyleFloat grow The value for flexGrow StyleFloat shrink The value for flexShrink StyleLength basis The value for flexBasis"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetMargin.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetMargin.html",
+    "title": "SetMargin Method | Documentation",
+    "keywords": "SetMargin Method View Source SetMargin(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting margin properties in one go, like in the USS margin property. Declaration public static void SetMargin(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left) Parameters IStyle style The style to modify StyleLength top The value for marginTop StyleLength right The value for marginRight StyleLength bottom The value for marginBottom StyleLength left The value for marginLeft"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPadding.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPadding.html",
+    "title": "SetPadding Method | Documentation",
+    "keywords": "SetPadding Method View Source SetPadding(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting padding properties in one go, like in the USS padding property. Declaration public static void SetPadding(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left) Parameters IStyle style The style to modify StyleLength top The value for paddingTop StyleLength right The value for paddingRight StyleLength bottom The value for paddingBottom StyleLength left The value for paddingLeft"
+  },
+  "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPositionCoordinates.html": {
+    "href": "api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.SetPositionCoordinates.html",
+    "title": "SetPositionCoordinates Method | Documentation",
+    "keywords": "SetPositionCoordinates Method View Source SetPositionCoordinates(IStyle, StyleLength, StyleLength, StyleLength, StyleLength) Short hand for setting a style's position coordinates. Declaration public static void SetPositionCoordinates(this IStyle style, StyleLength top, StyleLength right, StyleLength bottom, StyleLength left) Parameters IStyle style The style to modify StyleLength top The value for top StyleLength right The value for right StyleLength bottom The value for bottom StyleLength left The value for left"
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.-ctor.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.-ctor.html",
+    "title": "ValueTracker Constructor | Documentation",
+    "keywords": "ValueTracker Constructor View Source ValueTracker() Constructor. Declaration public ValueTracker() View Source ValueTracker(String, EventCallback<ChangeEvent<TValue>>, TValue) Convenience constructor that setups the ValueTracker. Declaration public ValueTracker(string propertyPath, EventCallback<ChangeEvent<TValue>> callback = null, TValue initialValue = null) Parameters String propertyPath Path of the property to be tracked EventCallback < ChangeEvent <TValue>> callback Set a callback to be called when the property changes TValue initialValue The initial value of the property. Set it to avoid triggering the callback when the element is bound. View Source ValueTracker(SerializedProperty, EventCallback<ChangeEvent<TValue>>, TValue) Convenience constructor that setups the ValueTracker. Declaration public ValueTracker(SerializedProperty property, EventCallback<ChangeEvent<TValue>> callback = null, TValue initialValue = null) Parameters SerializedProperty property Property to be tracked EventCallback < ChangeEvent <TValue>> callback Set a callback to be called when the property changes TValue initialValue The initial value of the property. Set it to avoid triggering the callback when the element is bound."
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.html",
+    "title": "ValueTracker<TValue> Class | Documentation",
+    "keywords": "View Source ValueTracker<TValue> Class Description Utility element that listens for changes in a SerializedProperty . public class ValueTracker<TValue> : BindableElement, IEventHandler, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, IResolvedStyle, IBindable, INotifyValueChanged<TValue> Type Parameters TValue The type of the property, it doesn't seem to work if it isn't one mentioned in SerializedPropertyType Inheritance Object CallbackEventHandler Focusable VisualElement BindableElement ValueTracker<TValue> Remarks It needs to be added to a panel and bound to work. Many of the uses for this element are covered in Unity 2021 by the TrackPropertyValue and TrackSerializedObjectValue extension methods. Examples class ACustomEditor : Editor { public override VisualElement CreateInspectorGUI() { var root = new VisualElement(); var intTracker = new ValueTracker<int>(); root.Add(intTracker); // You can pass a property path relative to the object that will be bound. intTracker.SetUp(\"intProperty\", e => Debug.Log($\"new value: {e.newValue}\")); // You can pass a serialized property instead of the property path: var intProp = serializedObject.FindProperty(\"intProperty\"); intTracker.SetUp(intProp, e => Debug.Log($\"value changed to {e.newValue}\")); // An optional third value argument sets the initial value of the tracker, // this is to avoid receiving a callback when the tracker is bound. intTracker.SetUp( intProp, e => Debug.Log($\"value changed to {e.newValue}\"), intProp.intValue); // You can set up all this from the constructor: var intTracker2 = new ValueTracker<int>( intProp, e => Debug.Log($\"new value: {e.newValue}\"), intProp.intValue); root.Add(intTracker2); return root; // Remember that if we are not inside an inspector, or if we are not tracking // a property of the editor's target, we have to bind it manually: // root.Bind(serializedObject); } } Constructors ValueTracker() Constructor. ValueTracker(String, EventCallback<ChangeEvent<TValue>>, TValue) Convenience constructor that setups the ValueTracker. ValueTracker(SerializedProperty, EventCallback<ChangeEvent<TValue>>, TValue) Convenience constructor that setups the ValueTracker. Fields ussClassName USS class name of elements of this type. Properties value The value of the tracker updated by Unity with the property's value. valueChangedCallback Delegate called when value changes. Methods SetUp(String, EventCallback<ChangeEvent<TValue>>, TValue) Sets the bindingPath of the tracker, registers a callback and sets an initial value. SetUp(SerializedProperty, EventCallback<ChangeEvent<TValue>>, TValue) Sets the bindingPath of the tracker, registers a callback and sets an initial value. SetValueWithoutNotify(TValue) Set the value of the tracker without updating the property or triggering callbacks. Extension Methods UIToolkitExtensions.GetLocalRect(VisualElement) UIToolkitExtensions.GetChildren<TElement>(VisualElement, List<TElement>, Func<TElement, Boolean>) UIToolkitExtensions.GetFirstChild<TElement>(VisualElement, Func<TElement, Boolean>) UIToolkitExtensions.ForEachChild<TElement>(VisualElement, Action<TElement>) UIToolkitExtensions.GetBoundSerializedProperty(IBindable)"
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetUp.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetUp.html",
+    "title": "SetUp Method | Documentation",
+    "keywords": "SetUp Method View Source SetUp(String, EventCallback<ChangeEvent<TValue>>, TValue) Sets the bindingPath of the tracker, registers a callback and sets an initial value. Declaration public void SetUp(string propertyPath, EventCallback<ChangeEvent<TValue>> callback, TValue initialValue = null) Parameters String propertyPath Path of the property to be tracked EventCallback < ChangeEvent <TValue>> callback Set a callback to be called when the property changes TValue initialValue The initial value of the property. Set it to avoid triggering the callback when the element is bound. View Source SetUp(SerializedProperty, EventCallback<ChangeEvent<TValue>>, TValue) Sets the bindingPath of the tracker, registers a callback and sets an initial value. Declaration public void SetUp(SerializedProperty property, EventCallback<ChangeEvent<TValue>> callback, TValue initialValue = null) Parameters SerializedProperty property Property to be tracked EventCallback < ChangeEvent <TValue>> callback Set a callback to be called when the property changes TValue initialValue The initial value of the property. Set it to avoid triggering the callback when the element is bound."
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetValueWithoutNotify.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.SetValueWithoutNotify.html",
+    "title": "SetValueWithoutNotify Method | Documentation",
+    "keywords": "SetValueWithoutNotify Method View Source SetValueWithoutNotify(TValue) Set the value of the tracker without updating the property or triggering callbacks. Declaration public void SetValueWithoutNotify(TValue value) Parameters TValue value The new value"
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.ussClassName.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.ussClassName.html",
+    "title": "ussClassName Field | Documentation",
+    "keywords": "View Source ussClassName Field Description USS class name of elements of this type. public static readonly string ussClassName Returns String"
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.value.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.value.html",
+    "title": "value Property | Documentation",
+    "keywords": "value Property View Source value The value of the tracker updated by Unity with the property's value. Declaration public TValue value { get; set; } Property Value TValue"
+  },
+  "api/ArteHacker.UITKEditorAid.ValueTracker-1.valueChangedCallback.html": {
+    "href": "api/ArteHacker.UITKEditorAid.ValueTracker-1.valueChangedCallback.html",
+    "title": "valueChangedCallback Property | Documentation",
+    "keywords": "valueChangedCallback Property View Source valueChangedCallback Delegate called when value changes. Declaration public EventCallback<ChangeEvent<TValue>> valueChangedCallback { get; set; } Property Value EventCallback < ChangeEvent <TValue>>"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "UITK Editor Aid | Documentation",
+    "keywords": "UITK Editor Aid This package contains UI Toolkit elements and utilities for custom Editor interfaces in Unity. How to install See Install a package from a Git URL to install with the Package Manager. The git URL for this package is https://github.com/OscarAbraham/UITKEditorAid.git . You can also download this package into your Assets folder. Brief rundown of this package Visit the package's API documentation for more information. Click a name to go to the relevant documentation page for usage info and some code examples: EditableLabel A label that transforms into a field for editing its text. It becomes editable with a double click by default. TabbedView A UI Toolkit element for organizing content with tabs. It has the option to support opening multiple tabs at the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab. It also supports remembering the last opened tabs by assigning a unique string as a persistence key. ArrayPropertyField A UITK control for a serialized Array or List. It has many customization options. ListOfInspectors A list of Objects similar to the components list in a GameObject's inspector. This element is typically used with a list of subassets. PropertyContainer Element that shows a SerializedProperty's prefab override indicators, and the property's context menu. Currently, Unity only shows these things for some specific fields under specific circumstances. This element makes those features available everywhere. ManagedReferenceField Supports SerializeReference before 2022.2. Unity 2022.2 adds support for Managed References in UITK, but this element can still be useful there to go around some bugs (for example, UITK doesn't like when two classes contain fields with the same name but different type). BindingStopper Element that prevents binding its children from higher in the hierarchy. Use this element to keep fields bound to different Objects than the rest of the UI. Disabler Element that disables its content according to a callback. It's analogous to IMGUI's DisabledScope . FixedSpace and FlexibleSpace Elements for quickly adding a space along their parent's flex direction. They're analogous to IMGUI's Space and FlexibleSpace . DragAndClickManipulator A Manipulator that handles treating a click as a drag when the mouse is dragged, and as a click when the mouse is clicked without moving it. It's useful for things that can be both clicked and dragged, like the headers of Components in the inspector. SerializedObjectExtensions Extension methods for SerializedObject that are specially useful in combination with UI Toolkit. It contains an IsEditable method that can be used in combination with the Disabler element to avoid editing objects that shouldn't be edited UIToolkitExtensions Contains many extension methods for VisualElements. It has methods to manipulate only the direct children of an Element, some other methods for quickly setting multiple style properties in one go, and a method for getting the SerializedProperty that is bound to a field, among other things. IMPORTANT: Embedding this package If you are going to include this package inside another package or Asset Store plugin, please follow these steps to avoid collisions in projects that use this package by themselves."
+  },
+  "manual_pages/embedding_this_package.html": {
+    "href": "manual_pages/embedding_this_package.html",
+    "title": "Embedding this package | Documentation",
+    "keywords": "Embedding this package Sometimes, it's needed to embed this package inside another one, especially when publishing to the Asset Store. We recommend the following steps to avoid collisions when your users have a reference to this package themselves. You can do these steps right every time you are about to publish your package; that way you can work with the most recent version of UITKEditorAid while developing. For these steps to work, your package must have its own code under its own asmdefs. 1. Generate new file GUIDs Unity uses unique ids stored in .meta files to track different assets. When there are two files with the same id, Unity will generate a new id for one of the files. This means that either your embedded UITKEditorAid or the user's copy of the package could lose its file ids. That in turn can cause confusion, problems with Version Control, and issues with the Package Manager. It's better for your embedded copy of UITKEditorAid to already have new file GUIDs. An easy way of achieving this is to copy UITKEditorAid into your package while keeping an existing reference to UITKEditorAid in your working Unity project. The Editor will detect the duplicate file ids and print a bunch of warnings in the console about changing them to avoid duplication. It will also print a couple of errors about duplicate assemblies; these will be fixed in the next step. 2. Prepare the asmdef Select the asmdef inside the Editor folder in your copy of UITKEditorAid in the Unity Editor. Change the asmdef's name to a unique one to avoid duplicate assemblies. The name is set in the inspector; you can also rename the file's name for clarity, but the inspector's field is the important part. Set Auto Referenced to false in the asmdef's inspector. This will prevent users from depending on this code, and it'll save you from having to rename namespaces to avoid collisions. In your package's own assembly definitions, replace references to the original UITKEditorAid's asmdef with your copy. Here's an image that shows how the asmdef's copy should look in the inspector. Replace MyCompany with your own brand or name. 3. Remove UXML support We really recommend not using custom UI Toolkit elements with UXML inside packages, unless the package is intentionally sharing those elements with users. If you're able to use a custom element with UXML or the UI Builder, the users of your package are too. This can cause unintended dependencies on parts of your package, and it will pollute the user's UXML options with undocumented features that don't explain their origin. UITKEditorAid has the ability to remove UXML support with a symbol define. If REMOVE_UXML_FACTORIES is defined, UXML related code will be removed. This symbol should only be defined for your copy of UITKEditorAid to avoid affecting user's packages. An easy way of doing this is to add a custom Version Define in your copy's asmdef's inspector. Set the Resource field to Unity and the Define field to REMOVE_UXML_FACTORIES ; leave Expression empty. This is how it looks in the inspector: Usually, replacing UXML layouts that use custom elements with pure code is relatively easy, especially because you can still use USS. The benefits of removing these UXML uses from packages normally outweigh the cost. If you really need to use UITKEditorAid elements with UXML, please rename the package's namespaces to avoid collisions, as UXML only uses namespaces and ignores assembly names for identifying elements."
+  }
+}
