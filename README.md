@@ -1,80 +1,81 @@
 # UITK Editor Aid
-Elements and scripts that help in making Unity editors with UIToolkit.<br/>
-
-[UIToolkit](https://docs.unity3d.com/Manual/UIElements.html) (UITK) allows for interfaces that are more dynamic and 
-performant than [IMGUI](https://docs.unity3d.com/Manual/GUIScriptingGuide.html). Its web-like API makes creating 
-complex Editor UI (i.e. node graphs) a lot easier.
-
-There's a problem, though: the editor part of UITK currently lacks some of the IMGUI features required for easily
-creating anything more than basic stuff. This issue can be avoided a little by using IMGUI containers inside UITK,
-but projects can easily get too limited and unwieldy, and performance drops quickly when there are multiple instances
-of them.
-
-This package contains some of the stuff I use to solve the problem with a pure UIToolkit approach.
-<br/><br/>
+This package contains UI Toolkit elements and utilities for custom Editor interfaces in Unity.
 
 ## How to install
-You can either download this package directly to your project's Assets folder, or you can use the Package Manager.
-Installing with the __Package Manager__ is very easy:
-1. In Unity, go to __Window > Package Manager__.
-2. Click the __➕▾__ in the top left and choose __Add Package from git URL__
-3. Enter `https://github.com/OscarAbraham/UITKEditorAid.git` and press __Add__.
+See [Install a package from a Git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html) to install with
+the Package Manager. The git URL for this package is `https://github.com/OscarAbraham/UITKEditorAid.git`.
 
+You can also download this package into your Assets folder.
 
-## Some of the stuff included
+## Brief rundown of this package
+Visit the package's API [documentation](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.html) for more information.
 Click a name to go to the relevant documentation page for usage info and some code examples:
 
 ### [EditableLabel](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.EditableLabel.html)
-A label that tranforms into a text field to be edited. It's edited with a double-click by default.<br/>
+A label that transforms into a field for editing its text. It becomes editable with a double click by default.
+
 ![EditableLabel preview](doc_images~/EditableLabel.png)
 
+### [TabbedView](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.TabbedView.html)
+A UI Toolkit element for organizing content with tabs. It has the option to support opening multiple tabs at
+the same time by holding shift or ctrl (or cmd in macOS) while clicking a tab. It also supports remembering
+the last opened tabs by assigning a unique string as a persistence key.
+
+![TabbedView preview](doc_images~/TabbedView.png)
+
 ### [ArrayPropertyField](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ArrayPropertyField.html)
-A UITK version of the good old reorderable list, very customizable. Here's what it looks like by default:
+A UITK control for a serialized Array or List. It has many customization options.
 
 ![ArrayPropertyField preview](doc_images~/DefaultReorderableList.png)
 
-There's also an abstract [ListControl](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListControl.html)
-class that you can use to create your own lists that don't depend on a SerializedProperty
+### [ListOfInspectors](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListOfInspectors.html)
+A list of Objects similar to the components list in a GameObject's inspector.
+This element is typically used with a list of subassets.
+
+![ListOfInspectors preview](doc_images~/ListOfInspectors.png)
+
+### [PropertyContainer](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.PropertyContainer.html)
+Element that shows a SerializedProperty's prefab override indicators, and the property's context menu.
+Currently, Unity only shows these things for some specific fields under specific circumstances. This
+element makes those features available everywhere.
  
 ### [ManagedReferenceField](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ManagedReferenceField.html)
-Currently, PropertyFields from members with the [SerializeReference](https://docs.unity3d.com/ScriptReference/SerializeReference.html)
-attribute break when they change type. This element is like a PropertyField that updates when the type changes.<br/>
-The next gif shows a customized ArrayPropertyField that uses ManagedReferenceFields for its items. Notice that the
-interface updates itself when the elements change type due to being reordered:
+Supports [SerializeReference](https://docs.unity3d.com/ScriptReference/SerializeReference.html) before 2022.2.
+Unity 2022.2 adds support for Managed References in UITK, but this element can still be useful there to go
+around some bugs (for example, UITK doesn't like when two classes contain fields with the same name but 
+different type).
 
 ![A customized list of Managed References](doc_images~/ManagedRefsList.png)
 
-### [ValueTracker](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ValueTracker-1.html)
-Some times you don't need a VisualElement for anything visual, sometimes you just need a quick way to get a callback when
-a property changes. This element helps you with that.
+### [BindingStopper](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.BindingStopper.html)
+Element that prevents binding its children from higher in the hierarchy. 
+Use this element to keep fields bound to different Objects than the rest of the UI.
 
-### [ListOfInspectors](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.ListOfInspectors.html)
-A list that is similar to the component's list in GameObjects. I use it with ScriptableObject subassets. You still have to
-do the stuff that's not related to UIToolkit yourself, like handling assets and the lifetime of your objects, which is
-outside the scope of this package; but if you know how to do that, this could be very helpful.
+### [Disabler](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Disabler.html)
+Element that disables its content according to a callback. It's analogous to IMGUI's 
+[DisabledScope](https://docs.unity3d.com/ScriptReference/EditorGUI.DisabledScope.html).
 
-![ListOfInspectors preview](doc_images~/ListOfInspectors.png)
-<br/>
+### [FixedSpace](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.FixedSpace.html) and [FlexibleSpace](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.FlexibleSpace.html)
+Elements for quickly adding a space along their parent's flex direction. They're analogous to IMGUI's
+[Space](https://docs.unity3d.com/ScriptReference/GUILayout.Space.html) and 
+[FlexibleSpace](https://docs.unity3d.com/ScriptReference/GUILayout.FlexibleSpace.html).
 
-### [More Stuff](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.html)
-Click the link to go to the docs homepage. There is stuff to replace some common IMGUI methods, like a 
-[Disabler](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Disabler.html) element that's equivalent
-to `EditorGUI.DisabledScope`, and `FixedSpace`/`FlexibleSpace` elements equivalent to GUILayout's `Space` and `FlexibleSpace`.
-There are also some extension methods that I've found useful for UIToolkit editor development, and some UITK manipulators.
-<br/><br/>
+### [DragAndClickManipulator](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Manipulators.DragAndClickManipulator.html)
+A Manipulator that handles treating a click as a drag when the mouse is dragged, and as a click when the mouse 
+is clicked without moving it. It's useful for things that can be both clicked and dragged, like the headers of 
+Components in the inspector.
 
-## A caveat
-Currently, all elements that need rebinding  (i.e. Lists and ManagedReferenceFields), don't support UXML. That's because
-they need to get a `SerializedProperty` in their constructor. The correct way to solve that would be to obtain them with
-Unity's binding system, but the required API is not public yet. I don't want to use reflection because that API seems
-likely to change, and editors that break when doing a minor Unity update are awful.<br/><br/>
+### [SerializedObjectExtensions](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Utils.SerializedObjectExtensions.html)
+Extension methods for SerializedObject that are specially useful in combination with UI Toolkit.
+It contains an IsEditable method that can be used in combination with the Disabler element to avoid editing 
+objects that shouldn't be edited
 
-## IMPORTANT: Avoid collisions when including this code inside packages and plugins
-Sometimes one needs to put a copy of a library inside a Unity plugin; that's very ok, that's what the MIT license is for.
-If you do that, please take steps to avoid collisions when your users have also installed this package themselves. The
-easiest way to do it is:
+### [UIToolkitExtensions](https://artehacker.com/UITKEditorAid/api/ArteHacker.UITKEditorAid.Utils.UIToolkitExtensions.html)
+Contains many extension methods for VisualElements. It has methods to manipulate only the direct children of 
+an Element, some other methods for quickly setting multiple style properties in one go, and a method for 
+getting the SerializedProperty that is bound to a field, among other things.
 
-1. Rename the ArteHacker part of the namespace. Most text editors have an automated way of doing that.
-
-2. Delete the .asmdef file inside the Editor folder. Create a new one if you need it; renaming it is not enough because
-some users reference them as assets (with their GUID).
+## IMPORTANT: Embedding this package
+If you are going to include this package inside another package or Asset Store plugin, please follow 
+[these steps](https://artehacker.com/UITKEditorAid/manual_pages/embedding_this_package.html) to avoid collisions in projects that use this package 
+by themselves.
