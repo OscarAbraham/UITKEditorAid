@@ -76,6 +76,7 @@ namespace ArteHacker.UITKEditorAid
             m_PropertyProxy.style.opacity = 0;
 
             m_ProxyToggle = m_PropertyProxy.Q<Toggle>(null, Foldout.toggleUssClassName);
+            m_ProxyToggle.focusable = false;
             m_ProxyToggle.pickingMode = PickingMode.Ignore;
             m_ProxyToggle.Query().ForEach(ve => ve.pickingMode = PickingMode.Ignore);
             m_ProxyToggle.style.position = Position.Absolute;
