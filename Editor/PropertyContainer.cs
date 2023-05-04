@@ -41,7 +41,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name for the content element. </summary>
         public static readonly string contentUssClassName = ussClassName + "__content";
         /// <summary> USS class name for an invisible element that makes Unity apply the relevant SerializedProperty features. </summary>
-        public static readonly string propertyProxy = ussClassName + "__property-proxy";
+        public static readonly string propertyProxyUssClassName = ussClassName + "__property-proxy";
 
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
@@ -73,7 +73,7 @@ namespace ArteHacker.UITKEditorAid
             hierarchy.Add(m_ContentContainer);
 
             m_PropertyProxy = new Foldout { pickingMode = PickingMode.Ignore };
-            m_PropertyProxy.AddToClassList(propertyProxy);
+            m_PropertyProxy.AddToClassList(propertyProxyUssClassName);
             m_PropertyProxy.style.position = Position.Absolute;
             m_PropertyProxy.style.top = m_PropertyProxy.style.bottom = m_PropertyProxy.style.left = m_PropertyProxy.style.right = 0;
             m_PropertyProxy.style.opacity = 0;
