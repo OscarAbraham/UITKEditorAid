@@ -83,17 +83,17 @@ namespace ArteHacker.UITKEditorAid
             m_ProxyToggle.pickingMode = PickingMode.Ignore;
             m_ProxyToggle.Query().ForEach(ve => ve.pickingMode = PickingMode.Ignore);
             m_ProxyToggle.style.position = Position.Absolute;
-            m_ProxyToggle.style.top = m_ProxyToggle.style.left = 0;
-            m_ProxyToggle.style.height = m_ProxyToggle.style.width = 0;
+            m_ProxyToggle.style.top = m_ProxyToggle.style.bottom = m_ProxyToggle.style.left = 0;
+            m_ProxyToggle.style.width = 0;
             m_ProxyToggle.style.marginBottom = m_ProxyToggle.style.marginTop = m_ProxyToggle.style.marginLeft = m_ProxyToggle.style.marginRight = 0;
 
             hierarchy.Add(m_PropertyProxy);
             bindingPath = propertyPath;
 
-            RegisterCallback<MouseUpEvent>(OnMouseUp);
+            RegisterCallback<PointerUpEvent>(OnPointerUp);
         }
 
-        private void OnMouseUp(MouseUpEvent e)
+        private void OnPointerUp(PointerUpEvent e)
         {
             // Prevent getting stuck in an infinite loop with the fake events sent to the proxyToggle.
             if (e.target == m_ProxyToggle)
@@ -102,27 +102,30 @@ namespace ArteHacker.UITKEditorAid
             // Unity's current implementation doesn't detect ctrl + click on macOS, but that doesn't stop us from supporting it.
             if (e.button == 1 || (Application.platform == RuntimePlatform.OSXEditor && e.button == 0 && e.ctrlKey))
             {
-                if (!(e.target is VisualElement elementTarget))
+                if (!(e.target is VisualElement))
                     return;
 
                 e.PreventDefault();
                 e.StopPropagation();
 
-                // The menu is displayed from the toggleElement's position, so we need to make it cover the target.
-                var localTargetRect = new Rect(0, 0, elementTarget.layout.width, elementTarget.layout.height);
-                var toggleRect = elementTarget.ChangeCoordinatesTo(this, localTargetRect);
-                m_ProxyToggle.style.width = 1;
-                m_ProxyToggle.style.height = toggleRect.height;
-                m_ProxyToggle.style.top = toggleRect.y;
-                // We don't set left to toggleRect.x because there's a bug where Unity doesn't handle it well when it's not 0.
+                // In 2021.3, the menu is displayed from the toggleElement's position, so we put it under the mouse.
+                // We need to remove this code in newer versions because they display prefab blue bars next to the
+                // Toggle instead of next to the whole Foldout.
+#if !UNITY_2022_2_OR_NEWER
+                m_ProxyToggle.style.height = 16;
+                m_ProxyToggle.style.top = e.localPosition.y;
+                // We don't set left because there's a bug where Unity doesn't handle it well when it's not 0.
+#endif
 
-                // Currently, we don't really need the fakeDownEvent, but we send it to make this more future proof.
-                using (var fakeDownEvent = MouseDownEvent.GetPooled(e.mousePosition, 1, 1, Vector2.zero))
+                var fakeSystemEvent = new Event() { button = 1, mousePosition = e.position, type = EventType.MouseDown };
+                using (var fakeDownEvent = PointerDownEvent.GetPooled(fakeSystemEvent))
                 {
                     fakeDownEvent.target = m_ProxyToggle;
                     m_ProxyToggle.SendEvent(fakeDownEvent);
                 }
-                using (var fakeUpEvent = MouseUpEvent.GetPooled(e.mousePosition, 1, 1, Vector2.zero))
+
+                fakeSystemEvent.type = EventType.MouseUp;
+                using (var fakeUpEvent = PointerUpEvent.GetPooled(fakeSystemEvent))
                 {
                     fakeUpEvent.target = m_ProxyToggle;
                     m_ProxyToggle.SendEvent(fakeUpEvent);
