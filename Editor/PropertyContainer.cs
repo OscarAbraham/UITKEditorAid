@@ -135,7 +135,7 @@ namespace ArteHacker.UITKEditorAid
                 // We need to remove this code in newer versions because they display prefab blue bars next to the
                 // Toggle instead of next to the whole Foldout.
 #if !UNITY_2022_2_OR_NEWER
-                m_ProxyToggle.style.height = 16;
+                m_ProxyToggle.style.height = 1;
                 m_ProxyToggle.style.top = e.localPosition.y;
                 // We don't set left because there's a bug where Unity doesn't handle it well when it's not 0.
 #endif
