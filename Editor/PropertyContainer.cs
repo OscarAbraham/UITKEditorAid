@@ -51,6 +51,7 @@ namespace ArteHacker.UITKEditorAid
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
         private readonly VisualElement m_ContentContainer;
+        private bool m_HasPropertyOverride = false;
 
         /// <summary>
         /// An event that's fired when a change in the property's override status is detected.
@@ -148,22 +149,12 @@ namespace ArteHacker.UITKEditorAid
 
         private void CheckPrefabOverride()
         {
-            if (m_ProxyToggle.ClassListContains(BindingExtensions.prefabOverrideUssClassName))
+            bool proxyHasPropertyOverride = m_ProxyToggle.ClassListContains(BindingExtensions.prefabOverrideUssClassName);
+            if (proxyHasPropertyOverride != m_HasPropertyOverride)
             {
-                // Checking ClassListContains has better performance than Adding/Removing the class every time, or using EnableInClassList.
-                if (!ClassListContains(prefabOverrideUssClassName))
-                {
-                    AddToClassList(prefabOverrideUssClassName);
-                    onPrefabOverrideChanged?.Invoke(true);
-                }
-            }
-            else
-            {
-                if (ClassListContains(prefabOverrideUssClassName))
-                {
-                    RemoveFromClassList(prefabOverrideUssClassName);
-                    onPrefabOverrideChanged?.Invoke(false);
-                }
+                m_HasPropertyOverride = proxyHasPropertyOverride;
+                EnableInClassList(prefabOverrideUssClassName, proxyHasPropertyOverride);
+                onPrefabOverrideChanged?.Invoke(proxyHasPropertyOverride);
             }
         }
     }
