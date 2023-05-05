@@ -1348,6 +1348,24 @@ references:
   commentId: F:ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName
   fullName: ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName
   nameWithType: PropertyContainer.contentUssClassName
+- uid: ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged
+  name: onPrefabOverrideChanged
+  href: api/ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged.html
+  commentId: E:ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged
+  fullName: ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged
+  nameWithType: PropertyContainer.onPrefabOverrideChanged
+- uid: ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName
+  name: prefabOverrideUssClassName
+  href: api/ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName.html
+  commentId: F:ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName
+  fullName: ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName
+  nameWithType: PropertyContainer.prefabOverrideUssClassName
+- uid: ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName
+  name: propertyProxyUssClassName
+  href: api/ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName.html
+  commentId: F:ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName
+  fullName: ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName
+  nameWithType: PropertyContainer.propertyProxyUssClassName
 - uid: ArteHacker.UITKEditorAid.PropertyContainer.ussClassName
   name: ussClassName
   href: api/ArteHacker.UITKEditorAid.PropertyContainer.ussClassName.html

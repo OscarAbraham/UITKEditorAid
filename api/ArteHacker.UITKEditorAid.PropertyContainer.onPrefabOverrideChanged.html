@@ -32,10 +32,10 @@ SOFTWARE.
       <meta charset="utf-8">
     
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>contentUssClassName Field
+      <title>onPrefabOverrideChanged Event
      | Documentation </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="contentUssClassName Field
+      <meta name="title" content="onPrefabOverrideChanged Event
      | Documentation ">
       
       <link rel="shortcut icon" href="../icons/ArteHackerIcon.png">
@@ -140,14 +140,14 @@ SOFTWARE.
                           </div>
                         </div>
 
-                    <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName">
+                    <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged">
 
 <div class="contribution-links mobile-hide">
-  <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/master/Editor/PropertyContainer.cs/#L54">View Source</a>
+  <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/master/Editor/PropertyContainer.cs/#L69">View Source</a>
 
 </div>
 
-<h1 id="ArteHacker_UITKEditorAid_PropertyContainer_contentUssClassName" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.contentUssClassName" class="text-break">contentUssClassName Field
+<h1 id="ArteHacker_UITKEditorAid_PropertyContainer_onPrefabOverrideChanged" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged" class="text-break">onPrefabOverrideChanged Event
 </h1>
 
 
@@ -155,17 +155,18 @@ SOFTWARE.
 
 <h4 class="description-header" id="description">Description</h4>
 
-<div class="markdown level0 summary"><p>USS class name for the content element. </p>
+<div class="markdown level0 summary"><p>An event that&apos;s triggered when a change in the property&apos;s override status is detected.
+Receives a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a> that indicates whether the property is a prefab override.</p>
 </div>
 <div class="markdown level0 conceptual"></div>
 <div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public static readonly string contentUssClassName</code></pre>
+  <pre><code class="lang-csharp hljs">public event Action&lt;bool&gt; onPrefabOverrideChanged</code></pre>
 </div>
 <h5 class="returns">Returns</h5>
 <table class="api-table">
   <tbody>
     <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
       <td class="description-cell"></td>
     </tr>
   </tbody>

@@ -142,7 +142,7 @@ SOFTWARE.
 
                     <article class="content wrap" id="_content" data-uid="ArteHacker.UITKEditorAid.PropertyContainer">
   <div class="contribution-links mobile-hide">
-    <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/master/Editor/PropertyContainer.cs/#L21">View Source</a>
+    <a href="https://github.com/OscarAbraham/UITKEditorAid/blob/master/Editor/PropertyContainer.cs/#L31">View Source</a>
   
   </div>
   
@@ -184,6 +184,13 @@ It should also show other kinds of indicators, like the yellow ones from the loc
 </p></p>
 </div>
   
+  <h3 id="ArteHacker_UITKEditorAid_PropertyContainer_examples">Examples</h3>
+  <p>The <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName.html">prefabOverrideUssClassName</a> can be used to apply custom styles when theres a prefab override. For example,
+a custom style sheet could do something like this to make a particular label bold when there&apos;s an override:</p>
+<pre><code class="lang-css">.editor-aid-property-container .my-custom-label-class {
+    -unity-font-style: bold;
+}</code></pre>
+
   <h3 id="constructors">Constructors
   </h3>
   <table class="api-table">
@@ -223,6 +230,20 @@ It should also show other kinds of indicators, like the yellow ones from the loc
 </td>
       </tr>
       <tr>
+        <td id="ArteHacker_UITKEditorAid_PropertyContainer_prefabOverrideUssClassName" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.prefabOverrideUssClassName.html">prefabOverrideUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name of elements of this type when their property is a prefab override. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_PropertyContainer_propertyProxyUssClassName" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName">
+          <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.propertyProxyUssClassName.html">propertyProxyUssClassName</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>USS class name for an invisible element that makes Unity apply the relevant SerializedProperty features. </p>
+</td>
+      </tr>
+      <tr>
         <td id="ArteHacker_UITKEditorAid_PropertyContainer_ussClassName" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.ussClassName">
           <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.ussClassName.html">ussClassName</a>
         </td>
@@ -240,6 +261,20 @@ It should also show other kinds of indicators, like the yellow ones from the loc
           <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.bindingPath.html#ArteHacker_UITKEditorAid_PropertyContainer_bindingPath">bindingPath</a>
         </td>
         <td class="markdown level1 summary description-cell"><p>The path to property represented by this element. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <table class="api-table">
+    <tbody>
+      <tr>
+        <td id="ArteHacker_UITKEditorAid_PropertyContainer_onPrefabOverrideChanged" data-uid="ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged">
+          <a class="xref" href="ArteHacker.UITKEditorAid.PropertyContainer.onPrefabOverrideChanged.html">onPrefabOverrideChanged</a>
+        </td>
+        <td class="markdown level1 summary description-cell"><p>An event that&apos;s triggered when a change in the property&apos;s override status is detected.
+Receives a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a> that indicates whether the property is a prefab override.</p>
 </td>
       </tr>
     </tbody>
