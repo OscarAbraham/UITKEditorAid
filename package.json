@@ -1,6 +1,6 @@
 {
   "name": "com.artehacker.uitkeditoraid",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "displayName": "UITK Editor Aid",
   "description": "UI Toolkit elements and utilities for custom Editor interfaces in Unity.",
   "unity": "2021.3",
@@ -14,7 +14,7 @@
     "name": "Oscar Abraham",
     "url": "https://www.artehacker.com"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "documentationUrl": "https://artehacker.com/UITKEditorAid/",
   "changelogUrl": "https://github.com/OscarAbraham/UITKEditorAid/releases"
 }
