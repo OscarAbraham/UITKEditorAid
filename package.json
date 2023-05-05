@@ -1,6 +1,6 @@
 {
   "name": "com.artehacker.uitkeditoraid",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "displayName": "UITK Editor Aid",
   "description": "UI Toolkit elements and utilities for custom Editor interfaces in Unity.",
   "unity": "2021.3",
