@@ -13,5 +13,8 @@
   "author": {
     "name": "Oscar Abraham",
     "url": "https://www.artehacker.com"
-  }
+  },
+  "license" : "MIT",
+  "documentationUrl": "https://artehacker.com/UITKEditorAid/",
+  "changelogUrl": "https://github.com/OscarAbraham/UITKEditorAid/releases"
 }
