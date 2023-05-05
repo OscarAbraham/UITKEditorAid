@@ -58,7 +58,7 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> Constructor. The Property parameter just sets the <see cref="bindingPath"/>; it still needs to be bound. </summary>
         /// <param name="property"> The property represented by this element. </param>
-        public PropertyContainer(SerializedProperty property) : this(property.propertyPath) { }
+        public PropertyContainer(SerializedProperty property) : this(property?.propertyPath) { }
 
         /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
         /// <param name="propertyPath"> The path of the property represented by this element. </param>
