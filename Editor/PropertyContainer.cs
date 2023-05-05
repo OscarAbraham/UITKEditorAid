@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -50,6 +51,12 @@ namespace ArteHacker.UITKEditorAid
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
         private readonly VisualElement m_ContentContainer;
+
+        /// <summary>
+        /// An event that's fired when a change in the property's override status is detected.
+        /// Receives a <see cref="bool"/> that indicates whether the property is a prefab override.
+        /// </summary>
+        public event Action<bool> onPrefabOverrideChanged;
 
         /// <summary> The path to property represented by this element. </summary>
         public string bindingPath { get  => m_PropertyProxy.bindingPath; set => m_PropertyProxy.bindingPath = value; }
@@ -145,12 +152,18 @@ namespace ArteHacker.UITKEditorAid
             {
                 // Checking ClassListContains has better performance than Adding/Removing the class every time, or using EnableInClassList.
                 if (!ClassListContains(prefabOverrideUssClassName))
+                {
                     AddToClassList(prefabOverrideUssClassName);
+                    onPrefabOverrideChanged?.Invoke(true);
+                }
             }
             else
             {
                 if (ClassListContains(prefabOverrideUssClassName))
+                {
                     RemoveFromClassList(prefabOverrideUssClassName);
+                    onPrefabOverrideChanged?.Invoke(false);
+                }
             }
         }
     }
