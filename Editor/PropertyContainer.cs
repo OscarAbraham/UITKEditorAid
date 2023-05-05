@@ -23,7 +23,7 @@ namespace ArteHacker.UITKEditorAid
     /// The <see cref="prefabOverrideUssClassName"/> can be used to apply custom styles when theres a prefab override. For example,
     /// a custom style sheet could do something like this to make a particular label bold when there's an override:
     /// <code language="css"><![CDATA[
-    /// .editor-aid-property-container .my-custom-label-class {
+    /// .editor-aid-property-container--prefab-override .my-custom-label-class {
     ///     -unity-font-style: bold;
     /// }
     /// ]]></code>
