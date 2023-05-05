@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 namespace ArteHacker.UITKEditorAid
 {
-    // TODO: Find a practical way to make child texts bold when overriden, and make it optional. 
     /// <summary>
     /// Element that shows a <see cref="SerializedProperty">SerializedProperty's</see> prefab override indicators,
     /// and the property's menu on context click. <c>UXML support</c>
@@ -38,10 +38,14 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-property-container";
+        /// <summary> USS class name of elements of this type when their property is a prefab override. </summary>
+        public static readonly string prefabOverrideUssClassName = ussClassName + "--prefab-override";
         /// <summary> USS class name for the content element. </summary>
         public static readonly string contentUssClassName = ussClassName + "__content";
         /// <summary> USS class name for an invisible element that makes Unity apply the relevant SerializedProperty features. </summary>
         public static readonly string propertyProxyUssClassName = ussClassName + "__property-proxy";
+
+        private const long k_CheckPrefabOverrideInterval = 500;
 
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
@@ -91,6 +95,8 @@ namespace ArteHacker.UITKEditorAid
             bindingPath = propertyPath;
 
             RegisterCallback<PointerUpEvent>(OnPointerUp);
+
+            schedule.Execute(CheckPrefabOverride).Every(k_CheckPrefabOverrideInterval);
         }
 
         private void OnPointerUp(PointerUpEvent e)
@@ -130,6 +136,21 @@ namespace ArteHacker.UITKEditorAid
                     fakeUpEvent.target = m_ProxyToggle;
                     m_ProxyToggle.SendEvent(fakeUpEvent);
                 }
+            }
+        }
+
+        private void CheckPrefabOverride()
+        {
+            if (m_ProxyToggle.ClassListContains(BindingExtensions.prefabOverrideUssClassName))
+            {
+                // Checking ClassListContains has better performance than Adding/Removing the class every time, or using EnableInClassList.
+                if (!ClassListContains(prefabOverrideUssClassName))
+                    AddToClassList(prefabOverrideUssClassName);
+            }
+            else
+            {
+                if (ClassListContains(prefabOverrideUssClassName))
+                    RemoveFromClassList(prefabOverrideUssClassName);
             }
         }
     }
