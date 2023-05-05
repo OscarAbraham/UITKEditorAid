@@ -220,18 +220,21 @@ namespace ArteHacker.UITKEditorAid
 #endif
                 var position = textHandler.worldBound.center;
 
-                using (var mouseDown = MouseDownEvent.GetPooled(position, 0, 1, Vector2.zero))
+                var systemEvent = new Event { type = EventType.MouseDown, mousePosition = position, button = 0 };
+                using (var pointerDown = PointerDownEvent.GetPooled(systemEvent))
                 {
-                    mouseDown.target = textHandler;
-                    textHandler.SendEvent(mouseDown);
-                }
-                using (var mouseUp = MouseUpEvent.GetPooled(position, 0, 1, Vector2.zero))
-                {
-                    mouseUp.target = textHandler;
-                    textHandler.SendEvent(mouseUp);
+                    pointerDown.target = textHandler;
+                    textHandler.SendEvent(pointerDown);
                 }
 
-                // Select al text for Unity versions that don't select all in the first click (i.e. 2020).
+                systemEvent.type = EventType.MouseUp;
+                using (var pointerUp = PointerUpEvent.GetPooled(systemEvent))
+                {
+                    pointerUp.target = textHandler;
+                    textHandler.SendEvent(pointerUp);
+                }
+
+                // Select all text for Unity versions that don't select all in the first click (i.e. 2020).
                 m_TextField.SelectAll();
             }
         }
