@@ -370,7 +370,7 @@ namespace ArteHacker.UITKEditorAid
         public Action<ContextualMenuPopulateEvent, VisualElement, int> onPopulateItemMenu { get; set; }
 
         /// <summary>
-        /// Constructor. It receives a array/list <see cref="SerializedProperty"/> and an optional makeItem delegate.
+        /// Constructor. It receives a list/array <see cref="SerializedProperty"/> and an optional makeItem delegate.
         /// It still needs to be bound to work properly.
         /// </summary>
         /// <param name="arrayProp"> A SerializedProperty that points to an array or a list</param>
@@ -461,9 +461,6 @@ namespace ArteHacker.UITKEditorAid
         private void OnSizeChange(ChangeEvent<int> e)
         {
             int prevListSize = GetListSize();
-            // In case the SerializedProperty hasn't been updated yet. It happens when seting a field's value directly.
-            m_ArrayProp.arraySize = e.newValue;
-            m_ArrayProp.serializedObject.ApplyModifiedProperties();
             SetListSize(m_ArrayProp.arraySize);
 
             // NOTE: Should we bind only the added elements for better performance?
