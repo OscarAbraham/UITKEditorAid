@@ -1,9 +1,4 @@
 ﻿
-/*
-    TODO normalize the size differences for PropertyField's margins/paddings outside/inside inspector elements.
-    The differences exist to get closer to the way IMGUI controls look inside the inspector, but they should look,
-    the same inside ArrayPropertyField.
-*/
 .editor-aid-array-property-field .unity-foldout__toggle {
     margin-left: 0;
 }
@@ -69,7 +64,7 @@
     display: flex;
     background-color: var(--editor-aid-colors-list_header-background);
     min-height: 16px;
-    margin-bottom: 1px; /*TODO Should we remove top and bottom margins in general?*/
+    margin-bottom: 1px;
 }
 
 .editor-aid-list-control--boxed > .editor-aid-list-control__header {
