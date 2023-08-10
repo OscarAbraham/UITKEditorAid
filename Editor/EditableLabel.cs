@@ -178,22 +178,16 @@ namespace ArteHacker.UITKEditorAid
             m_Label = new Label { pickingMode = PickingMode.Ignore };
             m_Label.AddToClassList(labelUssClassName);
             Add(m_Label);
+
+            RegisterCallback<MouseDownEvent>(OnMouseDown);
         }
 
-#if UNITY_2022_2_OR_NEWER
-        [EventInterest(typeof(MouseDownEvent))]
-#endif
-        [RemoveFromDocs]
-        protected override void ExecuteDefaultActionAtTarget(EventBase evt)
+        private void OnMouseDown(MouseDownEvent e)
         {
-            base.ExecuteDefaultActionAtTarget(evt);
-            if (editOnDoubleClick
-                && evt is MouseDownEvent mouseDown
-                && mouseDown.button == 0
-                && mouseDown.modifiers == EventModifiers.None
-                && mouseDown.clickCount >= 2)
+            if (editOnDoubleClick && e.button == 0 && e.modifiers == EventModifiers.None && e.clickCount >= 2)
             {
                 BeginEditing();
+                e.StopPropagation();
             }
         }
 

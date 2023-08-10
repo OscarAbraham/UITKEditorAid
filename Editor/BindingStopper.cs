@@ -44,9 +44,15 @@ namespace ArteHacker.UITKEditorAid
         }
 
         [RemoveFromDocs]
+#if UNITY_2023_2_OR_NEWER
+        protected override void HandleEventBubbleUp(EventBase evt)
+        {
+            base.HandleEventBubbleUp(evt);
+#else
         protected override void ExecuteDefaultActionAtTarget(EventBase evt)
         {
             base.ExecuteDefaultActionAtTarget(evt);
+#endif
 
             if (evt.GetType() != s_SerializedObjectBindEventType)
                 return;
