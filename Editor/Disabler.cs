@@ -36,9 +36,9 @@ namespace ArteHacker.UITKEditorAid
             m_Container.AddToClassList(contentContainerUssClassName);
             hierarchy.Add(m_Container);
 
-            RegisterCallback<MouseDownEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
-            RegisterCallback<MouseUpEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
-            RegisterCallback<MouseOverEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerDownEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerUpEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerOverEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
             RegisterCallback<KeyDownEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
             RegisterCallback<AttachToPanelEvent>(e => UpdateDisabledStatus(), TrickleDown.TrickleDown);
         }
