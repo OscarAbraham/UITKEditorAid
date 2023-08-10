@@ -36,10 +36,10 @@ namespace ArteHacker.UITKEditorAid
             m_Container.AddToClassList(contentContainerUssClassName);
             hierarchy.Add(m_Container);
 
-            RegisterCallback<PointerDownEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
-            RegisterCallback<PointerUpEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
-            RegisterCallback<PointerOverEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
-            RegisterCallback<KeyDownEvent>(e => UpdateDisabledStatus(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerDownEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerUpEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
+            RegisterCallback<PointerOverEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
+            RegisterCallback<KeyDownEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
             RegisterCallback<AttachToPanelEvent>(e => UpdateDisabledStatus(), TrickleDown.TrickleDown);
         }
 
@@ -49,11 +49,21 @@ namespace ArteHacker.UITKEditorAid
             this.shouldDisable = shouldDisable;
         }
 
-        private void UpdateDisabledStatus(EventBase e = null)
+        /// <summary>
+        /// Call this method to update the disabled status manually.
+        /// Note that this element already updates its disabled status on events that could modify its contents.
+        /// </summary>
+        public void UpdateDisabledStatus()
         {
-            bool disabled = shouldDisable != null ? shouldDisable() : false;
+            bool disabled = shouldDisable != null && shouldDisable();
+            m_Container.SetEnabled(!disabled);
+        }
 
-            if (disabled && e != null && e.target != this)
+        private void UpdateDisabledStatusOnEvent(EventBase e)
+        {
+            UpdateDisabledStatus();
+
+            if (!enabledSelf && e.target != this)
             {
                 e.StopImmediatePropagation();
 
@@ -63,7 +73,6 @@ namespace ArteHacker.UITKEditorAid
                 e.PreventDefault();
 #endif
             }
-            m_Container.SetEnabled(!disabled);
         }
     }
 }
