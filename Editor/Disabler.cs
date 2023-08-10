@@ -56,7 +56,12 @@ namespace ArteHacker.UITKEditorAid
             if (disabled && e != null && e.target != this)
             {
                 e.StopImmediatePropagation();
+
+#if UNITY_2023_2_OR_NEWER
+                focusController?.IgnoreEvent(e);
+#else
                 e.PreventDefault();
+#endif
             }
             m_Container.SetEnabled(!disabled);
         }

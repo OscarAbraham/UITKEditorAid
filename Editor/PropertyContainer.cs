@@ -128,7 +128,6 @@ namespace ArteHacker.UITKEditorAid
                 if (!(e.target is VisualElement))
                     return;
 
-                e.PreventDefault();
                 e.StopPropagation();
 
                 // In 2021.3, the menu is displayed from the toggleElement's position, so we put it under the mouse.
