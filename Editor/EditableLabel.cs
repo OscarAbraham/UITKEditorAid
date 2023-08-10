@@ -200,11 +200,11 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Call this method to put the label in edit mode. </summary>
         public void BeginEditing()
         {
+            // The display changes could also be in SimulateClick, but then the cursor doesn't update until the mouse moves for some reason.
             m_Label.style.display = DisplayStyle.None;
             m_TextField.style.display = DisplayStyle.Flex;
-            m_TextField.Focus();
 
-            // Delay it to avoid unpredictable behavior from clicking inside a click event.
+            // Delay it to avoid unpredictable behavior from clicking inside a click event, and to prevent focus from being undone.
             EditorApplication.delayCall += SimulateClick;
 
             // In 2021 and newer, the first Click on a focused field selects the text, even if it was already selected.
@@ -212,6 +212,10 @@ namespace ArteHacker.UITKEditorAid
             // foster consistent behavior. So we solve this by simulating the first click on the field.
             void SimulateClick()
             {
+                // Focus here instead of immediately on BeginEditing to avoid the focus being removed when mouse events are processed in 2023.2.
+                // It could also be avoided by calling the new focusController.IgnoreEvent, but this way it works everywhere by default.
+                m_TextField.Focus();
+
                 // UITK started using a different element to handle text in 2022.
 #if UNITY_2022_1_OR_NEWER
                 var textHandler = m_TextField.Q(null, TextElement.ussClassName);
