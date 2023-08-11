@@ -14,7 +14,23 @@ namespace ArteHacker.UITKEditorAid
     public class Disabler : VisualElement
     {
 #if !REMOVE_UXML_FACTORIES
-        public new class UxmlFactory : UxmlFactory<Disabler> { }
+        public new class UxmlFactory : UxmlFactory<Disabler, UxmlTraits> { }
+
+        public new class UxmlTraits : VisualElement.UxmlTraits
+        {
+            UxmlBoolAttributeDescription m_UpdatePeriodically =
+                new UxmlBoolAttributeDescription { name = "update-periodically", defaultValue = false };
+            UxmlLongAttributeDescription m_UpdateInterval =
+                new UxmlLongAttributeDescription { name = "update-interval", defaultValue = k_DefaultUpdateInterval };
+
+            public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
+            {
+                base.Init(ve, bag, cc);
+                var disabler = ve as Disabler;
+                disabler.updatePeriodically = m_UpdatePeriodically.GetValueFromBag(bag, cc);
+                disabler.updateInterval = m_UpdateInterval.GetValueFromBag(bag, cc);
+            }
+        }
 #endif
 
         /// <summary> USS class name of elements of this type. </summary>
@@ -22,13 +38,47 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name of the disabler's contentContainer. </summary>
         public static readonly string contentContainerUssClassName = "editor-aid-disabler__content-container";
 
+        private const long k_DefaultUpdateInterval = 1000;
+
         private readonly VisualElement m_Container = new VisualElement();
+        private readonly IVisualElementScheduledItem m_UpdateSchedule;
+        private long m_UpdateInterval = k_DefaultUpdateInterval;
 
         [RemoveFromDocs]
         public override VisualElement contentContainer => m_Container;
 
         /// <summary> Set this callback to indicate when to enable/disable contents. Elements will be disabled when it returns true.</summary>
         public Func<bool> shouldDisable { get; set; }
+
+        /// <summary>
+        /// Enable this to update the disabled status periodically. Note that this element already updates its disabled status on events
+        /// that could modify its contents, but this way the disabled status can be updated even when not interacting with the element.
+        /// It's false by default.
+        /// </summary>
+        public bool updatePeriodically
+        {
+            get => m_UpdateSchedule.isActive;
+            set
+            {
+                if (value)
+                    m_UpdateSchedule.Resume();
+                else
+                    m_UpdateSchedule.Pause();
+            }
+        }
+
+        /// <summary>
+        /// The interval in milliseconds used to update the disabled status periodically when <see cref="updatePeriodically"/> is true.
+        /// </summary>
+        public long updateInterval
+        {
+            get => m_UpdateInterval;
+            set
+            {
+                m_UpdateInterval = Math.Max(value, 0);
+                m_UpdateSchedule.Every(m_UpdateInterval);
+            }
+        }
 
         public Disabler()
         {
@@ -41,6 +91,10 @@ namespace ArteHacker.UITKEditorAid
             RegisterCallback<PointerOverEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
             RegisterCallback<KeyDownEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
             RegisterCallback<AttachToPanelEvent>(e => UpdateDisabledStatus(), TrickleDown.TrickleDown);
+
+            m_UpdateSchedule = schedule.Execute(UpdateDisabledStatus).Every(updateInterval);
+            // This makes it so updatePeriodically is false by default.
+            m_UpdateSchedule.Pause();
         }
 
         /// <param name="shouldDisable"> The callback that will be used to disable contents.</param>
