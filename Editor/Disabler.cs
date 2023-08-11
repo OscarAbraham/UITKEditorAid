@@ -61,9 +61,14 @@ namespace ArteHacker.UITKEditorAid
 
         private void UpdateDisabledStatusOnEvent(EventBase e)
         {
+            bool prevEnabledSelf = enabledSelf;
             UpdateDisabledStatus();
 
-            if (!enabledSelf && e.target != this)
+            // Stop propagation only if the disabled status changed. That way, we still stop events
+            // that shouldn't reach children when their disabled status may not be updated yet, and
+            // we allow special handling of disabled events that some Unity elements have, e.g. for
+            // tooltips or when clicking the object's name in an ObjectField.
+            if (!enabledSelf && prevEnabledSelf != enabledSelf && e.target != this)
             {
                 e.StopImmediatePropagation();
 
