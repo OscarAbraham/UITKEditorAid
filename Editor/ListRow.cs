@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
+using ArteHacker.UITKEditorAid.Utils;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -21,11 +22,9 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name of a row with separators. </summary>
         public static readonly string withSeparatorsUssClassName = "editor-aid-list-row--with-separators";
 
-        private readonly ListControl m_List;
         private readonly VisualElement m_DragHandle = new VisualElement();
         private readonly Button m_RemoveButton = new Button();
         private readonly int m_Index;
-        private bool m_ReadyToDrag = false;
 
         /// <summary> The main content of the row. </summary>
         public VisualElement content { get; }
@@ -43,7 +42,6 @@ namespace ArteHacker.UITKEditorAid
             AddToClassList(ussClassName);
             SetAlternatedBackground(true);
 
-            m_List = list;
             m_Index = index;
 
             m_DragHandle.AddToClassList(dragHandleUssClassName);
@@ -58,10 +56,7 @@ namespace ArteHacker.UITKEditorAid
             m_RemoveButton.clicked += () => onRemove?.Invoke(m_Index);
             Add(m_RemoveButton);
 
-            RegisterCallback<MouseDownEvent>(OnMouseDown);
-            RegisterCallback<MouseMoveEvent>(OnMouseMove);
-            RegisterCallback<MouseUpEvent>(OnMouseUp);
-            RegisterCallback<MouseCaptureOutEvent>(OnMouseCaptureOut);
+            ListControlUtils.HandleListControlItemEvents(list, this, index);
         }
 
         /// <summary> Enable/Disable alternated background to differentiate even and odd items.</summary>
@@ -110,44 +105,5 @@ namespace ArteHacker.UITKEditorAid
             SetSeparators(separators);
             SetAlternatedBackground(alternatedBackground);
         }
-
-        private void OnMouseDown(MouseDownEvent e)
-        {
-            if (m_ReadyToDrag)
-            {
-                e.StopImmediatePropagation();
-                return;
-            }
-            if (e.button != 0 || e.commandKey || e.altKey || e.ctrlKey || e.shiftKey)
-                return;
-
-            m_List.selectedItem = m_Index;
-            m_ReadyToDrag = true;
-            this.CaptureMouse();
-            e.StopImmediatePropagation();
-        }
-
-        private void OnMouseMove(MouseMoveEvent e)
-        {
-            if (!m_ReadyToDrag) return;
-
-            m_List.StartDraggingItem(m_Index);
-
-            m_ReadyToDrag = false;
-            this.ReleaseMouse();
-
-            e.StopPropagation();
-        }
-
-        private void OnMouseUp(MouseUpEvent e)
-        {
-            if (!m_ReadyToDrag) return;
-
-            m_ReadyToDrag = false;
-            this.ReleaseMouse();
-            e.StopPropagation();
-        }
-
-        private void OnMouseCaptureOut(MouseCaptureOutEvent e) => m_ReadyToDrag = false;
     }
 }
