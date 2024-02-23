@@ -4,11 +4,21 @@
 }
 
 .editor-aid-editable-label__label {
-    padding: 2px 3px 1px 3px;
+    padding: 1px 2px 0px 2px;
+    /* We add an invisible border to match the TextField. We don't do it with pure padding because there'd be
+     mismatches with non-integer pixel densities, as pixel amounts are snapped to fit the actual screen pixels. */
+    border-width: 1px;
     color: var(--unity-colors-label-text);
     overflow: hidden;
 }
 
 .editor-aid-editable-label__text-field {
     margin: 0;
+}
+
+/* This is the element that does the text in the TextField, it has a padding-right of 2. That causes
+   a mistmatch with the Label element's bounds when the EditableLabel's width depends on its content.
+   We use a custom USS class because we haven't found a way to get that element in C# that feels reliable enough.*/
+.unity-text-element--inner-input-field-component {
+    padding-right: 0px;
 }
