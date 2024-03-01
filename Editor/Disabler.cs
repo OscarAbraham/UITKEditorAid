@@ -41,7 +41,7 @@ namespace ArteHacker.UITKEditorAid
         private const long k_DefaultUpdateInterval = 1000;
 
         private readonly VisualElement m_Container = new VisualElement();
-        private readonly IVisualElementScheduledItem m_UpdateSchedule;
+        private IVisualElementScheduledItem m_UpdateSchedule;
         private long m_UpdateInterval = k_DefaultUpdateInterval;
 
         [RemoveFromDocs]
@@ -57,13 +57,18 @@ namespace ArteHacker.UITKEditorAid
         /// </summary>
         public bool updatePeriodically
         {
-            get => m_UpdateSchedule.isActive;
+            get => m_UpdateSchedule?.isActive ?? false;
             set
             {
                 if (value)
+                {
+                    m_UpdateSchedule ??= schedule.Execute(UpdateDisabledStatus).Every(updateInterval);
                     m_UpdateSchedule.Resume();
+                }
                 else
-                    m_UpdateSchedule.Pause();
+                {
+                    m_UpdateSchedule?.Pause();
+                }
             }
         }
 
@@ -76,7 +81,7 @@ namespace ArteHacker.UITKEditorAid
             set
             {
                 m_UpdateInterval = Math.Max(value, 0);
-                m_UpdateSchedule.Every(m_UpdateInterval);
+                m_UpdateSchedule?.Every(m_UpdateInterval);
             }
         }
 
@@ -91,10 +96,6 @@ namespace ArteHacker.UITKEditorAid
             RegisterCallback<PointerOverEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
             RegisterCallback<KeyDownEvent>(e => UpdateDisabledStatusOnEvent(e), TrickleDown.TrickleDown);
             RegisterCallback<AttachToPanelEvent>(e => UpdateDisabledStatus(), TrickleDown.TrickleDown);
-
-            m_UpdateSchedule = schedule.Execute(UpdateDisabledStatus).Every(updateInterval);
-            // This makes it so updatePeriodically is false by default.
-            m_UpdateSchedule.Pause();
         }
 
         /// <param name="shouldDisable"> The callback that will be used to disable contents.</param>
