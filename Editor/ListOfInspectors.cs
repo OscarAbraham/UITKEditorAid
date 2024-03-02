@@ -190,15 +190,14 @@ namespace ArteHacker.UITKEditorAid
         protected virtual VisualElement CreateHeader(int itemIndex, SerializedObject serializedObject, InspectorElement inspector)
         {
             var target = serializedObject.targetObject;
-            var header = new Disabler(() => !serializedObject.IsEditable()) { viewDataKey = $"Header{target.GetInstanceID()}" };
-            var headerContainer = header.contentContainer;
-            headerContainer.AddToClassList(itemHeaderUssClassName);
+            var header = new VisualElement();
+            header.AddToClassList(itemHeaderUssClassName);
 
             bool wasExpanded = InternalEditorUtility.GetIsInspectorExpanded(target);
-            SetItemExpanded(wasExpanded, headerContainer, target, inspector);
+            SetItemExpanded(wasExpanded, header, target, inspector);
 
-            var foldout = AddHeaderFoldout(headerContainer, wasExpanded);
-            foldout.RegisterValueChangedCallback(e => SetItemExpanded(e.newValue, headerContainer, target, inspector));
+            var foldout = AddHeaderFoldout(header, wasExpanded);
+            foldout.RegisterValueChangedCallback(e => SetItemExpanded(e.newValue, header, target, inspector));
 
             header.AddManipulator(new DragAndClickManipulator
             {
@@ -208,12 +207,12 @@ namespace ArteHacker.UITKEditorAid
             header.RegisterCallback<MouseDownEvent>(e =>
             {
                 if (e.button == 1)
-                    ShowInspectorContextMenu(new Rect(e.mousePosition, default), headerContainer, itemIndex, serializedObject);
+                    ShowInspectorContextMenu(new Rect(e.mousePosition, default), header, itemIndex, serializedObject);
             });
 
-            AddPrelabelHeaderElements(headerContainer, itemIndex, serializedObject);
-            AddHeaderLabel(headerContainer, itemIndex, serializedObject);
-            AddPostlabelHeaderElements(headerContainer, itemIndex, serializedObject);
+            AddPrelabelHeaderElements(header, itemIndex, serializedObject);
+            AddHeaderLabel(header, itemIndex, serializedObject);
+            AddPostlabelHeaderElements(header, itemIndex, serializedObject);
 
             return header;
         }
