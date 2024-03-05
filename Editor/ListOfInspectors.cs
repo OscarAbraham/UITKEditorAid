@@ -323,9 +323,6 @@ namespace ArteHacker.UITKEditorAid
 
         private void ShowInspectorContextMenu(Rect position, VisualElement header, int itemIndex, SerializedObject serializedObject)
         {
-            if (!serializedObject.IsEditable())
-                return;
-
             var menu = new GenericMenu();
             var target = serializedObject.targetObject;
 
@@ -368,12 +365,6 @@ namespace ArteHacker.UITKEditorAid
         protected override void OnReorderDragPerformed(int draggedIndex, int dropIndex)
         {
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
-        }
-
-        [RemoveFromDocs]
-        protected override bool IsReorderable()
-        {
-            return m_ArrayProp.serializedObject.IsEditable();
         }
 
         private class InspectorItem : VisualElement
