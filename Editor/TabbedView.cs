@@ -161,6 +161,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
         public event Action<int, bool> onTabSelectionChange;
 
+        /// <summary> Constructor. </summary>
         public TabbedView()
         {
             AddToClassList(ussClassName);
@@ -192,6 +193,11 @@ namespace ArteHacker.UITKEditorAid
             });
         }
 
+        /// <summary>
+        /// Constructor. Receives persistence key to remember user selection of tabs. It's the same as calling
+        /// <see cref="ApplyPersistenceKey(string)"/> after creating a TabbedView with the parameterless constructor.
+        /// </summary>
+        /// <param name="persistenceKey"></param>
         public TabbedView(string persistenceKey) : this()
         {
             ApplyPersistenceKey(persistenceKey);
