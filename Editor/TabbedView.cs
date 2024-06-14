@@ -192,6 +192,11 @@ namespace ArteHacker.UITKEditorAid
             });
         }
 
+        public TabbedView(string persistenceKey) : this()
+        {
+            ApplyPersistenceKey(persistenceKey);
+        }
+
         /// <summary> Adds a tab and the content associated to it. </summary>
         /// <param name="title"> A title displayed in the tab. </param>
         /// <param name="content"> The content to be associated with the tab. </param>
