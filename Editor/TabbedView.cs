@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -258,6 +260,14 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
+        /// <summary> Check if a tab is selected. </summary>
+        /// <param name="tabIndex"> Index of the tab. </param>
+        /// <returns> Whether the tab is selected </returns>
+        public bool IsTabSelected(int tabIndex)
+        {
+            return m_Tabs[tabIndex].isSelected;
+        }
+
         /// <summary> Sets a single selected tab. </summary>
         /// <param name="tabIndex"> Index of the tab. </param>
         public void SetSelectedTab(int tabIndex)
@@ -299,11 +309,9 @@ namespace ArteHacker.UITKEditorAid
 
         private void HandleTabSelection(PointerDownEvent e, int index)
         {
-            var tab = m_Tabs[index];
-
             if (allowMultipleSelection && (e.actionKey || e.shiftKey))
             {
-                if (tab.isSelected)
+                if (IsTabSelected(index))
                     RemoveTabFromSelection(index);
                 else
                     AddTabToSelection(index);
