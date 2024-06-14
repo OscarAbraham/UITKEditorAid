@@ -249,6 +249,9 @@ namespace ArteHacker.UITKEditorAid
         public void ApplyPersistenceKey(string key)
         {
             m_PersistenceKey = key;
+            if (string.IsNullOrEmpty(m_PersistenceKey))
+                return;
+
             m_PersistenceState = SessionState.GetInt(m_PersistenceKey, m_PersistenceState);
 
             for (int i = 0; i < m_Tabs.Count; i++)
