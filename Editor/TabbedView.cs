@@ -67,15 +67,35 @@ namespace ArteHacker.UITKEditorAid
     /// </example>
     public class TabbedView : VisualElement
     {
-        private readonly struct TabPair
+        private class Tab : VisualElement
         {
-            public readonly VisualElement tab;
-            public readonly VisualElement content;
+            private int m_Index;
+            private TabbedView m_View;
 
-            public TabPair(VisualElement tab, VisualElement content)
+            public VisualElement content { get; private set; }
+
+            public bool isSelected => ClassListContains(selectedTabUssClassName);
+
+            public Tab(int index, TabbedView view, VisualElement content)
             {
-                this.tab = tab;
+                m_Index = index;
+                m_View = view;
                 this.content = content;
+
+                AddToClassList(tabUssClassName);
+                RegisterCallback<PointerDownEvent>(e => m_View.HandleTabSelection(e, m_Index));
+            }
+
+            public void Select()
+            {
+                AddToClassList(selectedTabUssClassName);
+                content.style.display = DisplayStyle.Flex;
+            }
+
+            public void Unselect()
+            {
+                RemoveFromClassList(selectedTabUssClassName);
+                content.style.display = DisplayStyle.None;
             }
         }
 
@@ -105,7 +125,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name of a single tab's content. </summary>
         public static readonly string tabContentUssClassName = ussClassName + "__tab-content";
 
-        private readonly List<TabPair> m_TabPairs = new List<TabPair>();
+        private readonly List<Tab> m_Tabs = new List<Tab>();
         private readonly VisualElement m_TabBarContainer = new VisualElement();
         private readonly VisualElement m_TabBar = new VisualElement { usageHints = UsageHints.DynamicTransform };
         private readonly RepeatButton m_LeftScrollButton = new RepeatButton { focusable = false, style = { display = DisplayStyle.None } };
@@ -135,7 +155,7 @@ namespace ArteHacker.UITKEditorAid
         public float tabsScrollSpeed { get; set; } = 7;
 
         /// <summary> Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. </summary>
-        public int tabCount => m_TabPairs.Count;
+        public int tabCount => m_Tabs.Count;
 
         /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
         public event System.Action<int, bool> onTabSelectionChange;
@@ -187,22 +207,21 @@ namespace ArteHacker.UITKEditorAid
             Assert.IsNotNull(content, "Tab content can't be null.");
             Assert.IsNotNull(title, "Tab title can't be null.");
 
-            var tab = new VisualElement();
-            tab.AddToClassList(tabUssClassName);
-            tab.RegisterCallback<PointerDownEvent>(e => HandleTabSelection(e, tab));
+            content.AddToClassList(tabContentUssClassName);
+            content.style.display = DisplayStyle.None;
+            m_TabContentDisplay.Add(content);
+
+            int newTabIndex = m_Tabs.Count;
+            var tab = new Tab(newTabIndex, this, content);
             m_TabBar.Add(tab);
 
             title.AddToClassList(tabTitleUssClassName);
             tab.Add(title);
 
-            content.AddToClassList(tabContentUssClassName);
-            content.style.display = DisplayStyle.None;
-            m_TabContentDisplay.Add(content);
-
-            m_TabPairs.Add(new TabPair(tab, content));
+            m_Tabs.Add(tab);
             // Select tab if it's the first one.
-            if (m_TabPairs.Count == 1)
-                SetSelectedTab(tab);
+            if (m_Tabs.Count == 1)
+                SetSelectedTab(newTabIndex);
         }
 
         /// <summary> Gets the tab content at the specified index. </summary>
@@ -210,7 +229,7 @@ namespace ArteHacker.UITKEditorAid
         /// <returns> The tab content. </returns>
         public VisualElement GetTabContent(int tabIndex)
         {
-            return m_TabPairs[tabIndex].content;
+            return m_Tabs[tabIndex].content;
         }
 
         /// <summary> Gets the tab title element at the specified index. </summary>
@@ -218,7 +237,7 @@ namespace ArteHacker.UITKEditorAid
         /// <returns> The tab title element. </returns>
         public VisualElement GetTabTitleElement(int tabIndex)
         {
-            return m_TabPairs[tabIndex].tab?.Q();
+            return m_Tabs[tabIndex]?.Q();
         }
 
         /// <summary>
@@ -230,7 +249,7 @@ namespace ArteHacker.UITKEditorAid
             m_PersistenceKey = key;
             m_PersistenceState = SessionState.GetInt(m_PersistenceKey, m_PersistenceState);
 
-            for (int i = 0; i < m_TabPairs.Count; i++)
+            for (int i = 0; i < m_Tabs.Count; i++)
             {
                 if (IsTabSelectedInPersistanceState(i))
                     AddTabToSelection(i);
@@ -243,21 +262,25 @@ namespace ArteHacker.UITKEditorAid
         /// <param name="tabIndex"> Index of the tab. </param>
         public void SetSelectedTab(int tabIndex)
         {
-            SetSelectedTab(m_TabPairs[tabIndex].tab);
+            for (int i = 0; i < m_Tabs.Count; i++)
+            {
+                if (i == tabIndex)
+                    AddTabToSelection(i);
+                else
+                    RemoveTabFromSelection(i);
+            }
         }
 
         /// <summary> Selects a tab without unselecting others. </summary>
         /// <param name="tabIndex"> Index of the tab. </param>
         public void AddTabToSelection(int tabIndex)
         {
-            var pair = m_TabPairs[tabIndex];
-            if (pair.tab.ClassListContains(selectedTabUssClassName))
+            var tab = m_Tabs[tabIndex];
+            if (tab.isSelected)
                 return;
 
-            pair.tab.AddToClassList(selectedTabUssClassName);
-            pair.content.style.display = DisplayStyle.Flex;
+            tab.Select();
             SelectTabInPersistanceState(tabIndex);
-
             onTabSelectionChange?.Invoke(tabIndex, true);
         }
 
@@ -265,68 +288,33 @@ namespace ArteHacker.UITKEditorAid
         /// <param name="tabIndex"> Index of the tab. </param>
         public void RemoveTabFromSelection(int tabIndex)
         {
-            var pair = m_TabPairs[tabIndex];
-            if (!pair.tab.ClassListContains(selectedTabUssClassName))
+            var tab = m_Tabs[tabIndex];
+            if (!tab.isSelected)
                 return;
 
-            pair.tab.RemoveFromClassList(selectedTabUssClassName);
-            pair.content.style.display = DisplayStyle.None;
+            tab.Unselect();
             UnselectTabInPersistanceState(tabIndex);
-
             onTabSelectionChange?.Invoke(tabIndex, false);
         }
 
-        private void HandleTabSelection(PointerDownEvent e, VisualElement tab)
+        private void HandleTabSelection(PointerDownEvent e, int index)
         {
+            var tab = m_Tabs[index];
+
             if (allowMultipleSelection && (e.actionKey || e.shiftKey))
             {
-                if (tab.ClassListContains(selectedTabUssClassName))
-                    RemoveTabFromSelection(tab);
+                if (tab.isSelected)
+                    RemoveTabFromSelection(index);
                 else
-                    AddTabToSelection(tab);
+                    AddTabToSelection(index);
             }
             else
             {
-                SetSelectedTab(tab);
+                SetSelectedTab(index);
             }
 
             FlushPersistenceState();
             e.StopPropagation();
-        }
-
-        private void AddTabToSelection(VisualElement tab)
-        {
-            for (int i = 0; i < m_TabPairs.Count; i++)
-            {
-                if (m_TabPairs[i].tab == tab)
-                {
-                    AddTabToSelection(i);
-                    break;
-                }
-            }
-        }
-
-        private void RemoveTabFromSelection(VisualElement tab)
-        {
-            for (int i = 0; i < m_TabPairs.Count; i++)
-            {
-                if (m_TabPairs[i].tab == tab)
-                {
-                    RemoveTabFromSelection(i);
-                    break;
-                }
-            }
-        }
-
-        private void SetSelectedTab(VisualElement tab)
-        {
-            for (int i = 0; i < m_TabPairs.Count; i++)
-            {
-                if (m_TabPairs[i].tab == tab)
-                    AddTabToSelection(i);
-                else
-                    RemoveTabFromSelection(i);
-            }
         }
 
         private bool IsTabSelectedInPersistanceState(int tabIndex)
