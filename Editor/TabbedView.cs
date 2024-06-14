@@ -58,8 +58,7 @@ namespace ArteHacker.UITKEditorAid
     ///                 Debug.Log($"Tab {index} unselected");
     ///         };
     /// 
-    ///         // Use a unique string as a key remember tab selection in views that use
-    ///         // the same key. Make sure to call this after all the tabs are added.
+    ///         // Use a key to remember tab selection in views that use the same key.
     ///         tabbedView.ApplyPersistenceKey("ACustomEditor_TabsKey");
     /// 
     ///         return tabbedView;
@@ -160,7 +159,7 @@ namespace ArteHacker.UITKEditorAid
         public int tabCount => m_Tabs.Count;
 
         /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
-        public event System.Action<int, bool> onTabSelectionChange;
+        public event Action<int, bool> onTabSelectionChange;
 
         public TabbedView()
         {
@@ -216,14 +215,15 @@ namespace ArteHacker.UITKEditorAid
             int newTabIndex = m_Tabs.Count;
             var tab = new Tab(newTabIndex, this, content);
             m_TabBar.Add(tab);
+            m_Tabs.Add(tab);
 
             title.AddToClassList(tabTitleUssClassName);
             tab.Add(title);
 
-            m_Tabs.Add(tab);
-            // Select tab if it's the first one.
-            if (m_Tabs.Count == 1)
-                SetSelectedTab(newTabIndex);
+            bool hasPersistence = !string.IsNullOrEmpty(m_PersistenceKey);
+            // We select new tabs according to persistence, or the first one if there's no persistence.
+            if (hasPersistence ? IsTabSelectedInPersistenceState(newTabIndex) : m_Tabs.Count == 1)
+                AddTabToSelection(newTabIndex);
         }
 
         /// <summary> Gets the tab content at the specified index. </summary>
@@ -253,7 +253,7 @@ namespace ArteHacker.UITKEditorAid
 
             for (int i = 0; i < m_Tabs.Count; i++)
             {
-                if (IsTabSelectedInPersistanceState(i))
+                if (IsTabSelectedInPersistenceState(i))
                     AddTabToSelection(i);
                 else
                     RemoveTabFromSelection(i);
@@ -290,7 +290,7 @@ namespace ArteHacker.UITKEditorAid
                 return;
 
             tab.Select();
-            SelectTabInPersistanceState(tabIndex);
+            SelectTabInPersistenceState(tabIndex);
             onTabSelectionChange?.Invoke(tabIndex, true);
         }
 
@@ -303,7 +303,7 @@ namespace ArteHacker.UITKEditorAid
                 return;
 
             tab.Unselect();
-            UnselectTabInPersistanceState(tabIndex);
+            UnselectTabInPersistenceState(tabIndex);
             onTabSelectionChange?.Invoke(tabIndex, false);
         }
 
@@ -325,19 +325,19 @@ namespace ArteHacker.UITKEditorAid
             e.StopPropagation();
         }
 
-        private bool IsTabSelectedInPersistanceState(int tabIndex)
+        private bool IsTabSelectedInPersistenceState(int tabIndex)
         {
             // Our persistence state is an int, so we can't store more than 32 tabs. 
             return tabIndex < 32 && (m_PersistenceState & (1 << tabIndex)) != 0;
         }
 
-        private void SelectTabInPersistanceState(int tabIndex)
+        private void SelectTabInPersistenceState(int tabIndex)
         {
             if (tabIndex < 32)
                 m_PersistenceState |= 1 << tabIndex;
         }
 
-        private void UnselectTabInPersistanceState(int tabIndex)
+        private void UnselectTabInPersistenceState(int tabIndex)
         {
             if (tabIndex < 32)
                 m_PersistenceState &= ~(1 << tabIndex);
