@@ -47,8 +47,9 @@ namespace ArteHacker.UITKEditorAid
 
         private static readonly HashSet<SerializedObject> s_SerializedObjectsUpdatedRecently = new HashSet<SerializedObject>();
 
-        private string m_Path;
-        private SerializedObject m_SerializedObject;
+        private readonly string m_Path;
+        private readonly SerializedObject m_SerializedObject;
+        private readonly PropertyField m_PropertyField;
         private string m_ReferenceType;
 
         private long m_PeriodicalUpdateInterval = 5024;
@@ -97,9 +98,9 @@ namespace ArteHacker.UITKEditorAid
             m_SerializedObject = property.serializedObject;
             m_ReferenceType = property.managedReferenceFullTypename;
 
-            var propertyField = new PropertyField(property, label);
-            propertyField.AddToClassList(propertyFieldUssClassName);
-            Add(propertyField);
+            m_PropertyField = new PropertyField(property, label);
+            m_PropertyField.AddToClassList(propertyFieldUssClassName);
+            Add(m_PropertyField);
 
             m_UpdateSchedule = schedule.Execute(Update).Every(m_PeriodicalUpdateInterval).StartingIn(m_PeriodicalUpdateInterval);
             RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
@@ -128,7 +129,7 @@ namespace ArteHacker.UITKEditorAid
                     SendEvent(e);
                 }
                 m_ReferenceType = newType;
-                this.Bind(m_SerializedObject);
+                m_PropertyField.Bind(m_SerializedObject);
             }
         }
 
