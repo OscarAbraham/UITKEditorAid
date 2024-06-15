@@ -133,7 +133,7 @@ namespace ArteHacker.UITKEditorAid
         private readonly RepeatButton m_RightScrollButton = new RepeatButton { focusable = false, style = { display = DisplayStyle.None } };
         private readonly VisualElement m_TabContentDisplay = new VisualElement();
 
-        private int m_PersistenceState;
+        private int m_PersistenceState = 1;
         private string m_PersistenceKey;
 
         /// <summary>
@@ -231,9 +231,7 @@ namespace ArteHacker.UITKEditorAid
             title.AddToClassList(tabTitleUssClassName);
             tab.Add(title);
 
-            bool hasPersistence = !string.IsNullOrEmpty(m_PersistenceKey);
-            // We select new tabs according to persistence, or the first one if there's no persistence.
-            if (hasPersistence ? IsTabSelectedInPersistenceState(newTabIndex) : m_Tabs.Count == 1)
+            if (IsTabSelectedInPersistenceState(newTabIndex))
                 AddTabToSelection(newTabIndex);
         }
 
