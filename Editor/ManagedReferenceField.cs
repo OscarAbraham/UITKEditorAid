@@ -45,7 +45,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name for the PropertyField inside. </summary>
         public static readonly string propertyFieldUssClassName = ussClassName + "__property-field";
 
-        private static readonly HashSet<SerializedObject> m_SerializedObjectsUpdatedRecently = new HashSet<SerializedObject>();
+        private static readonly HashSet<SerializedObject> s_SerializedObjectsUpdatedRecently = new HashSet<SerializedObject>();
 
         private string m_Path;
         private SerializedObject m_SerializedObject;
@@ -141,20 +141,20 @@ namespace ArteHacker.UITKEditorAid
         private void UpdateSerializedObjectIfNeeded()
         {
             // We keep a record of Objects that have been updated this frame to avoid the expensive cost of redundant updates.
-            if (m_SerializedObjectsUpdatedRecently.Contains(m_SerializedObject))
+            if (s_SerializedObjectsUpdatedRecently.Contains(m_SerializedObject))
                 return;
 
             m_SerializedObject.Update();
 
-            bool isTheFirstAddition = m_SerializedObjectsUpdatedRecently.Count == 0;
-            m_SerializedObjectsUpdatedRecently.Add(m_SerializedObject);
+            bool isTheFirstAddition = s_SerializedObjectsUpdatedRecently.Count == 0;
+            s_SerializedObjectsUpdatedRecently.Add(m_SerializedObject);
 
             // We clear the HashSet on the next frame so the Objects can be updated again later.
             if (isTheFirstAddition)
                 EditorApplication.delayCall += ClearSerializedObjectsUpdatedRecently;
 
             // Assigning a static method instead of an instance method to the delay delgate avoids creating garbage.
-            static void ClearSerializedObjectsUpdatedRecently() => m_SerializedObjectsUpdatedRecently.Clear();
+            static void ClearSerializedObjectsUpdatedRecently() => s_SerializedObjectsUpdatedRecently.Clear();
         }
 
         private void OnAttachToPanel(AttachToPanelEvent evt)
