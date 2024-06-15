@@ -65,7 +65,7 @@ namespace ArteHacker.UITKEditorAid
             set
             {
                 m_PeriodicalUpdateInterval = System.Math.Max(value, 100);
-                m_UpdateSchedule.Every(m_PeriodicalUpdateInterval);
+                m_UpdateSchedule.Every(m_PeriodicalUpdateInterval).StartingIn(m_PeriodicalUpdateInterval);
             }
         }
 
@@ -101,7 +101,7 @@ namespace ArteHacker.UITKEditorAid
             propertyField.AddToClassList(propertyFieldUssClassName);
             Add(propertyField);
 
-            m_UpdateSchedule = schedule.Execute(Update).Every(m_PeriodicalUpdateInterval);
+            m_UpdateSchedule = schedule.Execute(Update).Every(m_PeriodicalUpdateInterval).StartingIn(m_PeriodicalUpdateInterval);
             RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
             RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
         }
