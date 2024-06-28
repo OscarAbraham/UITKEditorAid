@@ -11,9 +11,12 @@ namespace ArteHacker.UITKEditorAid
     /// This element is analogous to IMGUI's <see cref="EditorGUI.DisabledScope"/>. It can be used in combination with
     /// <see cref="Utils.SerializedObjectExtensions.IsEditable(SerializedObject)"/> to avoid editing objects that shouldn't be edited.
     /// </remarks>
-    public class Disabler : VisualElement
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+    [UxmlElement]
+#endif
+    public partial class Disabler : VisualElement
     {
-#if !REMOVE_UXML_FACTORIES
+#if !REMOVE_UXML_FACTORIES && !UNITY_2023_3_OR_NEWER
         public new class UxmlFactory : UxmlFactory<Disabler, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
@@ -55,6 +58,9 @@ namespace ArteHacker.UITKEditorAid
         /// that could modify its contents, but this way the disabled status can be updated even when not interacting with the element.
         /// It's false by default.
         /// </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public bool updatePeriodically
         {
             get => m_UpdateSchedule?.isActive ?? false;
@@ -75,6 +81,9 @@ namespace ArteHacker.UITKEditorAid
         /// <summary>
         /// The interval in milliseconds used to update the disabled status periodically when <see cref="updatePeriodically"/> is true.
         /// </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public long updateInterval
         {
             get => m_UpdateInterval;

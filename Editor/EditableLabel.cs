@@ -55,9 +55,12 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// ]]></code>
     /// </example>
-    public class EditableLabel : BindableElement, INotifyValueChanged<string>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+    [UxmlElement]
+#endif
+    public partial class EditableLabel : BindableElement, INotifyValueChanged<string>
     {
-#if !REMOVE_UXML_FACTORIES
+#if !REMOVE_UXML_FACTORIES && !UNITY_2023_3_OR_NEWER
         public new class UxmlFactory : UxmlFactory<EditableLabel, UxmlTraits> { }
 
         public new class UxmlTraits : BindableElement.UxmlTraits
@@ -105,6 +108,9 @@ namespace ArteHacker.UITKEditorAid
         public bool editOnDoubleClick { get; set; } = true;
 
         /// <summary> Whether to use multiline text. </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public bool multiline
         {
             get => m_TextField.multiline;
@@ -117,12 +123,18 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary> Whether the TextField inside this element is delayed. It's true by default. </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute("is-delayed", "delayed")]
+#endif
         public bool isDelayed { get => m_TextField.isDelayed; set => m_TextField.isDelayed = value; }
 
         /// <summary> The maximum character length of this element's TextField. -1 means no limit and it's the default.  </summary>
         public int maxLength { get => m_TextField.maxLength; set => m_TextField.maxLength = value; }
 
         /// <summary> The string value of this element.</summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public string value
         {
             get => m_Value;
@@ -148,6 +160,9 @@ namespace ArteHacker.UITKEditorAid
         }
 
         /// <summary> A text that appears when the EditableLabel's text is empty. </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public string emptyTextLabel
         {
             get => m_EmptyTextLabel;

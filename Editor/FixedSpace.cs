@@ -10,9 +10,12 @@ namespace ArteHacker.UITKEditorAid
     /// <remarks>
     /// This element is analogous to IMGUI's <see cref="UnityEngine.GUILayout.Space"/>.
     /// </remarks>
-    public class FixedSpace : VisualElement
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+    [UxmlElement]
+#endif
+    public partial class FixedSpace : VisualElement
     {
-#if !REMOVE_UXML_FACTORIES
+#if !REMOVE_UXML_FACTORIES && !UNITY_2023_3_OR_NEWER
         public new class UxmlFactory : UxmlFactory<FixedSpace, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
@@ -39,6 +42,9 @@ namespace ArteHacker.UITKEditorAid
         /// The space's size along the parent's <see cref="IStyle.flexDirection"/>.
         /// It works as a shorthand for this element's <see cref="IStyle.flexBasis"/> value.
         /// </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public float size { get => style.flexBasis.value.value; set => style.flexBasis = value; }
 
         /// <summary> Constructor. Uses a small default size. </summary>

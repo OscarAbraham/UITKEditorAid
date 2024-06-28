@@ -18,9 +18,12 @@ namespace ArteHacker.UITKEditorAid
     /// bound to the parent inspector's Object.
     /// </para>
     /// </remarks>
-    public class BindingStopper : VisualElement
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+    [UxmlElement]
+#endif
+    public partial class BindingStopper : VisualElement
     {
-#if !REMOVE_UXML_FACTORIES
+#if !REMOVE_UXML_FACTORIES && !UNITY_2023_3_OR_NEWER
         public new class UxmlFactory : UxmlFactory<BindingStopper> { }
 #endif
 
