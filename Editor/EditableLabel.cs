@@ -175,6 +175,12 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
+        /// <summary> The <see cref="TextField"/> displayed when the text is being edited. </summary>
+        public TextField textFieldElement => m_TextField;
+
+        /// <summary> The <see cref="Label"/> VisualElement displayed when the text isn't being edited. </summary>
+        public Label labelElement => m_Label;
+
         public EditableLabel()
         {
             AddToClassList(ussClassName);
