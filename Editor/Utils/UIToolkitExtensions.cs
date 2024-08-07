@@ -148,8 +148,8 @@ namespace ArteHacker.UITKEditorAid.Utils
             return label;
         }
 
-        private static Type s_CachedBindingType;
-        private static FieldInfo s_CachedBoundPropertyField;
+        private static Type s_BindingBaseType;
+        private static FieldInfo s_BoundPropertyFieldInfo;
 
         /// <summary>
         /// Tries to get the bound <see cref="SerializedProperty"/> from a bindable <see cref="VisualElement"/> through reflection.
@@ -159,24 +159,33 @@ namespace ArteHacker.UITKEditorAid.Utils
         public static SerializedProperty GetBoundSerializedProperty(this IBindable bindable)
         {
             var binding = bindable.binding;
-            if (binding == null)
+            var bindingType = binding?.GetType();
+
+            if (binding == null || !LoadReflectionInfo(bindingType) || !s_BindingBaseType.IsAssignableFrom(bindingType))
                 return null;
 
-            var bindingType = binding.GetType();
+            return s_BoundPropertyFieldInfo.GetValue(binding) as SerializedProperty;
 
-            if (bindingType != s_CachedBindingType)
+            static bool LoadReflectionInfo(Type bindingInstanceType)
             {
-                var propertyField = bindingType.GetField("boundProperty",
-                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (s_BindingBaseType == null)
+                {
+                    var asm = bindingInstanceType.Assembly;
+                    s_BindingBaseType = asm?.GetType("UnityEditor.UIElements.Bindings.SerializedObjectBindingBase", false);
+                }
 
-                if (propertyField?.FieldType != typeof(SerializedProperty))
-                    return null;
+                if (s_BoundPropertyFieldInfo == null && s_BindingBaseType != null)
+                {
+                    var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+                    s_BoundPropertyFieldInfo = s_BindingBaseType.GetField("m_BoundProperty", bindingFlags);
+                    s_BoundPropertyFieldInfo ??= s_BindingBaseType.GetField("boundProperty", bindingFlags);
 
-                s_CachedBindingType = bindingType;
-                s_CachedBoundPropertyField = propertyField;
+                    if (s_BoundPropertyFieldInfo?.FieldType != typeof(SerializedProperty))
+                        s_BoundPropertyFieldInfo = null;
+                }
+
+                return s_BindingBaseType != null && s_BoundPropertyFieldInfo != null;
             }
-
-            return s_CachedBoundPropertyField.GetValue(binding) as SerializedProperty;
         }
 
         /// <summary>
