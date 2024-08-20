@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
+using System;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -60,6 +61,7 @@ namespace ArteHacker.UITKEditorAid
     /// }
     /// ]]></code>
     /// </example>
+    [Obsolete("Use ValuePropertyTracker instead.")]
     public class ValueTracker<TValue> : BindableElement, INotifyValueChanged<TValue>
     {
         /// <summary> USS class name of elements of this type. </summary>

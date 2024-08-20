@@ -421,7 +421,7 @@ namespace ArteHacker.UITKEditorAid
             footerContent.Add(m_RemoveButton);
 
             var sizeProp = m_ArrayProp.FindPropertyRelative("Array.size");
-            Add(new ValueTracker<int>(sizeProp, OnSizeChange, sizeProp.intValue) { name = "Size Tracker" });
+            Add(new ValuePropertyTracker<int>(sizeProp, OnSizeChange, sizeProp.intValue) { name = "Size Tracker" });
 
             SetListSize(m_ArrayProp.arraySize);
         }
@@ -458,7 +458,7 @@ namespace ArteHacker.UITKEditorAid
             }
         }
 
-        private void OnSizeChange(ChangeEvent<int> e)
+        private void OnSizeChange(int prevValue, int newValue)
         {
             int prevListSize = GetListSize();
             SetListSize(m_ArrayProp.arraySize);

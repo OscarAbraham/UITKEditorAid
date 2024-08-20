@@ -125,8 +125,6 @@ namespace ArteHacker.UITKEditorAid
 
         private readonly SerializedProperty m_ArrayProp;
         private readonly VisualElement m_TrackersContainer = new VisualElement();
-        // CONSIDER: It seems we could use the size tracker as a local variable.
-        private readonly ValueTracker<int> m_SizeTracker = new ValueTracker<int>();
 
         static ListOfInspectors()
         {
@@ -158,8 +156,7 @@ namespace ArteHacker.UITKEditorAid
             m_ArrayProp = arrayProp;
 
             var sizeProp = m_ArrayProp.FindPropertyRelative("Array.size");
-            m_SizeTracker.SetUp(sizeProp, OnSizeChange, sizeProp.intValue);
-            m_TrackersContainer.Add(m_SizeTracker);
+            m_TrackersContainer.Add(new ValuePropertyTracker<int>(sizeProp, OnSizeChange, sizeProp.intValue) { name = "Size Tracker" });
 
             Add(m_TrackersContainer);
             SetListSize(m_ArrayProp.arraySize);
@@ -167,7 +164,7 @@ namespace ArteHacker.UITKEditorAid
             BindTrackers();
         }
 
-        private void OnSizeChange(ChangeEvent<int> e)
+        private void OnSizeChange(int prevValue, int newValue)
         {
             int prevListSize = GetListSize();
             SetListSize(m_ArrayProp.arraySize);
@@ -372,7 +369,7 @@ namespace ArteHacker.UITKEditorAid
             private readonly ListOfInspectors m_OwnerList;
             private readonly int m_Index;
             private readonly SerializedProperty m_BackingProperty;
-            private readonly ValueTracker<Object> m_ObjectTracker = new ValueTracker<Object>();
+            private readonly ValuePropertyTracker<Object> m_ObjectTracker = new ValuePropertyTracker<Object>();
             
             public InspectorItem(ListOfInspectors ownerList, int index)
             {
@@ -388,7 +385,10 @@ namespace ArteHacker.UITKEditorAid
                     return;
                 }
 
-                m_ObjectTracker.SetUp(m_BackingProperty, e => AssignObject(), m_BackingProperty.objectReferenceValue);
+                m_ObjectTracker.value = m_BackingProperty.objectReferenceValue;
+                m_ObjectTracker.valueChanged = (prevValue, newValue) => AssignObject();
+                m_ObjectTracker.bindingPath = m_BackingProperty.propertyPath;
+                m_ObjectTracker.name = $"object{index}-reference-tracker";
                 m_OwnerList.m_TrackersContainer.Add(m_ObjectTracker);
 
                 AssignObject();
