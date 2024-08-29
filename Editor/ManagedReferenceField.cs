@@ -47,8 +47,7 @@ namespace ArteHacker.UITKEditorAid
 
         private static readonly HashSet<SerializedObject> s_SerializedObjectsUpdatedRecently = new HashSet<SerializedObject>();
 
-        private readonly string m_Path;
-        private readonly SerializedObject m_SerializedObject;
+        private readonly SerializedProperty m_Property;
         private readonly PropertyField m_PropertyField;
         private string m_ReferenceType;
 
@@ -94,11 +93,10 @@ namespace ArteHacker.UITKEditorAid
                 return;
             }
 
-            m_Path = property.propertyPath;
-            m_SerializedObject = property.serializedObject;
-            m_ReferenceType = property.managedReferenceFullTypename;
+            m_Property = property.Copy();
+            m_ReferenceType = m_Property.managedReferenceFullTypename;
 
-            m_PropertyField = new PropertyField(property, label);
+            m_PropertyField = new PropertyField(m_Property, label);
             m_PropertyField.AddToClassList(propertyFieldUssClassName);
             Add(m_PropertyField);
 
@@ -109,17 +107,19 @@ namespace ArteHacker.UITKEditorAid
 
         private void Update()
         {
-            // Avoid acting on a property that doesn't exist anymore and would cause error.
-            // NOTE: This generates a little garbage, maybe we should instead use reflection to get the SerializedProperty.isValid internal property?
-            var prop = m_SerializedObject.FindProperty(m_Path);
-            if (prop == null || prop.propertyType != SerializedPropertyType.ManagedReference)
+            string newType;
+            // Use a try-catch block in case the property doesn't exist anymore, which throws an exception.
+            try
+            {
+                if (m_Property.propertyType == SerializedPropertyType.ManagedReference)
+                    newType = m_Property.managedReferenceFullTypename;
+                else
+                    return;
+            }
+            catch
+            {
                 return;
-
-            // This generates garbage.
-            string newType = prop.managedReferenceFullTypename;
-
-            // This might help with performance in some extreme cases.
-            prop.Dispose();
+            }
 
             if (m_ReferenceType != newType)
             {
@@ -129,7 +129,7 @@ namespace ArteHacker.UITKEditorAid
                     SendEvent(e);
                 }
                 m_ReferenceType = newType;
-                m_PropertyField.Bind(m_SerializedObject);
+                m_PropertyField.Bind(m_Property.serializedObject);
             }
         }
 
@@ -142,13 +142,13 @@ namespace ArteHacker.UITKEditorAid
         private void UpdateSerializedObjectIfNeeded()
         {
             // We keep a record of Objects that have been updated this frame to avoid the expensive cost of redundant updates.
-            if (s_SerializedObjectsUpdatedRecently.Contains(m_SerializedObject))
+            if (s_SerializedObjectsUpdatedRecently.Contains(m_Property.serializedObject))
                 return;
 
-            m_SerializedObject.Update();
+            m_Property.serializedObject.Update();
 
             bool isTheFirstAddition = s_SerializedObjectsUpdatedRecently.Count == 0;
-            s_SerializedObjectsUpdatedRecently.Add(m_SerializedObject);
+            s_SerializedObjectsUpdatedRecently.Add(m_Property.serializedObject);
 
             // We clear the HashSet on the next frame so the Objects can be updated again later.
             if (isTheFirstAddition)
@@ -178,17 +178,17 @@ namespace ArteHacker.UITKEditorAid
         {
             // We optimize editing a single Object, which may be the most common case if not the only one,
             // as these fields aren't very usable when editing multiple Objects.
-            if (!m_SerializedObject.isEditingMultipleObjects)
+            if (!m_Property.serializedObject.isEditingMultipleObjects)
             {
                 foreach (var mod in modifications)
                 {
-                    if (ReactToModificationIfItMatches(mod.previousValue, m_SerializedObject.targetObject))
+                    if (ReactToModificationIfItMatches(mod.previousValue, m_Property.serializedObject.targetObject))
                         return modifications;
                 }
             }
             else
             {
-                foreach (var target in m_SerializedObject.targetObjects)
+                foreach (var target in m_Property.serializedObject.targetObjects)
                 {
                     foreach (var mod in modifications)
                     {
