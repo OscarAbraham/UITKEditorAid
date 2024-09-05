@@ -156,6 +156,7 @@ namespace ArteHacker.UITKEditorAid.Utils
         /// </summary>
         /// <param name="bindable">A bindable element</param>
         /// <returns>The bound property if it's found, null otherwise.</returns>
+        [Obsolete]
         public static SerializedProperty GetBoundSerializedProperty(this IBindable bindable)
         {
             var binding = bindable.binding;
