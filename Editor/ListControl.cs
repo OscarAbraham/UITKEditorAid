@@ -182,6 +182,7 @@ namespace ArteHacker.UITKEditorAid
                     m_Items.Add(item);
                 }
 
+                m_Footer.BringToFront();
                 m_DropBar.BringToFront();
             }
 
