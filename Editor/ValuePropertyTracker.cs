@@ -108,7 +108,7 @@ namespace ArteHacker.UITKEditorAid
         public ValuePropertyTracker(
             string propertyPath,
             Action<TValue, TValue> valueChangedCallback = null,
-            TValue initialValue = default)
+            TValue initialValue = default) : this()
         {
             value = initialValue;
             bindingPath = propertyPath;
