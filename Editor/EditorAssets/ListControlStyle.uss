@@ -171,18 +171,21 @@
     -unity-background-scale-mode: scale-to-fit;
     background-color: transparent;
 }
+    
+    .editor-aid-list-control__add-button:focus,
+    .editor-aid-list-control__remove-button:focus,
+    .editor-aid-list-row__remove-button:focus {
+        background-color: var(--unity-colors-button-background-pressed);
+    }
 
     .editor-aid-list-control__add-button:hover,
     .editor-aid-list-control__remove-button:hover,
-    .editor-aid-list-row__remove-button:hover,
-    .editor-aid-list-control__add-button:focus,
-    .editor-aid-list-control__remove-button:focus,
-    .editor-aid-list-row__remove-button:focus{
-        background-color: var(--editor-aid-colors-list_button-hover);
+    .editor-aid-list-row__remove-button:hover {
+        background-color: var(--unity-colors-button-background);
     }
 
     .editor-aid-list-control__add-button:active,
     .editor-aid-list-control__remove-button:active,
     .editor-aid-list-row__remove-button:active {
-        background-color: transparent;
+        background-color: var(--unity-colors-button-background-hover_pressed);
     }
