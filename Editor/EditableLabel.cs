@@ -271,7 +271,24 @@ namespace ArteHacker.UITKEditorAid
             m_Value = newValue;
 
             m_TextField.SetValueWithoutNotify(m_Value);
-            (m_Label as INotifyValueChanged<string>).SetValueWithoutNotify(string.IsNullOrEmpty(m_Value) ? emptyTextLabel : m_Value);
+
+            var labelText = string.IsNullOrEmpty(m_Value) ? emptyTextLabel : m_Value;
+
+            // In Unity 6, empty labels have no height, which is bad for our layout. We could add a
+            // min-height in USS, but it would make changing font sizes and handling screen PPIs
+            // harder. So instead we ensure there's always a least one char in the label.
+            // Check white space because now Unity trims white spaces.
+            if (string.IsNullOrWhiteSpace(labelText))
+            {
+                labelText = "l";
+                m_Label.style.visibility = Visibility.Hidden;
+            }
+            else
+            {
+                m_Label.style.visibility = StyleKeyword.Null;
+            }
+
+            (m_Label as INotifyValueChanged<string>).SetValueWithoutNotify(labelText);
         }
     }
 }
