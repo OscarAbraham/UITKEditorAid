@@ -99,6 +99,16 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> USS class name of the label used to show non-editable text. </summary>
         public static readonly string labelUssClassName = ussClassName + "__label";
 
+
+#if UNITY_6000_0_OR_NEWER
+        private const WhiteSpace k_SingleLineWhiteSpace = WhiteSpace.Pre;
+        private const WhiteSpace k_MultiLineWhiteSpace = WhiteSpace.PreWrap;
+#else
+        private const WhiteSpace k_SingleLineWhiteSpace = WhiteSpace.NoWrap;
+        private const WhiteSpace k_MultiLineWhiteSpace = WhiteSpace.Normal;
+#endif
+
+
         private string m_Value;
         private string m_EmptyTextLabel;
         private readonly TextField m_TextField;
@@ -117,8 +127,8 @@ namespace ArteHacker.UITKEditorAid
             set
             {
                 m_TextField.multiline = value;
-                m_TextField.style.whiteSpace = value ? WhiteSpace.Normal : WhiteSpace.NoWrap;
-                m_Label.style.whiteSpace = value ? WhiteSpace.Normal : WhiteSpace.NoWrap;
+                m_TextField.style.whiteSpace = value ? k_MultiLineWhiteSpace : k_SingleLineWhiteSpace;
+                m_Label.style.whiteSpace = value ? k_MultiLineWhiteSpace : k_SingleLineWhiteSpace;
             }
         }
 
@@ -186,7 +196,7 @@ namespace ArteHacker.UITKEditorAid
             AddToClassList(ussClassName);
             styleSheets.Add(EditorAidResources.editableLabelStyle);
 
-            m_TextField = new TextField { isDelayed = true, style = { display = DisplayStyle.None } };
+            m_TextField = new TextField { isDelayed = true, style = { display = DisplayStyle.None, whiteSpace = k_SingleLineWhiteSpace } };
             m_TextField.AddToClassList(textFieldUssClassName);
             m_TextField.RegisterValueChangedCallback(e =>
             {
@@ -196,7 +206,7 @@ namespace ArteHacker.UITKEditorAid
             m_TextField.RegisterCallback<BlurEvent>(e => StopEditing());
             Add(m_TextField);
 
-            m_Label = new Label { pickingMode = PickingMode.Ignore };
+            m_Label = new Label { pickingMode = PickingMode.Ignore, style = { whiteSpace = k_SingleLineWhiteSpace } };
             m_Label.AddToClassList(labelUssClassName);
             Add(m_Label);
 
@@ -277,16 +287,8 @@ namespace ArteHacker.UITKEditorAid
             // In Unity 6, empty labels have no height, which is bad for our layout. We could add a
             // min-height in USS, but it would make changing font sizes and handling screen PPIs
             // harder. So instead we ensure there's always a least one char in the label.
-            // Check white space because now Unity trims white spaces.
-            if (string.IsNullOrWhiteSpace(labelText))
-            {
-                labelText = "l";
-                m_Label.style.visibility = Visibility.Hidden;
-            }
-            else
-            {
-                m_Label.style.visibility = StyleKeyword.Null;
-            }
+            if (string.IsNullOrEmpty(labelText))
+                labelText = " ";
 
             (m_Label as INotifyValueChanged<string>).SetValueWithoutNotify(labelText);
         }
