@@ -18,9 +18,10 @@
 
 /* This is the element that does the text in the TextField. It has a padding-right of 2.*/
 .unity-text-element--inner-input-field-component {
-    /* This element has a padding-right of 2 by default. That causes a mistmatch with the Label
+    /* This element has some paddings by default that cause a mistmatch with the Label
        element's bounds when the EditableLabel's width depends on its content.*/
     padding-right: 0px;
+    padding-left: 0px;
     /* Before Unity 6, this element doesn't have the necessary cursor style. This cursor helps a lot
        to make it clear that the label is open for edit, so we add it.*/
     cursor: text;
