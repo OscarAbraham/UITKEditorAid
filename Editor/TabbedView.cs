@@ -206,15 +206,17 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Adds a tab and the content associated to it. </summary>
         /// <param name="title"> A title displayed in the tab. </param>
         /// <param name="content"> The content to be associated with the tab. </param>
-        public void AddTab(string title, VisualElement content)
+        /// <param name="tooltip"> An optional tooltip for the tab. </param>
+        public void AddTab(string title, VisualElement content, string tooltip = null)
         {
-            AddTab(new Label(title), content);
+            AddTab(new Label(title), content, tooltip);
         }
 
         /// <summary> Adds a tab and the content associated to it. </summary>
         /// <param name="title"> A title displayed in the tab. </param>
         /// <param name="content"> The content to be associated with the tab. </param>
-        public void AddTab(VisualElement title, VisualElement content)
+        /// <param name="tooltip"> An optional tooltip for the tab. </param>
+        public void AddTab(VisualElement title, VisualElement content, string tooltip = null)
         {
             Assert.IsNotNull(content, "Tab content can't be null.");
             Assert.IsNotNull(title, "Tab title can't be null.");
@@ -224,7 +226,7 @@ namespace ArteHacker.UITKEditorAid
             m_TabContentDisplay.Add(content);
 
             int newTabIndex = m_Tabs.Count;
-            var tab = new Tab(newTabIndex, this, content);
+            var tab = new Tab(newTabIndex, this, content) { tooltip = tooltip };
             m_TabBar.Add(tab);
             m_Tabs.Add(tab);
 
