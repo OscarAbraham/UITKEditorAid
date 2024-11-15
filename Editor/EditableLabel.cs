@@ -94,6 +94,8 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-editable-label";
+        /// <summary> USS class name of elements of this type in edit mode. </summary>
+        public static readonly string editModeUssClassName = ussClassName + "--edit-mode";
         /// <summary> USS class name of the TextField inside this element. </summary>
         public static readonly string textFieldUssClassName = ussClassName + "__text-field";
         /// <summary> USS class name of the label used to show non-editable text. </summary>
@@ -240,6 +242,7 @@ namespace ArteHacker.UITKEditorAid
 
         private void TurnOnTextField()
         {
+            AddToClassList(editModeUssClassName);
             m_Label.style.display = DisplayStyle.None;
             m_TextField.style.display = DisplayStyle.Flex;
             m_TextField.Focus();
@@ -247,6 +250,7 @@ namespace ArteHacker.UITKEditorAid
 
         private void StopEditing()
         {
+            RemoveFromClassList(editModeUssClassName);
             m_Label.style.display = DisplayStyle.Flex;
             m_TextField.style.display = DisplayStyle.None;
         }
