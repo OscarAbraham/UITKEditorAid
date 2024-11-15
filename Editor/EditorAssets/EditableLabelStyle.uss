@@ -6,7 +6,7 @@
 .editor-aid-editable-label__label {
     padding: 1px 2px 0px 2px;
     /* We add an invisible border to match the TextField. We don't do it with pure padding because there'd be
-     mismatches with non-integer pixel densities, as pixel amounts are snapped to fit the actual screen pixels. */
+       mismatches with non-integer pixel densities, as pixel amounts are snapped to fit the actual screen pixels. */
     border-width: 1px;
     color: var(--unity-colors-label-text);
     overflow: hidden;
@@ -16,12 +16,21 @@
     margin: 0;
 }
 
-/* This is the element that does the text in the TextField. It has a padding-right of 2.*/
-.unity-text-element--inner-input-field-component {
-    /* This element has some paddings by default that cause a mistmatch with the Label
-       element's bounds when the EditableLabel's width depends on its content.*/
+.unity-text-field__input {
+    /* We need to copy the paddings from the Text field into the label element so they match. We can't have padding
+       in both the input and its inner element, even if we add them together into the label, because they wouldn't
+       match at pixel scales that are not multiples of 100%. The input's padding is useful for having a separation
+       between the text and the border, even when the text overflows. The inner element's padding is useful for
+       placing the text cursor at the edges of a text, as it provides more area that moves the cursor whe clicked. */
     padding-right: 0px;
     padding-left: 0px;
+}
+
+/* This is the element that does the text in the TextField. */
+.unity-text-element--inner-input-field-component {
+    /* Set the inner padding because in some older Unity versions, left padding is 0. */
+    padding-right: 2px;
+    padding-left: 2px;
     /* Before Unity 6, this element doesn't have the necessary cursor style. This cursor helps a lot
        to make it clear that the label is open for edit, so we add it.*/
     cursor: text;
