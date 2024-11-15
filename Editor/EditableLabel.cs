@@ -113,6 +113,7 @@ namespace ArteHacker.UITKEditorAid
         private string m_EmptyTextLabel;
         private readonly TextField m_TextField;
         private readonly Label m_Label;
+        private readonly IVisualElementScheduledItem m_TurnOnTextFieldScheduled;
 
         /// <summary> Whether to start editing by double clicking the label. See <see cref="BeginEditing"/> to start editing from code. </summary>
         public bool editOnDoubleClick { get; set; } = true;
@@ -204,11 +205,15 @@ namespace ArteHacker.UITKEditorAid
                 value = e.newValue;
             });
             m_TextField.RegisterCallback<BlurEvent>(e => StopEditing());
+            m_TextField.selectAllOnMouseUp = false;
             Add(m_TextField);
 
             m_Label = new Label { pickingMode = PickingMode.Ignore, style = { whiteSpace = k_SingleLineWhiteSpace } };
             m_Label.AddToClassList(labelUssClassName);
             Add(m_Label);
+
+            m_TurnOnTextFieldScheduled = schedule.Execute(TurnOnTextField);
+            m_TurnOnTextFieldScheduled.Pause();
 
             RegisterCallback<MouseDownEvent>(OnMouseDown);
         }
@@ -225,47 +230,19 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Call this method to put the label in edit mode. </summary>
         public void BeginEditing()
         {
-            // The display changes could also be in SimulateClick, but then the cursor doesn't update until the mouse moves for some reason.
+            // Delay because, in 2023.2 and later, focusing the field in the middle of a click event would
+            // result in the focus being removed at the end of the click event. Those versions offer a way to
+            // avoid this with FocusController.IgnoreEvent, but we'd need access to the Event and uglier code.
+            // We could delay only the focusing, but this way there's no moment where the field is visible but
+            // not focused, which could cause buggy behavior if the focus is prevented somehow.
+            m_TurnOnTextFieldScheduled.Resume();
+        }
+
+        private void TurnOnTextField()
+        {
             m_Label.style.display = DisplayStyle.None;
             m_TextField.style.display = DisplayStyle.Flex;
-
-            // Delay it to avoid unpredictable behavior from clicking inside a click event, and to prevent focus from being undone.
-            EditorApplication.delayCall += SimulateClick;
-
-            // In 2021 and newer, the first Click on a focused field selects the text, even if it was already selected.
-            // 2022 adds a way to stop it with selectAllOnMouseUp, but we want to use the same code in all versions to
-            // foster consistent behavior. So we solve this by simulating the first click on the field.
-            void SimulateClick()
-            {
-                // Focus here instead of immediately on BeginEditing to avoid the focus being removed when mouse events are processed in 2023.2.
-                // It could also be avoided by calling the new focusController.IgnoreEvent, but this way it works everywhere by default.
-                m_TextField.Focus();
-
-                // UITK started using a different element to handle text in 2022.
-#if UNITY_2022_1_OR_NEWER
-                var textHandler = m_TextField.Q(null, TextElement.ussClassName);
-#else
-                var textHandler = m_TextField.Q(TextField.textInputUssName);
-#endif
-                var position = textHandler.worldBound.center;
-
-                var systemEvent = new Event { type = EventType.MouseDown, mousePosition = position, button = 0 };
-                using (var pointerDown = PointerDownEvent.GetPooled(systemEvent))
-                {
-                    pointerDown.target = textHandler;
-                    textHandler.SendEvent(pointerDown);
-                }
-
-                systemEvent.type = EventType.MouseUp;
-                using (var pointerUp = PointerUpEvent.GetPooled(systemEvent))
-                {
-                    pointerUp.target = textHandler;
-                    textHandler.SendEvent(pointerUp);
-                }
-
-                // Select all text for Unity versions that don't select all in the first click (i.e. 2020).
-                m_TextField.SelectAll();
-            }
+            m_TextField.Focus();
         }
 
         private void StopEditing()
