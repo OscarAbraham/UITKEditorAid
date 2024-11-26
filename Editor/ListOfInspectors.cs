@@ -254,13 +254,23 @@ namespace ArteHacker.UITKEditorAid
             var label = new EditableLabel { bindingPath = "m_Name", isDelayed = true };
             label.AddToClassList(itemHeaderLabelUssClassName);
             label.editOnDoubleClick = false;
-            label.emptyTextLabel = ObjectNames.NicifyVariableName(serializedObject.targetObject.GetType().Name);
+            label.emptyTextLabel = GetDefaultHeaderLabelText(serializedObject);
             header.Add(label);
             header.RegisterCallback<MouseDownEvent>(e =>
             {
                 if (e.altKey && e.button == 0)
                     label.BeginEditing();
             });
+        }
+
+        /// <summary>
+        /// Get the text that is shown in an inspector's header when the targetObject has no name.
+        /// </summary>
+        /// <param name="serializedObject">The inspected object.</param>
+        /// <returns> The default header label text. </returns>
+        protected virtual string GetDefaultHeaderLabelText(SerializedObject serializedObject)
+        {
+            return ObjectNames.NicifyVariableName(serializedObject.targetObject.GetType().Name);
         }
 
         /// <summary>
