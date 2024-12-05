@@ -158,6 +158,12 @@ namespace ArteHacker.UITKEditorAid
         /// <summary> Gets the number of tabs that have been added. Can be used to know the index of the tab that will be added next. </summary>
         public int tabCount => m_Tabs.Count;
 
+        /// <summary> The element that contains all the tabs. </summary>
+        public VisualElement tabBar => m_TabBar;
+
+        /// <summary> The element that contains all the tab contents. </summary>
+        public VisualElement tabContentDisplay => m_TabContentDisplay;
+
         /// <summary> Event triggered when a tab's selection changed. Receives the tab's index and a bool indicating whether it's selected. </summary>
         public event Action<int, bool> onTabSelectionChange;
 
