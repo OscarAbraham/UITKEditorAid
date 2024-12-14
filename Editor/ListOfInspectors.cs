@@ -376,6 +376,12 @@ namespace ArteHacker.UITKEditorAid
 
         private class InspectorItem : VisualElement
         {
+            private const string k_InvalidScriptWarning =
+                "This object's script is invalid. Make sure it doesn't have errors, its " +
+                "class has the same name as its file, and it has the right type.";
+            private const string k_NullEntryWarning =
+                "This object is null. It may have been improperly deleted. " +
+                "Check your Version Control to fix it if available, or click the button to delete this entry.";
             private readonly ListOfInspectors m_OwnerList;
             private readonly int m_Index;
             private readonly SerializedProperty m_BackingProperty;
@@ -426,8 +432,7 @@ namespace ArteHacker.UITKEditorAid
 
                 if (!obj)
                 {
-                    if (m_BackingProperty.objectReferenceInstanceIDValue != 0)
-                        AssignControlsForInvalidScript();
+                    AssignControlsForNull();
                     return;
                 }
 
@@ -442,8 +447,13 @@ namespace ArteHacker.UITKEditorAid
                 this.Bind(serializedObject);
             }
 
-            private void AssignControlsForInvalidScript()
+            private void AssignControlsForNull()
             {
+                int referenceId = m_BackingProperty.objectReferenceInstanceIDValue;
+                // A missing object here should mean an invalid script assigned to that object,
+                // Assuming subassets in this list are always removed from it when deleted.
+                bool invalidScript = referenceId != 0;
+
                 var header = new VisualElement { style = { height = 22 } };
                 header.AddToClassList(itemHeaderUssClassName);
                 var body = new VisualElement();
@@ -460,7 +470,7 @@ namespace ArteHacker.UITKEditorAid
                 icon.AddToClassList(itemHeaderIconUssClassName);
                 header.Add(icon);
 
-                var label = new Label("Object With Invalid Script");
+                var label = new Label(invalidScript ? "Object With Invalid Script" : "Null Object Entry");
                 label.AddToClassList(itemHeaderLabelUssClassName);
                 header.Add(label);
 
@@ -470,14 +480,19 @@ namespace ArteHacker.UITKEditorAid
                     onClick = () => foldout.value = !foldout.value
                 });
 
-                body.Add(new HelpBox(
-                            "This object's script is invalid. Make sure it doesn't have errors, its" +
-                            " class has the same name as its file, and it's the right type.", HelpBoxMessageType.Warning));
+                body.Add(new HelpBox(invalidScript ? k_InvalidScriptWarning : k_NullEntryWarning, HelpBoxMessageType.Warning));
 
-                body.Add(new Button(() => Selection.activeInstanceID = m_BackingProperty.objectReferenceInstanceIDValue)
+                Button fixButton = new Button(() =>
                 {
-                    text = "Select Object With Invalid Script"
-                });
+                    if (invalidScript)
+                        Selection.activeInstanceID = m_BackingProperty.objectReferenceInstanceIDValue;
+                    else
+                    {
+                        m_BackingProperty.DeleteCommand();
+                        m_BackingProperty.serializedObject.ApplyModifiedProperties();
+                    }
+                }) { text = invalidScript ? "Select Object With Invalid Script" : "Delete Object Entry From List" };
+                body.Add(fixButton);
 
                 Add(header);
                 Add(body);
