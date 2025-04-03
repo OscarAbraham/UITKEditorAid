@@ -386,6 +386,8 @@ namespace ArteHacker.UITKEditorAid
             private readonly int m_Index;
             private readonly SerializedProperty m_BackingProperty;
             private readonly ValuePropertyTracker<Object> m_ObjectTracker = new ValuePropertyTracker<Object>();
+
+            private Editor m_Editor;
             
             public InspectorItem(ListOfInspectors ownerList, int index)
             {
@@ -402,12 +404,10 @@ namespace ArteHacker.UITKEditorAid
                 }
 
                 m_ObjectTracker.value = m_BackingProperty.objectReferenceValue;
-                m_ObjectTracker.valueChanged = (prevValue, newValue) => AssignObject();
+                m_ObjectTracker.valueChanged = (prevValue, newValue) => LoadGUI();
                 m_ObjectTracker.bindingPath = m_BackingProperty.propertyPath;
                 m_ObjectTracker.name = $"object{index}-reference-tracker";
                 m_OwnerList.m_TrackersContainer.Add(m_ObjectTracker);
-
-                AssignObject();
 
                 RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
                 RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
@@ -415,43 +415,60 @@ namespace ArteHacker.UITKEditorAid
 
             private void OnAttachToPanel(AttachToPanelEvent e)
             {
-                //We need to add it here in case OnDetachFromPanel happened because of panel interactions and not because the element was removed.
                 m_OwnerList.m_TrackersContainer.Add(m_ObjectTracker);
+                LoadGUI();
             }
 
             private void OnDetachFromPanel(DetachFromPanelEvent e)
             {
                 m_ObjectTracker.RemoveFromHierarchy();
+                if (m_Editor)
+                    Object.DestroyImmediate(m_Editor);
             }
 
-            private void AssignObject()
+            private void LoadGUI()
             {
                 Object obj = m_BackingProperty.objectReferenceValue;
 
                 Clear();
 
-                if (!obj)
+                if (m_Editor)
+                    Object.DestroyImmediate(m_Editor);
+                if (obj)
+                    m_Editor = Editor.CreateEditor(obj);
+
+                if (!m_Editor)
                 {
                     AssignControlsForNull();
                     return;
                 }
 
-                var serializedObject = new SerializedObject(obj);
-                var inspector = new InspectorElement();
-                var header = m_OwnerList.CreateHeader(m_Index, serializedObject, inspector);
+                // As of Unity 6000.43, creating the InspectorElement with an Editor is necessary to make the
+                // inspector UI bind to the Editor's SerializedObject. Without an Editor, the Element will manage its
+                // own Editor, but it won't bind to that Editor's serializedObject.
+                //
+                // We do this because some custom Editors may contain code that expects their serializedObject to be
+                // updated when data changes, which won't happen if that serializedObject is not bound. Also, if a
+                // custom Editor binds some fields to its serializedObject directly, it'll be more performant because
+                // the binding system won't need to keep updating two different serializedObjects for the same target.
+                //
+                // CONSIDER: Should we report this as a bug to Unity? Seems hard to fix without adding methods to
+                // create Editors that use a preexisting SerializedObject.
+                var inspector = new InspectorElement(m_Editor);
+                var header = m_OwnerList.CreateHeader(m_Index, m_Editor.serializedObject, inspector);
 
                 if (header != null)
                     Add(header);
                 Add(inspector);
 
-                this.Bind(serializedObject);
+                header.Bind(m_Editor.serializedObject);
             }
 
             private void AssignControlsForNull()
             {
                 int referenceId = m_BackingProperty.objectReferenceInstanceIDValue;
                 // A missing object here should mean an invalid script assigned to that object,
-                // Assuming subassets in this list are always removed from it when deleted.
+                // assuming subassets in this list are always removed from it when deleted.
                 bool invalidScript = referenceId != 0;
 
                 var header = new VisualElement { style = { height = 22 } };
