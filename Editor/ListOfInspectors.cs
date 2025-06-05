@@ -9,6 +9,7 @@ using UnityEditorInternal;
 using ArteHacker.UITKEditorAid.Manipulators;
 using ArteHacker.UITKEditorAid.Utils;
 using Object = UnityEngine.Object;
+using static UnityEngine.GraphicsBuffer;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -255,6 +256,14 @@ namespace ArteHacker.UITKEditorAid
             label.AddToClassList(itemHeaderLabelUssClassName);
             label.editOnDoubleClick = false;
             label.emptyTextLabel = GetDefaultHeaderLabelText(serializedObject);
+
+            var targetType = serializedObject.targetObject.GetType();
+            if (Attribute.IsDefined(targetType, typeof(TooltipAttribute)))
+            {
+                var tooltipAttr = (TooltipAttribute)Attribute.GetCustomAttributes(targetType, typeof(TooltipAttribute))[0];
+                label.tooltip = tooltipAttr.tooltip;
+            }
+
             header.Add(label);
             header.RegisterCallback<MouseDownEvent>(e =>
             {
@@ -283,25 +292,17 @@ namespace ArteHacker.UITKEditorAid
         {
             var target = serializedObject.targetObject;
             var targetType = target.GetType();
-            // Check for attribute because Help.HasHelpForObject always returns true for most custom objects.
-            bool hasHelp = Attribute.IsDefined(targetType, typeof(HelpURLAttribute));
-            bool hasTooltip = Attribute.IsDefined(targetType, typeof(TooltipAttribute));
 
-            var help = new Button();
-            help.AddToClassList(itemHeaderButtonUssClassName);
-            help.style.backgroundImage = EditorGUIUtility.IconContent("_Help").image as Texture2D;
-            help.SetEnabled(hasHelp || hasTooltip);
-            if (hasHelp)
+            // Check for attribute because Help.HasHelpForObject always returns true for most custom objects.
+            if (Attribute.IsDefined(targetType, typeof(HelpURLAttribute)))
             {
-                help.tooltip = $"Open Help for {targetType.Name}.";
+                var help = new Button();
+                help.AddToClassList(itemHeaderButtonUssClassName);
+                help.style.backgroundImage = EditorGUIUtility.IconContent("_Help").image as Texture2D;
+                help.tooltip = $"Open Reference for {ObjectNames.NicifyVariableName(targetType.Name)}.";
                 help.clicked += () => Help.ShowHelpForObject(target);
+                header.Add(help);
             }
-            if (hasTooltip)
-            {
-                var tooltipAttr = (TooltipAttribute)Attribute.GetCustomAttributes(targetType, typeof(TooltipAttribute))[0];
-                help.tooltip = tooltipAttr.tooltip;
-            }
-            header.Add(help);
 
             if (new PresetType(target).IsValid() && (target.hideFlags & HideFlags.NotEditable) == 0)
             {
