@@ -375,6 +375,7 @@ namespace ArteHacker.UITKEditorAid
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
         }
 
+        // TODO: Fix Label Width not matching normal inspectors.
         private class InspectorItem : VisualElement
         {
             private const string k_InvalidScriptWarning =
@@ -456,8 +457,16 @@ namespace ArteHacker.UITKEditorAid
                 // CONSIDER: Should we report this as a bug to Unity? Seems hard to fix without adding methods to
                 // create Editors that use a preexisting SerializedObject.
                 var inspector = new InspectorElement(m_Editor);
-                var header = m_OwnerList.CreateHeader(m_Index, m_Editor.serializedObject, inspector);
 
+                // Without this class somewhere in the hierarchy between our Inspector and a main Inspector that may
+                // contain this List, our aligned BaseFields use the main Inspector to compute label widths instead
+                // of our Inspector. The main Inspector may have different layout than our own, which could make our
+                // aligned Labels noticeably mismatch aligned Labels in other Inspectors with the same layout.
+                // This can still create a small mismatch when the main Inspector has scrollbars, but it's a small
+                // amount and the Labels' min-width stays the same. 
+                inspector.AddToClassList("unity-inspector-main-container");
+
+                var header = m_OwnerList.CreateHeader(m_Index, m_Editor.serializedObject, inspector);
                 if (header != null)
                     Add(header);
                 Add(inspector);
