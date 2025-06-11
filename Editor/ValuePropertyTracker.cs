@@ -54,11 +54,16 @@ namespace ArteHacker.UITKEditorAid
             get => m_Value;
             set
             {
-                if (EqualityComparer<TValue>.Default.Equals(m_Value, value))
+                if (EqualityComparer<TValue>.Default.Equals(m_Value, value) && !isMixedValue)
                     return;
 
                 TValue prevValue = m_Value;
                 SetCurrentValue(value);
+                // We set showMixedValue because that's how UITK is designed to work for now; it's what BaseField does.
+                // Ideally, it'd be UITK's binding system's job to do this, but it only does it when the value changes.
+                // This strategy doesn't cover when the mixed status changes outside this field, e.g. on Undo or on
+                // another UI. I've reported this bug. For now, at least we cover when the value is set in the field.
+                ((IMixedValueSupport)this).showMixedValue = false;
 
                 if (panel != null)
                 {
