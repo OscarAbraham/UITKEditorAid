@@ -39,12 +39,14 @@ namespace ArteHacker.UITKEditorAid
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
             UxmlStringAttributeDescription m_PropertyPath = new UxmlStringAttributeDescription { name = "binding-path" };
+            UxmlBoolAttributeDescription m_CheckForPrefabOverride = new UxmlBoolAttributeDescription { name = "check-for-prefab-override", defaultValue = true };
 
             public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
             {
                 base.Init(ve, bag, cc);
                 var propertyContainer = ve as PropertyContainer;
                 propertyContainer.bindingPath = m_PropertyPath.GetValueFromBag(bag, cc);
+                propertyContainer.checkForPrefabOverride = m_CheckForPrefabOverride.GetValueFromBag(bag, cc);
             }
         }
 #endif
@@ -78,6 +80,9 @@ namespace ArteHacker.UITKEditorAid
         ///  This check isn't very expensive, but it can add up when there are many PropertyContainers.
         ///  The element will still show the overrides blue bar and the prefab overrides menu when this is false.
         /// </summary>
+#if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
+        [UxmlAttribute]
+#endif
         public bool checkForPrefabOverride
         {
             get => m_CheckPrefabOverrideScheduled?.isActive ?? false;
