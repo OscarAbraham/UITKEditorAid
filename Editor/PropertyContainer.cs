@@ -73,9 +73,10 @@ namespace ArteHacker.UITKEditorAid
         public event Action<bool> onPrefabOverrideChanged;
 
         /// <summary>
-        ///  Whether to check for prefab overrides in the property. True by default. Consider disabling it if
-        ///  you're not using <see cref="onPrefabOverrideChanged"/> or the prefab override uss class. This check
-        ///  isn't very expensive, but it can add up when you have many PropertyContainers at the same time. 
+        ///  Whether to trigger <see cref="onPrefabOverrideChanged"/> and apply a custom USS class when a prefab
+        ///  override is detected. True by default. Consider setting it false if you're not using those features.
+        ///  This check isn't very expensive, but it can add up when there are many PropertyContainers.
+        ///  The element will still show the overrides blue bar and the prefab overrides menu when this is false.
         /// </summary>
         public bool checkForPrefabOverride
         {
@@ -112,7 +113,9 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> Constructor. The Property parameter just sets the <see cref="bindingPath"/>; it still needs to be bound. </summary>
         /// <param name="property"> The property represented by this element.</param>
-        /// <param name="checkForPrefabOverride"> Whether to check for prefab overrides in the property. </param>
+        /// <param name="checkForPrefabOverride">
+        /// Whether to trigger <see cref="onPrefabOverrideChanged"/> and apply a custom USS class when a prefab override is detected.
+        /// </param>
         public PropertyContainer(SerializedProperty property, bool checkForPrefabOverride) : this(property?.propertyPath, checkForPrefabOverride) { }
 
         /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
@@ -121,7 +124,9 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
         /// <param name="propertyPath">The path of the property represented by this element.</param>
-        /// <param name="checkForPrefabOverride"> Whether to check for prefab overrides in the property. </param>
+        /// <param name="checkForPrefabOverride">
+        /// Whether to trigger <see cref="onPrefabOverrideChanged"/> and apply a custom USS class when a prefab override is detected.
+        /// </param>
         public PropertyContainer(string propertyPath, bool checkForPrefabOverride)
         {
             AddToClassList(ussClassName);
