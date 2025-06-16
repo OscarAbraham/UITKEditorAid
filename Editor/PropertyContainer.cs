@@ -63,6 +63,7 @@ namespace ArteHacker.UITKEditorAid
         private readonly Foldout m_PropertyProxy;
         private readonly Toggle m_ProxyToggle;
         private readonly VisualElement m_ContentContainer;
+        private IVisualElementScheduledItem m_CheckPrefabOverrideScheduled;
         private bool m_HasPropertyOverride = false;
 
         /// <summary>
@@ -70,6 +71,28 @@ namespace ArteHacker.UITKEditorAid
         /// Receives a <see cref="bool"/> that indicates whether the property is a prefab override.
         /// </summary>
         public event Action<bool> onPrefabOverrideChanged;
+
+        /// <summary>
+        ///  Whether to check for prefab overrides in the property. True by default. Consider disabling it if
+        ///  you're not using <see cref="onPrefabOverrideChanged"/> or the prefab override uss class. This check
+        ///  isn't very expensive, but it can add up when you have many PropertyContainers at the same time. 
+        /// </summary>
+        public bool checkForPrefabOverride
+        {
+            get => m_CheckPrefabOverrideScheduled?.isActive ?? false;
+            set
+            {
+                if (value)
+                {
+                    m_CheckPrefabOverrideScheduled ??= schedule.Execute(CheckPrefabOverride).Every(k_CheckPrefabOverrideInterval);
+                    m_CheckPrefabOverrideScheduled.Resume();
+                }
+                else
+                {
+                    m_CheckPrefabOverrideScheduled?.Pause();
+                }
+            }
+        }
 
         /// <summary> The path to property represented by this element. </summary>
 #if !REMOVE_UXML_FACTORIES && UNITY_2023_3_OR_NEWER
@@ -87,9 +110,19 @@ namespace ArteHacker.UITKEditorAid
         /// <param name="property"> The property represented by this element. </param>
         public PropertyContainer(SerializedProperty property) : this(property?.propertyPath) { }
 
+        /// <summary> Constructor. The Property parameter just sets the <see cref="bindingPath"/>; it still needs to be bound. </summary>
+        /// <param name="property"> The property represented by this element.</param>
+        /// <param name="checkForPrefabOverride"> Whether to check for prefab overrides in the property. </param>
+        public PropertyContainer(SerializedProperty property, bool checkForPrefabOverride) : this(property?.propertyPath, checkForPrefabOverride) { }
+
         /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
         /// <param name="propertyPath"> The path of the property represented by this element. </param>
-        public PropertyContainer(string propertyPath)
+        public PropertyContainer(string propertyPath) : this(propertyPath, true) { }
+
+        /// <summary> Constructor. Receives a string that is assigned to <see cref="bindingPath"/>. </summary>
+        /// <param name="propertyPath">The path of the property represented by this element.</param>
+        /// <param name="checkForPrefabOverride"> Whether to check for prefab overrides in the property. </param>
+        public PropertyContainer(string propertyPath, bool checkForPrefabOverride)
         {
             AddToClassList(ussClassName);
 
@@ -118,8 +151,7 @@ namespace ArteHacker.UITKEditorAid
             bindingPath = propertyPath;
 
             RegisterCallback<PointerUpEvent>(OnPointerUp);
-
-            schedule.Execute(CheckPrefabOverride).Every(k_CheckPrefabOverrideInterval);
+            this.checkForPrefabOverride = checkForPrefabOverride;
         }
 
         private void OnPointerUp(PointerUpEvent e)
