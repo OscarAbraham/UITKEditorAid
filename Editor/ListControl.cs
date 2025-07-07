@@ -52,6 +52,8 @@ namespace ArteHacker.UITKEditorAid
         private bool m_SupportItemSelection;
         private int m_SelectedItem = -1;
 
+        private VisualElement _CurrentPanelRoot;
+
         /// <summary> Whether a list item can be selected. It's false by default.</summary>
         public bool supportItemSelection
         {
@@ -132,6 +134,8 @@ namespace ArteHacker.UITKEditorAid
             m_DropBar.pickingMode = PickingMode.Ignore;
             Add(m_DropBar);
 
+            RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
+            RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
             RegisterCallback<DragUpdatedEvent>(OnDragUpdated);
             RegisterCallback<DragPerformEvent>(OnDragPerform);
             RegisterCallback<DragLeaveEvent>(OnDragEnd);
@@ -269,6 +273,25 @@ namespace ArteHacker.UITKEditorAid
         /// </summary>
         /// <param name="dropIndex">The place where the item is dropped.</param>
         protected virtual void OnCustomDragPerformed(int dropIndex) { }
+
+        private void OnAttachToPanel(AttachToPanelEvent e)
+        {
+            _CurrentPanelRoot?.UnregisterCallback<PointerDownEvent>(OnPanelRootPointerDown, TrickleDown.TrickleDown);
+            _CurrentPanelRoot = e.destinationPanel.visualTree;
+            _CurrentPanelRoot?.RegisterCallback<PointerDownEvent>(OnPanelRootPointerDown, TrickleDown.TrickleDown);
+        }
+
+        private void OnDetachFromPanel(DetachFromPanelEvent e)
+        {
+            _CurrentPanelRoot?.UnregisterCallback<PointerDownEvent>(OnPanelRootPointerDown, TrickleDown.TrickleDown);
+            _CurrentPanelRoot = null;
+        }
+
+        private void OnPanelRootPointerDown(PointerDownEvent e)
+        {
+            if (selectedItem >= 0 && e.target is VisualElement veTarget && !Contains(veTarget))
+                selectedItem = -1;
+        }
 
         private bool VerifyReorderDrag() => IsReorderable() && DragAndDrop.GetGenericData("DraggedList") == this;
 
