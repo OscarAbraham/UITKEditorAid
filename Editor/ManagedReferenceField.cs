@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
+using Object = UnityEngine.Object;
 
 namespace ArteHacker.UITKEditorAid
 {
@@ -49,7 +51,7 @@ namespace ArteHacker.UITKEditorAid
 
         private readonly SerializedProperty m_Property;
         private readonly PropertyField m_PropertyField;
-        private string m_ReferenceType;
+        private Type m_ReferenceType;
 
         private long m_PeriodicalUpdateInterval = 5024;
         private readonly IVisualElementScheduledItem m_UpdateSchedule;
@@ -94,7 +96,7 @@ namespace ArteHacker.UITKEditorAid
             }
 
             m_Property = property.Copy();
-            m_ReferenceType = m_Property.managedReferenceFullTypename;
+            m_ReferenceType = m_Property.managedReferenceValue?.GetType();
 
             m_PropertyField = new PropertyField(m_Property, label);
             m_PropertyField.AddToClassList(propertyFieldUssClassName);
@@ -107,12 +109,12 @@ namespace ArteHacker.UITKEditorAid
 
         private void Update()
         {
-            string newType;
+            Type newType;
             // Use a try-catch block in case the property doesn't exist anymore, which throws an exception.
             try
             {
                 if (m_Property.propertyType == SerializedPropertyType.ManagedReference)
-                    newType = m_Property.managedReferenceFullTypename;
+                    newType = m_Property.managedReferenceValue?.GetType();
                 else
                     return;
             }
