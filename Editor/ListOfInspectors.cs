@@ -375,7 +375,6 @@ namespace ArteHacker.UITKEditorAid
             ListControlUtils.ReorderSerializedArray(m_ArrayProp, draggedIndex, dropIndex);
         }
 
-        // TODO: Fix Label Width not matching normal inspectors.
         private class InspectorItem : VisualElement
         {
             private const string k_InvalidScriptWarning =
