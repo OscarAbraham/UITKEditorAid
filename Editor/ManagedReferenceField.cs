@@ -137,8 +137,17 @@ namespace ArteHacker.UITKEditorAid
 
         private void ReactToEditorChange()
         {
-            UpdateSerializedObjectIfNeeded();
-            Update();
+            // This method gets called inside Undo callbacks, which can mess serialization and Undo
+            // systems if they are interrupted, so we use a try/catch block.
+            try
+            {
+                UpdateSerializedObjectIfNeeded();
+                Update();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
         }
 
         private void UpdateSerializedObjectIfNeeded()
@@ -178,9 +187,22 @@ namespace ArteHacker.UITKEditorAid
 
         private UndoPropertyModification[] OnPropertyModification(UndoPropertyModification[] modifications)
         {
+            bool isMultiObject;
+            // Sometimes, if selection changes in the same frame as another change, the serializedObject
+            // may be disposed, which causes an exception. It seems to be related to bound fields
+            // collapsing Undo when an inspector reacts to a selection change.
+            try
+            {
+                isMultiObject = m_Property.serializedObject.isEditingMultipleObjects;
+            }
+            catch (Exception)
+            {
+                return modifications;
+            }
+
             // We optimize editing a single Object, which may be the most common case if not the only one,
             // as these fields aren't very usable when editing multiple Objects.
-            if (!m_Property.serializedObject.isEditingMultipleObjects)
+            if (!isMultiObject)
             {
                 foreach (var mod in modifications)
                 {
