@@ -359,12 +359,12 @@ namespace ArteHacker.UITKEditorAid
             if (index == m_Items.Count)
             {
                 var itemRect = this.WorldToLocal(m_Items[index - 1].worldBound);
-                m_DropBar.transform.position = new Vector2(0, itemRect.yMax);
+                m_DropBar.style.translate = new Translate(0, itemRect.yMax);
             }
             else
             {
                 var itemRect = this.WorldToLocal(m_Items[index].worldBound);
-                m_DropBar.transform.position = new Vector2(0, itemRect.yMin);
+                m_DropBar.style.translate = new Translate(0, itemRect.yMin);
             }
             m_DropBar.style.visibility = Visibility.Visible;
         }

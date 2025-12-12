@@ -376,7 +376,8 @@ namespace ArteHacker.UITKEditorAid
             var tabBarContainerRect = m_TabBarContainer.worldBound;
             float scrollAmount = Mathf.Max(0, Mathf.Min(tabsScrollSpeed, tabBarContainerRect.xMin - tabBarRect.xMin));
 
-            m_TabBar.transform.position = m_TabBar.transform.position + (Vector3.right * scrollAmount);
+            Vector3 newPos = m_TabBar.resolvedStyle.translate + (Vector3.right * scrollAmount);
+            m_TabBar.style.translate = new Translate(newPos.x, newPos.y);
 
             UpdateScrollButtonsVisibility();
         }
@@ -387,7 +388,8 @@ namespace ArteHacker.UITKEditorAid
             var tabBarContainerRect = m_TabBarContainer.worldBound;
             float scrollAmount = Mathf.Max(0, Mathf.Min(tabsScrollSpeed, tabBarRect.xMax - tabBarContainerRect.xMax));
 
-            m_TabBar.transform.position = m_TabBar.transform.position + (Vector3.left * scrollAmount);
+            Vector3 newPos = m_TabBar.resolvedStyle.translate + (Vector3.left * scrollAmount);
+            m_TabBar.style.translate = new Translate(newPos.x, newPos.y);
 
             UpdateScrollButtonsVisibility();
         }
