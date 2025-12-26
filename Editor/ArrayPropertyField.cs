@@ -387,7 +387,6 @@ namespace ArteHacker.UITKEditorAid
             }
             m_ArrayProp = arrayProp;
             m_MakeItem = makeItem;
-            viewDataKey = arrayProp.serializedObject.targetObject.GetInstanceID() + "_" + arrayProp.propertyPath;
 
             label = null;
             m_HeaderLabel.AddToClassList(headerLabelUssClassName);

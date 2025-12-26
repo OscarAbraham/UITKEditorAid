@@ -475,10 +475,13 @@ namespace ArteHacker.UITKEditorAid
 
             private void AssignControlsForNull()
             {
-                int referenceId = m_BackingProperty.objectReferenceInstanceIDValue;
                 // A missing object here should mean an invalid script assigned to that object,
                 // assuming subassets in this list are always removed from it when deleted.
-                bool invalidScript = referenceId != 0;
+#if UNITY_6000_4_OR_NEWER
+                bool invalidScript = m_BackingProperty.objectReferenceEntityIdValue != EntityId.None;
+#else
+                bool invalidScript = m_BackingProperty.objectReferenceInstanceIDValue != 0;
+#endif
 
                 var header = new VisualElement { style = { height = 22 } };
                 header.AddToClassList(itemHeaderUssClassName);
@@ -511,7 +514,15 @@ namespace ArteHacker.UITKEditorAid
                 Button fixButton = new Button(() =>
                 {
                     if (invalidScript)
+                    {
+#if UNITY_6000_4_OR_NEWER
+                        Selection.activeEntityId = m_BackingProperty.objectReferenceEntityIdValue;
+#elif UNITY_6000_3_OR_NEWER
+                        Selection.activeEntityId = m_BackingProperty.objectReferenceInstanceIDValue;
+#else
                         Selection.activeInstanceID = m_BackingProperty.objectReferenceInstanceIDValue;
+#endif
+                    }
                     else
                     {
                         m_BackingProperty.DeleteCommand();
