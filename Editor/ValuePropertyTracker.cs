@@ -14,19 +14,15 @@ namespace ArteHacker.UITKEditorAid
     /// 
     /// <typeparam name="TValue">
     /// The type of the property. It doesn't work with custom types. Enum types should use <see cref="int"/> or <see cref="string"/>.
-    /// Types that inherit from <see cref="Object"/> should use Object as the type.
     /// </typeparam>
     /// 
     /// <remarks>
     /// It needs to be added to a panel and bound to work. You can use <see cref="BindableElement.bindingPath"/> to set the
     /// property that is to be bound.
-    /// 
     /// <para>
-    /// Many of the uses for this element are covered by
-    /// <see cref="BindingExtensions.TrackPropertyValue">TrackPropertyValue</see>, but there's a bug with issue number UUM-74316
-    /// that's stopping us from being able to utilize those extension methods fully.
+    /// <see cref="BindingExtensions.TrackPropertyValue">TrackPropertyValue</see> can be an alternative to this element.
+    /// Use this element if you need handling of mixed values in multi-object editors, or if TrackPropertyValue has bugs.
     /// </para>
-    /// 
     /// </remarks>
     public class ValuePropertyTracker<TValue> : BindableElement, INotifyValueChanged<TValue>, IMixedValueSupport
     {
@@ -107,8 +103,8 @@ namespace ArteHacker.UITKEditorAid
         /// Set's the <see cref="valueChanged"/> callback of this element.
         /// </param>
         /// <param name="initialValue">
-        /// The initial value of the property.
-        /// Use it to avoid triggering the <see cref="valueChanged"/> callback when the element the first time is synced with its property.
+        /// The initial value of the property. Use it to avoid triggering the <see cref="valueChanged"/> callback
+        /// the first time the element is synced with its property.
         /// </param>
         public ValuePropertyTracker(
             string propertyPath,
@@ -128,8 +124,8 @@ namespace ArteHacker.UITKEditorAid
         /// Set's the <see cref="valueChanged"/> callback of this element.
         /// </param>
         /// <param name="initialValue">
-        /// The initial value of the property.
-        /// Use it to avoid triggering the <see cref="valueChanged"/> callback when the element the first time is synced with its property.
+        /// The initial value of the property. Use it to avoid triggering the <see cref="valueChanged"/> callback
+        /// the first time the element is synced with its property.
         /// </param>
         public ValuePropertyTracker(
             SerializedProperty property,
