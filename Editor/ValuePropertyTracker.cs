@@ -43,7 +43,7 @@ namespace ArteHacker.UITKEditorAid
 
         /// <summary>
         /// The current value stored in this tracker. When the element is bound and it's attached to a panel,
-        /// setting its value also set's the value on the bound <see cref="SerializedProperty"/>.
+        /// setting its value also sets the value on the bound <see cref="SerializedProperty"/>.
         /// </summary>
         public TValue value
         {
@@ -100,7 +100,7 @@ namespace ArteHacker.UITKEditorAid
         /// Path of the property to be bound to this element. It's the same as setting the <see cref="BindableElement.bindingPath"/>.
         /// </param>
         /// <param name="valueChangedCallback">
-        /// Set's the <see cref="valueChanged"/> callback of this element.
+        /// Sets the <see cref="valueChanged"/> callback of this element.
         /// </param>
         /// <param name="initialValue">
         /// The initial value of the property. Use it to avoid triggering the <see cref="valueChanged"/> callback
@@ -121,7 +121,7 @@ namespace ArteHacker.UITKEditorAid
         /// The property to be bound to this element.
         /// </param>
         /// <param name="valueChangedCallback">
-        /// Set's the <see cref="valueChanged"/> callback of this element.
+        /// Sets the <see cref="valueChanged"/> callback of this element.
         /// </param>
         /// <param name="initialValue">
         /// The initial value of the property. Use it to avoid triggering the <see cref="valueChanged"/> callback
