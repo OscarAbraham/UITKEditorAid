@@ -57,7 +57,7 @@
     flex-shrink: 0;
     padding: 2px 5px;
     border-right-width: 1px;
-    border-color: var(--unity-colors-inspector_titlebar-border_accent);
+    border-color: var(--unity-colors-toolbar-border);
     background-color: var(--unity-colors-toolbar_button-background);
 }
     .editor-aid-tabbed-view__tab:hover {
