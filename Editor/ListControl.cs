@@ -155,6 +155,7 @@ namespace ArteHacker.UITKEditorAid
             DragAndDrop.visualMode = DragAndDropVisualMode.Move;
             DragAndDrop.StartDrag("");
             m_DraggedIndex = index;
+            OnStartedItemDrag(index);
         }
 
         /// <summary> Get the item count of the list.</summary>
@@ -197,14 +198,14 @@ namespace ArteHacker.UITKEditorAid
         /// <summary>
         /// Get an item from the list.
         /// </summary>
-        /// <param name="index">The item's index</param>
+        /// <param name="index">The item's index.</param>
         /// <returns>The item</returns>
         protected VisualElement GetListItem(int index) => m_Items[index];
 
         /// <summary>
         /// Set whether to show the list's header.
         /// </summary>
-        /// <param name="visible">The header's visibility</param>
+        /// <param name="visible">The header's visibility.</param>
         protected void SetHeaderVisibility(bool visible)
         {
             EnableInClassList(withHeaderUssClassName, visible);
@@ -213,7 +214,7 @@ namespace ArteHacker.UITKEditorAid
         /// <summary>
         /// Set the header's content.
         /// </summary>
-        /// <param name="content">The header's content</param>
+        /// <param name="content">The header's content.</param>
         protected void SetHeaderContent(VisualElement content)
         {
             m_Header.Clear();
@@ -242,21 +243,28 @@ namespace ArteHacker.UITKEditorAid
         /// <summary>
         /// Implement this method to create the list's items.
         /// </summary>
-        /// <param name="index">The item index</param>
+        /// <param name="index">The item index.</param>
         /// <returns>A new item</returns>
         protected abstract VisualElement CreateItemForIndex(int index);
 
         /// <summary>
         /// Override this method to define whether a list is reorderable.
         /// </summary>
-        /// <returns>Whether the list is reorderable</returns>
+        /// <returns>Whether the list is reorderable.</returns>
         protected virtual bool IsReorderable() => true;
+
+        /// <summary>
+        /// This method is called when an item starts to be dragged as part of a reorder operation. Override it to do
+        /// additional <see cref="DragAndDrop"/> configurations, i.e. to support dragging items to places outside the list.
+        /// </summary>
+        /// <param name="index">The index of the dragged item.</param>
+        protected virtual void OnStartedItemDrag(int index) { }
 
         /// <summary>
         /// Implement this method to do the actual reordering of the data backing the list control.
         /// </summary>
-        /// <param name="draggedIndex">The index of the dragged item</param>
-        /// <param name="dropIndex">The index where the item is being dropped</param>
+        /// <param name="draggedIndex">The index of the dragged item. </param>
+        /// <param name="dropIndex">The index where the item is being dropped.</param>
         protected virtual void OnReorderDragPerformed(int draggedIndex, int dropIndex) { }
 
         /// <summary>
