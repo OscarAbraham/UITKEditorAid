@@ -117,7 +117,7 @@ namespace ArteHacker.UITKEditorAid
         private readonly Label m_Label;
         private readonly IVisualElementScheduledItem m_TurnOnTextFieldScheduled;
 
-        /// <summary> Whether to start editing by double clicking the label. See <see cref="BeginEditing"/> to start editing from code. </summary>
+        /// <summary> Whether to start editing by double-clicking the label. See <see cref="BeginEditing"/> to start editing from code. </summary>
         public bool editOnDoubleClick { get; set; } = true;
 
         /// <summary> Whether to use multiline text. </summary>
@@ -267,7 +267,7 @@ namespace ArteHacker.UITKEditorAid
 
             // In Unity 6, empty labels have no height, which is bad for our layout. We could add a
             // min-height in USS, but it would make changing font sizes and handling screen PPIs
-            // harder. So instead we ensure there's always a least one char in the label.
+            // harder. So instead we ensure there's always at least one char in the label.
             if (string.IsNullOrEmpty(labelText))
                 labelText = " ";
 
