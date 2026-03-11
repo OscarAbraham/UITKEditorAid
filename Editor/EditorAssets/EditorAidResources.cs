@@ -23,10 +23,22 @@ namespace ArteHacker.UITKEditorAid
         private static string s_FolderPath;
         private static StyleSheet s_DarkTheme;
         private static StyleSheet s_LightTheme;
+        private static StyleSheet s_InspectorFoldoutNegativeMarginRemoval;
         private static StyleSheet s_ListControlStyle;
         private static StyleSheet s_EditableLabelStyle;
         private static StyleSheet s_ListOfInspectorsStyle;
         private static StyleSheet s_TabbedViewStyle;
+
+        /// <summary> This StyleSheet removes the negative left margin from foldout toggles in the inspector. </summary>
+        public static StyleSheet inspectorFoldoutNegativeMarginRemoval
+        {
+            get
+            {
+                if (!s_InspectorFoldoutNegativeMarginRemoval)
+                    s_InspectorFoldoutNegativeMarginRemoval = GetAsset<StyleSheet>("InspectorFoldoutNegativeMarginRemoval.uss");
+                return s_InspectorFoldoutNegativeMarginRemoval;
+            }
+        }
 
         /// <summary> StyleSheet for <see cref="ListControl"/> </summary>
         public static StyleSheet listControlStyle

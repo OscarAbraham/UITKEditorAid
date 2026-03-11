@@ -1,0 +1,3 @@
+.unity-foldout__toggle--inspector {
+    margin-left: 0;
+}
