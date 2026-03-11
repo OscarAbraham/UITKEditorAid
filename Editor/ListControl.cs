@@ -20,6 +20,8 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string withHeaderUssClassName = "editor-aid-list-control--with-header";
         /// <summary> USS class name of Lists with a footer. </summary>
         public static readonly string withFooterUssClassName = "editor-aid-list-control--with-footer";
+        /// <summary> USS class name of Lists with separators. </summary>
+        public static readonly string withSeparatorsUSSClassName = "editor-aid-list-control--with-separators";
         /// <summary> USS class name of Lists in the middle of a drag operation. </summary>
         public static readonly string draggingListUssClassName = "editor-aid-list-control--dragging";
         /// <summary> USS class name of Empty Lists. </summary>
@@ -29,10 +31,24 @@ namespace ArteHacker.UITKEditorAid
         public static readonly string dropIndicatorUssClassName = "editor-aid-list-control__drop-indicator";
         /// <summary> USS class name of a message to indicate the list is empty. </summary>
         public static readonly string emptyMessageUssClassName = "editor-aid-list-control__empty-message";
+        
         /// <summary> USS class name of the list's header. </summary>
         public static readonly string headerUssClassName = "editor-aid-list-control__header";
+        /// <summary> USS class name of the element that contains the header's label or foldout. </summary>
+        public static readonly string headerContentUssClassName = "editor-aid-list-control__header-content";
+        /// <summary> USS class name of the list's foldout. </summary>
+        public static readonly string headerFoldoutUssClassName = "editor-aid-list-control__header-foldout";
+        /// <summary> USS class name of the list's label. </summary>
+        public static readonly string headerLabelUssClassName = "editor-aid-list-control__header-label";
+        
         /// <summary> USS class name of the list's footer. </summary>
         public static readonly string footerUssClassName = "editor-aid-list-control__footer";
+        /// <summary> USS class name of the footer content. </summary>
+        public static readonly string footerContentUssClassName = "editor-aid-list-control__footer-content";
+        /// <summary> USS class name of the add button. </summary>
+        public static readonly string addButtonUssClassName = "editor-aid-list-control__add-button";
+        /// <summary> USS class name of the remove button. </summary>
+        public static readonly string removeButtonUssClassName = "editor-aid-list-control__remove-button";
 
         /// <summary> USS class name of the list's items. </summary>
         public static readonly string itemUssClassName = "editor-aid-list-control__item";

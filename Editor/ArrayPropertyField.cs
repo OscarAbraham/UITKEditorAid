@@ -187,20 +187,6 @@ namespace ArteHacker.UITKEditorAid
     {
         /// <summary> USS class name of elements of this type. </summary>
         public new static readonly string ussClassName = "editor-aid-array-property-field";
-        /// <summary> USS class name of Lists with separators. </summary>
-        public static readonly string withSeparatorsUSSClassName = "editor-aid-list-control--with-separators";
-        /// <summary> USS class name of the footer content. </summary>
-        public static readonly string footerContentUssClassName = "editor-aid-list-control__footer-content";
-        /// <summary> USS class name of the add button. </summary>
-        public static readonly string addButtonUssClassName = "editor-aid-list-control__add-button";
-        /// <summary> USS class name of the remove button. </summary>
-        public static readonly string removeButtonUssClassName = "editor-aid-list-control__remove-button";
-        /// <summary> USS class name of the element that contains the header's label or foldout. </summary>
-        public static readonly string headerContentUssClassName = "editor-aid-list-control__header-content";
-        /// <summary> USS class name of the list's foldout. </summary>
-        public static readonly string headerFoldoutUssClassName = "editor-aid-list-control__header-foldout";
-        /// <summary> USS class name of the list's label. </summary>
-        public static readonly string headerLabelUssClassName = "editor-aid-list-control__header-label";
 
         private readonly SerializedProperty m_ArrayProp;
         private readonly Button m_AddButton = new Button();
