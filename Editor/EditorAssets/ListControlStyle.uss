@@ -64,7 +64,7 @@
 }
 
 .editor-aid-list-control--boxed > .editor-aid-list-control__header {
-    border-radius: 1px 0px;
+    border-radius: 2px 0px;
     border-bottom-width: 1px;
     border-bottom-color: var(--editor-aid-colors-list_item-separator);
 }
@@ -78,7 +78,7 @@
 }
 
 .editor-aid-list-control__header-foldout  > .unity-foldout__toggle {
-    margin: 0;
+    margin: 2px 3px;
 }
 
 .editor-aid-list-control--folded > .editor-aid-list-control__item,
@@ -94,6 +94,19 @@
 
 .editor-aid-list-control--folded.editor-aid-list-control--boxed {
     margin-bottom: 1px;
+}
+
+.editor-aid-list-control--folded.editor-aid-list-control--boxed.editor-aid-list-control--with-header {
+    padding-bottom: 0px;
+}
+
+.editor-aid-list-control--folded.editor-aid-list-control--with-header > .editor-aid-list-control__header{
+    margin-bottom: 0px;
+}
+
+.editor-aid-list-control--folded.editor-aid-list-control--boxed > .editor-aid-list-control__header{
+    border-radius: 2px;
+    border-bottom-width: 0px;
 }
 
 .editor-aid-list-control__drop-indicator {
