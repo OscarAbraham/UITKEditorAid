@@ -377,6 +377,7 @@ namespace ArteHacker.UITKEditorAid
         /// <param name="makeItem"> Optional callback to make custom list items. It receives the item's index as a parameter.</param>
         public ArrayPropertyField(SerializedProperty arrayProp, Func<int, VisualElement> makeItem = null)
         {
+            styleSheets.Add(EditorAidResources.inspectorFoldoutNegativeMarginRemoval);
             AddToClassList(ussClassName);
             boxed = true;
 
