@@ -141,22 +141,15 @@ namespace ArteHacker.UITKEditorAid.Utils
                 m_ReadyToDrag = false;
             }
 
-            // This ensures reorderable CollectionViews (e.g. ListViews) work when nested in a ListControl item.
-            // Unity's ListView dragging implementation doesn't play very nice with other elements:
+            // We skip down events from Collection Views nested in ListControl items; they don't really have good etiquette
+            // for handling event propagation. Collection Views use pointer events but don't stop propagation when not
+            // reorderable, so actions there don't stop us from selecting and reordering.
             //
-            // - It uses pointer events instead of mouse events, that's not a problem in itself, but it's relevant.
-            // - It prepares for reordering on PointerDownEvent, but it doesn't stop propagation, and it doesn't capture the pointer.
-            //   Not capturing here makes sense in some Unity versions, as they propagate pointer events before sending mouse events,
-            //   so child elements would miss the mouseDownEvent. I'm not sure why they don't stop propagation.
-            // - It doesn't capture or stop propagation of PointerMoveEvents immediately; it waits for the pointer to move a certain amount.
-            // - It doesn't check if the dragging operation is still valid when reacting to PointerMoveEvents.
-            //
-            // So, if we don't use this method, our ListControl will try to reorder when dragging from inside the ListView. Then,
-            // the ListView gets into a weird unsupported state where it tries to drag an element when just hovering the mouse over it.
-            //
-            // An alternative solution would be to use a similar strategy ourselves, maybe also stop propagation of DownEvents.
-            // But it isn't very practical; Unity's implementation changes a lot. Even something small, like changing the distance threshold
-            // for beggining to process PointerMoveEvents, could make our implementation stop working.
+            // Even when reorderable, if they're animated, they wait for the mouse to be moved some amount before capturing
+            // or stopping propagation. Also, they don't check if the dragging action is still valid on PointerMoveEvent.
+            // So, if we capture on mouse down, our ListControl will try to reorder when dragging from inside the ListView.
+            // Even worse, then the ListView gets into a weird unsupported state where it tries to drag an element when
+            // just hovering the mouse over it.
             private bool TargetIsInDescendantCollectionView(EventBase e)
             {
                 if (e.target is VisualElement veTarget)
