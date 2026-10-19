@@ -42,8 +42,6 @@ namespace ArteHacker.UITKEditorAid
     {
         /// <summary> USS class name of elements of this type. </summary>
         public static readonly string ussClassName = "editor-aid-managed-reference-field";
-        /// <summary> USS class name for the ManagedReferenceTypeTracker inside. </summary>
-        public static readonly string trackerUssClassName = ussClassName + "__tracker";
         /// <summary> USS class name for the PropertyField inside. </summary>
         public static readonly string propertyFieldUssClassName = ussClassName + "__property-field";
 
